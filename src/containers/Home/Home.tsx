@@ -27,12 +27,19 @@ export function Home() {
       <div className={styles.pageBg}>
         <HomeBg />
       </div>
-      <div className={styles.pageHero}>
-        <Image src="https://res.cloudinary.com/austinmel/image/upload/v1656674282/austin-computer_m9bpcz.png"
+      <div className={cx(styles.pageHero, styles.desktop)}>
+        <Image src="https://res.cloudinary.com/austinmel/image/upload/v1656687363/fishing_gxv0gh.png"
           layout="responsive"
           alt="an illustration of me using the computer"
           width="1604"
           height="1515" />
+      </div>
+      <div className={cx(styles.pageHero, styles.mobile)}>
+        <Image src="https://res.cloudinary.com/austinmel/image/upload/v1656687472/fishing-mobile_nsxaoi.png"
+          layout="responsive"
+          alt="an illustration of me using the computer"
+          width="1714"
+          height="4096" />
       </div>
     </div>
   );

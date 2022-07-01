@@ -10,10 +10,11 @@
   width: 100%;
 
   @include lg-max {
-    padding-top: 150px;
+    padding-top: 85px;
     align-items: center;
     flex-direction: column;
     justify-content: center;
+    padding-bottom: 300px;
   }
 
   .content {
@@ -23,7 +24,7 @@
     .logo {
       display: none;
       margin: 0 auto 15px;
-      width: 75px;
+      width: 55px;
 
       :global {
         svg {
@@ -84,6 +85,7 @@
     transform: translateY(-50%);
     width: 1000px;
     z-index: 1;
+    opacity: .5;
 
     :global {
       svg {
@@ -111,28 +113,43 @@
     top: 50%;
     right: -0px;
     transform: translateY(-50%);
-    width: 55%;
+    width: 75%;
     z-index: 3;
 
-    &:after {
-      background: rgba(0, 0, 0, .5);
-      border-radius: 50%;
-      content: '';
-      position: fixed;
-      bottom: -40px;
-      left: 20%;
-      transform: translateX(-50%);
-      width: 200px;
-      height: 35px;
-      z-index: 2;
+    &.desktop {
+      display: block;
     }
 
+    &.mobile {
+      display: none;
+    }
+
+    // &:after {
+    //   background: rgba(0, 0, 0, .5);
+    //   border-radius: 50%;
+    //   content: '';
+    //   position: fixed;
+    //   bottom: -40px;
+    //   left: 20%;
+    //   transform: translateX(-50%);
+    //   width: 200px;
+    //   height: 35px;
+    //   z-index: 2;
+    // }
+
     @include lg-max {
-      position: relative;
-      top: 0;
-      right: 0;
+      top: auto;
+      bottom: -200px;
       transform: translateY(0);
-      width: 90%;
+      width: 100%;
+
+      &.desktop {
+        display: none;
+      }
+
+      &.mobile {
+        display: block;
+      }
     }
   }
 }
