@@ -2,7 +2,7 @@
 @import "../../../styles/breakpoints.scss";
 
 .button {
-  border: 1.5px solid $mustard;
+  border: 1.5px solid $aquamarine;
   border-radius: 50px;
   display: inline-block;
   font-family: $title;
@@ -12,15 +12,17 @@
   position: relative;
   padding: 15px 35px;
   text-align: center;
+  transition: .25s ease;
 
   &:hover,
   &:focus {
     cursor: pointer;
+    transform: scale(1.1);
   }
 }
 
 .primary {
-  background: $mustard;
+  background: $aquamarine;
   color: $mirage;
 
   &:hover,
@@ -29,7 +31,7 @@
 
 .secondary {
   background: none;
-  color: $mustard;
+  color: $aquamarine;
 
   &:hover,
   &:focus {}

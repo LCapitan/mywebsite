@@ -113,7 +113,7 @@
     top: 50%;
     right: -100px;
     transform: translateY(-50%);
-    width: 70%;
+    width: 75%;
     z-index: 3;
 
     &.desktop {
@@ -156,13 +156,23 @@
     @include lg-max {
       top: auto;
       bottom: -150px;
-      left: -55px;
+      right: -55px;
       transform: translateY(0);
       width: 500px;
 
       &.desktop {
         display: none;
       }
+
+      &.mobile {
+        display: block;
+      }
+    }
+
+    @include sm-max {
+      left: auto;
+      right: 0px;
+      width: 500px;
 
       &.mobile {
         display: block;
