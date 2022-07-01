@@ -2,7 +2,7 @@
 import Link from "next/link";
 import React, { useContext } from 'react';
 import UIContext from "../../context/UIContext";
-import { LinkedIn, Instagram, Twitter, Facebook, Logo } from '../Icons'
+import { LinkedIn, Instagram, Twitter, Facebook, Logo, GitHub } from '../Icons'
 import Menu from "../Menu/Menu";
 import Hamburger from './HamburgerButton';
 
@@ -24,6 +24,11 @@ const Header = () => {
       </div>
       <div className={styles.socialMenu}>
         <ul>
+          <li>
+            <a href="https://github.com/LCapitan" target="_blank" rel="noreferrer">
+              <GitHub />
+            </a>
+          </li>
           <li>
             <a href="https://www.linkedin.com/in/austinmelendez/" target="_blank" rel="noreferrer">
               <LinkedIn />

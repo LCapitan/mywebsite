@@ -13,7 +13,10 @@
   }
 
   .logo {
-    width: 50px;
+    position: fixed;
+    top: 50px;
+    left: 40px;
+    width: 60px;
     opacity: .5;
     transition: .25s ease;
 
@@ -43,7 +46,7 @@
 
   .menuToggle {
     position: fixed;
-    top: 60px;
+    top: 70px;
     right: 30px;
 
     @include lg-max {
@@ -87,6 +90,22 @@
 
             svg {
               fill: $malibu;
+            }
+          }
+        }
+
+        &:first-child {
+          a {
+            svg {
+              width: 32px;
+            }
+          }
+        }
+
+        &:nth-child(2) {
+          a {
+            svg {
+              width: 28px;
             }
           }
         }

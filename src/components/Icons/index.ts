@@ -3,6 +3,7 @@ export * from "./Backwards";
 export * from "./Facebook";
 export * from "./Forward";
 export * from "./Fullscreen";
+export * from "./GitHub";
 export * from "./HomeBg";
 export * from "./Instagram";
 export * from "./LinkedIn";
