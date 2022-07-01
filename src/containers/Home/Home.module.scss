@@ -111,9 +111,9 @@
   .pageHero {
     position: absolute;
     top: 50%;
-    right: -100px;
+    right: -20%;
     transform: translateY(-50%);
-    width: 85%;
+    width: 100%;
     z-index: 3;
 
     &.desktop {

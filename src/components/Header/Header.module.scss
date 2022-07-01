@@ -19,13 +19,20 @@
 
     :global {
       svg {
-        fill: lighten($mirage, 20%);
+        fill: lighten($mirage, 40%);
       }
     }
+
 
     &:hover,
     &:focus {
       opacity: 1;
+
+      :global {
+        svg {
+          fill: $aquamarine;
+        }
+      }
     }
 
     @include lg-max {
@@ -34,42 +41,27 @@
     }
   }
 
-  .innerWrapper {
-    display: flex;
-    justify-content: space-between;
+  .menuToggle {
+    position: fixed;
+    top: 60px;
+    right: 30px;
+    transform: rotate(-90deg);
+
+    @include lg-max {
+      right: 15px;
+      top: auto;
+      bottom: 30px;
+    }
   }
 
-  .leftSide,
-  .rightSide {
+  .socialMenu {
+    bottom: 60px;
+    left: 50px;
     position: fixed;
 
     @include lg-max {
       display: none;
     }
-  }
-
-  .leftSide {
-    color: lighten($mirage, 25%);
-    font-family: $copy;
-    font-size: 22px;
-    font-weight: 500;
-    top: 50%;
-    left: 40px;
-    opacity: .5;
-    transform: rotate(-90deg) translateY(-50%);
-    transition: .25s ease;
-
-    &:hover,
-    &:focus {
-      cursor: pointer;
-      opacity: 1;
-    }
-  }
-
-  .rightSide {
-    top: 50%;
-    right: 60px;
-    transform: translateY(-50%);
 
     ul {
       display: flex;
@@ -87,7 +79,7 @@
           transition: .25s ease;
 
           svg {
-            fill: lighten($mirage, 20%);
+            fill: lighten($mirage, 40%);
             width: 25px;
             height: auto;
           }
@@ -95,6 +87,10 @@
           &:hover,
           &:focus {
             opacity: 1;
+
+            svg {
+              fill: $malibu;
+            }
           }
         }
 

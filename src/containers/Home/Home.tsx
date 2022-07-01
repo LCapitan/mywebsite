@@ -28,7 +28,7 @@ export function Home() {
         <HomeBg />
       </div>
       <div className={cx(styles.pageHero, styles.desktop)}>
-        <Image src="https://res.cloudinary.com/austinmel/image/upload/v1656687363/fishing_gxv0gh.png"
+        <Image src="https://res.cloudinary.com/austinmel/image/upload/v1656704666/fishing_cgnvig.png"
           layout="responsive"
           alt="an illustration of me using the computer"
           width="1604"

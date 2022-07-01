@@ -2,7 +2,7 @@
 @import "../../../styles/breakpoints.scss";
 
 .button {
-  border: 1.5px solid $aquamarine;
+  border: 1.5px solid inherit;
   border-radius: 50px;
   display: inline-block;
   font-family: $title;
@@ -30,8 +30,10 @@
 }
 
 .secondary {
-  background: none;
-  color: $aquamarine;
+  border: 1.5px solid $malibu;
+  background: rgba($mirage, .3);
+  backdrop-filter: blur(5px);
+  color: $malibu;
 
   &:hover,
   &:focus {}

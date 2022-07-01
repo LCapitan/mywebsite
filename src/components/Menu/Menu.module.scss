@@ -17,7 +17,8 @@
 }
 
 .menu {
-  background: $mirage;
+  background: $aquamarine;
+  border-radius: 20px 0 0 20px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -51,7 +52,7 @@
       text-align: center;
 
       a {
-        color: $malibu;
+        color: darken($aquamarine, 15%);
         font-family: $title;
         font-size: 55px;
         font-weight: 600;

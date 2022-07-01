@@ -4,6 +4,24 @@
 .wrapper {
   border-radius: 15px;
   box-shadow: 0px 10px 30px rgba(#000000, 0.5);
+  transform: rotate(-8deg);
+  margin: 45px 0;
+  transition: transform .5s ease;
+
+  &:hover,
+  &:focus {
+    transform: rotate(6deg);
+  }
+
+  @include lg-max {
+    transform: rotate(0deg);
+    margin: 0;
+
+    &:hover,
+    &:focus {
+      transform: rotate(0deg);
+    }
+  }
 }
 
 .workItem {
@@ -14,26 +32,17 @@
   &:after {
     // background: linear-gradient(to top, black, transparent);
     background: radial-gradient(circle at top center, transparent 30%, black);
+    border-radius: 15px;
     content: '';
     display: block;
-    opacity: 0.3;
+    opacity: 0.85;
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 150%;
-    height: 150%;
+    width: 175%;
+    height: 175%;
     z-index: 1;
     transition: .25s ease;
-  }
-
-  @include md-max {
-    &:after {
-      opacity: 0.85;
-      width: 175%;
-      height: 175%;
-      transition: .35s ease-in-out;
-      transition-delay: .1s;
-    }
   }
 
   .content {
@@ -50,17 +59,13 @@
       line-height: 55px;
       margin: 0;
       position: relative;
-      top: 0;
-      animation: popDownH2 .6s ease-in-out forwards;
+      top: -30px;
     }
 
     .popUp {
       font-size: 22px;
       font-weight: 500;
       line-height: 36px;
-      max-height: 0;
-      opacity: 0;
-      transition: max-height 0.75s cubic-bezier(0, 1, 0, 1), opacity .25s;
       position: relative;
     }
 
@@ -107,77 +112,5 @@
   &:hover,
   &:focus {
     cursor: pointer;
-
-    &:after {
-      opacity: 0.85;
-      width: 175%;
-      height: 175%;
-      transition: .35s ease-in-out;
-      transition-delay: .1s;
-    }
-
-    h2 {
-      animation: popUpH2 .6s ease-in-out forwards;
-    }
-
-    .popUp {
-      max-height: 1000px;
-      opacity: 1;
-      transition: max-height .85s ease, opacity .15s ease;
-      transition-delay: .1s;
-    }
-
-    .tags {
-      span {
-        background: rgba($mirage, 0.3);
-      }
-    }
-  }
-
-  @include md-max {
-
-    &:hover,
-    &:focus {
-      h2 {
-        animation: none !important;
-      }
-    }
-  }
-}
-
-@keyframes popUpH2 {
-  0% {
-    top: 0
-  }
-
-  50% {
-    top: -75px
-  }
-
-  75% {
-    top: -20px
-  }
-
-  100% {
-    top: -30px
-  }
-}
-
-
-@keyframes popDownH2 {
-  0% {
-    top: -30px
-  }
-
-  45% {
-    top: -90px
-  }
-
-  75% {
-    top: 30px;
-  }
-
-  100% {
-    top: 0
   }
 }

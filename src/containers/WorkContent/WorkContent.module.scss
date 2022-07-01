@@ -2,12 +2,32 @@
 @import "../../../styles/breakpoints.scss";
 
 .work {
-  padding: 100px 0 150px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 100px 0;
   position: relative;
+  width: 100%;
+
+  @include lg-max {
+    display: block;
+  }
 
   .pageHeading {
+    position: fixed;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
     margin-bottom: 50px;
-    width: 100%;
+    width: 35%;
+
+    @include lg-max {
+      position: relative;
+      top: 0;
+      left: 0;
+      transform: translateY(0);
+      width: 100%;
+    }
 
     .pageTitle {
       color: $white;
@@ -28,20 +48,33 @@
       font-weight: $light;
       line-height: 32px;
     }
+
+    .actions {
+      margin-top: 45px;
+    }
   }
 
   .workList {
     display: flex;
-    align-items: center;
     flex-wrap: wrap;
-    gap: 35px;
     list-style-type: none;
-    margin: 0 -35px 0 0;
+    margin: 0;
     padding: 0;
+    width: 50%;
+
+    @include lg-max {
+      gap: 35px;
+      margin: 0 -35px 0 0;
+      width: 100%;
+    }
 
     li {
       border-radius: 15px;
-      width: calc(50% - 35px);
+      width: 100%;
+
+      @include lg-max {
+        width: calc(50% - 35px);
+      }
     }
 
     @include md-max {
