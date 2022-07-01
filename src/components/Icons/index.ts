@@ -9,6 +9,7 @@ export * from "./Instagram";
 export * from "./LinkedIn";
 export * from "./Logo";
 export * from "./PauseButton";
+export * from "./Pdf";
 export * from "./PlayButton";
 export * from "./PlayTriangle";
 export * from "./Twitter";

@@ -51,10 +51,18 @@
         }
       }
 
-      &:last-child {
+      &:nth-child(4) {
         a {
           svg {
             width: 30px;
+          }
+        }
+      }
+
+      &:last-child {
+        a {
+          svg {
+            width: 28px;
           }
         }
       }
