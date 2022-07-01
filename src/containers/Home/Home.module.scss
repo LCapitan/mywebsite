@@ -10,11 +10,11 @@
   width: 100%;
 
   @include lg-max {
-    padding-top: 85px;
+    padding-top: 75px;
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    padding-bottom: 300px;
+    padding-bottom: 500px;
   }
 
   .content {
@@ -111,9 +111,9 @@
   .pageHero {
     position: absolute;
     top: 50%;
-    right: -0px;
+    right: -100px;
     transform: translateY(-50%);
-    width: 75%;
+    width: 70%;
     z-index: 3;
 
     &.desktop {
@@ -137,11 +137,28 @@
     //   z-index: 2;
     // }
 
+    @include xl-max {
+      top: auto;
+      bottom: -250px;
+      left: 30%;
+      transform: translateY(0);
+      width: 550px;
+
+      &.desktop {
+        display: none;
+      }
+
+      &.mobile {
+        display: block;
+      }
+    }
+
     @include lg-max {
       top: auto;
-      bottom: -200px;
+      bottom: -150px;
+      left: -55px;
       transform: translateY(0);
-      width: 100%;
+      width: 500px;
 
       &.desktop {
         display: none;

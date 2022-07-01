@@ -35,7 +35,7 @@ export function Home() {
           height="1515" />
       </div>
       <div className={cx(styles.pageHero, styles.mobile)}>
-        <Image src="https://res.cloudinary.com/austinmel/image/upload/v1656687472/fishing-mobile_nsxaoi.png"
+        <Image src="https://res.cloudinary.com/austinmel/image/upload/v1656688501/fishing-mobile_deiv7p.png"
           layout="responsive"
           alt="an illustration of me using the computer"
           width="1714"
