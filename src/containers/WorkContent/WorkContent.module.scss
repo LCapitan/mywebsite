@@ -51,6 +51,16 @@
 
     .actions {
       margin-top: 45px;
+
+      @include sm-max {
+        width: 100%;
+
+        :global {
+          a {
+            width: 100%;
+          }
+        }
+      }
     }
   }
 

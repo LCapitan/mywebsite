@@ -11,7 +11,7 @@
   position: relative;
 
   @include lg-max {
-    padding: 150px 0;
+    padding: 100px 0;
   }
 
   .pageHeading {
@@ -55,6 +55,16 @@
 
     @include lg-max {
       display: block;
+    }
+
+    @include sm-max {
+      width: 100%;
+
+      :global {
+        a {
+          width: 100%;
+        }
+      }
     }
   }
 }
