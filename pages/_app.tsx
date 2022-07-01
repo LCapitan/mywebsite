@@ -3,11 +3,17 @@ import type { AppProps } from 'next/app'
 import UIContextProvider from '../src/providers/UIContextProvider'
 import { Header, Footer } from '../src/components'
 import { DefaultSeo } from 'next-seo';
+import Head from 'next/head'
+
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <UIContextProvider>
       <>
+        <Head>
+          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+          <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+        </Head>
         <DefaultSeo
           openGraph={{
             url: 'https://www.amelen.dev/',
