@@ -17,8 +17,8 @@ export function Home() {
         <h1 className={styles.title}>austin<br />melendez</h1>
         <h2 className={styles.subtitle}>artist, designer, and developer from Richmond, VA.</h2>
         <div className={styles.actions}>
-          <Button url="/work" label="see my work" buttonStyle={0} />
-          <Button url="/about" label="meet me" buttonStyle={1} />
+          <Button url="/work" label="see my work" />
+          <Button url="/about" label="meet me" secondary />
         </div>
       </div>
       <div className={styles.pageBg}>

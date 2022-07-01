@@ -4,28 +4,28 @@ import cx from 'classnames';
 // styles
 import styles from './Button.module.scss';
 
-const styleClass = ['primary', 'secondary'];
+// const styleClass = ['primary', 'secondary'];
 
 interface ButtonProps {
   label: string;
   url?: string;
-  buttonStyle?: 0 | 1;
+  secondary?: boolean;
   className?: string;
   onClick?: any;
 }
 
-export function Button({ label, url, buttonStyle, onClick, className }: ButtonProps) {
-  const style = `${styleClass[buttonStyle]}`;
+export function Button({ label, url, secondary, onClick, className }: ButtonProps) {
+  // const style = `${styleClass[buttonStyle]}`;
 
   return (
     <>
       {url ? (
-        <a href={url} className={cx(styles.button, styles[style])}>
+        <a href={url} className={cx(styles.button, secondary ? styles.secondary : styles.primary)}>
           {label}
         </a>
       ) : (
         <button
-          className={cx(styles.button, styles[style], className && styles[className])}
+          className={cx(styles.button, secondary ? styles.secondary : styles.primary, className && styles[className])}
           onClick={onClick}>
           {label}
         </button>

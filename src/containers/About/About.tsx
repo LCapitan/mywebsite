@@ -11,7 +11,7 @@ const About = () => {
       <div className={styles.pageHeading}>
         <h1 className={styles.pageTitle}>about</h1>
         <div className={styles.cta}>
-          <Button url="/work" label="see my work" buttonStyle={1} />
+          <Button url="/work" label="see my work" secondary />
         </div>
       </div>
       <div className={styles.content}>
@@ -33,7 +33,7 @@ const About = () => {
       </div>
 
       <div className={styles.actions}>
-        <Button url="/work" label="see my work" buttonStyle={1} />
+        <Button url="/work" label="see my work" secondary />
       </div>
     </div>
   );
