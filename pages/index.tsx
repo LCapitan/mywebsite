@@ -12,24 +12,24 @@ const Homepage: NextPage = () => {
   return (
     <>
       <NextSeo
-        title="Home | Emily Wills"
-        description="Emily Wills is an experience designer, entrepreneur, and empath from Virginia, US."
-        defaultTitle="Welcome to Emily Wills' Portfolio"
-        canonical="https://www.emilywills.com/"
+        title="Home | Austin Melendez"
+        description="Austin is a developer and designer from Virginia, US."
+        defaultTitle="Welcome to Austin's Portfolio"
+        canonical="https://www.amelen.dev/"
         openGraph={{
-          url: 'https://www.emilywills.com/',
-          title: "Emily Wills' Portfolio",
-          description: "Emily Wills is an experience designer, entrepreneur, and empath from Virginia, US.",
-          images: [
-            { url: 'https://res.cloudinary.com/austinmel/image/upload/v1650911928/ogimage1_ggyamz.jpg' }
-          ],
-          site_name: 'EmilyWills',
+          url: 'https://www.amelen.dev/',
+          title: "Austin's Portfolio",
+          description: "Austin is a developer and designer from Virginia, US.",
+          // images: [
+          //   { url: 'https://res.cloudinary.com/austinmel/image/upload/v1650911928/ogimage1_ggyamz.jpg' }
+          // ],
+          site_name: 'Austin Melendez',
         }}
-        twitter={{
-          handle: '@EmilyWills',
-          site: '@EmilyWills',
-          cardType: 'summary_large_image',
-        }}
+      // twitter={{
+      //   handle: '@EmilyWills',
+      //   site: '@EmilyWills',
+      //   cardType: 'summary_large_image',
+      // }}
       />
 
       <main className="container">

@@ -10,23 +10,18 @@ function MyApp({ Component, pageProps }: AppProps) {
       <>
         <DefaultSeo
           openGraph={{
-            url: 'https://www.emilywills.com/',
-            title: "Emily Wills' Portfolio",
-            description: "Emily Wills is an experience designer, entrepreneur, and empath from Virginia, US.",
-            images: [
-              {
-                url: 'https://res.cloudinary.com/austinmel/image/upload/v1650911928/ogimage1_ggyamz.jpg',
-                width: 1194,
-                height: 746,
-                alt: 'Emily Wills and a Bunny',
-                type: 'image/jpeg',
-              }
-            ],
-          }}
-          twitter={{
-            handle: '@EmilyWills',
-            site: '@EmilyWills',
-            cardType: 'summary_large_image',
+            url: 'https://www.amelen.dev/',
+            title: "Austin's Portfolio",
+            description: "Austin is a developer and designer, Virginia, US.",
+            // images: [
+            //   {
+            //     url: 'https://res.cloudinary.com/austinmel/image/upload/v1650911928/ogimage1_ggyamz.jpg',
+            //     width: 1194,
+            //     height: 746,
+            //     alt: '',
+            //     type: 'image/jpeg',
+            //   }
+            // ],
           }}
         />
         <Header />
