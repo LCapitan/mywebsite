@@ -20,6 +20,22 @@
     position: relative;
     z-index: 5;
 
+    .logo {
+      display: none;
+      margin: 0 auto 15px;
+      width: 75px;
+
+      :global {
+        svg {
+          fill: $white;
+        }
+      }
+
+      @include lg-max {
+        display: block;
+      }
+    }
+
     .title {
       font-size: 95px;
       color: $white;
@@ -64,7 +80,7 @@
   .pageBg {
     position: absolute;
     top: 50%;
-    right: -100px;
+    right: -50px;
     transform: translateY(-50%);
     width: 1000px;
     z-index: 1;
@@ -93,10 +109,23 @@
   .pageHero {
     position: absolute;
     top: 50%;
-    right: -150px;
+    right: -0px;
     transform: translateY(-50%);
-    width: 60%;
+    width: 55%;
     z-index: 3;
+
+    &:after {
+      background: rgba(0, 0, 0, .5);
+      border-radius: 50%;
+      content: '';
+      position: fixed;
+      bottom: -40px;
+      left: 20%;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 35px;
+      z-index: 2;
+    }
 
     @include lg-max {
       position: relative;

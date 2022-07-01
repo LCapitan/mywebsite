@@ -43,6 +43,8 @@
 
   .nav {
     list-style-type: none;
+    margin: 0;
+    padding: 0;
     width: 100%;
 
     li {
@@ -65,10 +67,13 @@
         }
 
         @include sm-max {
+          font-size: 45px;
+          display: inline-block;
+          padding: 15px 0;
 
           &:hover,
           &:focus {
-            font-size: 4rem;
+            font-size: 45px;
             opacity: 0.5;
           }
         }
