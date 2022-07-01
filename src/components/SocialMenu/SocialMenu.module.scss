@@ -1,0 +1,63 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/breakpoints.scss";
+
+.socialMenu {
+  position: relative;
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      margin: 5px 0;
+
+      a {
+        opacity: .5;
+        transition: .25s ease;
+
+        svg {
+          fill: lighten($mirage, 40%);
+          width: 25px;
+          height: auto;
+        }
+
+        &:hover,
+        &:focus {
+          opacity: 1;
+
+          svg {
+            fill: $malibu;
+          }
+        }
+      }
+
+      &:first-child {
+        a {
+          svg {
+            width: 32px;
+          }
+        }
+      }
+
+      &:nth-child(2) {
+        a {
+          svg {
+            width: 28px;
+          }
+        }
+      }
+
+      &:last-child {
+        a {
+          svg {
+            width: 30px;
+          }
+        }
+      }
+    }
+  }
+}

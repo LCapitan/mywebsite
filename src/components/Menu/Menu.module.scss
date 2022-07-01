@@ -2,6 +2,10 @@
 @import "../../../styles/breakpoints.scss";
 
 .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
   margin: 0 auto;
   max-width: 1200px;
   padding: 0 125px;
@@ -81,6 +85,31 @@
           }
         }
       }
+    }
+  }
+
+  .social {
+    display: none;
+
+    :global {
+      ul {
+        flex-direction: row;
+        gap: 20px;
+
+        li {
+          a {
+            opacity: 1;
+
+            svg {
+              fill: $mirage;
+            }
+          }
+        }
+      }
+    }
+
+    @include lg-max {
+      display: block;
     }
   }
 }

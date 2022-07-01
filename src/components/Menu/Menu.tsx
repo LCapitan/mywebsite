@@ -6,6 +6,8 @@ import UIContext from "../../context/UIContext";
 import Hamburger from "../Header/HamburgerButton";
 import Image from "next/image";
 
+import { SocialMenu } from "../SocialMenu/SocialMenu";
+
 import styles from './Menu.module.scss'
 
 export default function Menu() {
@@ -30,6 +32,9 @@ export default function Menu() {
             <a href="mailto:austinjamesmelendez@gmail.com">contact</a>
           </li>
         </ul>
+        <div className={styles.social}>
+          <SocialMenu />
+        </div>
       </div>
     </nav>
   )

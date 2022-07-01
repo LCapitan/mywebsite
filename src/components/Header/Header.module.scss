@@ -33,7 +33,7 @@
 
       :global {
         svg {
-          fill: $aquamarine;
+          fill: $mustard;
         }
       }
     }
@@ -44,6 +44,16 @@
     }
   }
 
+  .social {
+    position: fixed;
+    bottom: 50px;
+    left: 50px;
+
+    @include lg-max {
+      display: none;
+    }
+  }
+
   .menuToggle {
     position: fixed;
     top: 70px;
@@ -51,73 +61,6 @@
 
     @include lg-max {
       right: 15px;
-    }
-  }
-
-  .socialMenu {
-    bottom: 60px;
-    left: 50px;
-    position: fixed;
-
-    @include lg-max {
-      display: none;
-    }
-
-    ul {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-
-      li {
-        margin: 5px 0;
-
-        a {
-          opacity: .5;
-          transition: .25s ease;
-
-          svg {
-            fill: lighten($mirage, 40%);
-            width: 25px;
-            height: auto;
-          }
-
-          &:hover,
-          &:focus {
-            opacity: 1;
-
-            svg {
-              fill: $malibu;
-            }
-          }
-        }
-
-        &:first-child {
-          a {
-            svg {
-              width: 32px;
-            }
-          }
-        }
-
-        &:nth-child(2) {
-          a {
-            svg {
-              width: 28px;
-            }
-          }
-        }
-
-        &:last-child {
-          a {
-            svg {
-              width: 30px;
-            }
-          }
-        }
-      }
     }
   }
 }

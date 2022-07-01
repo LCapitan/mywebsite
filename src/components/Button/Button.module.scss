@@ -22,11 +22,10 @@
 }
 
 .primary {
-  background: $aquamarine;
-  color: $mirage;
-
-  &:hover,
-  &:focus {}
+  border: 1.5px solid $aquamarine;
+  background: rgba($aquamarine, .2);
+  backdrop-filter: blur(5px);
+  color: $aquamarine;
 }
 
 .secondary {
@@ -34,7 +33,4 @@
   background: rgba($mirage, .3);
   backdrop-filter: blur(5px);
   color: $malibu;
-
-  &:hover,
-  &:focus {}
 }
