@@ -5,15 +5,21 @@
 
 html,
 body {
+  padding: 0;
+  margin: 0;
+  font-family: $copy;
+}
+
+html {
   background-color: $mirage;
+}
+
+body {
   background-image: url(https://res.cloudinary.com/austinmel/image/upload/v1656687100/stars_l8bdz6.png);
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  padding: 0;
-  margin: 0;
-  font-family: $copy;
 }
 
 .quote {
