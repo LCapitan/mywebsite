@@ -1,0 +1,100 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/breakpoints.scss";
+
+.hamburger {
+  position: relative;
+  display: block;
+  right: 0;
+  width: 75px;
+  height: 29px;
+
+  &:before {
+    background: lighten($mirage, 25%);
+    border-radius: 10px;
+    content: "";
+    display: block;
+    opacity: .5;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 5px;
+    transform: rotate(0deg);
+    transition: 0.25s ease;
+    transform-origin: center right;
+  }
+
+  &:after {
+    background: lighten($mirage, 25%);
+    border-radius: 10px;
+    content: "";
+    display: block;
+    opacity: .5;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 60px;
+    height: 5px;
+    transform: rotate(0deg);
+    transition: 0.25s ease;
+    transform-origin: center right;
+  }
+
+  >div {
+    background: lighten($mirage, 25%);
+    border-radius: 10px;
+    display: block;
+    opacity: .5;
+    width: 75px;
+    height: 5px;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    transition: 0.25s ease;
+  }
+
+  &:hover,
+  &:focus {
+    cursor: pointer;
+
+    &:before,
+    &:after,
+    >div {
+      width: 50px;
+      opacity: 1;
+    }
+  }
+
+  &.open {
+    >div {
+      width: 0;
+    }
+
+    &:before {
+      border-radius: 10px;
+      content: "";
+      display: block;
+      opacity: 1;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 34px;
+      transform: rotate(-45deg);
+      transition: 0.25s ease;
+    }
+
+    &:after {
+      border-radius: 10px;
+      content: "";
+      display: block;
+      opacity: 1;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 34px;
+      transform: rotate(45deg);
+      transition: 0.25s ease;
+    }
+  }
+}

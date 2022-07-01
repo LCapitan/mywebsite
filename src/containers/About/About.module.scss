@@ -1,0 +1,60 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/breakpoints.scss";
+
+.about {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 0;
+  position: relative;
+
+  @include lg-max {
+    padding: 150px 0;
+  }
+
+  .pageHeading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    width: 100%;
+
+    @include lg-max {
+      .cta {
+        display: none;
+      }
+    }
+
+    .pageTitle {
+      color: $white;
+      font-family: $title;
+      font-size: 95px;
+      line-height: 1;
+      margin: 0;
+
+      @include lg-max {
+        font-size: 65px;
+      }
+    }
+  }
+
+  .paragraph {
+    color: $white;
+    font-family: $copy;
+    font-size: 18px;
+    font-weight: $light;
+    line-height: 32px;
+    margin-bottom: 18px;
+  }
+
+  .actions {
+    margin-top: 45px;
+    display: none;
+
+    @include lg-max {
+      display: block;
+    }
+  }
+}

@@ -1,0 +1,102 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/breakpoints.scss";
+
+.work {
+  padding: 100px 0 150px;
+  position: relative;
+
+  .pageHeading {
+    margin-bottom: 50px;
+    width: 100%;
+
+    .pageTitle {
+      color: $white;
+      font-family: $title;
+      font-size: 95px;
+      line-height: 1;
+      margin: 0;
+
+      @include lg-max {
+        font-size: 65px;
+      }
+    }
+
+    .subtitle {
+      color: $white;
+      font-family: $title;
+      font-size: 22px;
+      font-weight: $light;
+      line-height: 32px;
+    }
+  }
+
+  .workList {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 35px;
+    list-style-type: none;
+    margin: 0 -35px 0 0;
+    padding: 0;
+
+    li {
+      border-radius: 15px;
+      width: calc(50% - 35px);
+    }
+
+    @include md-max {
+      flex-direction: column;
+      margin: 0;
+
+      li {
+        width: 100%;
+
+        &:nth-child(odd) {
+          position: relative;
+          top: 0;
+        }
+      }
+    }
+
+    @include sm-max {
+      margin-bottom: 0;
+    }
+  }
+}
+
+@keyframes popUpH2 {
+  0% {
+    top: 0
+  }
+
+  50% {
+    top: -75px
+  }
+
+  75% {
+    top: -20px
+  }
+
+  100% {
+    top: -30px
+  }
+}
+
+
+@keyframes popDownH2 {
+  0% {
+    top: -30px
+  }
+
+  45% {
+    top: -90px
+  }
+
+  75% {
+    top: 30px;
+  }
+
+  100% {
+    top: 0
+  }
+}

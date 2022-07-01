@@ -1,0 +1,109 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/breakpoints.scss";
+
+.home {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  width: 100%;
+
+  @include lg-max {
+    padding-top: 150px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .content {
+    position: relative;
+    z-index: 5;
+
+    .title {
+      font-size: 95px;
+      color: $white;
+      font-family: $title;
+      line-height: 1;
+      margin: 0;
+
+      @include lg-max {
+        font-size: 65px;
+        text-align: center;
+      }
+    }
+
+    .subtitle {
+      color: $white;
+      font-family: $title;
+      font-size: 22px;
+      font-weight: $light;
+      line-height: 32px;
+
+      @include lg-max {
+        text-align: center;
+      }
+    }
+
+    .actions {
+      display: flex;
+      gap: 15px;
+      margin-top: 45px;
+
+      @include lg-max {
+        justify-content: center;
+      }
+
+      @include sm-max {
+        justify-content: center;
+        flex-direction: column;
+      }
+    }
+  }
+
+  .pageBg {
+    position: absolute;
+    top: 50%;
+    right: -100px;
+    transform: translateY(-50%);
+    width: 1000px;
+    z-index: 1;
+
+    :global {
+      svg {
+        fill: lighten($mirage, 10%);
+      }
+    }
+
+    @include lg-max {
+      right: auto;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%) rotate(45deg);
+      width: 200%;
+
+      :global {
+        svg {
+          fill: lighten($mirage, 4%);
+        }
+      }
+    }
+  }
+
+  .pageHero {
+    position: absolute;
+    top: 50%;
+    right: -150px;
+    transform: translateY(-50%);
+    width: 60%;
+    z-index: 3;
+
+    @include lg-max {
+      position: relative;
+      top: 0;
+      right: 0;
+      transform: translateY(0);
+      width: 90%;
+    }
+  }
+}
