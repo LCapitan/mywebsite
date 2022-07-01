@@ -45,12 +45,9 @@
     position: fixed;
     top: 60px;
     right: 30px;
-    transform: rotate(-90deg);
 
     @include lg-max {
       right: 15px;
-      top: auto;
-      bottom: 30px;
     }
   }
 

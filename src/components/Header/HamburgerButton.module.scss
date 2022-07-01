@@ -7,6 +7,7 @@
   right: 0;
   width: 75px;
   height: 29px;
+  transform: rotate(-90deg);
 
   &:before {
     background: lighten($mirage, 25%);
@@ -62,8 +63,7 @@
     &:after,
     >div {
       right: 0;
-      background: $mustard;
-      width: 50px;
+      width: 38px;
       opacity: 1;
     }
   }
