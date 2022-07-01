@@ -20,9 +20,9 @@ const Homepage: NextPage = () => {
           url: 'https://www.amelen.dev/',
           title: "Austin's Portfolio",
           description: "Austin is a developer and designer from Virginia, US.",
-          // images: [
-          //   { url: 'https://res.cloudinary.com/austinmel/image/upload/v1650911928/ogimage1_ggyamz.jpg' }
-          // ],
+          images: [
+            { url: 'https://res.cloudinary.com/austinmel/image/upload/v1656678415/astro_iie61u.jpg' }
+          ],
           site_name: 'Austin Melendez',
         }}
       // twitter={{
