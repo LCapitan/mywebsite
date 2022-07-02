@@ -10,15 +10,14 @@
   transform: rotate(-90deg);
 
   &:before {
-    background: lighten($mirage, 25%);
+    background: lighten($mirage, 40%);
     border-radius: 10px;
     content: "";
     display: block;
-    opacity: .5;
     position: absolute;
     top: 0;
-    right: 5px;
-    width: 40px;
+    right: 0;
+    width: 38px;
     height: 5px;
     transform: rotate(0deg);
     transition: 0.25s ease;
@@ -26,15 +25,14 @@
   }
 
   &:after {
-    background: lighten($mirage, 25%);
+    background: lighten($mirage, 40%);
     border-radius: 10px;
     content: "";
     display: block;
-    opacity: .5;
     position: absolute;
     bottom: 0;
-    right: 10px;
-    width: 50px;
+    right: 0;
+    width: 38px;
     height: 5px;
     transform: rotate(0deg);
     transition: 0.25s ease;
@@ -42,15 +40,14 @@
   }
 
   >div {
-    background: lighten($mirage, 25%);
+    background: lighten($mirage, 40%);
     border-radius: 10px;
     display: block;
-    opacity: .5;
-    width: 75px;
-    height: 5px;
     position: absolute;
     top: 50%;
     right: 0;
+    width: 38px;
+    height: 5px;
     transform: translateY(-50%);
     transition: 0.25s ease;
   }
@@ -59,12 +56,31 @@
   &:focus {
     cursor: pointer;
 
-    &:before,
-    &:after,
+    &:before {
+      background: $aquamarine;
+      right: 5px;
+      width: 40px;
+    }
+
+    &:after {
+      background: $aquamarine;
+      right: 10px;
+      width: 50px;
+    }
+
     >div {
-      right: 0;
-      width: 38px;
-      opacity: 1;
+      background: $aquamarine;
+      width: 75px;
+    }
+
+    @include sm-max {
+
+      &:before,
+      &:after,
+      >div {
+        right: 0;
+        width: 38px;
+      }
     }
   }
 

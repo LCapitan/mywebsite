@@ -8,7 +8,7 @@
   gap: 50px;
   margin: 0 auto;
   max-width: 1200px;
-  padding: 0 125px;
+  padding: 0 50px;
   width: 100%;
 
   @include md-max {
@@ -21,29 +21,30 @@
 }
 
 .menu {
-  background: $aquamarine;
+  background: lighten($mirage, 5%);
   border-radius: 20px 0 0 20px;
+  box-shadow: 0px 10px 30px rgba(#000000, 0.5);
   display: flex;
   align-items: center;
   justify-content: flex-start;
   position: fixed;
-  top: 0;
+  top: 2%;
   left: 100%;
-  width: 50%;
-  height: 100%;
-  z-index: -1;
+  width: 40%;
+  height: 96%;
+  z-index: 10;
   transition: 0.5s ease;
 
   &.open {
-    left: 50%;
+    left: 60%;
   }
 
   @include lg-max {
-    border-radius: 0;
-    width: 100%;
+    border-radius: 15px 0 0 15px;
+    width: 95%;
 
     &.open {
-      left: 0;
+      left: 5%;
     }
   }
 
@@ -57,7 +58,7 @@
       text-align: center;
 
       a {
-        color: $mirage;
+        color: $white;
         font-family: $title;
         font-size: 55px;
         font-weight: 600;
@@ -101,7 +102,7 @@
             opacity: 1;
 
             svg {
-              fill: $mirage;
+              fill: lighten($mirage, 40%);
             }
           }
         }
