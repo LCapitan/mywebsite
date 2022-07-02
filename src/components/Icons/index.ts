@@ -13,3 +13,4 @@ export * from "./Pdf";
 export * from "./PlayButton";
 export * from "./PlayTriangle";
 export * from "./Twitter";
+export * from "./WorkBg";

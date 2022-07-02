@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { Button, WorkCard } from "../../components";
-import { HomeBg } from '../../components/Icons/';
+import { WorkBg } from '../../components/Icons/';
 
 import styles from './WorkContent.module.scss';
 
@@ -12,7 +12,7 @@ const WorkContent = () => {
     <div className={styles.work}>
       <div className='stars'></div>
       <div className={styles.pageBg}>
-        <HomeBg />
+        <WorkBg />
       </div>
       <div className={styles.pageHeading}>
         <h1 className={styles.pageTitle}>work</h1>

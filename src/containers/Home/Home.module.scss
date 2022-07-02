@@ -10,11 +10,9 @@
   width: 100%;
 
   @include lg-max {
-    padding-top: 75px;
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    padding-bottom: 500px;
   }
 
   .content {
@@ -35,6 +33,7 @@
 
       @include lg-max {
         display: block;
+        margin: 0 auto 35px;
       }
     }
 
@@ -46,9 +45,12 @@
       margin: 0;
 
       @include lg-max {
-        margin: 0 0 30px;
-        font-size: 65px;
         text-align: center;
+        margin: 0 0 30px;
+      }
+
+      @include sm-max {
+        font-size: 65px;
       }
     }
 
@@ -84,7 +86,7 @@
   .pageBg {
     position: fixed;
     top: 50%;
-    right: -50px;
+    right: 8%;
     transform: translateY(-50%);
     width: 1000px;
     z-index: 1;
@@ -92,7 +94,7 @@
 
     :global {
       svg {
-        fill: lighten($mirage, 10%);
+        fill: lighten($mirage, 4%);
       }
     }
 
@@ -114,9 +116,9 @@
   .pageHero {
     position: absolute;
     top: 50%;
-    right: -20%;
+    right: -10%;
     transform: translateY(-50%);
-    width: 100%;
+    width: 75%;
     z-index: 3;
 
     &.desktop {
@@ -127,59 +129,8 @@
       display: none;
     }
 
-    // &:after {
-    //   background: rgba(0, 0, 0, .5);
-    //   border-radius: 50%;
-    //   content: '';
-    //   position: fixed;
-    //   bottom: -40px;
-    //   left: 20%;
-    //   transform: translateX(-50%);
-    //   width: 200px;
-    //   height: 35px;
-    //   z-index: 2;
-    // }
-
-    @include xl-max {
-      top: auto;
-      bottom: -250px;
-      left: 30%;
-      transform: translateY(0);
-      width: 550px;
-
-      &.desktop {
-        display: none;
-      }
-
-      &.mobile {
-        display: block;
-      }
-    }
-
     @include lg-max {
-      top: auto;
-      bottom: -150px;
-      right: -55px;
-      transform: translateY(0);
-      width: 550px;
-
-      &.desktop {
-        display: none;
-      }
-
-      &.mobile {
-        display: block;
-      }
-    }
-
-    @include sm-max {
-      left: auto;
-      right: -50px;
-      width: 500px;
-
-      &.mobile {
-        display: block;
-      }
+      display: none;
     }
   }
 }
