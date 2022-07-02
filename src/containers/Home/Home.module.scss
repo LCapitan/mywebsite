@@ -16,7 +16,7 @@
   }
 
   @include sm-max {
-    padding-top: 100px;
+    padding-top: 50px;
     min-height: none;
   }
 
@@ -56,6 +56,7 @@
 
       @include sm-max {
         font-size: 65px;
+        margin: 0 0 20px;
       }
     }
 
