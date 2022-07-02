@@ -14,12 +14,16 @@ html {
   background-color: $mirage;
 }
 
-body {
+.stars {
   background-image: url(https://res.cloudinary.com/austinmel/image/upload/v1656687100/stars_l8bdz6.png);
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
 }
 
 .quote {
