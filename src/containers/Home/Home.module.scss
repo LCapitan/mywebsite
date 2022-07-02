@@ -92,7 +92,7 @@
   .pageBg {
     position: fixed;
     top: 50%;
-    right: 8%;
+    right: 5%;
     transform: translateY(-50%);
     width: 1000px;
     z-index: 1;
@@ -120,11 +120,12 @@
   }
 
   .pageHero {
+    animation: astro infinite 7s ease;
     position: absolute;
     top: 50%;
     right: -10%;
     transform: translateY(-50%);
-    width: 75%;
+    width: 73%;
     z-index: 3;
 
     &.desktop {
@@ -138,5 +139,19 @@
     @include lg-max {
       display: none;
     }
+  }
+}
+
+@keyframes astro {
+  0% {
+    top: 45%;
+  }
+
+  50% {
+    top: 52%;
+  }
+
+  100% {
+    top: 45%;
   }
 }
