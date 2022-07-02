@@ -18,11 +18,16 @@ interface BlogItemProps {
 }
 
 export function BlogItem({ imgSrc, altText, title, prevText, date, url, featured }: BlogItemProps) {
-
+  const link = `/post${url}`;
   return (
-    <Link href={url} passHref>
+    <Link href={link} passHref>
       <div className={cx(styles.blogItem, featured && styles.featured)}>
         <div className={styles.inner}>
+          {featured &&
+            <div className={styles.featuredTag}>
+              featured post
+            </div>
+          }
           <figure className={styles.image}>
             <Image src={imgSrc}
               alt={altText}
@@ -30,12 +35,14 @@ export function BlogItem({ imgSrc, altText, title, prevText, date, url, featured
               objectFit="cover" />
           </figure>
           <div className={styles.details}>
-            <h2 className={styles.title}>{title}</h2>
-            <div className={styles.content}>
-              {prevText}
+            <div>
+              <h2 className={styles.title}>{title}</h2>
+              <div className={styles.content}>
+                {prevText}
+              </div>
             </div>
             <div className={styles.actions}>
-              <Button label="read more" url={url} />
+              <Button label="read more" url={link} />
             </div>
           </div>
         </div>
