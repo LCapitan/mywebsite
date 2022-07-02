@@ -5,6 +5,7 @@ export default class MyDocument extends Document {
   render() {
     return (
       <Html>
+        <div className='stars'></div>
         <Head></Head>
         <body>
           <Main />
