@@ -14,6 +14,8 @@ function MyApp({ Component, pageProps }: AppProps) {
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
           <link rel="shortcut icon" href="/favicon.ico" />
         </Head>
+
+        <div className='stars'></div>
         <DefaultSeo
           openGraph={{
             url: 'https://www.amelen.dev/',
