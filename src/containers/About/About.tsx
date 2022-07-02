@@ -8,6 +8,13 @@ import { Button } from "../../components";
 const About = () => {
   return (
     <div className={styles.about}>
+      <div className={styles.heroImg}>
+        <Image src="https://res.cloudinary.com/austinmel/image/upload/v1656739819/IMG_0471_j6ucdc.jpg"
+          layout="responsive"
+          alt="me hiking in Zion National Park"
+          width="2049"
+          height="1047" />
+      </div>
       <div className={styles.pageHeading}>
         <h1 className={styles.pageTitle}>about</h1>
         <div className={styles.cta}>
@@ -16,7 +23,7 @@ const About = () => {
       </div>
       <div className={styles.content}>
         <div className={styles.paragraph}>
-          Hi! My name&#39;s Austin. I&#39;m a passionate artist, designer, and developer, born and raised in Hartford, Connecticut, and currently living in West Palm Beach, Florida.
+          Hi! My name&#39;s Austin. I&#39;m a passionate artist, designer, and developer, born and raised in Hartford, Connecticut, and currently living in Richmond, Virginia.
         </div>
 
         <div className={styles.paragraph}>
@@ -28,7 +35,7 @@ const About = () => {
         </div>
 
         <div className={styles.paragraph}>
-          Aside from drawing, designing, and developing, I like to spend my free time writing and listening to music, hanging with my pup - Fiz, or just hanging out waiting for some type of inspiration to strike (plus the not-so-occasional binge watching).
+          Aside from drawing, designing, and developing, I like to spend my free time writing and listening to music, hiking, hanging with my pup - Fiz, or just hanging out waiting for some type of inspiration to strike (plus the not-so-occasional binge watching).
         </div>
       </div>
 

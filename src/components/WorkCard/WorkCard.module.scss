@@ -54,7 +54,7 @@
 
     h2 {
       color: $white;
-      font-family: $copy;
+      font-family: $title;
       font-size: 55px;
       line-height: 55px;
       margin: 0;
@@ -63,6 +63,7 @@
     }
 
     .popUp {
+      font-family: $copy;
       font-size: 22px;
       font-weight: 500;
       line-height: 36px;

@@ -16,6 +16,7 @@
       margin: 5px 0;
 
       a {
+        box-shadow: 0px 0px 10px 8px rgba($aquamarine, 0);
         opacity: .5;
         transition: .25s ease;
 
@@ -27,6 +28,7 @@
 
         &:hover,
         &:focus {
+          box-shadow: 0px 0px 10px 8px rgba($aquamarine, 0.15);
           opacity: 1;
 
           svg {

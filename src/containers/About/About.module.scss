@@ -11,7 +11,20 @@
   position: relative;
 
   @include lg-max {
-    padding: 100px 0;
+    padding: 0 0 50px;
+  }
+
+  .heroImg {
+    border-radius: 20px;
+    margin: 100px 0 50px;
+    overflow: hidden;
+    width: 100%;
+
+    @include lg-max {
+      border-radius: 0;
+      margin: 0 -30px 50px;
+      width: calc(100% + 60px);
+    }
   }
 
   .pageHeading {
