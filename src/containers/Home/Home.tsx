@@ -13,7 +13,6 @@ interface HomeProps { }
 export function Home() {
   return (
     <div className={styles.home}>
-
       <div className='stars'></div>
       <div className={styles.content}>
         <div className={styles.logo}>

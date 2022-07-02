@@ -10,11 +10,19 @@ const About = () => {
     <div className={styles.about}>
       <div className='stars'></div>
       <div className={styles.heroImg}>
-        <Image src="https://res.cloudinary.com/austinmel/image/upload/v1656739819/IMG_0471_j6ucdc.jpg"
-          layout="responsive"
-          alt="me hiking in Zion National Park"
-          width="2049"
-          height="1047" />
+        <div className={styles.desktop}>
+          <Image src="https://res.cloudinary.com/austinmel/image/upload/v1656739819/IMG_0471_j6ucdc.jpg"
+            layout="responsive"
+            alt="me hiking in Zion National Park"
+            width="2049"
+            height="1047" />
+        </div>
+        <div className={styles.mobile}>
+          <Image src="https://res.cloudinary.com/austinmel/image/upload/v1656739819/IMG_0471_j6ucdc.jpg"
+            layout="fill"
+            alt="me hiking in Zion National Park"
+            objectFit="cover" />
+        </div>
       </div>
       <div className={styles.wrapper}>
         <div className={styles.pageHeading}>
