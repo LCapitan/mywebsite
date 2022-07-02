@@ -16,7 +16,6 @@
       margin: 5px 0;
 
       a {
-        opacity: .5;
         transition: .25s ease;
 
         svg {
@@ -27,7 +26,6 @@
 
         &:hover,
         &:focus {
-          opacity: 1;
 
           svg {
             fill: $malibu;

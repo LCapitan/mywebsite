@@ -1,0 +1,70 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/breakpoints.scss";
+
+.blog {
+  padding: 100px 0;
+
+  .pageHeading {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    width: 100%;
+
+    @include lg-max {
+      position: relative;
+      top: 0;
+      left: 0;
+      transform: translateY(0);
+      width: 100%;
+    }
+
+    .pageTitle {
+      color: $white;
+      font-family: $title;
+      font-size: 95px;
+      line-height: 1;
+      margin: 0;
+
+      @include lg-max {
+        font-size: 65px;
+      }
+    }
+
+    .subtitle {
+      color: $white;
+      font-family: $title;
+      font-size: 18px;
+      font-weight: $light;
+      line-height: 32px;
+    }
+
+    .actions {
+      margin-top: 30px;
+
+      @include lg-max {
+        display: none;
+      }
+
+      @include sm-max {
+        width: 100%;
+
+        :global {
+          a {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  .blogList {
+    display: flex;
+    align-items: stretch;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 35px;
+    margin-right: -35px;
+    width: 100%;
+  }
+}
