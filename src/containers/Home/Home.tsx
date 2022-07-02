@@ -14,6 +14,13 @@ export function Home() {
   return (
     <div className={styles.home}>
       <div className='stars'></div>
+      <div className={styles.pageHero}>
+        <Image src="https://res.cloudinary.com/austinmel/image/upload/v1656750239/astro-dunk_ltgeiq.png"
+          layout="responsive"
+          alt="an illustration of me using the computer"
+          width="2048"
+          height="2048" />
+      </div>
       <div className={styles.content}>
         <div className={styles.logo}>
           <Logo />
@@ -27,20 +34,6 @@ export function Home() {
       </div>
       <div className={styles.pageBg}>
         <HomeBg />
-      </div>
-      <div className={cx(styles.pageHero, styles.desktop)}>
-        <Image src="https://res.cloudinary.com/austinmel/image/upload/v1656704666/fishing_cgnvig.png"
-          layout="responsive"
-          alt="an illustration of me using the computer"
-          width="1604"
-          height="1515" />
-      </div>
-      <div className={cx(styles.pageHero, styles.mobile)}>
-        <Image src="https://res.cloudinary.com/austinmel/image/upload/v1656688501/fishing-mobile_deiv7p.png"
-          layout="responsive"
-          alt="an illustration of me using the computer"
-          width="1714"
-          height="4096" />
       </div>
     </div>
   );

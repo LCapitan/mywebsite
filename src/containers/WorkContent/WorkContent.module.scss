@@ -5,11 +5,12 @@
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
-  padding: 100px 0;
+  padding: 50px 0 30px;
   position: relative;
   width: 100%;
 
   @include lg-max {
+    padding: 100px 0;
     display: block;
   }
 
@@ -17,14 +18,14 @@
     position: fixed;
     top: 50%;
     right: -50px;
-    transform: translateY(-50%);
+    transform: translateY(-50%) rotate(170deg);
     width: 1000px;
     z-index: 1;
     opacity: .5;
 
     :global {
       svg {
-        fill: lighten($mirage, 10%);
+        fill: lighten($mirage, 4%);
       }
     }
 
@@ -48,11 +49,11 @@
     top: 50%;
     left: 10%;
     transform: translateY(-50%);
-    margin-bottom: 50px;
     width: 35%;
     z-index: 2;
 
     @include lg-max {
+      margin-bottom: 50px;
       position: relative;
       top: 0;
       left: 0;

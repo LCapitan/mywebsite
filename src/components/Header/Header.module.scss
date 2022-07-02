@@ -54,11 +54,12 @@
 
   .menuToggle {
     position: fixed;
-    top: 60px;
+    top: 70px;
     right: 30px;
     z-index: 15;
 
     @include lg-max {
+      top: 60px;
       right: 15px;
     }
   }
