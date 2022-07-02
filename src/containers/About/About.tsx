@@ -8,6 +8,7 @@ import { Button } from "../../components";
 const About = () => {
   return (
     <div className={styles.about}>
+      <div className='stars'></div>
       <div className={styles.heroImg}>
         <Image src="https://res.cloudinary.com/austinmel/image/upload/v1656739819/IMG_0471_j6ucdc.jpg"
           layout="responsive"

@@ -10,6 +10,7 @@ import styles from './WorkContent.module.scss';
 const WorkContent = () => {
   return (
     <div className={styles.work}>
+      <div className='stars'></div>
       <div className={styles.pageBg}>
         <HomeBg />
       </div>
