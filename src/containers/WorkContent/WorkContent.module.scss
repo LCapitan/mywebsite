@@ -13,6 +13,36 @@
     display: block;
   }
 
+  .pageBg {
+    position: fixed;
+    top: 50%;
+    right: -50px;
+    transform: translateY(-50%);
+    width: 1000px;
+    z-index: 1;
+    opacity: .5;
+
+    :global {
+      svg {
+        fill: lighten($mirage, 10%);
+      }
+    }
+
+    @include lg-max {
+      right: auto;
+      top: -500px;
+      left: 50%;
+      transform: translateX(-50%) rotate(45deg);
+      width: 200%;
+
+      :global {
+        svg {
+          fill: lighten($mirage, 4%);
+        }
+      }
+    }
+  }
+
   .pageHeading {
     position: fixed;
     top: 50%;
@@ -20,6 +50,7 @@
     transform: translateY(-50%);
     margin-bottom: 50px;
     width: 35%;
+    z-index: 2;
 
     @include lg-max {
       position: relative;
@@ -52,6 +83,10 @@
     .actions {
       margin-top: 30px;
 
+      @include lg-max {
+        display: none;
+      }
+
       @include sm-max {
         width: 100%;
 
@@ -64,13 +99,34 @@
     }
   }
 
+  >.actions {
+    display: none;
+    margin-top: 30px;
+
+    @include lg-max {
+      display: block;
+    }
+
+    @include sm-max {
+      width: 100%;
+
+      :global {
+        a {
+          width: 100%;
+        }
+      }
+    }
+  }
+
   .workList {
     display: flex;
     flex-wrap: wrap;
     list-style-type: none;
     margin: 0;
     padding: 0;
+    position: relative;
     width: 50%;
+    z-index: 5;
 
     @include lg-max {
       gap: 35px;
