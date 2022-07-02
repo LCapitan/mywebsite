@@ -15,6 +15,11 @@
     justify-content: center;
   }
 
+  @include sm-max {
+    padding-top: 100px;
+    min-height: none;
+  }
+
   .content {
     max-width: 500px;
     position: relative;
