@@ -26,7 +26,7 @@ export function Home() {
           <Logo />
         </div>
         <h1 className={styles.title}>austin<br />melendez</h1>
-        <h2 className={styles.subtitle}>an artist, designer, and developer, in love with hiking and twizzlers, with my head in the clouds.</h2>
+        <h2 className={styles.subtitle}>an artist, designer, and developer, in love with hiking and twizzlers.</h2>
         <div className={styles.actions}>
           <Button url="/work" label="see my work" />
           <Button url="/about" label="about me" secondary />
