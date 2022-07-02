@@ -18,6 +18,10 @@
   &:focus {
     cursor: pointer;
     transform: scale(1.1);
+
+    @include sm-max {
+      transform: scale(1);
+    }
   }
 }
 
@@ -32,6 +36,10 @@
   &:focus {
     box-shadow: 0px 0px 8px 4px rgba($aquamarine, 0.1);
   }
+
+  @include sm-max {
+    box-shadow: 0px 0px 8px 4px rgba($aquamarine, 0.1);
+  }
 }
 
 .secondary {
@@ -43,6 +51,10 @@
 
   &:hover,
   &:focus {
+    box-shadow: 0px 0px 8px 4px rgba($malibu, 0.1);
+  }
+
+  @include sm-max {
     box-shadow: 0px 0px 8px 4px rgba($malibu, 0.1);
   }
 }
