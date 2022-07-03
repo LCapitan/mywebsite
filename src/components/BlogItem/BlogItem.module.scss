@@ -7,6 +7,14 @@
   width: calc(33.333% - 35px);
   position: relative;
 
+  @include xl-max {
+    width: calc(50% - 35px);
+  }
+
+  @include md-max {
+    width: 100%;
+  }
+
   >.inner {
     background: lighten($mirage, 10%);
     border-radius: 15px;
@@ -15,28 +23,36 @@
     align-items: stretch;
     height: 100%;
     overflow: hidden;
+    position: relative;
   }
 
   .image {
+    display: block;
     width: 100%;
-    height: 250px;
+    height: 600px;
     margin: 0;
     padding: 0;
     position: relative;
   }
 
   .details {
+    background: rgba($mirage, .75);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin: 15px;
     padding: 30px;
+    position: absolute;
+    bottom: 0;
   }
 
   .title {
     color: $white;
     font-size: 28px;
-    line-height: 46px;
+    line-height: 42px;
     margin: 0 0 10px;
   }
 
@@ -68,11 +84,15 @@
     box-shadow: none;
     width: calc(100% - 35px);
 
+    @include md-max {
+      width: 100%;
+    }
+
     >.inner {
       background: none;
       border-radius: 15px;
-      align-items: flex-end;
       display: flex;
+      align-items: flex-end;
       flex-direction: row;
       overflow: hidden;
     }
@@ -80,17 +100,34 @@
     .title {
       font-size: 55px;
       line-height: 73px;
+
+      @include md-max {
+        font-size: 28px;
+        line-height: 42px;
+      }
     }
 
     .details {
-      background: none;
+      width: 50%;
+
+      @include xl-max {
+        width: 75%;
+      }
+
+      @include md-max {
+        width: calc(100% - 30px);
+      }
     }
 
     .image {
       border-radius: 20px;
-      height: 400px;
+      height: 450px;
       overflow: hidden;
-      width: 60%;
+      width: 100%;
+
+      @include md-max {
+        height: 600px;
+      }
     }
   }
 

@@ -65,5 +65,9 @@
     flex-wrap: wrap;
     gap: 35px;
     width: 100%;
+
+    @include sm-max {
+      flex-direction: column;
+    }
   }
 }
