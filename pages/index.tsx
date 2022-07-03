@@ -1,12 +1,7 @@
 import type { NextPage } from 'next';
-import Head from 'next/head';
-import Image from 'next/image';
 import { NextSeo } from 'next-seo';
 
-import { Header, Menu } from '../src/components/index';
 import { Home } from '../src/containers/index';
-
-import styles from '../styles/Home.module.scss';
 
 const Homepage: NextPage = () => {
   return (
@@ -25,11 +20,6 @@ const Homepage: NextPage = () => {
           ],
           site_name: 'Austin Melendez',
         }}
-      // twitter={{
-      //   handle: '@EmilyWills',
-      //   site: '@EmilyWills',
-      //   cardType: 'summary_large_image',
-      // }}
       />
 
       <main className="container">
