@@ -28,7 +28,7 @@ const About = () => {
         <div className={styles.pageHeading}>
           <h1 className={styles.pageTitle}>about</h1>
           <div className={styles.cta}>
-            <Button url="https://res.cloudinary.com/austinmel/image/upload/v1656711711/Resume-AustinMelendez_rwi7jt.pdf" label="view my resume" secondary />
+            <Button url="https://res.cloudinary.com/austinmel/image/upload/v1656711711/Resume-AustinMelendez_rwi7jt.pdf" external label="view my resume" secondary />
           </div>
         </div>
         <div className={styles.content}>
