@@ -31,7 +31,7 @@ export function Blog() {
           url="/yosemite-valley" />
 
         <BlogItem
-          imgSrc="https://res.cloudinary.com/austinmel/image/upload/v1656744747/Untitled_Artwork_4_liy7ur.png"
+          imgSrc="https://res.cloudinary.com/austinmel/image/upload/v1656913514/IMG_0612_oppet2.jpg"
           altText="a Hon's Buns NFT"
           title="Hon's Buns NFTs"
           prevText="An NFT project started by myself, my gf, Emily, and my brother. Created as a way to honor some of our pet bunnies that passed away."

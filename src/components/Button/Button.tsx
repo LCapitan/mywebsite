@@ -12,24 +12,31 @@ interface ButtonProps {
   secondary?: boolean;
   className?: string;
   onClick?: any;
+  external?: boolean;
 }
 
-export function Button({ label, url, secondary, onClick, className }: ButtonProps) {
-  // const style = `${styleClass[buttonStyle]}`;
+export function Button({ label, url, secondary, onClick, className, external }: ButtonProps) {
 
-  return (
-    <>
-      {url ? (
-        <a href={url} className={cx(styles.button, secondary ? styles.secondary : styles.primary)}>
-          {label}
-        </a>
-      ) : (
-        <button
-          className={cx(styles.button, secondary ? styles.secondary : styles.primary, className && styles[className])}
-          onClick={onClick}>
-          {label}
-        </button>
-      )}
-    </>
-  );
+  if (url && external) {
+    return (
+      <a href={url} className={cx(styles.button, secondary ? styles.secondary : styles.primary)} target="blank" rel="noreferrer">
+        {label}
+      </a>
+    );
+  } else if (url) {
+    return (
+      <a href={url} className={cx(styles.button, secondary ? styles.secondary : styles.primary)}>
+        {label}
+      </a>
+    );
+  } else {
+    return (
+      <button
+        className={cx(styles.button, secondary ? styles.secondary : styles.primary, className && styles[className])}
+        onClick={onClick}>
+        {label}
+      </button>
+    )
+  }
+
 }
