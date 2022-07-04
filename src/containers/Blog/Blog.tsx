@@ -34,14 +34,14 @@ export function Blog() {
           imgSrc="https://res.cloudinary.com/austinmel/image/upload/v1656744747/Untitled_Artwork_4_liy7ur.png"
           altText="a Hon's Buns NFT"
           title="Hon's Buns NFTs"
-          prevText="Chia bicycle rights cold-pressed live-edge, fingerstache occupy mustache keytar truffaut taxidermy pickled biodiesel."
+          prevText="An NFT project started by myself, my gf, Emily, and my brother. Created as a way to honor some of our pet bunnies that passed away."
           url="/blog" />
 
         <BlogItem
-          imgSrc="https://res.cloudinary.com/austinmel/image/upload/v1656739819/IMG_0471_j6ucdc.jpg"
+          imgSrc="https://res.cloudinary.com/austinmel/image/upload/v1656909889/DF5498F9-F695-4AE3-A810-EC4739232FAA_mvupcq.jpg"
           altText="me hiking in Zion National Park"
           title="Kolob Canyon"
-          prevText="I'm baby tousled williamsburg heirloom butcher, man braid vaporware bicycle rights subway tile ethical schlitz lo-fi twee."
+          prevText="Another beautiful hiking adventure out in Utah as part of the Zion National Park. A trip I got to enjoy with my brother and my dad."
           url="/blog" />
 
         <BlogItem
