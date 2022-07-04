@@ -11,14 +11,14 @@ const About = () => {
       <div className='stars'></div>
       <div className={styles.heroImg}>
         <div className={styles.desktop}>
-          <Image src="https://res.cloudinary.com/austinmel/image/upload/v1656739819/IMG_0471_j6ucdc.jpg"
+          <Image src="https://res.cloudinary.com/austinmel/image/upload/v1656908226/app-trail_hjb0ti.jpg"
             layout="responsive"
             alt="me hiking in Zion National Park"
-            width="2049"
-            height="1047" />
+            width="1536"
+            height="777" />
         </div>
         <div className={styles.mobile}>
-          <Image src="https://res.cloudinary.com/austinmel/image/upload/v1656739819/IMG_0471_j6ucdc.jpg"
+          <Image src="https://res.cloudinary.com/austinmel/image/upload/v1656908226/app-trail_hjb0ti.jpg"
             layout="fill"
             alt="me hiking in Zion National Park"
             objectFit="cover" />
@@ -28,7 +28,7 @@ const About = () => {
         <div className={styles.pageHeading}>
           <h1 className={styles.pageTitle}>about</h1>
           <div className={styles.cta}>
-            <Button url="/work" label="see my work" secondary />
+            <Button url="https://res.cloudinary.com/austinmel/image/upload/v1656711711/Resume-AustinMelendez_rwi7jt.pdf" label="view my resume" secondary />
           </div>
         </div>
         <div className={styles.content}>
