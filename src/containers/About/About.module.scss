@@ -38,7 +38,7 @@
   .heroImg {
     border-radius: 20px;
     box-shadow: 0px 10px 30px rgba(#000000, 0.5);
-    margin: 100px 0 50px;
+    margin: 50px 0 50px;
     overflow: hidden;
     position: relative;
     width: 100%;
@@ -110,21 +110,17 @@
   }
 
   .actions {
-    margin-top: 30px;
-    display: none;
+    display: flex;
+    gap: 15px;
+    margin-top: 45px;
 
     @include lg-max {
-      display: block;
+      justify-content: center;
     }
 
     @include sm-max {
-      width: 100%;
-
-      :global {
-        a {
-          width: 100%;
-        }
-      }
+      justify-content: center;
+      flex-direction: column;
     }
   }
 }

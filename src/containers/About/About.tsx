@@ -11,14 +11,14 @@ const About = () => {
       <div className='stars'></div>
       <div className={styles.heroImg}>
         <div className={styles.desktop}>
-          <Image src="https://res.cloudinary.com/austinmel/image/upload/v1656908226/app-trail_hjb0ti.jpg"
+          <Image src="https://res.cloudinary.com/austinmel/image/upload/v1657006160/kolob_hrmy1j.jpg"
             layout="responsive"
             alt="me hiking in Zion National Park"
-            width="1536"
-            height="777" />
+            width="1902"
+            height="1047" />
         </div>
         <div className={styles.mobile}>
-          <Image src="https://res.cloudinary.com/austinmel/image/upload/v1656908226/app-trail_hjb0ti.jpg"
+          <Image src="https://res.cloudinary.com/austinmel/image/upload/v1657006160/kolob_hrmy1j.jpg"
             layout="fill"
             alt="me hiking in Zion National Park"
             objectFit="cover" />
@@ -26,10 +26,7 @@ const About = () => {
       </div>
       <div className={styles.wrapper}>
         <div className={styles.pageHeading}>
-          <h1 className={styles.pageTitle}>about</h1>
-          <div className={styles.cta}>
-            <Button url="https://res.cloudinary.com/austinmel/image/upload/v1656711711/Resume-AustinMelendez_rwi7jt.pdf" external label="view my resume" secondary />
-          </div>
+          <h1 className={styles.pageTitle}>about me</h1>
         </div>
         <div className={styles.content}>
           <div className={styles.paragraph}>
@@ -45,12 +42,12 @@ const About = () => {
           </div>
 
           <div className={styles.paragraph}>
-            Aside from drawing, designing, and developing, I like to spend my free time writing and listening to music, hiking, hanging with my pup - Fiz, or just hanging out waiting for some type of inspiration to strike (plus the not-so-occasional binge watching).
+            Aside from drawing, designing, and developing, I like to spend my free time with my beautiful girlfriend, writing and listening to music, hiking, hanging with my pup - Fiz and our bunnies - Bella, Bear, and Rosie, or just hanging out waiting for some type of inspiration to strike (plus the not-so-occasional binge watching).
           </div>
         </div>
-
         <div className={styles.actions}>
-          <Button url="/work" label="see my work" secondary />
+          <Button url="https://res.cloudinary.com/austinmel/image/upload/v1656711711/Resume-AustinMelendez_rwi7jt.pdf" external label="view my resume" />
+          <Button url="/blog" label="more about me" secondary />
         </div>
       </div>
     </div>
