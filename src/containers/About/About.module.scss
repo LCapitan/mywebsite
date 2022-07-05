@@ -16,8 +16,23 @@
   }
 
   .wrapper {
+    background: rgba($mirage, .75);
+    backdrop-filter: blur(100px);
+    border-radius: 12px;
+    // box-shadow: 0px 10px 30px rgba(#000000, 0.5);
     max-width: 900px;
-    margin: 0 auto;
+    margin: -190px auto 0;
+    padding: 45px;
+    position: relative;
+    z-index: 5;
+
+    @include sm-max {
+      background: none;
+      backdrop-filter: blur(0);
+      border-radius: 0;
+      padding: 0;
+      margin: 0 auto;
+    }
   }
 
   .heroImg {
@@ -57,7 +72,7 @@
 
   .pageHeading {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: space-between;
     margin-bottom: 50px;
     width: 100%;
