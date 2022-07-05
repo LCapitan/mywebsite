@@ -75,6 +75,15 @@ a {
   color: $aquamarine;
   font-weight: $bold;
   text-decoration: none;
+
+  &.link {
+    color: $white;
+
+    &:hover,
+    &:focus {
+      color: $aquamarine;
+    }
+  }
 }
 
 * {

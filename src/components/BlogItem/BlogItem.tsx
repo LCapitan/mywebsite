@@ -42,9 +42,9 @@ export function BlogItem({ imgSrc, altText, title, prevText, date, url, featured
               </div>
             </div>
             <div className={styles.actions}>
-              <Link href={link}>
+              <a href={link} className="link">
                 read more
-              </Link>
+              </a>
             </div>
           </div>
         </div>
