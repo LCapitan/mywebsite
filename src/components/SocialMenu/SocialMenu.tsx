@@ -37,7 +37,7 @@ export function SocialMenu({ className }: SocialMenuProps) {
           </a>
         </li>
         <li>
-          <a href="https://res.cloudinary.com/austinmel/image/upload/v1656711711/Resume-AustinMelendez_rwi7jt.pdf" target="_blank" rel="noreferrer">
+          <a href="https://res.cloudinary.com/austinmel/image/upload/v1657041221/Resume-AustinMelendez_r58cgg.pdf" target="_blank" rel="noreferrer">
             <Pdf />
           </a>
         </li>
