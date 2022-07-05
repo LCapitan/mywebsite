@@ -48,7 +48,7 @@ export function Blog() {
           imgSrc="https://res.cloudinary.com/austinmel/image/upload/v1656744834/christopher-gower-m_HRfLhgABo-unsplash_ber407.jpg"
           altText="a photo of a computer with coding"
           title="How I started my career"
-          prevText="Cliche fam craft beer edison bulb synth chicharrones. 8-bit lomo heirloom, roof party microdosing crucifix enamel pin irony."
+          prevText="Like many other artists out there, I was always discouraged from being an artists because artists don't make money. So I did it anyway."
           url="/blog" />
       </div>
     </div>
