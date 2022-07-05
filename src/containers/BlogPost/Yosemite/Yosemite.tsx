@@ -37,7 +37,7 @@ const Yosemite = () => {
           </div>
 
           <div className={styles.paragraph}>
-            In January of 2019, I called one of my buddies - who loves hiking - and asked if he was plannin any trips that year because I wanted to try hiking for the first time. And he told me he was actually planning a trip to hike the John Muir Trail in California. It meant nothing to me, but the thought of visiting California for the first time was enough to get me excited. I immediately said yes and told him to just tell me what I needed and I would be ready.
+            In January of 2019, I called one of my buddies - who loves hiking - and asked if he was planning any trips that year because I wanted to try hiking for the first time. And he told me he was actually planning a trip to hike the John Muir Trail in California. It meant nothing to me, but the thought of visiting California for the first time was enough to get me excited. I immediately said yes and told him to just tell me what I needed and I would be ready.
           </div>
 
           <div className={styles.paragraph}>
