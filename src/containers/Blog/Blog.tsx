@@ -1,10 +1,6 @@
 import React from "react";
-import cx from 'classnames';
-import Link from "next/link";
-import Image from "next/image";
 
 import { Button, BlogItem } from '../../components';
-import { HomeBg, Logo } from '../../components/Icons/';
 
 import styles from './Blog.module.scss'
 
@@ -35,21 +31,7 @@ export function Blog() {
           altText="a Hon's Buns NFT"
           title="Hon's Buns NFTs"
           prevText="An NFT project started by myself, my gf, Emily, and my brother. Created as a way to honor some of our pet bunnies that passed away."
-          url="/blog" />
-
-        <BlogItem
-          imgSrc="https://res.cloudinary.com/austinmel/image/upload/v1656909889/DF5498F9-F695-4AE3-A810-EC4739232FAA_mvupcq.jpg"
-          altText="me hiking in Zion National Park"
-          title="Kolob Canyon"
-          prevText="Another beautiful hiking adventure out in Utah as part of the Zion National Park. A trip I got to enjoy with my brother and my dad."
-          url="/blog" />
-
-        <BlogItem
-          imgSrc="https://res.cloudinary.com/austinmel/image/upload/v1656744834/christopher-gower-m_HRfLhgABo-unsplash_ber407.jpg"
-          altText="a photo of a computer with coding"
-          title="How I started my career"
-          prevText="Like many other artists out there, I was always discouraged from being an artist because artists don't make money. So I did it anyway."
-          url="/blog" />
+          url="/hons-buns" />
       </div>
     </div>
   );
