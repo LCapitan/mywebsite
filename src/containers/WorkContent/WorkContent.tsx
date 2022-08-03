@@ -25,7 +25,7 @@ const WorkContent = () => {
       <ul className={styles.workList}>
         <li>
           <WorkCard
-            imgSrc="https://res.cloudinary.com/austinmel/image/upload/v1649263364/honsbuns_hxjmxq.jpg"
+            imgSrc="https://res.cloudinary.com/austinmel/image/upload/v1659500787/work-card-img-honsbuns_pok2zk.jpg"
             imgAlt="an illustration of beautiful bunny"
             cardLink="https://www.honsbuns.com/"
             title="hon's buns"
@@ -58,6 +58,23 @@ const WorkContent = () => {
               'product design',
               'react',
               'next.js'
+            ]}
+          />
+        </li>
+        <li>
+          <WorkCard
+            imgSrc="https://res.cloudinary.com/austinmel/image/upload/v1659500096/emily-wills_obzorr.jpg"
+            imgAlt="a screenshot of emily's website"
+            cardLink="https://emilywills.com/"
+            title="emily wills, XD"
+            content="a custom portfolio website for emily wills"
+            tags={[
+              'ui/ux',
+              'branding',
+              'react',
+              'typescript',
+              'next.js',
+              'sass'
             ]}
           />
         </li>
@@ -113,7 +130,7 @@ const WorkContent = () => {
         </li>
         <li>
           <WorkCard
-            imgSrc="https://res.cloudinary.com/austinmel/image/upload/v1656678415/astro_iie61u.jpg"
+            imgSrc="https://res.cloudinary.com/austinmel/image/upload/v1659499300/c_h_qigysb.jpg"
             imgAlt="my artwork"
             cardLink="https://www.instagram.com/shucksworthy/"
             title="my artwork"
