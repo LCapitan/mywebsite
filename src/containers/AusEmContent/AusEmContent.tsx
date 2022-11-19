@@ -17,14 +17,16 @@ const AusEmContent = () => {
       setIsPlaying(!isPlaying);
     }
   };
+
   return (
     <div className={styles.ausEm}>
       <div className={styles.wrapper}>
         <div className={cx(styles.content, isPlaying && styles.isPLaying)}>
           <div className={styles.inner}>
             <button onClick={() => playVideo()} className={styles.button}>
-              Play video
+              Play Video
             </button>
+
             <h1>My Emmy,</h1>
             <p>I had so much fun with you.</p>
             <p>
