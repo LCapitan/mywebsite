@@ -162,7 +162,7 @@ const AusEmContent = () => {
             <p className={styles.sign}>
               ps: I&#39;m still down for the 32 & single deal we made if you
               are. I&#39;ll have the farm, the chickens, goats, buns, and
-              Mantequilla, plsu the wedding venue business ready for you..
+              Mantequilla, plus the wedding venue business ready for you..
             </p>
             <p>thank you for loving me, Emily...</p>
           </div>
