@@ -11,6 +11,25 @@
   z-index: 100;
   overflow: hidden;
 
+  .button {
+    // background: $mirage;
+    border: 1.5px solid $mirage;
+    border-radius: 50px;
+    color: $mirage;
+    font-family: $copy;
+    font-size: 18px;
+    font-weight: $bold;
+    margin: 0 0 50px;
+    padding: 15px 35px;
+    transition: 0.25s ease;
+
+    &:hover {
+      background: $mirage;
+      color: $white;
+      cursor: pointer;
+    }
+  }
+
   .wrapper {
     position: relative;
     display: flex;
@@ -25,6 +44,12 @@
     right: 10px;
     width: 0;
     height: calc(100vh - 100px);
+    opacity: 0;
+    transition: 0.25s ease;
+
+    &.vidPlaying {
+      opacity: 1;
+    }
 
     video {
       position: absolute;
@@ -38,10 +63,15 @@
   .content {
     position: relative;
     height: 100%;
-    width: 55%;
+    width: 100%;
+    transition: 0.5s ease;
+
+    &.isPLaying {
+      width: 55%;
+    }
 
     .inner {
-      padding: 50% 0 150px;
+      padding: 300px 0 150px;
       height: 100%;
 
       h1 {
@@ -104,6 +134,10 @@
       height: auto;
       z-index: 2;
       width: 100%;
+
+      &.isPLaying {
+        width: 100%;
+      }
 
       &:before,
       &:after {

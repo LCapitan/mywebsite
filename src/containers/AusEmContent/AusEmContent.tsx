@@ -1,16 +1,30 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import ReactPlayer from "react-player";
+import cx from "classnames";
 
 import styles from "./AusEmContent.module.scss";
 import { Button } from "../../components";
 
 const AusEmContent = () => {
+  const video = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const playVideo = () => {
+    if (video && video.current) {
+      video.current.play();
+      setIsPlaying(!isPlaying);
+    }
+  };
   return (
     <div className={styles.ausEm}>
       <div className={styles.wrapper}>
-        <div className={styles.content}>
+        <div className={cx(styles.content, isPlaying && styles.isPLaying)}>
           <div className={styles.inner}>
+            <button onClick={() => playVideo()} className={styles.button}>
+              Play video
+            </button>
             <h1>My Emmy,</h1>
             <p>I had so much fun with you.</p>
             <p>
@@ -168,12 +182,11 @@ const AusEmContent = () => {
           </div>
         </div>
 
-        <div className={styles.video}>
+        <div className={cx(styles.video, isPlaying && styles.vidPlaying)}>
           <video
-            // controls
-            autoPlay
+            ref={video}
             loop
-            // currentTime={11.3}
+            playsInline
             src="https://res.cloudinary.com/austinmel/video/upload/v1668835192/ausem-v4_yierxh.mp4"
           />
         </div>
