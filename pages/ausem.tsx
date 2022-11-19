@@ -13,14 +13,14 @@ const AusEm: NextPage = () => {
         canonical="https://www.amelen.dev/work"
         openGraph={{
           url: "https://www.amelen.dev/work",
-          title: "Austin's Portfolio",
+          title: "For my best friend.",
           description: "For my best friend.",
           images: [
             {
               url: "https://res.cloudinary.com/austinmel/image/upload/v1668833498/IMG_2185_dghq1q.jpg",
             },
           ],
-          site_name: "Austin Melendez",
+          site_name: "For my best friend..",
         }}
       />
 
