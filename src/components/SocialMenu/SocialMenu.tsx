@@ -4,7 +4,7 @@ import cx from 'classnames';
 // styles
 import styles from './SocialMenu.module.scss';
 
-// Icons
+// icons
 import { LinkedIn, Instagram, Facebook, GitHub, Pdf } from '../Icons'
 
 interface SocialMenuProps {
@@ -37,7 +37,7 @@ export function SocialMenu({ className }: SocialMenuProps) {
           </a>
         </li>
         <li>
-          <a href="https://res.cloudinary.com/austinmel/image/upload/v1657041221/Resume-AustinMelendez_r58cgg.pdf" target="_blank" rel="noreferrer">
+          <a href="/Resume-Austin-Melendez.pdf" target="_blank" rel="noreferrer">
             <Pdf />
           </a>
         </li>

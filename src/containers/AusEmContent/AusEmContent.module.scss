@@ -1,0 +1,171 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/breakpoints.scss";
+
+.ausEm {
+  background: $white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+
+  .wrapper {
+    position: relative;
+    display: flex;
+    height: 100vh;
+    padding: 50px 10%;
+  }
+
+  .video {
+    padding-left: 46.25%;
+    position: relative;
+    width: 0;
+
+    video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  .content {
+    position: relative;
+    height: 100%;
+
+    &:before,
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      z-index: 999;
+    }
+
+    &:before {
+      background: linear-gradient($white, transparent);
+      top: 0;
+    }
+
+    &:after {
+      background: linear-gradient(transparent, $white);
+      bottom: 0;
+    }
+
+    .inner {
+      overflow: scroll;
+      padding: 150px 0;
+      height: 100%;
+
+      h1 {
+        margin-bottom: 75px;
+      }
+
+      p {
+        color: $mirage;
+        line-height: 2.2;
+        opacity: 0.5;
+        padding: 20px 0;
+
+        &.sign {
+          display: block;
+          padding-top: 35px;
+        }
+      }
+    }
+
+    .inner::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+@include lg-max {
+  .ausEm {
+    height: auto;
+    position: absolute;
+
+    .wrapper {
+      position: relative;
+      display: flex;
+      flex-direction: column-reverse;
+      padding: 0;
+      height: auto;
+    }
+
+    .video {
+      padding-left: 46.25%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      z-index: 1;
+
+      video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: auto;
+        width: 100%;
+      }
+    }
+
+    .content {
+      background: rgba($white, 0.75);
+      margin: 65vh 0 100vh;
+      height: auto;
+      z-index: 2;
+
+      &:before,
+      &:after {
+        display: none;
+      }
+
+      .inner {
+        padding: 10%;
+
+        p {
+          opacity: 1;
+          font-size: 22px;
+        }
+      }
+
+      .inner::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+}
+
+@include md-max {
+  .ausEm {
+    .content {
+      .inner {
+        padding: 45px 100px;
+      }
+
+      .inner::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+}
+
+@include sm-max {
+  .ausEm {
+    .content {
+      .inner {
+        padding: 45px 30px;
+      }
+
+      .inner::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+}
