@@ -174,7 +174,7 @@ const AusEmContent = () => {
             autoPlay
             loop
             // currentTime={11.3}
-            src="https://res.cloudinary.com/austinmel/video/upload/v1668832849/ausem-v2_qitaga.mp4"
+            src="https://res.cloudinary.com/austinmel/video/upload/v1668833459/ausem-v3_zoifpp.mp4"
           />
         </div>
       </div>
