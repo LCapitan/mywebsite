@@ -30,6 +30,13 @@ const AusEmContent = () => {
               was supposed to protect you and your heart...and I didn&#39;t.
             </p>
             <p>
+              Don&#39;t for a second think that I regret dating you. I
+              don&#39;t. It may have ended horribly, but being with you is the
+              best thing that has ever happened to me and ever will happen.
+              Being able to hug you, touch you, hold you, make you laugh and
+              smile, will forever be my most cherished memories.
+            </p>
+            <p>
               I broke down so badly yesterday because I&#39;m realizing my own
               bad patterns. I&#39;m realizing how many times you were right
               about me, and how many times I shrugged you off. How I head into
@@ -167,7 +174,7 @@ const AusEmContent = () => {
             autoPlay
             loop
             // currentTime={11.3}
-            src="https://res.cloudinary.com/austinmel/video/upload/v1668825874/ausem_gabxzb.mp4"
+            src="https://res.cloudinary.com/austinmel/video/upload/v1668832849/ausem-v2_qitaga.mp4"
           />
         </div>
       </div>
