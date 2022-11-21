@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import { NextSeo } from "next-seo";
 
-import { AusEmContent } from "../src/containers/index";
+import { NoContent } from "../src/containers/index";
 
 const AusEm: NextPage = () => {
   return (
@@ -25,7 +25,7 @@ const AusEm: NextPage = () => {
       />
 
       <main className="container">
-        <AusEmContent />
+        <NoContent />
       </main>
     </>
   );
