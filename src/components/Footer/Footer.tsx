@@ -12,6 +12,18 @@ export default function Footer() {
   const bottomRef = useRef<HTMLDivElement>(null);
   const parallaxRef = useRef<HTMLDivElement>(null);
 
+  let width: number;
+
+  const windowSize = () => {
+    if (typeof window !== "undefined") {
+      width = window.innerWidth;
+      return {
+        width,
+      };
+    }
+  };
+  windowSize();
+
   const { ref, inView, entry } = useInView({
     /* Optional options */
     threshold: 0,
@@ -42,7 +54,7 @@ export default function Footer() {
       animationId = requestAnimationFrame(animate);
     };
 
-    if (inView) {
+    if (inView && width >= 992) {
       animate();
     } else {
       animationId = 0;

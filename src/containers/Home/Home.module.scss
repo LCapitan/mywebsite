@@ -21,14 +21,14 @@
   }
 
   .intro {
-    position: absolute;
+    position: fixed;
     top: 0;
-    left: -100px;
+    left: 0;
     opacity: 1;
     overflow: hidden;
-    width: calc(100vw + 200px);
+    width: 100vw;
     height: 100vh;
-    z-index: 999;
+    z-index: 9999;
     transition: 1.5s ease;
 
     .content {
@@ -123,13 +123,6 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-  }
-
-  .content {
-    font-weight: 300;
-    flex: 1;
-    max-width: 330px;
-    padding-right: 50px;
   }
 
   .title {
