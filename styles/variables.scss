@@ -1,6 +1,8 @@
 // Fonts
-$title: 'Ubuntu', 'Healvetica', sans-serif;
-$copy: 'Raleway', 'Helvetica', sans-serif;
+// $title: "Ubuntu", "Healvetica", sans-serif;
+// $copy: "Raleway", "Helvetica", sans-serif;
+$title: "Kaushan Script", cursive;
+$copy: "Prompt", "Helvetica", sans-serif;
 
 $bold: 700;
 $regular: 400;
@@ -8,15 +10,23 @@ $light: 300;
 
 // Colors
 
-$white: #f9f9f9;
+$white: #fffcf6;
+// $white: #f9f9f9;
 $mirage: #191321;
-$froly: #FF8291;
-$aquamarine: #69FAAC;
-$malibu: #92E6F8;
+$froly: #ff8291;
+$aquamarine: #69faac;
+$malibu: #92e6f8;
 $mustard: #ffd52e;
+$forest: #515546;
+$sunrise: #f3ba46;
 
 // Mixins
-@mixin font-size($min, $max: null, $lock-min: $min_width, $lock-max: $max_width) {
+@mixin font-size(
+  $min,
+  $max: null,
+  $lock-min: $min_width,
+  $lock-max: $max_width
+) {
   & {
     font-size: $min;
   }
@@ -24,7 +34,11 @@ $mustard: #ffd52e;
   @if $max {
     @media (min-width: $lock-min) {
       & {
-        font-size: calc(#{$min} + #{num($max) - num($min)} * (100vw - #{$lock-min}) / #{num($lock-max) - num($lock-min)});
+        font-size: calc(
+          #{$min} + #{num($max) - num($min)} * (100vw - #{$lock-min}) / #{num(
+              $lock-max
+            ) - num($lock-min)}
+        );
       }
     }
 

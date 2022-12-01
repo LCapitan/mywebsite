@@ -6,29 +6,26 @@
 
   ul {
     display: flex;
-    flex-direction: column;
     align-items: center;
     list-style-type: none;
-    margin: 0;
+    gap: 15px;
+    margin: 25px 0 50px;
     padding: 0;
 
     li {
-      margin: 5px 0;
-
       a {
-        transition: .25s ease;
+        transition: 0.25s ease;
 
         svg {
-          fill: lighten($mirage, 40%);
+          fill: lighten($forest, 40%);
           width: 25px;
           height: auto;
         }
 
         &:hover,
         &:focus {
-
           svg {
-            fill: $malibu;
+            fill: $forest;
           }
         }
       }
