@@ -18,6 +18,14 @@
   &:focus {
     cursor: pointer;
   }
+
+  @include md-max {
+    font-size: 22px;
+    line-height: 22px;
+    padding: 35px 55px;
+    display: block;
+    width: 100%;
+  }
 }
 
 .primary {

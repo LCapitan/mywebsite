@@ -4,12 +4,12 @@
 .header {
   padding: 0 100px;
   position: fixed;
-  top: 50px;
+  top: 35px;
   width: 100%;
   z-index: 999;
 
   @include md-max {
-    padding: 0 40px;
+    padding: 0 30px;
   }
 
   .navigation {
@@ -37,34 +37,13 @@
           opacity: 1;
         }
       }
-    }
-  }
 
-  .logo {
-    position: fixed;
-    top: 50px;
-    left: 40px;
-    width: 35px;
-    transition: 0.25s ease;
-
-    :global {
-      svg {
-        fill: lighten($mirage, 40%);
-      }
-    }
-
-    &:hover,
-    &:focus {
-      :global {
-        svg {
-          fill: $mustard;
+      @include md-max {
+        &:nth-child(2),
+        &:nth-child(3) {
+          display: none;
         }
       }
-    }
-
-    @include lg-max {
-      opacity: 0;
-      visibility: hidden;
     }
   }
 
