@@ -7,5 +7,5 @@ interface SectionProps {
 }
 
 export default function Section({ children }: SectionProps) {
-  return <div className={styles.section}></div>;
+  return <div className={styles.section}>{children}</div>;
 }
