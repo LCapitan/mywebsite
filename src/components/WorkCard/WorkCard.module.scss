@@ -2,7 +2,6 @@
 @import "../../../styles/breakpoints.scss";
 
 .wrapper {
-  background: black;
   border-radius: 45px;
   // filter: grayscale(75%);
   margin: 75px 0;
@@ -15,10 +14,24 @@
     width: 30vw;
   }
 
-  // &:hover,
-  // &:focus {
-  //   filter: grayscale(0);
-  // }
+  @include xl-max {
+    margin: 0;
+    width: calc(50vw - 130px);
+
+    &.smaller {
+      width: calc(50vw - 130px);
+    }
+  }
+
+  @include lg-max {
+    border-radius: 0;
+    margin: 15px 0;
+    width: 100%;
+
+    &.smaller {
+      width: 100%;
+    }
+  }
 }
 
 .workItem {
@@ -108,6 +121,29 @@
           }
         }
       }
+    }
+  }
+
+  @include lg-max {
+    border-radius: 0px;
+
+    .content {
+      padding: 20px;
+
+      h2 {
+        font-size: 24px;
+        line-height: 38px;
+      }
+
+      .tags {
+        display: none;
+      }
+    }
+
+    &:hover,
+    &:focus {
+      cursor: pointer;
+      transform: scale(1) rotate(0deg);
     }
   }
 }

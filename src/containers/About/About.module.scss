@@ -10,15 +10,20 @@
   position: relative;
   width: 100%;
 
-  .endRef {
-    height: 3px;
-    width: 100%;
-    background: black;
+  .topRef {
+    background: transparent;
     position: absolute;
-    bottom: 0;
+    top: 0;
+    width: 100%;
+    height: 1px;
   }
 
-  &.inView {
+  .endRef {
+    background: transparent;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 3px;
   }
 
   .rip {
@@ -130,7 +135,7 @@
 
     &:hover {
       cursor: url(https://res.cloudinary.com/austinmel/image/upload/v1669893923/my%20site/view-cursor.svg)
-          15 15,
+          50 50,
         auto;
     }
 
@@ -161,9 +166,228 @@
 
       &:hover {
         cursor: url(https://res.cloudinary.com/austinmel/image/upload/v1669894077/my%20site/close-cursor.svg)
-            15 15,
+            50 50,
           auto;
       }
+    }
+  }
+
+  .desktop {
+    display: block;
+  }
+
+  .mobile {
+    display: none !important;
+  }
+
+  @include lg-max {
+    padding: 50px 20px 0;
+
+    .images {
+      position: relative;
+      top: -125px;
+      transform: rotate(-10deg);
+      transition: 1s;
+      transition-delay: 0s;
+      width: 55%;
+      min-height: 750px;
+
+      .img {
+        border-radius: 30px;
+        filter: grayscale(75%);
+        margin: 0;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: rotate(-5deg);
+        width: 450px;
+        height: 674px;
+        // width: 700px;
+        // height: 1048px;
+        transition: 1.5s ease;
+
+        &:nth-child(2) {
+          top: 0;
+          left: 0;
+          z-index: 2;
+        }
+
+        &:last-child {
+          top: 0;
+          left: 0;
+          z-index: 3;
+        }
+
+        &:hover {
+          filter: grayscale(0%);
+          transition: 1s ease;
+        }
+      }
+
+      &.inView {
+        transition: 1.5s ease;
+        transform: rotate(0deg);
+        top: -75px;
+
+        .img {
+          &:nth-child(2) {
+            top: 75px;
+            left: 95px;
+            transform: rotate(3deg);
+          }
+
+          &:last-child {
+            top: 175px;
+            left: 175px;
+            transform: rotate(10deg);
+          }
+        }
+      }
+
+      &:hover {
+        cursor: url(https://res.cloudinary.com/austinmel/image/upload/v1669893923/my%20site/view-cursor.svg)
+            50 50,
+          auto;
+      }
+
+      &.open {
+        .img {
+          &:first-child {
+            top: 75px;
+            left: -500px;
+          }
+
+          &:nth-child(2) {
+            left: -175px;
+          }
+
+          &:last-child {
+            left: 175px;
+          }
+        }
+      }
+    }
+  }
+
+  @include md-max {
+    padding: 50px 0 0;
+    min-height: 0;
+
+    .inner {
+      flex-direction: column-reverse;
+    }
+
+    .rip {
+      position: absolute;
+      bottom: -150px;
+      z-index: 1;
+
+      svg {
+        height: auto;
+      }
+    }
+
+    .content {
+      padding: 35px 20px;
+      width: 70%;
+    }
+
+    .images {
+      margin-bottom: 75px;
+      top: 0;
+      transform: rotate(0);
+      width: 100%;
+      min-height: 0;
+      height: auto;
+
+      .img {
+        border-radius: 20px;
+        position: relative;
+        transform: rotate(0deg);
+        width: 80%;
+        height: auto;
+
+        &:nth-child(2) {
+          margin-top: -110%;
+          top: 25px;
+          left: 25px;
+          transform: rotate(3deg);
+        }
+
+        &:last-child {
+          margin-top: -110%;
+          top: 50px;
+          left: 50px;
+          transform: rotate(6deg);
+        }
+      }
+
+      &.inView {
+        transform: rotate(0deg);
+        top: -25px;
+
+        .img {
+          &:nth-child(2) {
+            top: 35px;
+            left: 35px;
+            transform: rotate(4deg);
+          }
+
+          &:last-child {
+            top: 65px;
+            left: 65px;
+            transform: rotate(8deg);
+          }
+        }
+      }
+
+      &.open {
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+
+        .img {
+          width: 100%;
+
+          &:first-child {
+            left: 0;
+            transform: rotate(0deg);
+          }
+
+          &:nth-child(2) {
+            margin-top: -25px;
+            left: 0;
+            transform: rotate(-3deg);
+            z-index: 2;
+          }
+
+          &:last-child {
+            margin-top: -25px;
+            left: 0;
+            transform: rotate(4deg);
+            z-index: 3;
+          }
+        }
+      }
+    }
+
+    .desktop {
+      display: none !important;
+    }
+
+    .mobile {
+      display: block !important;
+    }
+  }
+
+  @include sm-max {
+    .content {
+      font-size: 18px;
+      line-height: 33px;
+      padding: 50px 0;
+      width: 80%;
     }
   }
 }

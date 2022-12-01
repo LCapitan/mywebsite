@@ -75,6 +75,7 @@ const About = () => {
         <div
           className={cx(
             styles.images,
+            styles.desktop,
             inView && styles.inView,
             isOpen && styles.open
           )}
@@ -97,6 +98,43 @@ const About = () => {
             <Image
               src="https://res.cloudinary.com/austinmel/image/upload/v1669757242/my%20site/astro-2.png"
               layout="fill"
+              alt=""
+            />
+          </figure>
+        </div>
+
+        <div
+          className={cx(
+            styles.images,
+            styles.mobile,
+            inView && styles.inView,
+            isOpen && styles.open
+          )}
+        >
+          <figure className={styles.img} onClick={() => handleClick()}>
+            <Image
+              src="https://res.cloudinary.com/austinmel/image/upload/v1669757247/my%20site/astro-1.png"
+              layout="responsive"
+              width="450"
+              height="674"
+              alt=""
+            />
+          </figure>
+          <figure className={styles.img} onClick={() => handleClick()}>
+            <Image
+              src="https://res.cloudinary.com/austinmel/image/upload/v1669757252/my%20site/hawk-1.png"
+              layout="responsive"
+              width="450"
+              height="674"
+              alt=""
+            />
+          </figure>
+          <figure className={styles.img} onClick={() => handleClick()}>
+            <Image
+              src="https://res.cloudinary.com/austinmel/image/upload/v1669757242/my%20site/astro-2.png"
+              layout="responsive"
+              width="450"
+              height="674"
               alt=""
             />
           </figure>

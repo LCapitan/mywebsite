@@ -22,7 +22,7 @@
 
   .title {
     font-family: $copy;
-    font-size: 130px;
+    font-size: 160px;
     font-weight: 300;
     margin: 0 0 75px 150px;
     padding-top: 100px;
@@ -60,6 +60,107 @@
         position: relative;
         top: 100px;
       }
+    }
+  }
+
+  .mobile {
+    display: none !important;
+  }
+
+  @include xl-max {
+    .title {
+      font-size: 95px;
+      line-height: 105px;
+      font-weight: 400;
+      margin: 0 0 150px 150px;
+      padding-top: 100px;
+
+      strong {
+        font-weight: 400;
+      }
+
+      .mobile {
+        display: inline !important;
+      }
+
+      .newLine {
+        display: block;
+      }
+    }
+
+    .workList {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 35px;
+
+      li {
+        flex: 1;
+
+        &:nth-child(3) {
+          padding-left: 0;
+        }
+
+        &:nth-child(5) {
+          top: 0;
+        }
+      }
+    }
+  }
+
+  @include lg-max {
+    margin: 0;
+    padding: 100px 0 75px;
+
+    .title {
+      font-size: 95px;
+      line-height: 105px;
+      font-weight: 400;
+      margin: 0 0 75px 100px;
+      padding-top: 0;
+    }
+
+    .workList {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 0;
+
+      li {
+        width: 100%;
+
+        &:nth-child(3) {
+          padding-left: 0;
+        }
+
+        &:nth-child(5) {
+          top: 0;
+        }
+      }
+    }
+  }
+
+  @include md-max {
+    padding: 100px 20px;
+    &:after {
+      top: -120px;
+    }
+
+    .title {
+      font-size: 85px;
+      line-height: 95px;
+      margin: 0 0 75px 0;
+      padding-top: 100px;
+    }
+  }
+
+  @include sm-max {
+    padding: 50px 0;
+
+    .title {
+      font-size: 65px;
+      line-height: 75px;
     }
   }
 }

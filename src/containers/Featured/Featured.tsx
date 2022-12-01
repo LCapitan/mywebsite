@@ -20,7 +20,13 @@ const Featured = () => {
 
   useIntersectionObserver({
     refs: [itemRef1, itemRef2, itemRef3, itemRef4, itemRef5],
-    callback: ({ isIntersecting, target }) => {
+    callback: ({
+      isIntersecting,
+      target,
+    }: {
+      isIntersecting: boolean;
+      target: any;
+    }) => {
       const item = target;
 
       if (isIntersecting) {
@@ -40,7 +46,10 @@ const Featured = () => {
       <div className={styles.topRef} ref={topRef}></div>
       <div className={styles.inner}>
         <h2 className={styles.title}>
-          featured wo<strong>r</strong>ks
+          feat<span className={styles.mobile}>ured</span>&nbsp;
+          <span className={styles.newLine}>
+            wo<strong>r</strong>ks
+          </span>
         </h2>
         <div className={styles.content}>
           <ul className={styles.workList}>
