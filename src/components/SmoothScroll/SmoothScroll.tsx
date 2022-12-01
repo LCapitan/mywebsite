@@ -8,13 +8,8 @@ interface SmoothScrollProps {
 }
 
 export default function SmoothScroll({ children }: SmoothScrollProps) {
-  // 1.
   const windowSize = useWindowSize();
-
-  //2.
   const scrollingContainerRef = useRef<HTMLDivElement>(null);
-
-  // 3.
   const data = {
     ease: 0.1,
     current: 0,
@@ -22,7 +17,6 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
     rounded: 0,
   };
 
-  // 4.
   useEffect(() => {
     setBodyHeight();
   }, [windowSize?.height]);
@@ -35,8 +29,6 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
       document.body.style.height = `${contRect.height}px`;
     }
   };
-
-  // 5.
   useEffect(() => {
     requestAnimationFrame(() => smoothScrollingHandler());
   });
@@ -49,8 +41,6 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
     if (scrollingContainerRef.current != null) {
       scrollingContainerRef.current.style.transform = `translateY(-${data.previous}px)`;
     }
-
-    // Recursive call
     requestAnimationFrame(() => smoothScrollingHandler());
   };
 
