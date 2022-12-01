@@ -2,10 +2,12 @@ import { useState, useEffect } from "react";
 
 export default function useWindowSize() {
   const getSize = () => {
-    return {
-      width: window.innerWidth,
-      height: window.innerHeight,
-    };
+    if (typeof window !== "undefined") {
+      return {
+        width: window.innerWidth,
+        height: window.innerHeight,
+      };
+    }
   };
 
   const [windowSize, setWindowSize] = useState(getSize);
