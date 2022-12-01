@@ -27,7 +27,7 @@
     left: -50px;
     opacity: 1;
     overflow: hidden;
-    width: 100vw;
+    width: 120vw;
     height: 100vh;
     z-index: 999;
     transition: 1.5s ease;
@@ -263,6 +263,10 @@
   @include md-max {
     padding: 100px 0 0;
 
+    .intro {
+      left: -30px;
+    }
+
     .title {
       font-size: 95px;
       line-height: 105px;
@@ -299,7 +303,7 @@
     top: 100%;
   }
 
-  4% {
+  40% {
     top: 120px;
   }
 
