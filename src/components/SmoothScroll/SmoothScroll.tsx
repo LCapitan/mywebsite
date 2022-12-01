@@ -21,11 +21,13 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
     setBodyHeight();
   }, [windowSize?.height]);
 
+  const viewMin = windowSize?.width as number;
+
   const setBodyHeight = () => {
     const contRect =
       scrollingContainerRef?.current?.getBoundingClientRect() as DOMRect;
 
-    if (scrollingContainerRef.current != null) {
+    if (scrollingContainerRef.current != null && viewMin >= 992) {
       document.body.style.height = `${contRect.height}px`;
     }
   };
@@ -38,7 +40,7 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
     data.previous += (data.current - data.previous) * data.ease;
     data.rounded = Math.round(data.previous * 100) / 100;
 
-    if (scrollingContainerRef.current != null) {
+    if (scrollingContainerRef.current != null && viewMin >= 992) {
       scrollingContainerRef.current.style.transform = `translateY(-${data.previous}px)`;
     }
     requestAnimationFrame(() => smoothScrollingHandler());

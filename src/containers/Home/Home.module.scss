@@ -5,7 +5,6 @@
   min-height: 100vh;
   display: flex;
   align-items: center;
-  // align-items: flex-end;
   justify-content: flex-start;
   padding: 0 50px;
   padding-bottom: 0;
@@ -24,10 +23,10 @@
   .intro {
     position: absolute;
     top: 0;
-    left: -50px;
+    left: -100px;
     opacity: 1;
     overflow: hidden;
-    width: 120vw;
+    width: calc(100vw + 200px);
     height: 100vh;
     z-index: 999;
     transition: 1.5s ease;
@@ -51,9 +50,6 @@
       transition: 1s ease;
 
       &:first-child {
-        font-family: $title;
-        font-size: 57px;
-        padding-right: 18px;
         transition-delay: 0.5s;
       }
 
@@ -62,6 +58,10 @@
       }
 
       &:last-child {
+        color: $sunrise;
+        font-family: $title;
+        font-size: 57px;
+        padding-right: 0;
         transition-delay: 1s;
       }
     }
@@ -159,7 +159,9 @@
       font-family: $title;
       font-weight: 100;
       display: inline-block;
-      padding-right: 7px;
+      position: relative;
+      left: -5px;
+      transform: scale(1.03), rotate(-1deg);
     }
 
     .spacer {
@@ -265,6 +267,16 @@
 
     .intro {
       left: -30px;
+      width: calc(100vw + 60px);
+
+      span {
+        font-size: 22px;
+
+        &:last-child {
+          font-size: 28px;
+          padding-right: 18px;
+        }
+      }
     }
 
     .title {
@@ -280,6 +292,20 @@
       font-size: 65px;
       line-height: 75px;
       margin-bottom: 25px;
+    }
+
+    .inner {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .roles {
+      display: flex;
+      padding-top: 100px;
+      padding-bottom: 25px;
+      position: relative;
+      top: 0;
+      left: 0;
     }
   }
 }
