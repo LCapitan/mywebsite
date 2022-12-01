@@ -124,9 +124,16 @@
       gap: 35px;
 
       .moon {
-        top: -400px;
+        position: absolute;
+        top: auto;
+        bottom: -20px;
         left: 50%;
         width: 100%;
+
+        svg {
+          width: 100%;
+          height: auto;
+        }
       }
 
       .arrow {
@@ -149,7 +156,13 @@
         flex-direction: column;
         gap: 15px;
         text-align: center;
-        padding-top: 45px;
+        padding-top: 65px;
+
+        span {
+          &:first-child {
+            display: none;
+          }
+        }
       }
     }
   }
@@ -157,10 +170,6 @@
   @include sm-max {
     .inner {
       padding: 50px 0;
-
-      .moon {
-        top: -250px;
-      }
 
       .title {
         width: 100%;
