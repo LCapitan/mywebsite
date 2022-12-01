@@ -63,6 +63,7 @@ export function Home() {
         parallaxRef.current.style.height = `0px`;
         titleRef.current.style.paddingBottom = `0px`;
       }
+      console.log("canceled");
     }
 
     return () => cancelAnimationFrame(animationId);

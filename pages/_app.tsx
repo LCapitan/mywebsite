@@ -1,28 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
 import "../styles/globals.scss";
 import type { AppProps } from "next/app";
 import UIContextProvider from "../src/providers/UIContextProvider";
-import { useInView } from "react-intersection-observer";
-import { Header } from "../src/components";
 import { DefaultSeo } from "next-seo";
 import Head from "next/head";
-import Footer from "../src/components/Footer/Footer";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const [isInView, setIsInView] = useState(false);
-  const containerRef = useRef(null);
-
-  const { ref, inView, entry } = useInView({
-    /* Optional options */
-    threshold: 0.85,
-  });
-
-  useEffect(() => {
-    if (inView) {
-      setIsInView(!isInView);
-    }
-  }, [inView, isInView]);
-
   return (
     <UIContextProvider>
       <Head>
@@ -45,11 +27,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           ],
         }}
       />
-      <Header isInView={inView} />
       <Component {...pageProps} />
-      <div ref={ref}>
-        <Footer />
-      </div>
     </UIContextProvider>
   );
 }
