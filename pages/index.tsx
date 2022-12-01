@@ -2,7 +2,8 @@ import React from "react";
 import type { NextPage } from "next";
 import { NextSeo } from "next-seo";
 
-import Footer from "../src/components/Footer/Footer";
+import SmoothScroll from "../src/components/SmoothScroll/SmoothScroll";
+import Section from "../src/components/SmoothScroll/Section";
 import { Home, About, Capabilities, Featured } from "../src/containers/index";
 
 const Homepage: NextPage = () => {
@@ -27,10 +28,20 @@ const Homepage: NextPage = () => {
       />
 
       <main className="container">
-        <Home />
-        <About />
-        <Capabilities />
-        <Featured />
+        <SmoothScroll>
+          <Section>
+            <Home />
+          </Section>
+          <Section>
+            <About />
+          </Section>
+          <Section>
+            <Capabilities />
+          </Section>
+          <Section>
+            <Featured />
+          </Section>
+        </SmoothScroll>
       </main>
     </>
   );
