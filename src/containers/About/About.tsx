@@ -12,6 +12,7 @@ interface AboutProps {}
 
 const About = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const topRef = useRef<HTMLDivElement>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
   const parallaxRef = useRef<HTMLDivElement>(null);
@@ -37,6 +38,12 @@ const About = () => {
     threshold: 0,
     rootMargin: "100px 0px 0px 0px",
   });
+
+  useEffect(() => {
+    if (width <= 576) {
+      setIsMobile(!isMobile);
+    }
+  }, []);
 
   useEffect(() => {
     const topRect = topRef?.current?.getBoundingClientRect() as DOMRect;
@@ -153,7 +160,7 @@ const About = () => {
         </div>
       </div>
       <div className={styles.rip} ref={parallaxRef}>
-        <WorkBg full />
+        {isMobile ? <WorkBg full dark /> : <WorkBg full />}
       </div>
       <div className={styles.endRef} ref={bottomRef}></div>
     </div>

@@ -44,6 +44,12 @@
           display: none;
         }
       }
+
+      @include sm-max {
+        a {
+          color: $white;
+        }
+      }
     }
   }
 
