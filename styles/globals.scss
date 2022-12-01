@@ -15,6 +15,10 @@ body {
 html {
   background-color: $white;
   scroll-behavior: smooth;
+
+  @include sm-max {
+    background-color: darken($forest, 20%);
+  }
 }
 
 .stars {

@@ -385,6 +385,7 @@
 
   @include sm-max {
     .content {
+      color: $white;
       font-size: 18px;
       line-height: 33px;
       padding: 50px 0;

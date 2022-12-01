@@ -282,6 +282,7 @@
     padding-top: 100px;
 
     .title {
+      color: $white;
       font-size: 65px;
       line-height: 75px;
       margin-bottom: 25px;
@@ -299,6 +300,10 @@
       position: relative;
       top: 0;
       left: 0;
+
+      span {
+        color: $white;
+      }
     }
   }
 }
