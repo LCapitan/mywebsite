@@ -21,7 +21,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     if (inView) {
       setIsInView(!isInView);
     }
-  });
+  }, [inView, isInView]);
 
   return (
     <UIContextProvider>
