@@ -18,6 +18,18 @@ const Featured = () => {
   const itemRef4 = useRef(null);
   const itemRef5 = useRef(null);
 
+  let width: number;
+
+  const windowSize = () => {
+    if (typeof window !== "undefined") {
+      width = window.innerWidth;
+      return {
+        width,
+      };
+    }
+  };
+  windowSize();
+
   useIntersectionObserver({
     refs: [itemRef1, itemRef2, itemRef3, itemRef4, itemRef5],
     callback: ({
