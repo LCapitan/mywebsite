@@ -16,6 +16,18 @@ const About = () => {
   const bottomRef = useRef<HTMLDivElement>(null);
   const parallaxRef = useRef<HTMLDivElement>(null);
 
+  let width: number;
+
+  const windowSize = () => {
+    if (typeof window !== "undefined") {
+      width = window.innerWidth;
+      return {
+        width,
+      };
+    }
+  };
+  windowSize();
+
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
@@ -51,7 +63,7 @@ const About = () => {
       animationId = requestAnimationFrame(animate);
     };
 
-    if (inView) {
+    if (inView && width >= 992) {
       animate();
     } else {
       animationId = 0;

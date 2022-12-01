@@ -16,6 +16,18 @@ export function Home() {
   const parallaxRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
 
+  let width: number;
+
+  const windowSize = () => {
+    if (typeof window !== "undefined") {
+      width = window.innerWidth;
+      return {
+        width,
+      };
+    }
+  };
+  windowSize();
+
   const { ref, inView, entry } = useInView({
     /* Optional options */
     threshold: 0,
@@ -24,7 +36,6 @@ export function Home() {
   useEffect(() => {
     setIsLoaded(!isLoaded);
     setIsInView(!isInView);
-    console.log(isLoaded);
   }, []);
 
   useEffect(() => {
@@ -54,7 +65,7 @@ export function Home() {
       animationId = requestAnimationFrame(animate);
     };
 
-    if (inView) {
+    if (inView && width >= 992) {
       animate();
     } else {
       animationId = 0;
