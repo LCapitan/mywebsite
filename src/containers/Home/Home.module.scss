@@ -5,153 +5,296 @@
   min-height: 100vh;
   display: flex;
   align-items: center;
+  // align-items: flex-end;
   justify-content: flex-start;
+  padding: 0 50px;
+  padding-bottom: 0;
   position: relative;
+  transition: 0.5s ease;
   width: 100%;
 
-  @include lg-max {
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
+  .homeRef {
+    background: transparent;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 1px;
   }
 
-  @include sm-max {
-    padding-top: 0;
-    min-height: none;
+  .intro {
+    position: absolute;
+    top: 0;
+    left: -50px;
+    opacity: 1;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999;
+    transition: 1.5s ease;
+
+    .content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 999;
+    }
+
+    span {
+      color: $white;
+      display: inline-block;
+      font-size: 47px;
+      opacity: 0;
+      padding-right: 15px;
+      position: relative;
+      top: 50px;
+      transition: 1s ease;
+
+      &:first-child {
+        font-family: $title;
+        font-size: 57px;
+        padding-right: 18px;
+        transition-delay: 0.5s;
+      }
+
+      &:nth-child(2) {
+        transition-delay: 0.75s;
+      }
+
+      &:last-child {
+        transition-delay: 1s;
+      }
+    }
+
+    .dark {
+      background: darken($forest, 15%);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 99;
+    }
+
+    .mid {
+      background: $sunrise;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      // transition: 1s ease-in-out;
+      z-index: 99;
+    }
+
+    .light {
+      background: $white;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 999;
+      // transition: 1s ease-in-out;
+    }
+
+    &.loaded {
+      // opacity: 0;
+      height: 0;
+      transition-delay: 3s;
+
+      span {
+        opacity: 1;
+        top: 0;
+      }
+
+      .mid {
+        animation: bgRise 1s linear 2s forwards;
+      }
+
+      .light {
+        animation: bgRise2 1s linear 2.15s forwards;
+      }
+    }
+  }
+
+  .inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
   }
 
   .content {
-    max-width: 500px;
-    position: relative;
-    z-index: 5;
+    font-weight: 300;
+    flex: 1;
+    max-width: 330px;
+    padding-right: 50px;
+  }
 
-    .logo {
-      display: none;
-      margin: 0 auto 15px;
-      width: 55px;
+  .title {
+    color: $forest;
+    font-family: $copy;
+    font-size: 185px;
+    font-weight: 300;
+    line-height: 195px;
+    margin-bottom: 75px;
+    width: 100%;
 
-      :global {
-        svg {
-          fill: $mustard;
-        }
+    span {
+      display: block;
+      opacity: 0;
+      padding-bottom: 0;
+      position: relative;
+      top: 100px;
+      transition: 1s ease;
+
+      &:last-child {
+        text-align: right;
       }
+    }
 
-      @include lg-max {
-        display: block;
-        margin: 0 auto 35px;
-      }
+    strong {
+      color: $sunrise;
+      font-family: $title;
+      font-weight: 100;
+      display: inline-block;
+      padding-right: 7px;
+    }
+
+    .spacer {
+      display: block;
+      // height: 0;
+    }
+  }
+
+  .roles {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 65%;
+    transition: 1s ease;
+
+    span {
+      color: $forest;
+      font-family: $copy;
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 18px;
+      text-transform: uppercase;
+      opacity: 0.5;
+    }
+  }
+
+  &.isInView {
+    .roles {
+      opacity: 1;
+      top: 37%;
+      transition-delay: 5s;
     }
 
     .title {
-      font-size: 95px;
-      color: $white;
-      font-family: $title;
-      line-height: 1;
-      margin: 0;
+      span {
+        opacity: 1;
+        top: 0;
 
-      @include lg-max {
-        text-align: center;
-        margin: 0 0 30px;
-      }
+        &:first-child {
+          transition-delay: 3.5s;
+        }
 
-      @include sm-max {
-        font-size: 65px;
-        margin: 0 0 20px;
-      }
-    }
-
-    .subtitle {
-      color: $white;
-      font-family: $title;
-      font-size: 18px;
-      font-weight: $light;
-      line-height: 32px;
-
-      @include lg-max {
-        text-align: center;
-        margin: 0 0 30px;
-      }
-    }
-
-    .actions {
-      display: flex;
-      gap: 15px;
-      margin-top: 45px;
-
-      @include lg-max {
-        justify-content: center;
-      }
-
-      @include sm-max {
-        justify-content: center;
-        flex-direction: column;
-      }
-    }
-  }
-
-  .pageBg {
-    position: fixed;
-    top: 50%;
-    right: 5%;
-    transform: translateY(-50%);
-    width: 1000px;
-    z-index: 1;
-    opacity: .5;
-
-    :global {
-      svg {
-        fill: lighten($mirage, 4%);
-      }
-    }
-
-    @include lg-max {
-      right: auto;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%) rotate(45deg);
-      width: 200%;
-
-      :global {
-        svg {
-          fill: lighten($mirage, 4%);
+        &:last-child {
+          transition-delay: 3.75s;
         }
       }
     }
   }
 
-  .pageHero {
-    animation: astro infinite 7s ease;
-    position: absolute;
-    top: 50%;
-    right: -10%;
-    transform: translateY(-50%);
-    width: 73%;
-    z-index: 3;
+  @include vp-max(1300) {
+    .roles {
+      left: 80%;
+    }
+  }
 
-    &.desktop {
-      display: block;
+  @include vp-max(1140) {
+    .title {
+      font-size: 155px;
+      line-height: 165px;
     }
 
-    &.mobile {
-      display: none;
+    .roles {
+      left: 75%;
+    }
+  }
+
+  @include lg-max {
+    .title {
+      span {
+        &:last-child {
+          text-align: left;
+        }
+      }
     }
 
-    @include lg-max {
+    .roles {
       display: none;
+    }
+  }
+
+  @include vp-max(900) {
+    align-items: flex-start;
+    padding-top: 100px;
+
+    .title {
+      font-size: 115px;
+      line-height: 125px;
+    }
+  }
+
+  @include md-max {
+    padding: 100px 0 0;
+    .title {
+      font-size: 95px;
+      line-height: 105px;
+    }
+  }
+
+  @include sm-max {
+    padding-top: 150px;
+
+    .title {
+      font-size: 65px;
+      line-height: 75px;
     }
   }
 }
 
-@keyframes astro {
+@keyframes bgRise {
   0% {
-    top: 45%;
+    top: 100%;
   }
 
-  50% {
-    top: 52%;
+  35% {
+    top: 100px;
   }
 
   100% {
-    top: 45%;
+    top: 0;
+  }
+}
+
+@keyframes bgRise2 {
+  0% {
+    top: 100%;
+  }
+
+  45% {
+    top: 130px;
+  }
+
+  100% {
+    top: 0;
   }
 }

@@ -1,9 +1,19 @@
 const Arrow = () => {
   return (
-    <svg width="45" height="20" viewBox="0 0 45 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M10 1L2 10L10 19M2.5 10H44.5" stroke="black" strokeWidth="2" />
+    <svg
+      width="113"
+      height="114"
+      viewBox="0 0 113 114"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M112 1.5L1 112.5M1 112.5V1.5M1 112.5H112"
+        stroke="#515546"
+        strokeWidth="2"
+      />
     </svg>
-  )
-}
+  );
+};
 
 export default Arrow;

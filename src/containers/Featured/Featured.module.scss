@@ -1,0 +1,65 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/breakpoints.scss";
+
+.featured {
+  margin: 0;
+  padding: 0 50px 200px 50px;
+  position: relative;
+  z-index: 2;
+
+  &:after {
+    background: #f4f1ea;
+    content: "";
+    display: block;
+    position: absolute;
+    top: -300px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150%;
+    height: calc(100% + 300px);
+    z-index: -1;
+  }
+
+  .title {
+    font-family: $copy;
+    font-size: 130px;
+    font-weight: 300;
+    margin: 0 0 75px 150px;
+    padding-top: 100px;
+
+    strong {
+      color: $sunrise;
+      font-family: $title;
+      font-weight: 100;
+      display: inline-block;
+      padding-right: 7px;
+    }
+  }
+
+  .workList {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      opacity: 0;
+      position: relative;
+      transform: translateY(75px);
+      transition: 1s ease;
+      z-index: 1;
+
+      &:nth-child(3) {
+        padding-left: 15vw;
+      }
+
+      &:nth-child(5) {
+        position: relative;
+        top: 100px;
+      }
+    }
+  }
+}

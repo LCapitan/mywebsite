@@ -2,22 +2,50 @@
 @import "../../../styles/breakpoints.scss";
 
 .header {
-  padding: 0 50px;
+  padding: 0 100px;
   position: fixed;
   top: 50px;
   width: 100%;
-  z-index: 99;
+  z-index: 999;
 
   @include md-max {
     padding: 0 40px;
+  }
+
+  .navigation {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+
+    li {
+      a {
+        color: $forest;
+        font-family: $copy;
+        font-size: 13px;
+        font-weight: $light;
+        text-decoration: underline;
+        text-transform: uppercase;
+        opacity: 0.5;
+        transition: 0.25s ease;
+
+        &:hover,
+        &:focus {
+          opacity: 1;
+        }
+      }
+    }
   }
 
   .logo {
     position: fixed;
     top: 50px;
     left: 40px;
-    width: 60px;
-    transition: .25s ease;
+    width: 35px;
+    transition: 0.25s ease;
 
     :global {
       svg {
@@ -27,7 +55,6 @@
 
     &:hover,
     &:focus {
-
       :global {
         svg {
           fill: $mustard;
@@ -41,17 +68,6 @@
     }
   }
 
-  .social {
-    position: fixed;
-    bottom: 50px;
-    right: 50px;
-    z-index: 15;
-
-    @include lg-max {
-      display: none;
-    }
-  }
-
   .menuToggle {
     position: fixed;
     top: 70px;
@@ -61,6 +77,20 @@
     @include lg-max {
       top: 60px;
       right: 15px;
+    }
+  }
+
+  .mobile {
+    display: none;
+  }
+
+  &.light {
+    .navigation {
+      li {
+        a {
+          color: $white;
+        }
+      }
     }
   }
 }
