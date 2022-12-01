@@ -25,7 +25,7 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
   // 4.
   useEffect(() => {
     setBodyHeight();
-  }, [windowSize.height]);
+  }, [windowSize?.height]);
 
   const setBodyHeight = () => {
     const contRect =
