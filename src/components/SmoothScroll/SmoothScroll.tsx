@@ -62,7 +62,7 @@ export default function SmoothScroll({ children, workRef }: SmoothScrollProps) {
   const smoothScrollingHandler = () => {
     data.current = window.scrollY;
     data.previous += (data.current - data.previous) * data.ease;
-    data.rounded = Math.round(data.previous * 100) / 100;
+    // data.rounded = Math.round(data.previous * 100) / 100;
 
     if (scrollingContainerRef.current != null && viewMin >= 992) {
       scrollingContainerRef.current.style.transform = `translateY(-${data.previous}px)`;
@@ -71,7 +71,7 @@ export default function SmoothScroll({ children, workRef }: SmoothScrollProps) {
   };
 
   return (
-    <div className={styles.parent}>
+    <div id="scroller" className={styles.parent}>
       <div ref={scrollingContainerRef}>{children}</div>
     </div>
   );

@@ -30,7 +30,7 @@ const Featured = () => {
         </h2>
         <div className={styles.content}>
           <ul className={styles.workList}>
-            <li ref={itemRef1}>
+            <li>
               <WorkCard
                 small
                 imgSrc="https://res.cloudinary.com/austinmel/image/upload/v1669783240/my%20site/buns.jpg"
@@ -40,7 +40,7 @@ const Featured = () => {
                 tags={["illustration", "javascript", "ui/ux", "html", "sass"]}
               />
             </li>
-            <li ref={itemRef2}>
+            <li>
               <WorkCard
                 imgSrc="https://res.cloudinary.com/austinmel/image/upload/v1669776821/my%20site/upitt.jpg"
                 imgAlt="a photo of upitt celebrating at a college game"
@@ -49,7 +49,7 @@ const Featured = () => {
                 tags={["javascript", "ui/ux", "html", "sass"]}
               />
             </li>
-            <li ref={itemRef3}>
+            <li>
               <WorkCard
                 imgSrc="https://res.cloudinary.com/austinmel/image/upload/v1659499300/c_h_qigysb.jpg"
                 imgAlt="my artwork"
@@ -58,7 +58,7 @@ const Featured = () => {
                 tags={["illustration", "procreate", "drawing"]}
               />
             </li>
-            <li ref={itemRef5}>
+            <li>
               <WorkCard
                 imgSrc="https://res.cloudinary.com/austinmel/image/upload/v1656677596/Cover_cwto4r.png"
                 imgAlt="nifty's logo"
@@ -74,7 +74,7 @@ const Featured = () => {
                 ]}
               />
             </li>
-            <li ref={itemRef4}>
+            <li>
               <WorkCard
                 small
                 imgSrc="https://res.cloudinary.com/austinmel/image/upload/v1656677312/curry_nrh65v.jpg"

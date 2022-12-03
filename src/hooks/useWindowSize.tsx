@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import smoothScrolllHandler from "../components/SmoothScroll/SmoothScroll";
 
 export default function useWindowSize() {
   const getSize = () => {

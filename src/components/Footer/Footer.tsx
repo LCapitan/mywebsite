@@ -40,7 +40,7 @@ export default function Footer() {
 
     const calculateScroll = () => {
       if (inView && parallaxRef.current != null && width >= 1300) {
-        const percentage = ((window.scrollY / totalHeight) * 190).toFixed(2);
+        const percentage = ((window.scrollY / totalHeight) * 50).toFixed(2);
         parallaxRef.current.style.transform = ` translateY(-${percentage}px)`;
       } else {
         if (parallaxRef != null && parallaxRef.current != null) {
