@@ -56,7 +56,7 @@ const About = () => {
 
     const calculateScroll = () => {
       if (inView && parallaxRef.current != null) {
-        const percentage = ((window.scrollY / totalHeight) * 200).toFixed(2);
+        const percentage = ((window.scrollY / totalHeight) * 150).toFixed(2);
         parallaxRef.current.style.transform = `translateY(-${percentage}px)`;
       } else {
         if (parallaxRef.current != null) {
