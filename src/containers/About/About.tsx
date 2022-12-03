@@ -5,6 +5,7 @@ import cx from "classnames";
 
 import { useInView } from "react-intersection-observer";
 import { WorkBg, Button } from "../../components";
+import { Capabilities } from "../Capabilities";
 
 import styles from "./About.module.scss";
 
@@ -36,7 +37,6 @@ const About = () => {
   const { ref, inView, entry } = useInView({
     /* Optional options */
     threshold: 0,
-    rootMargin: "100px 0px 0px 0px",
   });
 
   useEffect(() => {
@@ -55,12 +55,12 @@ const About = () => {
     let animationId: number;
 
     const calculateScroll = () => {
-      if (inView && parallaxRef != null && parallaxRef.current != null) {
-        const percentage = ((window.scrollY / totalHeight) * 10).toFixed(2);
-        parallaxRef.current.style.transform = ` translate(-50%, ${percentage}%)`;
+      if (inView && parallaxRef.current != null) {
+        const percentage = ((window.scrollY / totalHeight) * 200).toFixed(2);
+        parallaxRef.current.style.transform = `translateY(-${percentage}px)`;
       } else {
-        if (parallaxRef != null && parallaxRef.current != null) {
-          parallaxRef.current.style.transform = `translate(-50%, 70px)`;
+        if (parallaxRef.current != null) {
+          parallaxRef.current.style.transform = `translateY(0)`;
         }
       }
     };
@@ -76,7 +76,7 @@ const About = () => {
       animationId = 0;
       cancelAnimationFrame(animationId);
       if (parallaxRef != null && parallaxRef.current != null) {
-        parallaxRef.current.style.transform = `translate(-50%, 70px)`;
+        parallaxRef.current.style.transform = `translateY(0)`;
       }
     }
 
@@ -84,10 +84,10 @@ const About = () => {
   });
 
   return (
-    <div className={cx(styles.about, inView && styles.inView)}>
+    <div className={cx(styles.about, inView && styles.inView)} ref={ref}>
       <div className={styles.topRef} ref={topRef}></div>
       <div className={styles.inner}>
-        <div className={cx(styles.content, inView && styles.inView)} ref={ref}>
+        <div className={cx(styles.content, inView && styles.inView)}>
           I&#39;m austin. I design and build interfaces for mobile & web that
           are unconventional, yet functional and visually pleasing.
         </div>
@@ -162,6 +162,7 @@ const About = () => {
       <div className={styles.rip} ref={parallaxRef}>
         {isMobile ? <WorkBg full dark /> : <WorkBg full />}
       </div>
+      <Capabilities />
       <div className={styles.endRef} ref={bottomRef}></div>
     </div>
   );
