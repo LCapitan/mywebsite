@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import Link from "next/link";
 import { useInView } from "react-intersection-observer";
 
-import { HomeBg, Arrow } from "../Icons";
+import { Moon, Arrow } from "../Icons";
 import { Button } from "../Button";
 
 import styles from "./Footer.module.scss";
@@ -39,12 +39,12 @@ export default function Footer() {
     let animationId: number;
 
     const calculateScroll = () => {
-      if (inView && parallaxRef != null && parallaxRef.current != null) {
-        const percentage = ((window.scrollY / totalHeight) * 100).toFixed(2);
-        parallaxRef.current.style.transform = ` translate(-50%, ${percentage}px)`;
+      if (inView && parallaxRef.current != null && width >= 1300) {
+        const percentage = ((window.scrollY / totalHeight) * 190).toFixed(2);
+        parallaxRef.current.style.transform = ` translateY(-${percentage}px)`;
       } else {
         if (parallaxRef != null && parallaxRef.current != null) {
-          parallaxRef.current.style.transform = `translate(-50%, 0)`;
+          parallaxRef.current.style.transform = `translateY(0)`;
         }
       }
     };
@@ -56,11 +56,12 @@ export default function Footer() {
 
     if (inView && width >= 992) {
       animate();
+      console.log(inView);
     } else {
       animationId = 0;
       cancelAnimationFrame(animationId);
       if (parallaxRef != null && parallaxRef.current != null) {
-        parallaxRef.current.style.transform = `translate(-50%, 0)`;
+        parallaxRef.current.style.transform = `translateY(0)`;
       }
     }
 
@@ -84,11 +85,11 @@ export default function Footer() {
             <Button label="discuss project" />
           </div>
           <div className={styles.copyright}>
-            <span>&copy;2023 Austin Melendez, All Rights Reserved</span>
+            <span>&copy;2023 Austin Melendez</span>
             <span>2023 Portfolio</span>
           </div>
           <div className={styles.moon} ref={parallaxRef}>
-            <HomeBg />
+            <Moon />
           </div>
         </div>
       </div>

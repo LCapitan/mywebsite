@@ -18,41 +18,6 @@ const Featured = () => {
   const itemRef4 = useRef(null);
   const itemRef5 = useRef(null);
 
-  let width: number;
-
-  const windowSize = () => {
-    if (typeof window !== "undefined") {
-      width = window.innerWidth;
-      return {
-        width,
-      };
-    }
-  };
-  windowSize();
-
-  useIntersectionObserver({
-    refs: [itemRef1, itemRef2, itemRef3, itemRef4, itemRef5],
-    callback: ({
-      isIntersecting,
-      target,
-    }: {
-      isIntersecting: boolean;
-      target: any;
-    }) => {
-      const item = target;
-
-      if (isIntersecting) {
-        target.style.opacity = "1";
-        target.style.transform = "translateY(-20px)";
-      } else {
-        target.style.transform = "translateY(75px)";
-      }
-    },
-    options: {
-      threshold: [0],
-    },
-  });
-
   return (
     <div id="work" className={styles.featured}>
       <div className={styles.topRef} ref={topRef}></div>

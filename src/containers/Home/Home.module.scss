@@ -2,7 +2,7 @@
 @import "../../../styles/breakpoints.scss";
 
 .home {
-  min-height: 100vh;
+  min-height: 101vh;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -126,52 +126,60 @@
   }
 
   .title {
-    color: $forest;
-    font-family: $copy;
-    font-size: 185px;
-    font-weight: 300;
-    line-height: 195px;
-    margin-bottom: 75px;
+    display: flex;
+    flex-direction: column;
     width: 100%;
 
     span {
       display: block;
       opacity: 0;
-      padding-bottom: 0;
+      padding-bottom: 15px;
       position: relative;
-      top: 100px;
-      transition: 1s ease;
+      transform: translateY(150px);
+      transition: ease;
+
+      &:first-child {
+        svg {
+          width: 754px;
+          height: auto;
+        }
+      }
 
       &:last-child {
         text-align: right;
+
+        svg {
+          width: 816px;
+          height: auto;
+        }
       }
     }
 
     strong {
       color: $sunrise;
-      font-family: $title;
-      font-weight: 100;
-      display: inline-block;
-      position: relative;
-      left: -5px;
-      transform: scale(1.03), rotate(-1deg);
+      font-weight: 300;
     }
 
     .spacer {
       display: block;
-      // height: 0;
+      transition: height ease;
     }
   }
 
   .roles {
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    opacity: 0;
+    gap: 100px;
     position: absolute;
-    top: 50%;
-    left: 65%;
-    transition: 1s ease;
+    top: 36%;
+    right: 100px;
+
+    .rolesItem {
+      opacity: 0;
+      display: flex;
+      flex-direction: column;
+      transform: translateY(100px);
+    }
 
     span {
       color: $forest;
@@ -186,42 +194,61 @@
 
   &.isInView {
     .roles {
-      opacity: 1;
-      top: 37%;
-      transition-delay: 5s;
+      .rolesItem {
+        animation: titleAppear 1s ease 5s forwards;
+
+        &:last-child {
+          animation: titleAppear 1s ease 5.25s forwards;
+        }
+      }
     }
 
     .title {
       span {
-        opacity: 1;
-        top: 0;
-
         &:first-child {
-          transition-delay: 3.5s;
+          animation: titleAppear 1s ease 3.5s forwards;
         }
 
         &:last-child {
-          transition-delay: 3.75s;
+          animation: titleAppear 1s ease 3.75s forwards;
+        }
+      }
+    }
+  }
+
+  @include vp-max(1440) {
+    .title {
+      span {
+        &:first-child {
+          svg {
+            width: 60%;
+          }
+        }
+        &:last-child {
+          svg {
+            width: 67%;
+          }
         }
       }
     }
   }
 
   @include vp-max(1300) {
+    .title {
+      span {
+        padding-bottom: 15px;
+      }
+    }
+
     .roles {
-      left: 80%;
+      display: none;
     }
   }
 
   @include vp-max(1140) {
-    .title {
-      font-size: 155px;
-      line-height: 165px;
-    }
-
-    .roles {
-      left: 75%;
-    }
+    // .roles {
+    //   left: 75%;
+    // }
   }
 
   @include lg-max {
@@ -235,10 +262,6 @@
         }
       }
     }
-
-    .roles {
-      display: none;
-    }
   }
 
   @include vp-max(900) {
@@ -246,8 +269,23 @@
     padding-top: 100px;
 
     .title {
-      font-size: 115px;
-      line-height: 125px;
+      margin-top: 50px;
+      margin-bottom: 75px;
+
+      span {
+        padding-bottom: 5px;
+
+        &:first-child {
+          svg {
+            width: 90%;
+          }
+        }
+        &:last-child {
+          svg {
+            width: 100%;
+          }
+        }
+      }
 
       .spacer {
         display: none;
@@ -271,35 +309,54 @@
         }
       }
     }
-
-    .title {
-      font-size: 95px;
-      line-height: 105px;
-    }
   }
 
   @include sm-max {
     padding-top: 100px;
-
-    .title {
-      color: $white;
-      font-size: 65px;
-      line-height: 75px;
-      margin-bottom: 25px;
-    }
 
     .inner {
       flex-direction: column;
       align-items: flex-start;
     }
 
+    .title {
+      span {
+        &:first-child {
+          svg {
+            path {
+              fill: $white;
+
+              &:nth-child(4) {
+                fill: $sunrise;
+              }
+            }
+          }
+        }
+        &:last-child {
+          svg {
+            width: 100%;
+
+            path {
+              fill: $white;
+            }
+          }
+        }
+      }
+
+      .spacer {
+        display: none;
+      }
+    }
+
     .roles {
       display: flex;
+      justify-content: space-between;
       padding-top: 50px;
       padding-bottom: 25px;
       position: relative;
       top: 0;
       left: 0;
+      width: 100%;
 
       span {
         color: $white;
@@ -314,7 +371,7 @@
   }
 
   35% {
-    top: 100px;
+    top: 50px;
   }
 
   100% {
@@ -327,11 +384,23 @@
     top: 100%;
   }
 
-  40% {
-    top: 120px;
+  30% {
+    top: 70px;
   }
 
   100% {
     top: 0;
+  }
+}
+
+@keyframes titleAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(150px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(50px);
   }
 }

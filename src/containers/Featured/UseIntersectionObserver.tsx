@@ -1,35 +1,33 @@
 import React, { useState, useEffect, useRef } from "react";
 
-interface UseIntersectionObserverProps {
+interface useIntersectionObserverProps {
   refs: any;
   callback: any;
   options: {};
 }
 
-export default function UseIntersectionObserver({
+export default function useIntersectionObserver({
   refs,
   callback,
   options = {
     threshold: [0.9, 1],
   },
-}: UseIntersectionObserverProps) {
+}: useIntersectionObserverProps) {
   // Setup our api here
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        callback({
-          isIntersecting: entry.isIntersecting,
-          target: entry.target,
-          observer,
-        });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      callback({
+        isIntersecting: entry.isIntersecting,
+        target: entry.target,
+        observer,
       });
-    }, options);
-
-    refs.forEach((ref: any) => {
-      observer.observe(ref.current);
     });
+  }, options);
 
-    // Cleanup when the component unmnounts
-    return () => observer.disconnect();
-  }, []);
+  refs.forEach((ref: any) => {
+    observer.observe(ref.current);
+  });
+
+  // Cleanup when the component unmnounts
+  return () => observer.disconnect();
 }

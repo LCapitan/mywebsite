@@ -16,10 +16,10 @@
 
   @include xl-max {
     margin: 0;
-    width: calc(50vw - 130px);
+    width: calc(50% - 130px);
 
     &.smaller {
-      width: calc(50vw - 130px);
+      width: calc(50% - 130px);
     }
   }
 
@@ -56,7 +56,7 @@
       display: inline-block;
       font-family: $copy;
       font-size: 32px;
-      font-weight: 400;
+      font-weight: 100;
       line-height: 55px;
       margin: 15px 0 0;
       padding: 8px 30px 12px;

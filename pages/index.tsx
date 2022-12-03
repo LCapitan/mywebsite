@@ -45,25 +45,14 @@ const Homepage: NextPage = () => {
 
       <Header />
       <SmoothScroll>
-        <Section>
-          <div className="container">
-            <Home />
-          </div>
+        <Section container>
+          <Home />
         </Section>
-        <Section>
-          <div className="container">
-            <About />
-          </div>
+        <Section container>
+          <About />
         </Section>
-        <Section>
-          <div className="container">
-            <Capabilities />
-          </div>
-        </Section>
-        <Section>
-          <div className="container">
-            <Featured />
-          </div>
+        <Section container>
+          <Featured />
         </Section>
         <Section>
           <Footer />

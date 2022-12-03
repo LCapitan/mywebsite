@@ -12,11 +12,11 @@
     content: "";
     display: block;
     position: absolute;
-    top: -300px;
+    top: 0px;
     left: 50%;
     transform: translateX(-50%);
     width: 150%;
-    height: calc(100% + 300px);
+    height: 100%;
     z-index: -1;
   }
 
@@ -32,7 +32,8 @@
       font-family: $title;
       font-weight: 100;
       display: inline-block;
-      padding-right: 7px;
+      position: relative;
+      left: -10px;
     }
   }
 
@@ -46,9 +47,8 @@
     padding: 0;
 
     li {
-      opacity: 0;
       position: relative;
-      transform: translateY(75px);
+      transform: translateY(20px);
       transition: 1s ease;
       z-index: 1;
 
@@ -58,7 +58,7 @@
 
       &:nth-child(5) {
         position: relative;
-        top: 100px;
+        margin-bottom: -100px;
       }
     }
   }
@@ -143,6 +143,7 @@
 
   @include md-max {
     padding: 100px 20px;
+
     &:after {
       top: -120px;
     }
@@ -156,7 +157,7 @@
   }
 
   @include sm-max {
-    padding: 50px 0;
+    padding: 50px 0 125px;
 
     &:after {
       background: #292c23;

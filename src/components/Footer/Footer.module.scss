@@ -2,13 +2,13 @@
 @import "../../../styles/breakpoints.scss";
 
 .footer {
-  min-height: 80vh;
+  overflow: hidden;
   padding-top: 0;
   position: relative;
   z-index: 99;
 
   &:after {
-    background: $forest;
+    background: darken($forest, 15%);
     content: "";
     display: block;
     position: absolute;
@@ -16,7 +16,7 @@
     left: 50%;
     transform: translateX(-50%);
     width: 150%;
-    height: 100%;
+    height: 150%;
     z-index: -1;
   }
 
@@ -36,31 +36,36 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    justify-content: center;
-    gap: 50px;
+    justify-content: space-between;
     overflow: hidden;
     padding: 100px 50px 50px;
     position: relative;
     width: 100%;
+    height: 100vh;
 
     .moon {
-      opacity: 0.25;
-      position: absolute;
-      top: -400px;
-      left: 50%;
-      transform: translate(-50%, 0);
-      width: 75%;
+      opacity: 0.6;
+      position: relative;
+      top: 0;
+      left: 0;
+      transform: translateY(0);
+      transition: 1s ease-out;
+      width: 100%;
       z-index: 1;
 
       svg {
-        position: relative;
-        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 75%;
+        height: auto;
+        transform: translate(-50%, 110%);
       }
     }
 
     .arrow {
       position: absolute;
-      top: 200px;
+      top: 100px;
       left: 0;
 
       svg {
@@ -111,22 +116,26 @@
   @include xl-max {
     .inner {
       .moon {
-        top: -200px;
+        // top: -200px;
       }
     }
   }
 
   @include md-max {
     min-height: 0;
+    height: auto;
 
     .inner {
       padding: 100px 0 50px;
       gap: 35px;
+      height: auto;
 
       .moon {
+        opacity: 0.25;
         position: absolute;
         top: auto;
-        bottom: -20px;
+        bottom: -30%;
+        transform: translate(-50%, -50%);
         left: 50%;
         width: 100%;
 
@@ -168,6 +177,19 @@
   }
 
   @include sm-max {
+    &:after {
+      background: darken($forest, 20%);
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 150%;
+      height: 100%;
+      z-index: -1;
+    }
+
     .inner {
       padding: 50px 0;
 

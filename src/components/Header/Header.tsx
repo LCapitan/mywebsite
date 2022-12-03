@@ -1,6 +1,6 @@
 // import { useMediaQuery } from "@mantine/hooks";
 import Link from "next/link";
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import UIContext from "../../context/UIContext";
 import cx from "classnames";
 import { Logo } from "../Icons";
@@ -22,7 +22,7 @@ export default function Header({ isInView }: HeaderProps) {
             <Link href="/">austin</Link>
           </li>
           <li>
-            <Link href="#work">work</Link>
+            <Link href="/">work</Link>
           </li>
           <li>
             <Link href="/blog">blog</Link>

@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import cx from "classnames";
-
 import { useInView } from "react-intersection-observer";
+
+import { Creative, Developer } from "../../components/Icons/HeroTitle";
 
 import styles from "./Home.module.scss";
 
@@ -51,11 +52,9 @@ export function Home() {
       if (parallaxRef.current != null && titleRef.current != null) {
         const percentage = ((window.scrollY / totalHeight) * 30).toFixed(2);
         parallaxRef.current.style.height = `${percentage}px`;
-        titleRef.current.style.paddingBottom = `${percentage}px`;
       } else {
         if (parallaxRef.current != null && titleRef.current != null) {
           parallaxRef.current.style.height = `0px`;
-          titleRef.current.style.paddingBottom = `0px`;
         }
       }
     };
@@ -72,7 +71,6 @@ export function Home() {
       cancelAnimationFrame(animationId);
       if (parallaxRef.current != null && titleRef.current != null) {
         parallaxRef.current.style.height = `0px`;
-        titleRef.current.style.paddingBottom = `0px`;
       }
       console.log("canceled");
     }
@@ -101,16 +99,25 @@ export function Home() {
       <div className={styles.inner} ref={titleRef}>
         <h1 className={styles.title}>
           <span>
-            cre<strong>a</strong>tive
+            <Creative />
+            <span className="srOnly">creative</span>
           </span>
           <div className={styles.spacer} ref={parallaxRef}></div>
-          <span>developer</span>
+          <span>
+            <Developer />
+            <span className="srOnly">developer</span>
+          </span>
         </h1>
 
         <div className={styles.roles}>
-          <span>react developer</span>
-          <span>product designer</span>
-          <span>digital artist</span>
+          <div className={styles.rolesItem}>
+            <span>react developer</span>
+            <span>product designer</span>
+          </div>
+          <div className={styles.rolesItem}>
+            <span>digital artist</span>
+            <span>& illustrator</span>
+          </div>
         </div>
       </div>
       <div className={styles.bottomRef} ref={bottomRef}></div>
