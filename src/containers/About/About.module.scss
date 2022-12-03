@@ -273,10 +273,7 @@
     }
 
     .rip {
-      position: absolute;
-      bottom: -220px;
-      z-index: 1;
-
+      top: 52px;
       svg {
         height: auto;
       }
@@ -290,7 +287,7 @@
     .images {
       margin-bottom: 75px;
       top: 0;
-      transform: rotate(0) translateY(0);
+      transform: rotate(0deg) translateY(25px);
       width: 100%;
       min-height: 0;
       height: auto;
@@ -315,7 +312,7 @@
       }
 
       &.inView {
-        transform: rotate(0deg) translate(0, 15px);
+        transform: rotate(0deg) translate(0, 45px);
 
         .img {
           &:nth-child(2) {

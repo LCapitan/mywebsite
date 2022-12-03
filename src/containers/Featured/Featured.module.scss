@@ -146,6 +146,7 @@
 
     &:after {
       top: -120px;
+      height: calc(100% + 120px);
     }
 
     .title {
@@ -157,7 +158,7 @@
   }
 
   @include sm-max {
-    padding: 50px 0 125px;
+    padding: 50px 0 150px;
 
     &:after {
       background: #292c23;
