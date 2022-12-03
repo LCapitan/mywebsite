@@ -21,18 +21,18 @@ export default function Header({ isInView }: HeaderProps) {
           <li>
             <Link href="/">austin</Link>
           </li>
-          <li>
+          {/* <li>
             <Link href="/">work</Link>
           </li>
           <li>
             <Link href="/blog">blog</Link>
-          </li>
+          </li> */}
           <li>
-            <Link href="/">contact</Link>
+            <Link href="mailto:austinjamesmelendez@gmail.com">contact</Link>
           </li>
         </ul>
       </div>
-      <div className={styles.mobile}>
+      {/* <div className={styles.mobile}>
         <div className={styles.logo}>
           <Link href="/" passHref>
             <a>
@@ -44,7 +44,7 @@ export default function Header({ isInView }: HeaderProps) {
           <Hamburger />
         </div>
         <Menu />
-      </div>
+      </div> */}
     </header>
   );
 }
