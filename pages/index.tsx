@@ -14,7 +14,7 @@ const Homepage: NextPage = () => {
 
   const { ref, inView, entry } = useInView({
     /* Optional options */
-    threshold: 0.85,
+    threshold: 0,
   });
 
   useEffect(() => {
@@ -43,20 +43,18 @@ const Homepage: NextPage = () => {
         }}
       />
 
-      <Header />
+      <Header isInView={inView} />
       <SmoothScroll>
-        <Section container>
+        <div className="container">
           <Home />
-        </Section>
-        <Section container>
+        </div>
+        <div className="container">
           <About />
-        </Section>
-        <Section container>
+        </div>
+        <div className="container">
           <Featured />
-        </Section>
-        <Section>
-          <Footer />
-        </Section>
+        </div>
+        <Footer />
       </SmoothScroll>
     </>
   );
