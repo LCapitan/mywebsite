@@ -1,0 +1,384 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/breakpoints.scss";
+
+.intro {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding: 50px 100px 0;
+  position: relative;
+  width: 100%;
+
+  .topRef {
+    background: transparent;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 1px;
+  }
+
+  .endRef {
+    background: transparent;
+    position: relative;
+    width: 100%;
+    height: 1px;
+    z-index: 9999;
+  }
+
+  .rip {
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: translateY(0);
+    transition: transform ease;
+    width: 100vw;
+    z-index: 1;
+
+    svg {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      transform: translateY(-20%);
+      height: auto;
+    }
+  }
+
+  > .inner {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 5;
+  }
+
+  .content {
+    font-size: 24px;
+    font-weight: 100;
+    line-height: 43px;
+    opacity: 0;
+    padding-top: 200px;
+    position: relative;
+    transform: translateY(50px);
+    transition: 0.5s ease-out;
+    transition-delay: 0s;
+    width: 300px;
+
+    &.inView {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0.5s;
+    }
+  }
+
+  .images {
+    position: relative;
+    top: 0;
+    transform: rotate(-10deg) translateY(-175px);
+    transition: 1.25s ease;
+    transition-delay: 0s;
+    width: 55%;
+    min-height: 750px;
+
+    .img {
+      border-radius: 30px;
+      filter: grayscale(75%);
+      margin: 0;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: rotate(-5deg) translate(0, 0);
+      width: 450px;
+      height: 674px;
+      transition: 1s ease-out;
+
+      &:nth-child(2) {
+        transform: rotate(-5deg) translate(0, 0);
+        z-index: 2;
+      }
+
+      &:last-child {
+        transform: rotate(-5deg) translate(0, 0);
+        z-index: 3;
+      }
+
+      &:hover {
+        filter: grayscale(0%);
+      }
+    }
+
+    &.inView {
+      transform: rotate(0) translateY(-75px);
+
+      .img {
+        &:nth-child(2) {
+          transform: rotate(3deg) translate(95px, 75px);
+        }
+
+        &:last-child {
+          transform: rotate(10deg) translate(175px, 175px);
+        }
+      }
+    }
+
+    &:hover {
+      cursor: url(https://res.cloudinary.com/austinmel/image/upload/v1669893923/my%20site/view-cursor.svg)
+          50 50,
+        auto;
+    }
+
+    &.open {
+      display: flex;
+
+      .img {
+        &:first-child {
+          transform: rotate(-10deg) translate(-600px, 0px) scale(1);
+
+          &:hover {
+            transform: rotate(-9deg) translate(-590px, -10px) scale(1.03);
+          }
+        }
+
+        &:nth-child(2) {
+          transform: rotate(-3deg) translate(-150px, 0px) scale(1);
+          z-index: 2;
+
+          &:hover {
+            transform: rotate(-2deg) translate(-140px, 10px) scale(1.03);
+          }
+        }
+
+        &:last-child {
+          transform: rotate(12deg) translate(275px, 20px) scale(1);
+          z-index: 3;
+
+          &:hover {
+            transform: rotate(11deg) translate(265px, 10px) scale(1.03);
+          }
+        }
+      }
+
+      &:hover {
+        cursor: url(https://res.cloudinary.com/austinmel/image/upload/v1669894077/my%20site/close-cursor.svg)
+            50 50,
+          auto;
+      }
+    }
+  }
+
+  .desktop {
+    display: block;
+  }
+
+  .mobile {
+    display: none !important;
+  }
+
+  @include lg-max {
+    padding: 50px 20px 0;
+
+    .images {
+      position: relative;
+      top: 0;
+      transform: rotate(-10deg) translateY(-125px);
+      width: 55%;
+      min-height: 750px;
+
+      .img {
+        border-radius: 30px;
+        filter: grayscale(75%);
+        margin: 0;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: rotate(-5deg) translate(0, 0) scale(1);
+        width: 450px;
+        height: 674px;
+
+        &:nth-child(2) {
+          z-index: 2;
+        }
+
+        &:last-child {
+          z-index: 3;
+        }
+
+        &:hover {
+          filter: grayscale(0%);
+          transition: 1s ease;
+        }
+      }
+
+      &.inView {
+        transform: rotate(0deg) translateY(-75px);
+
+        .img {
+          &:nth-child(2) {
+            transform: rotate(3deg) translate(95px, 75px);
+          }
+
+          &:last-child {
+            transform: rotate(10deg) translate(175px, 175px);
+          }
+        }
+      }
+
+      &:hover {
+        cursor: url(https://res.cloudinary.com/austinmel/image/upload/v1669893923/my%20site/view-cursor.svg)
+            50 50,
+          auto;
+      }
+
+      &.open {
+        .img {
+          &:first-child {
+            transform: rotate(-5deg) translate(-500px, 75px) scale(1);
+
+            &:hover {
+              transform: rotate(-4deg) translate(-500px, 75px) scale(1.02);
+            }
+          }
+
+          &:nth-child(2) {
+            transform: rotate(3deg) translate(-175px, 75px) scale(1);
+
+            &:hover {
+              transform: rotate(2deg) translate(-195px, 75px) scale(1.02);
+            }
+          }
+
+          &:last-child {
+            transform: rotate(10deg) translate(175px, 175px) scale(1);
+
+            &:hover {
+              transform: rotate(9deg) translate(175px, 175px) scale(1.02);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @include md-max {
+    padding: 50px 0 0;
+    min-height: 0;
+
+    .inner {
+      flex-direction: column-reverse;
+    }
+
+    .rip {
+      top: 52px;
+      svg {
+        height: auto;
+      }
+    }
+
+    .content {
+      padding: 35px 20px;
+      width: 100%;
+    }
+
+    .images {
+      margin-bottom: 75px;
+      top: 0;
+      transform: rotate(0deg) translateY(25px);
+      width: 100%;
+      min-height: 0;
+      height: auto;
+
+      .img {
+        border-radius: 20px;
+        margin-top: 0;
+        position: relative;
+        transform: rotate(0deg) translate(0, 0) scale(1);
+        width: 80%;
+        height: auto;
+
+        &:nth-child(2) {
+          margin-top: -110%;
+          transform: rotate(3deg) translate(25px, 25px);
+        }
+
+        &:last-child {
+          margin-top: -110%;
+          transform: rotate(6deg) translate(50px, 50px);
+        }
+      }
+
+      &.inView {
+        transform: rotate(0deg) translate(0, 45px);
+
+        .img {
+          &:nth-child(2) {
+            transform: rotate(4deg) translate(35px, 35px);
+          }
+
+          &:last-child {
+            transform: rotate(8deg) translate(65px, 65px);
+          }
+        }
+      }
+
+      &.open {
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+
+        .img {
+          width: 100%;
+
+          &:first-child {
+            transform: rotate(0deg) translate(0, 65px) scale(1);
+
+            &:hover {
+              transform: rotate(0deg) translate(0, 65px) scale(1);
+            }
+          }
+
+          &:nth-child(2) {
+            margin-top: -25px;
+            transform: rotate(-3deg) translate(0, 35px) scale(1);
+            z-index: 2;
+
+            &:hover {
+              transform: rotate(-3deg) translate(0, 35px) scale(1);
+            }
+          }
+
+          &:last-child {
+            margin-top: -75px;
+            transform: rotate(0deg) translate(0, 65px) scale(1);
+            z-index: 3;
+
+            &:hover {
+              transform: rotate(0deg) translate(0, 65px) scale(1);
+            }
+          }
+        }
+      }
+    }
+
+    .desktop {
+      display: none !important;
+    }
+
+    .mobile {
+      display: block !important;
+    }
+  }
+
+  @include sm-max {
+    .content {
+      color: $white;
+      font-size: 18px;
+      line-height: 33px;
+      padding: 75px 0;
+    }
+  }
+}

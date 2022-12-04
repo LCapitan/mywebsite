@@ -2,48 +2,44 @@
 @import "../../../styles/breakpoints.scss";
 
 .wrapper {
-  border-radius: 15px;
-  box-shadow: 0px 10px 30px rgba(#000000, 0.5);
-  transform: rotate(-8deg);
-  margin: 45px 0;
-  transition: transform .5s ease;
+  border-radius: 45px;
+  // filter: grayscale(75%);
+  margin: 75px 0;
+  width: 50vw;
+  position: relative;
+  transition: 1s ease;
+  z-index: 5;
 
-  &:hover,
-  &:focus {
-    transform: rotate(6deg);
+  &.smaller {
+    width: 30vw;
+  }
+
+  @include xl-max {
+    margin: 0;
+    width: calc(50% - 130px);
+
+    &.smaller {
+      width: calc(50% - 130px);
+    }
   }
 
   @include lg-max {
-    transform: rotate(0deg);
-    margin: 0;
+    border-radius: 0;
+    margin: 15px 0;
+    width: 100%;
 
-    &:hover,
-    &:focus {
-      transform: rotate(0deg);
+    &.smaller {
+      width: 100%;
     }
   }
 }
 
 .workItem {
-  border-radius: 15px;
+  border-radius: 45px;
   overflow: hidden;
   position: relative;
-
-  &:after {
-    // background: linear-gradient(to top, black, transparent);
-    background: radial-gradient(circle at top center, transparent 30%, black);
-    border-radius: 15px;
-    content: '';
-    display: block;
-    opacity: 0.85;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 175%;
-    height: 175%;
-    z-index: 1;
-    transition: .25s ease;
-  }
+  transform: scale(1) rotate(0deg);
+  transition: 0.5s ease;
 
   .content {
     color: $white;
@@ -51,61 +47,39 @@
     position: absolute;
     bottom: 0;
     z-index: 2;
+    width: 100%;
 
     h2 {
-      color: $white;
-      font-family: $title;
-      font-size: 55px;
-      line-height: 55px;
-      margin: 0;
-      position: relative;
-      top: -30px;
-    }
-
-    .popUp {
+      background: $white;
+      border-radius: 100px;
+      color: $mirage;
+      display: inline-block;
       font-family: $copy;
-      font-size: 22px;
-      font-weight: 500;
-      line-height: 36px;
+      font-size: 32px;
+      font-weight: 100;
+      line-height: 55px;
+      margin: 15px 0 0;
+      padding: 8px 30px 12px;
       position: relative;
     }
 
     .tags {
       display: flex;
-      flex-wrap: wrap;
+      align-items: flex-start;
+      flex-direction: column-reverse;
       gap: 8px;
-      margin: 25px -5px 0;
+      margin: 25px 0 0;
 
       span {
-        background: rgba(black, 0.3);
-        -webkit-backdrop-filter: blur(10px);
-        backdrop-filter: blur(10px);
+        background: $white;
         border-radius: 100px;
         display: inline-block;
+        color: $mirage;
         font-size: 14px;
-        padding: 8px 20px;
-        transition: .35s ease-in-out;
-      }
-
-      @include sm-max {
-        display: none;
-      }
-    }
-
-    @include md-max {
-      h2 {
-        margin-bottom: 15px;
-      }
-
-      .popUp {
-        max-height: none;
-        opacity: 1;
-      }
-
-      .tags {
-        span {
-          background: rgba($malibu, 0.3);
-        }
+        font-weight: 200;
+        opacity: 0;
+        padding: 4px 15px;
+        transition: 0.5s ease-in-out;
       }
     }
   }
@@ -113,5 +87,63 @@
   &:hover,
   &:focus {
     cursor: pointer;
+    transform: scale(1.05) rotate(1deg);
+
+    .workItem {
+      &:after {
+        opacity: 1;
+      }
+    }
+
+    .content {
+      .tags {
+        span {
+          opacity: 1;
+
+          &:nth-child(2) {
+            transition-delay: 0.05s;
+          }
+
+          &:nth-child(3) {
+            transition-delay: 0.1s;
+          }
+
+          &:nth-child(4) {
+            transition-delay: 0.15s;
+          }
+
+          &:nth-child(5) {
+            transition-delay: 0.2s;
+          }
+
+          &:nth-child(6) {
+            transition-delay: 0.25s;
+          }
+        }
+      }
+    }
+  }
+
+  @include lg-max {
+    border-radius: 0px;
+
+    .content {
+      padding: 20px;
+
+      h2 {
+        font-size: 24px;
+        line-height: 38px;
+      }
+
+      .tags {
+        display: none;
+      }
+    }
+
+    &:hover,
+    &:focus {
+      cursor: pointer;
+      transform: scale(1) rotate(0deg);
+    }
   }
 }
