@@ -1,0 +1,134 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/breakpoints.scss";
+
+.capabilities {
+  display: flex;
+  margin: -100px 100px 0 200px;
+  padding: 150px 0;
+  position: relative;
+  width: 100%;
+
+  &:before {
+    background: rgba($mirage, 0.15);
+    content: "";
+    position: relative;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 1.5px;
+  }
+
+  &:after {
+    background: #f4f1ea;
+    content: "";
+    display: block;
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200%;
+    height: 100%;
+    z-index: -1;
+  }
+
+  .inner {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    position: relative;
+    z-index: 999;
+  }
+
+  h2 {
+    font-family: $copy;
+    font-size: 13px;
+    font-weight: 100;
+    opacity: 0.5;
+    text-transform: uppercase;
+    max-width: 200px;
+  }
+
+  .content {
+    font-size: 24px;
+    font-weight: 100;
+    line-height: 43px;
+
+    ul {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      max-width: 400px;
+    }
+  }
+
+  @include vp-max(1200) {
+    margin-top: -75px;
+  }
+
+  @include lg-max {
+    margin: -75px 50px 0 100px;
+    padding-bottom: 75px;
+  }
+
+  @include md-max {
+    margin: 0;
+    padding: 50px 20px;
+    top: 100px;
+
+    &:before {
+      width: calc(100% - 40px);
+    }
+
+    &:after {
+      display: none;
+    }
+
+    .inner {
+      gap: 45px;
+    }
+
+    .content {
+      ul {
+        justify-content: flex-start;
+        gap: 5px;
+        width: 100%;
+      }
+    }
+  }
+
+  @include sm-max {
+    margin: 0;
+    padding: 50px 0;
+    top: 100px;
+
+    &:before {
+      width: 100%;
+    }
+
+    &:after {
+      display: none;
+    }
+
+    .inner {
+      gap: 35px;
+    }
+
+    h2 {
+      color: $white;
+    }
+
+    .content {
+      color: $white;
+      font-size: 18px;
+      line-height: 33px;
+
+      ul {
+        width: 80%;
+      }
+    }
+  }
+}

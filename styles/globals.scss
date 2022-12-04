@@ -19,7 +19,7 @@ html {
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
-  opacity: .5;
+  opacity: 0.5;
   position: fixed;
   top: 0;
   left: 0;
@@ -38,10 +38,9 @@ html {
 
 .container {
   margin: 0 auto;
-  width: 83%;
-  max-width: 1300px;
-  padding: 0 40px;
-  overflow: hidden;
+  padding: 0 50px;
+  width: 100%;
+  max-width: 1440px;
 
   @include lg-max {
     width: 100%;

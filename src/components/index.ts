@@ -4,5 +4,6 @@ export * from "./Footer/Footer";
 export * from "./Header";
 export * from "./Icons";
 export * from "./Menu";
+export * from "./SmoothScroll";
 export * from "./VideoPlayer";
 export * from "./WorkCard";
