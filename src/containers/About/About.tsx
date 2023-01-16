@@ -69,7 +69,7 @@ const About = () => {
         </div>
         <div className={styles.actions}>
           <Button
-            url="https://res.cloudinary.com/austinmel/image/upload/v1657041221/Resume-AustinMelendez_r58cgg.pdf"
+            url="/Resume-Austin-Melendez.pdf"
             external
             label="view my resume"
           />
