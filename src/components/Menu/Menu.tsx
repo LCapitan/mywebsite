@@ -1,14 +1,14 @@
 import { useClickOutside } from "@mantine/hooks";
 import classnames from "classnames";
 import Link from "next/link";
-import React, { useContext } from 'react';
+import React, { useContext } from "react";
 import UIContext from "../../context/UIContext";
 import Hamburger from "../Header/HamburgerButton";
 import Image from "next/image";
 
 import { SocialMenu } from "../SocialMenu/SocialMenu";
 
-import styles from './Menu.module.scss'
+import styles from "./Menu.module.scss";
 
 export default function Menu() {
   const { menuOpen, setMenuOpen } = useContext(UIContext);
@@ -23,14 +23,16 @@ export default function Menu() {
             <Link href="/">home</Link>
           </li>
           <li onClick={() => setMenuOpen(false)}>
-            <Link href="/about" passHref>about</Link>
+            <Link href="/about" passHref>
+              about
+            </Link>
           </li>
           <li onClick={() => setMenuOpen(false)}>
             <Link href="/work">work</Link>
           </li>
-          <li onClick={() => setMenuOpen(false)}>
+          {/* <li onClick={() => setMenuOpen(false)}>
             <Link href="/blog">blog</Link>
-          </li>
+          </li> */}
           <li>
             <a href="mailto:austinjamesmelendez@gmail.com">contact</a>
           </li>
@@ -40,5 +42,5 @@ export default function Menu() {
         </div>
       </div>
     </nav>
-  )
-};
+  );
+}
