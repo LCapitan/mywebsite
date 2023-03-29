@@ -53,7 +53,7 @@ export function SocialMenu({ className }: SocialMenuProps) {
         </li>
         <li>
           <a
-            href="/Resume-Austin-Melendez.pdf"
+            href="https://res.cloudinary.com/austinmel/image/upload/v1680124127/Resume_Austin-Melendez_itijye.pdf"
             target="_blank"
             rel="noreferrer"
           >
