@@ -1,5 +1,6 @@
-@import "../../../styles/variables.scss";
-@import "../../../styles/breakpoints.scss";
+@use "sass:color";
+@use "../../../styles/variables.scss";
+@use "../../../styles/breakpoints.scss";
 
 .noContent {
   min-height: 100vh;
@@ -9,7 +10,7 @@
   position: relative;
   width: 100%;
 
-  @include md-max {
+  @include breakpoints.md-max {
     padding-top: 75px;
     align-items: center;
     flex-direction: column;
@@ -17,7 +18,7 @@
   }
 
   .content {
-    background: rgba(darken($mirage, 5%), .6);
+    background: rgba(color.adjust(variables.$mirage, $lightness: -5%), .6);
     backdrop-filter: blur(5px);
     border-radius: 20px;
     max-width: 500px;
@@ -31,13 +32,11 @@
       margin: 0 auto 15px;
       width: 55px;
 
-      :global {
-        svg {
-          fill: $mustard;
-        }
+      svg {
+        fill: variables.$mustard;
       }
 
-      @include sm-max {
+      @include breakpoints.sm-max {
         display: block;
         margin: 35px auto;
       }
@@ -45,13 +44,13 @@
 
     .title {
       font-size: 95px;
-      color: $white;
-      font-family: $title;
+      color: variables.$white;
+      font-family: variables.$title;
       line-height: 1;
       margin: 0;
       text-align: center;
 
-      @include lg-max {
+      @include breakpoints.lg-max {
         margin: 0 0 30px;
         font-size: 65px;
         text-align: center;
@@ -59,13 +58,13 @@
     }
 
     .subtitle {
-      color: $white;
-      font-family: $title;
+      color: variables.$white;
+      font-family: variables.$title;
       font-size: 18px;
-      font-weight: $light;
+      font-weight: variables.$light;
       line-height: 32px;
 
-      @include lg-max {
+      @include breakpoints.lg-max {
         text-align: center;
         margin: 0 0 30px;
       }
@@ -95,7 +94,7 @@
       display: none;
     }
 
-    @include sm-max {
+    @include breakpoints.sm-max {
       display: none;
     }
   }

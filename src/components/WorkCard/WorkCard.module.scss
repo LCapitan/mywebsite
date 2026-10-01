@@ -1,5 +1,5 @@
-@import "../../../styles/variables.scss";
-@import "../../../styles/breakpoints.scss";
+@use "../../../styles/variables.scss";
+@use "../../../styles/breakpoints.scss";
 
 .wrapper {
   border-radius: 15px;
@@ -13,7 +13,7 @@
     transform: rotate(6deg);
   }
 
-  @include lg-max {
+  @include breakpoints.lg-max {
     transform: rotate(0deg);
     margin: 0;
 
@@ -45,16 +45,25 @@
     transition: .25s ease;
   }
 
+  .image {
+    // Block-level so there's no inline baseline gap under the image.
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+  }
+
   .content {
-    color: $white;
+    color: variables.$white;
     padding: 30px;
     position: absolute;
     bottom: 0;
     z-index: 2;
 
     h2 {
-      color: $white;
-      font-family: $title;
+      color: variables.$white;
+      font-family: variables.$title;
       font-size: 55px;
       line-height: 55px;
       margin: 0;
@@ -63,7 +72,7 @@
     }
 
     .popUp {
-      font-family: $copy;
+      font-family: variables.$copy;
       font-size: 22px;
       font-weight: 500;
       line-height: 36px;
@@ -87,12 +96,12 @@
         transition: .35s ease-in-out;
       }
 
-      @include sm-max {
+      @include breakpoints.sm-max {
         display: none;
       }
     }
 
-    @include md-max {
+    @include breakpoints.md-max {
       h2 {
         margin-bottom: 15px;
       }
@@ -104,7 +113,7 @@
 
       .tags {
         span {
-          background: rgba($malibu, 0.3);
+          background: rgba(variables.$malibu, 0.3);
         }
       }
     }

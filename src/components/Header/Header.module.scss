@@ -1,5 +1,6 @@
-@import "../../../styles/variables.scss";
-@import "../../../styles/breakpoints.scss";
+@use "sass:color";
+@use "../../../styles/variables.scss";
+@use "../../../styles/breakpoints.scss";
 
 .header {
   padding: 0 50px;
@@ -8,7 +9,7 @@
   width: 100%;
   z-index: 99;
 
-  @include md-max {
+  @include breakpoints.md-max {
     padding: 0 40px;
   }
 
@@ -19,23 +20,19 @@
     width: 60px;
     transition: .25s ease;
 
-    :global {
-      svg {
-        fill: lighten($mirage, 40%);
-      }
+    svg {
+      fill: color.adjust(variables.$mirage, $lightness: 40%);
     }
 
     &:hover,
     &:focus {
 
-      :global {
-        svg {
-          fill: $mustard;
-        }
+      svg {
+        fill: variables.$mustard;
       }
     }
 
-    @include lg-max {
+    @include breakpoints.lg-max {
       opacity: 0;
       visibility: hidden;
     }
@@ -47,7 +44,7 @@
     right: 50px;
     z-index: 15;
 
-    @include lg-max {
+    @include breakpoints.lg-max {
       display: none;
     }
   }
@@ -58,7 +55,7 @@
     right: 30px;
     z-index: 15;
 
-    @include lg-max {
+    @include breakpoints.lg-max {
       top: 60px;
       right: 15px;
     }

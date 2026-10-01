@@ -1,155 +1,43 @@
-import React from "react";
-import Link from "next/link";
-import Image from "next/image";
-
 import { Button, WorkCard } from "../../components";
-import { WorkBg } from '../../components/Icons/';
+import { WorkBg } from "../../components/Icons";
+import { CONTACT_EMAIL } from "../../config";
+import { workItems } from "../../data/work";
 
-import styles from './WorkContent.module.scss';
+import styles from "./WorkContent.module.scss";
 
 const WorkContent = () => {
   return (
     <div className={styles.work}>
-      <div className='stars'></div>
+      <div className="stars"></div>
       <div className={styles.pageBg}>
         <WorkBg />
       </div>
       <div className={styles.pageHeading}>
         <h1 className={styles.pageTitle}>work</h1>
-        <h2 className={styles.subtitle}>Here are a few of the most recent sites I&#39;ve worked on or built. (Feel free to reach out to view other various projects).</h2>
+        <h2 className={styles.subtitle}>
+          Here are a few of the most recent sites I&#39;ve worked on or built.
+          (Feel free to reach out to view other various projects).
+        </h2>
         <div className={styles.actions}>
-          <Button url="mailto:austinjamesmelendez@gmail.com" label="let's chat" />
+          <Button url={`mailto:${CONTACT_EMAIL}`} label="let's chat" />
         </div>
       </div>
 
       <ul className={styles.workList}>
-        <li>
-          <WorkCard
-            imgSrc="https://res.cloudinary.com/austinmel/image/upload/v1659500787/work-card-img-honsbuns_pok2zk.jpg"
-            imgAlt="an illustration of beautiful bunny"
-            cardLink="https://www.honsbuns.com/"
-            title="hon's buns"
-            content="the baddest bunny-themed NFTs on the scene"
-            tags={[
-              'ui/ux',
-              'web3',
-              'crypto',
-              'branding',
-              'strategy',
-              'illustration',
-              'accessibility',
-            ]}
-          />
-        </li>
-        <li>
-          <WorkCard
-            imgSrc="https://res.cloudinary.com/austinmel/image/upload/v1656677596/Cover_cwto4r.png"
-            imgAlt="nifty's logo"
-            cardLink="https://niftys.com/"
-            title="nifty's"
-            content="the nft marketplace"
-            tags={[
-              'ui/ux',
-              'web3',
-              'crypto',
-              'branding',
-              'strategy',
-              'illustration',
-              'product design',
-              'react',
-              'next.js'
-            ]}
-          />
-        </li>
-        <li>
-          <WorkCard
-            imgSrc="https://res.cloudinary.com/austinmel/image/upload/v1659500096/emily-wills_obzorr.jpg"
-            imgAlt="a screenshot of emily's website"
-            cardLink="https://emilywills.com/"
-            title="emily wills, XD"
-            content="a custom portfolio website for emily wills"
-            tags={[
-              'ui/ux',
-              'branding',
-              'react',
-              'typescript',
-              'next.js',
-              'sass'
-            ]}
-          />
-        </li>
-        <li>
-          <WorkCard
-            imgSrc="https://res.cloudinary.com/austinmel/image/upload/v1656677342/pittt_etmsrj.png"
-            imgAlt="a photo of upitt celebrating at a college game"
-            cardLink="https://www.pitt.edu/"
-            title="upitt"
-            content="the university of pittsburgh"
-            tags={[
-              'ui/ux',
-              'website redesign',
-              'HTML5',
-              'CSS3',
-              'javascript'
-            ]}
-          />
-        </li>
-        <li>
-          <WorkCard
-            imgSrc="https://res.cloudinary.com/austinmel/image/upload/v1656677312/curry_nrh65v.jpg"
-            imgAlt="curry college"
-            cardLink="https://www.curry.edu/"
-            title="curry college"
-            content=""
-            tags={[
-              'ui/ux',
-              'website redesign',
-              'HTML5',
-              'CSS3',
-              'javascript',
-              'ingeniux'
-            ]}
-          />
-        </li>
-        <li>
-          <WorkCard
-            imgSrc="https://res.cloudinary.com/austinmel/image/upload/v1656677311/tukhs_gcph7g.jpg"
-            imgAlt="tukhs"
-            cardLink="https://www.kansashealthsystem.com/"
-            title="tukhs"
-            content="the university of kansas health system"
-            tags={[
-              'ui/ux',
-              'website redesign',
-              'HTML5',
-              'CSS3',
-              'javascript',
-              'sitecore'
-            ]}
-          />
-        </li>
-        <li>
-          <WorkCard
-            imgSrc="https://res.cloudinary.com/austinmel/image/upload/v1659499300/c_h_qigysb.jpg"
-            imgAlt="my artwork"
-            cardLink="https://www.instagram.com/shucksworthy/"
-            title="my artwork"
-            content="take a peek if you want to see some of my artwork"
-            tags={[
-              'illustration',
-              'procreate',
-              'drawing',
-              'hobby'
-            ]}
-          />
-        </li>
+        {workItems
+          .filter((item) => !item.hidden)
+          .map((item) => (
+            <li key={item.title}>
+              <WorkCard {...item} />
+            </li>
+          ))}
       </ul>
 
       <div className={styles.actions}>
-        <Button url="mailto:austinjamesmelendez@gmail.com" label="let's chat" />
+        <Button url={`mailto:${CONTACT_EMAIL}`} label="let's chat" />
       </div>
     </div>
   );
-}
+};
 
 export default WorkContent;

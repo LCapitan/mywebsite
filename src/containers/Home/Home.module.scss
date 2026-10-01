@@ -1,5 +1,6 @@
-@import "../../../styles/variables.scss";
-@import "../../../styles/breakpoints.scss";
+@use "sass:color";
+@use "../../../styles/variables.scss";
+@use "../../../styles/breakpoints.scss";
 
 .home {
   min-height: 100vh;
@@ -9,13 +10,13 @@
   position: relative;
   width: 100%;
 
-  @include lg-max {
+  @include breakpoints.lg-max {
     align-items: center;
     flex-direction: column;
     justify-content: center;
   }
 
-  @include sm-max {
+  @include breakpoints.sm-max {
     padding-top: 0;
     min-height: none;
   }
@@ -30,13 +31,11 @@
       margin: 0 auto 15px;
       width: 55px;
 
-      :global {
-        svg {
-          fill: $mustard;
-        }
+      svg {
+        fill: variables.$mustard;
       }
 
-      @include lg-max {
+      @include breakpoints.lg-max {
         display: block;
         margin: 0 auto 35px;
       }
@@ -44,30 +43,30 @@
 
     .title {
       font-size: 95px;
-      color: $white;
-      font-family: $title;
+      color: variables.$white;
+      font-family: variables.$title;
       line-height: 1;
       margin: 0;
 
-      @include lg-max {
+      @include breakpoints.lg-max {
         text-align: center;
         margin: 0 0 30px;
       }
 
-      @include sm-max {
+      @include breakpoints.sm-max {
         font-size: 65px;
         margin: 0 0 20px;
       }
     }
 
     .subtitle {
-      color: $white;
-      font-family: $title;
+      color: variables.$white;
+      font-family: variables.$title;
       font-size: 18px;
-      font-weight: $light;
+      font-weight: variables.$light;
       line-height: 32px;
 
-      @include lg-max {
+      @include breakpoints.lg-max {
         text-align: center;
         margin: 0 0 30px;
       }
@@ -78,11 +77,11 @@
       gap: 15px;
       margin-top: 45px;
 
-      @include lg-max {
+      @include breakpoints.lg-max {
         justify-content: center;
       }
 
-      @include sm-max {
+      @include breakpoints.sm-max {
         justify-content: center;
         flex-direction: column;
       }
@@ -98,23 +97,19 @@
     z-index: 1;
     opacity: .5;
 
-    :global {
-      svg {
-        fill: lighten($mirage, 4%);
-      }
+    svg {
+      fill: color.adjust(variables.$mirage, $lightness: 4%);
     }
 
-    @include lg-max {
+    @include breakpoints.lg-max {
       right: auto;
       top: 0;
       left: 50%;
       transform: translateX(-50%) rotate(45deg);
       width: 200%;
 
-      :global {
-        svg {
-          fill: lighten($mirage, 4%);
-        }
+      svg {
+        fill: color.adjust(variables.$mirage, $lightness: 4%);
       }
     }
   }
@@ -136,7 +131,7 @@
       display: none;
     }
 
-    @include lg-max {
+    @include breakpoints.lg-max {
       display: none;
     }
   }

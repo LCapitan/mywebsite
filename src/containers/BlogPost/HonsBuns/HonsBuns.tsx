@@ -1,9 +1,6 @@
-import React from "react";
-import Link from "next/link";
-import Image from "next/image";
-
 // Components
-import { Button } from '../../../../src/components'
+import { Button } from "../../../components";
+import { PostHero } from "../PostHero";
 
 // Styles
 import styles from '../BlogPost.module.scss';
@@ -12,21 +9,10 @@ const HonsBuns = () => {
   return (
     <div className={styles.blogPost}>
       <div className='stars'></div>
-      <div className={styles.heroImg}>
-        <div className={styles.desktop}>
-          <Image src="https://res.cloudinary.com/austinmel/image/upload/v1656997872/rabbit-hole_apyznw.jpg"
-            layout="responsive"
-            alt="me hiking in Zion National Park"
-            width="1902"
-            height="1047" />
-        </div>
-        <div className={styles.mobile}>
-          <Image src="https://res.cloudinary.com/austinmel/image/upload/v1656997872/rabbit-hole_apyznw.jpg"
-            layout="fill"
-            alt="me hiking in Zion National Park"
-            objectFit="cover" />
-        </div>
-      </div>
+      <PostHero
+        src="https://res.cloudinary.com/austinmel/image/upload/v1656997872/rabbit-hole_apyznw.jpg"
+        alt="a Hon's Buns illustration"
+      />
       <div className={styles.wrapper}>
         <div className={styles.pageHeading}>
           <h1 className={styles.pageTitle}>hon&#39;s buns</h1>

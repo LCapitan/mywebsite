@@ -1,17 +1,16 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,700|Ubuntu:300,700);
+@use "breakpoints.scss";
+@use "variables.scss";
 
-@import "./styles/variables.scss";
-@import "./styles/breakpoints.scss";
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: $copy;
+  font-family: variables.$copy;
 }
 
 html {
-  background-color: $mirage;
+  background-color: variables.$mirage;
 }
 
 .stars {
@@ -28,9 +27,9 @@ html {
 }
 
 .quote {
-  color: $malibu;
+  color: variables.$malibu;
   display: block;
-  font-family: $title;
+  font-family: variables.$title;
   font-size: 22px;
   line-height: 32px;
   margin-bottom: 45px;
@@ -43,7 +42,7 @@ html {
   padding: 0 40px;
   overflow: hidden;
 
-  @include lg-max {
+  @include breakpoints.lg-max {
     width: 100%;
     padding: 0 30px;
   }
@@ -65,23 +64,23 @@ button {
 }
 
 p {
-  color: $malibu;
-  font-family: $copy;
+  color: variables.$malibu;
+  font-family: variables.$copy;
   font-size: 18px;
   line-height: 28px;
 }
 
 a {
-  color: $aquamarine;
-  font-weight: $bold;
+  color: variables.$aquamarine;
+  font-weight: variables.$bold;
   text-decoration: none;
 
   &.link {
-    color: $white;
+    color: variables.$white;
 
     &:hover,
     &:focus {
-      color: $aquamarine;
+      color: variables.$aquamarine;
     }
   }
 }

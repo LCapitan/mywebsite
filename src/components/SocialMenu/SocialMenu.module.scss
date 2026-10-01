@@ -1,5 +1,6 @@
-@import "../../../styles/variables.scss";
-@import "../../../styles/breakpoints.scss";
+@use "sass:color";
+@use "../../../styles/variables.scss";
+@use "../../../styles/breakpoints.scss";
 
 .socialMenu {
   position: relative;
@@ -19,7 +20,7 @@
         transition: .25s ease;
 
         svg {
-          fill: lighten($mirage, 40%);
+          fill: color.adjust(variables.$mirage, $lightness: 40%);
           width: 25px;
           height: auto;
         }
@@ -28,7 +29,7 @@
         &:focus {
 
           svg {
-            fill: $malibu;
+            fill: variables.$malibu;
           }
         }
       }
@@ -45,14 +46,6 @@
         a {
           svg {
             width: 28px;
-          }
-        }
-      }
-
-      &:nth-child(4) {
-        a {
-          svg {
-            width: 30px;
           }
         }
       }

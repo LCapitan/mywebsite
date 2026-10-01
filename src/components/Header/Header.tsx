@@ -1,24 +1,18 @@
-// import { useMediaQuery } from "@mantine/hooks";
 import Link from "next/link";
-import React, { useContext } from 'react';
-import UIContext from "../../context/UIContext";
-import { Logo } from '../Icons'
+import { Logo } from "../Icons";
 import Menu from "../Menu/Menu";
-import Hamburger from './HamburgerButton';
+import Hamburger from "./HamburgerButton";
 
 import { SocialMenu } from "../SocialMenu/SocialMenu";
 
-import styles from './Header.module.scss'
+import styles from "./Header.module.scss";
 
 const Header = () => {
-
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
-        <Link href="/" passHref>
-          <a>
-            <Logo />
-          </a>
+        <Link href="/" aria-label="Home">
+          <Logo />
         </Link>
       </div>
       <div className={styles.menuToggle}>
@@ -29,7 +23,7 @@ const Header = () => {
       </div>
       <Menu />
     </header>
-  )
-}
+  );
+};
 
 export default Header;

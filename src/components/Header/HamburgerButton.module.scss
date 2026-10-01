@@ -1,5 +1,6 @@
-@import "../../../styles/variables.scss";
-@import "../../../styles/breakpoints.scss";
+@use "sass:color";
+@use "../../../styles/variables.scss";
+@use "../../../styles/breakpoints.scss";
 
 .hamburger {
   position: relative;
@@ -7,10 +8,11 @@
   right: 0;
   width: 75px;
   height: 29px;
+  padding: 0;
   transform: rotate(-90deg);
 
   &:before {
-    background: lighten($mirage, 40%);
+    background: color.adjust(variables.$mirage, $lightness: 40%);
     border-radius: 10px;
     content: "";
     display: block;
@@ -25,7 +27,7 @@
   }
 
   &:after {
-    background: lighten($mirage, 40%);
+    background: color.adjust(variables.$mirage, $lightness: 40%);
     border-radius: 10px;
     content: "";
     display: block;
@@ -39,8 +41,8 @@
     transform-origin: center right;
   }
 
-  >div {
-    background: lighten($mirage, 40%);
+  .bar {
+    background: color.adjust(variables.$mirage, $lightness: 40%);
     border-radius: 10px;
     display: block;
     position: absolute;
@@ -57,27 +59,27 @@
     cursor: pointer;
 
     &:before {
-      background: $aquamarine;
+      background: variables.$aquamarine;
       right: 5px;
       width: 40px;
     }
 
     &:after {
-      background: $aquamarine;
+      background: variables.$aquamarine;
       right: 10px;
       width: 50px;
     }
 
-    >div {
-      background: $aquamarine;
+    .bar {
+      background: variables.$aquamarine;
       width: 75px;
     }
 
-    @include sm-max {
+    @include breakpoints.sm-max {
 
       &:before,
       &:after,
-      >div {
+      .bar {
         right: 0;
         width: 38px;
       }
@@ -85,7 +87,7 @@
   }
 
   &.open {
-    >div {
+    .bar {
       width: 0;
     }
 

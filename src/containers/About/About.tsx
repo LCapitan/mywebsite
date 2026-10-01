@@ -1,9 +1,12 @@
-import React from "react";
-import Link from "next/link";
 import Image from "next/image";
 
 import styles from "./About.module.scss";
 import { Button } from "../../components";
+import { RESUME_URL, SHOW_BLOG } from "../../config";
+
+const heroSrc =
+  "https://res.cloudinary.com/austinmel/image/upload/v1790868914/me_ytr3vn.jpg";
+const heroAlt = "me hiking in Arizona";
 
 const About = () => {
   return (
@@ -12,68 +15,57 @@ const About = () => {
       <div className={styles.heroImg}>
         <div className={styles.desktop}>
           <Image
-            src="https://res.cloudinary.com/austinmel/image/upload/v1657006160/kolob_hrmy1j.jpg"
-            layout="responsive"
-            alt="me hiking in Zion National Park"
-            width="1902"
-            height="1047"
+            src={heroSrc}
+            alt={heroAlt}
+            width={1902}
+            height={1047}
+            sizes="(max-width: 1300px) 100vw, 1300px"
+            style={{ width: "100%", height: "auto" }}
+            preload
           />
         </div>
         <div className={styles.mobile}>
           <Image
-            src="https://res.cloudinary.com/austinmel/image/upload/v1657006160/kolob_hrmy1j.jpg"
-            layout="fill"
-            alt="me hiking in Zion National Park"
-            objectFit="cover"
+            src={heroSrc}
+            alt={heroAlt}
+            fill
+            sizes="100vw"
+            style={{ objectFit: "cover" }}
           />
         </div>
       </div>
       <div className={styles.wrapper}>
         <div className={styles.pageHeading}>
-          <h1 className={styles.pageTitle}>about me</h1>
+          <h1 className={styles.pageTitle}>Hey, I&#39;m Austin.</h1>
         </div>
         <div className={styles.content}>
           <div className={styles.paragraph}>
-            Hi! My name&#39;s Austin. I&#39;m a passionate artist, designer, and
-            developer, born and raised in Hartford, Connecticut, and currently
-            living in Richmond, Virginia.
+            I&#39;m a Senior Front-End Developer currently living in Miami, Florida and working at MERGE, where I spend my days building digital experiences for a wide range of clients.
           </div>
 
           <div className={styles.paragraph}>
-            I&#39;ve been drawing for as long as I can remember and have always
-            loved anything that revolves around creativity. I began basking in
-            the glory of Adobe&#39;s Creative Suite when I was in sixth grade,
-            and haven&#39;t stopped since. Once I had the technical skills of
-            art and design down, I was looking for another fun, creative
-            challenge and stumbled into the world of development.
+            My path into development actually started with art and design. I&#39;ve been drawing for as long as I can remember and started teaching myself Adobe&#39;s Creative Suite when I was in sixth grade. That eventually led me into graphic and product design, and somewhere along the way I discovered development. I loved that it gave me another way to create—just with a different set of tools.
           </div>
 
           <div className={styles.paragraph}>
-            I currently work for an NFT Marketplace called{" "}
-            <a href="https://niftys.com/" rel="noreferrer" target="_blank">
-              Nifty&#39;s
-            </a>{" "}
-            as a Product Designer and React Developer and I&#39;m loving it.
-            Prior to that, I was an Experience Developer at Primacy, a digital
-            marketing agency based out of WPB. And just before that, I worked
-            for Travelers Insurance as a Graphic Designer on their creative
-            services team.
+            That background still has a big influence on how I work today. I care just as much about how an experience looks and feels as I do about how it&#39;s built. I enjoy taking a design, understanding the thinking behind it, and figuring out how to bring it to life in a way that&#39;s thoughtful, performant, and built to last.
           </div>
 
           <div className={styles.paragraph}>
-            Aside from drawing, designing, and developing, I like to spend my
-            free time writing and listening to music, hiking, hanging with my
-            pup - Fiz - or just hanging out waiting for some type of inspiration
-            to strike (plus the not-so-occasional binge watching).
+            Over the years I&#39;ve worked across design, product, and development, and today my focus is primarily front-end engineering. I&#39;m always looking for interesting problems to solve, new things to learn, and opportunities to build something I&#39;m proud of.
+          </div>
+
+          <div className={styles.paragraph}>
+            Outside of work, I&#39;m usually finding another creative rabbit hole to fall into. I love watches, leathercraft, music, hiking, traveling, and generally making things with my hands whenever I get the chance.
           </div>
         </div>
         <div className={styles.actions}>
-          <Button
-            url="/Resume-Austin-Melendez.pdf"
-            external
-            label="view my resume"
-          />
-          <Button url="/blog" label="more about me" secondary />
+          <Button url={RESUME_URL} external label="view my resume" />
+          {SHOW_BLOG ? (
+            <Button url="/blog" label="more about me" secondary />
+          ) : (
+            <Button url="/work" label="see my work" secondary />
+          )}
         </div>
       </div>
     </div>

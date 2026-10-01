@@ -1,49 +1,44 @@
-import Image from 'next/image';
-import Link from 'next/link';
+import Image from "next/image";
 
-import { useRef, useState, useEffect } from "react";
-import { VideoPlayer } from '../index';
+import type { WorkItem } from "../../data/work";
 
-import styles from './WorkCard.module.scss';
+import styles from "./WorkCard.module.scss";
 
-interface WorkCardProps {
-  imgSrc: string,
-  imgAlt?: string,
-  cardLink: string,
-  title: string,
-  content: string,
-  tags: Array<string>
-}
+type WorkCardProps = Omit<WorkItem, "hidden">;
 
-const WorkCard: React.FC<WorkCardProps> = ({
+const WorkCard = ({
   imgSrc,
   imgAlt,
   cardLink,
   title,
   content,
-  tags
-}) => {
-
+  tags,
+}: WorkCardProps) => {
   return (
     <a href={cardLink} target="_blank" rel="noreferrer">
       <div className={styles.wrapper}>
         <div className={styles.workItem}>
-          <Image src={imgSrc} width='1200' height='1200' alt={imgAlt} layout='responsive' />
+          <Image
+            src={imgSrc}
+            width={1200}
+            height={1200}
+            alt={imgAlt}
+            sizes="(max-width: 992px) 100vw, 50vw"
+            className={styles.image}
+          />
           <div className={styles.content}>
             <h2>{title}</h2>
-            <div className={styles.popUp}>
-              {content}
-            </div>
+            <div className={styles.popUp}>{content}</div>
             <div className={styles.tags}>
-              {tags && tags.map((tag, i) =>
-                <span key={tags[i]}>{tag}</span>
-              )}
+              {tags.map((tag) => (
+                <span key={tag}>{tag}</span>
+              ))}
             </div>
           </div>
         </div>
       </div>
     </a>
-  )
-}
+  );
+};
 
 export default WorkCard;

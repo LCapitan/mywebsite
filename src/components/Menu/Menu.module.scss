@@ -1,5 +1,6 @@
-@import "../../../styles/variables.scss";
-@import "../../../styles/breakpoints.scss";
+@use "sass:color";
+@use "../../../styles/variables.scss";
+@use "../../../styles/breakpoints.scss";
 
 .container {
   display: flex;
@@ -11,17 +12,17 @@
   padding: 0 50px;
   width: 100%;
 
-  @include md-max {
+  @include breakpoints.md-max {
     padding: 0 50px;
   }
 
-  @include sm-max {
+  @include breakpoints.sm-max {
     padding: 0 40px;
   }
 }
 
 .menu {
-  background: lighten($mirage, 5%);
+  background: color.adjust(variables.$mirage, $lightness: 5%);
   border-radius: 20px 0 0 20px;
   box-shadow: 0px 10px 30px rgba(#000000, 0.5);
   display: flex;
@@ -39,7 +40,7 @@
     left: 60%;
   }
 
-  @include lg-max {
+  @include breakpoints.lg-max {
     border-radius: 15px 0 0 15px;
     width: 95%;
 
@@ -58,9 +59,9 @@
       text-align: center;
 
       a {
-        color: $white;
+        color: variables.$white;
         display: inline-block;
-        font-family: $title;
+        font-family: variables.$title;
         font-size: 55px;
         font-weight: 600;
         opacity: 0.25;
@@ -74,7 +75,7 @@
           opacity: 1;
         }
 
-        @include md-max {
+        @include breakpoints.md-max {
           font-size: 45px;
           opacity: 1;
           padding: 5px 0;
@@ -92,24 +93,22 @@
   .social {
     display: none;
 
-    :global {
-      ul {
-        flex-direction: row;
-        gap: 20px;
+    ul {
+      flex-direction: row;
+      gap: 20px;
 
-        li {
-          a {
-            opacity: 1;
+      li {
+        a {
+          opacity: 1;
 
-            svg {
-              fill: lighten($mirage, 40%);
-            }
+          svg {
+            fill: color.adjust(variables.$mirage, $lightness: 40%);
           }
         }
       }
     }
 
-    @include lg-max {
+    @include breakpoints.lg-max {
       display: block;
     }
   }

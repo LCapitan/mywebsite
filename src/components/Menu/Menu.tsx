@@ -1,10 +1,8 @@
-import { useClickOutside } from "@mantine/hooks";
 import classnames from "classnames";
 import Link from "next/link";
-import React, { useContext } from "react";
+import { useContext } from "react";
 import UIContext from "../../context/UIContext";
-import Hamburger from "../Header/HamburgerButton";
-import Image from "next/image";
+import { CONTACT_EMAIL, SHOW_BLOG } from "../../config";
 
 import { SocialMenu } from "../SocialMenu/SocialMenu";
 
@@ -12,29 +10,42 @@ import styles from "./Menu.module.scss";
 
 export default function Menu() {
   const { menuOpen, setMenuOpen } = useContext(UIContext);
-  const ref = useClickOutside(() => setMenuOpen(false));
-  // console.log(menuOpen);
+  const closeMenu = () => setMenuOpen(false);
 
   return (
-    <nav className={classnames(styles.menu, menuOpen && styles.open)}>
+    <nav
+      id="site-menu"
+      className={classnames(styles.menu, menuOpen && styles.open)}
+      inert={!menuOpen}
+    >
       <div className={styles.container}>
         <ul className={styles.nav}>
-          <li onClick={() => setMenuOpen(false)}>
-            <Link href="/">home</Link>
+          <li>
+            <Link href="/" onClick={closeMenu}>
+              home
+            </Link>
           </li>
-          <li onClick={() => setMenuOpen(false)}>
-            <Link href="/about" passHref>
+          <li>
+            <Link href="/about" onClick={closeMenu}>
               about
             </Link>
           </li>
-          <li onClick={() => setMenuOpen(false)}>
-            <Link href="/work">work</Link>
-          </li>
-          {/* <li onClick={() => setMenuOpen(false)}>
-            <Link href="/blog">blog</Link>
-          </li> */}
           <li>
-            <a href="mailto:austinjamesmelendez@gmail.com">contact</a>
+            <Link href="/work" onClick={closeMenu}>
+              work
+            </Link>
+          </li>
+          {SHOW_BLOG && (
+            <li>
+              <Link href="/blog" onClick={closeMenu}>
+                blog
+              </Link>
+            </li>
+          )}
+          <li>
+            <a href={`mailto:${CONTACT_EMAIL}`} onClick={closeMenu}>
+              contact
+            </a>
           </li>
         </ul>
         <div className={styles.social}>

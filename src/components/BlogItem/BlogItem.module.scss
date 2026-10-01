@@ -1,22 +1,26 @@
-@import "../../../styles/variables.scss";
-@import "../../../styles/breakpoints.scss";
+@use "sass:color";
+@use "../../../styles/variables.scss";
+@use "../../../styles/breakpoints.scss";
 
 .blogItem {
+  color: inherit;
+  display: block;
+  font-weight: inherit;
   border-radius: 20px;
   box-shadow: 0px 10px 30px rgba(#000000, 0.5);
   width: calc(33.333% - 35px);
   position: relative;
 
-  @include xl-max {
+  @include breakpoints.xl-max {
     width: calc(50% - 35px);
   }
 
-  @include md-max {
+  @include breakpoints.md-max {
     width: 100%;
   }
 
   >.inner {
-    background: lighten($mirage, 10%);
+    background: color.adjust(variables.$mirage, $lightness: 10%);
     border-radius: 15px;
     display: flex;
     flex-direction: column;
@@ -36,7 +40,7 @@
   }
 
   .details {
-    background: rgba($mirage, .75);
+    background: rgba(variables.$mirage, .75);
     backdrop-filter: blur(100px);
     border-radius: 12px;
     box-shadow: 0px 10px 30px rgba(#000000, 0.5);
@@ -51,14 +55,14 @@
   }
 
   .title {
-    color: $white;
+    color: variables.$white;
     font-size: 28px;
     line-height: 42px;
     margin: 0 0 10px;
   }
 
   .content {
-    color: $white;
+    color: variables.$white;
     font-size: 16px;
     line-height: 24px;
   }
@@ -69,12 +73,12 @@
 
   .featuredTag,
   .comingSoon {
-    background: rgba($mirage, .5);
+    background: rgba(variables.$mirage, .5);
     backdrop-filter: blur(5px);
     border-radius: 50px;
-    color: $white;
-    font-family: $copy;
-    font-weight: $bold;
+    color: variables.$white;
+    font-family: variables.$copy;
+    font-weight: variables.$bold;
     padding: 8px 15px;
     position: absolute;
     top: 20px;
@@ -86,7 +90,7 @@
     box-shadow: none;
     width: calc(66.666% - 35px);
 
-    @include xl-max {
+    @include breakpoints.xl-max {
       width: 100%;
     }
 
@@ -103,7 +107,7 @@
       font-size: 55px;
       line-height: 73px;
 
-      @include md-max {
+      @include breakpoints.md-max {
         font-size: 28px;
         line-height: 42px;
       }
@@ -112,11 +116,11 @@
     .details {
       width: 60%;
 
-      @include xl-max {
+      @include breakpoints.xl-max {
         width: 60%;
       }
 
-      @include md-max {
+      @include breakpoints.md-max {
         width: calc(100% - 30px);
       }
     }
@@ -134,7 +138,7 @@
     cursor: pointer;
 
     .title {
-      color: $aquamarine;
+      color: variables.$aquamarine;
     }
   }
 }
