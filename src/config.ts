@@ -5,7 +5,7 @@ export const DEFAULT_DESCRIPTION =
 export const DEFAULT_OG_IMAGE =
   "https://res.cloudinary.com/austinmel/image/upload/v1656678415/astro_iie61u.jpg";
 
-export const CONTACT_EMAIL = "austinjamesmelendez@gmail.com";
+export const CONTACT_EMAIL = "austin@amelen.dev";
 export const RESUME_URL = "/Austin_Melendez_Resume.pdf";
 
 // Flip to true to bring back the blog pages and their links.

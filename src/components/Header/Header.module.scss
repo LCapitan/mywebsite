@@ -21,14 +21,14 @@
     transition: .25s ease;
 
     svg {
-      fill: color.adjust(variables.$mirage, $lightness: 40%);
+      fill: color.adjust(variables.$deep-space, $lightness: 40%);
     }
 
     &:hover,
     &:focus {
 
       svg {
-        fill: variables.$mustard;
+        fill: variables.$surface;
       }
     }
 

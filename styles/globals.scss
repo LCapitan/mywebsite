@@ -10,7 +10,7 @@ body {
 }
 
 html {
-  background-color: variables.$mirage;
+  background-color: variables.$deep-space;
 }
 
 .stars {
@@ -27,7 +27,7 @@ html {
 }
 
 .quote {
-  color: variables.$malibu;
+  color: variables.$sand-storm;
   display: block;
   font-family: variables.$title;
   font-size: 22px;
@@ -64,23 +64,23 @@ button {
 }
 
 p {
-  color: variables.$malibu;
+  color: variables.$sand-storm;
   font-family: variables.$copy;
   font-size: 18px;
   line-height: 28px;
 }
 
 a {
-  color: variables.$aquamarine;
+  color: variables.$great-red;
   font-weight: variables.$bold;
   text-decoration: none;
 
   &.link {
-    color: variables.$white;
+    color: variables.$cream;
 
     &:hover,
     &:focus {
-      color: variables.$aquamarine;
+      color: variables.$great-red;
     }
   }
 }

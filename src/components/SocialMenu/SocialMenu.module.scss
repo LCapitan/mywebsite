@@ -20,7 +20,7 @@
         transition: .25s ease;
 
         svg {
-          fill: color.adjust(variables.$mirage, $lightness: 40%);
+          fill: color.adjust(variables.$deep-space, $lightness: 40%);
           width: 25px;
           height: auto;
         }
@@ -29,7 +29,7 @@
         &:focus {
 
           svg {
-            fill: variables.$malibu;
+            fill: variables.$sand-storm;
           }
         }
       }

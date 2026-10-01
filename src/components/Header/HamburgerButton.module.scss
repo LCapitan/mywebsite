@@ -12,7 +12,7 @@
   transform: rotate(-90deg);
 
   &:before {
-    background: color.adjust(variables.$mirage, $lightness: 40%);
+    background: color.adjust(variables.$deep-space, $lightness: 40%);
     border-radius: 10px;
     content: "";
     display: block;
@@ -27,7 +27,7 @@
   }
 
   &:after {
-    background: color.adjust(variables.$mirage, $lightness: 40%);
+    background: color.adjust(variables.$deep-space, $lightness: 40%);
     border-radius: 10px;
     content: "";
     display: block;
@@ -42,7 +42,7 @@
   }
 
   .bar {
-    background: color.adjust(variables.$mirage, $lightness: 40%);
+    background: color.adjust(variables.$deep-space, $lightness: 40%);
     border-radius: 10px;
     display: block;
     position: absolute;
@@ -59,19 +59,19 @@
     cursor: pointer;
 
     &:before {
-      background: variables.$aquamarine;
+      background: variables.$great-red;
       right: 5px;
       width: 40px;
     }
 
     &:after {
-      background: variables.$aquamarine;
+      background: variables.$great-red;
       right: 10px;
       width: 50px;
     }
 
     .bar {
-      background: variables.$aquamarine;
+      background: variables.$great-red;
       width: 75px;
     }
 

@@ -16,7 +16,7 @@
   }
 
   .wrapper {
-    background: rgba(variables.$mirage, .75);
+    background: rgba(variables.$deep-space, .75);
     backdrop-filter: blur(100px);
     border-radius: 12px;
     // box-shadow: 0px 10px 30px rgba(#000000, 0.5);
@@ -89,7 +89,7 @@
     }
 
     .pageTitle {
-      color: variables.$white;
+      color: variables.$cream;
       font-family: variables.$title;
       font-size: 95px;
       line-height: 1;
@@ -102,7 +102,7 @@
   }
 
   .paragraph {
-    color: variables.$white;
+    color: variables.$cream;
     font-family: variables.$copy;
     font-size: 18px;
     font-weight: variables.$light;

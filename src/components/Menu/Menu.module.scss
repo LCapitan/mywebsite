@@ -22,7 +22,7 @@
 }
 
 .menu {
-  background: color.adjust(variables.$mirage, $lightness: 5%);
+  background: color.adjust(variables.$deep-space, $lightness: 5%);
   border-radius: 20px 0 0 20px;
   box-shadow: 0px 10px 30px rgba(#000000, 0.5);
   display: flex;
@@ -59,7 +59,7 @@
       text-align: center;
 
       a {
-        color: variables.$white;
+        color: variables.$cream;
         display: inline-block;
         font-family: variables.$title;
         font-size: 55px;
@@ -102,7 +102,7 @@
           opacity: 1;
 
           svg {
-            fill: color.adjust(variables.$mirage, $lightness: 40%);
+            fill: color.adjust(variables.$deep-space, $lightness: 40%);
           }
         }
       }
