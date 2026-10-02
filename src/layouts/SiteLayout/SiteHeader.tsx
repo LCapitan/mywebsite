@@ -49,8 +49,13 @@ export function SiteHeader({ menuOpen, onOpenMenu }: SiteHeaderProps) {
         hidden && !menuOpen && styles.hidden,
       )}
     >
-      <Link href="/" className={styles.logo} aria-label="Home">
+      <Link href="/" className={styles.logo} aria-label="Austin Melendez, home">
         <Logo />
+        <span className={styles.name} aria-hidden="true">
+          Austin
+          <br />
+          Melendez
+        </span>
       </Link>
 
       <nav aria-label="Main" className={styles.nav}>
