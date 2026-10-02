@@ -81,7 +81,9 @@ export function Home() {
         </div>
         <ul className={styles.cards}>
           {featuredWork.map((item, i) => (
-            <Reveal as="li" key={item.title} delay={i * 120}>
+            // Fade, not rise: cards off to the side in the phone row never
+            // scroll into view vertically.
+            <Reveal as="li" key={item.title} variant="fade" delay={i * 120}>
               <FeaturedCard item={item} index={i + 1} />
             </Reveal>
           ))}
@@ -105,8 +107,8 @@ export function Home() {
         <Reveal as="p" className={styles.text} delay={120}>
           I&#39;m a senior developer and product designer with a passion for
           building clean, performant, and thoughtful web experiences. I enjoy
-          turning complex problems into simple, intuitive solutions, and
-          I&#39;m always looking for new things to learn and explore.
+          turning complex problems into simple, intuitive solutions, and I&#39;m
+          always looking for new things to learn and explore.
         </Reveal>
         <Reveal className={styles.action} delay={240}>
           <CircleArrowLink href="/about" label="More about me" />
