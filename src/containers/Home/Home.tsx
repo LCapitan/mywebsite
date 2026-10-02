@@ -71,10 +71,11 @@ export function Home() {
 
         <Reveal variant="fade" className={styles.heroArt} delay={300}>
           <Image
-            src="/images/astronaut-placeholder.png"
+            // e_trim crops the transparent space around the artwork.
+            src="https://res.cloudinary.com/austinmel/image/upload/e_trim/v1790958160/astro_ljjcsq.png"
             alt="Illustration of an astronaut working on a laptop on the moon"
-            width={1043}
-            height={508}
+            width={1596}
+            height={725}
             sizes="(max-width: 767px) 127vw, (max-width: 1099px) 100vw, 1043px"
             preload
           />
@@ -118,8 +119,10 @@ export function Home() {
           Built on curiosity and creativity
         </Reveal>
         <Reveal as="p" className={styles.text} delay={120}>
-          I build thoughtful, high quality web experiences that solve real
-          problems and bring great designs to life.
+          I&#39;m a senior developer and product designer with a passion for
+          building clean, performant, and thoughtful web experiences. I enjoy
+          turning complex problems into simple, intuitive solutions, and
+          I&#39;m always looking for new things to learn and explore.
         </Reveal>
         <Reveal className={styles.action} delay={240}>
           <ArrowButton href="/about" label="More about me" />

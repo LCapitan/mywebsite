@@ -46,8 +46,8 @@ export const workItems: WorkItem[] = [
     title: "walnut hill",
     content: "Walnut Hill School for the Arts",
     imgSrc:
-      "https://res.cloudinary.com/austinmel/image/upload/v1790866582/walnut-hill_fjuc0v.jpg",
-    imgAlt: "a screenshot of the walnut hill school for the arts website",
+      "https://res.cloudinary.com/austinmel/image/upload/v1790958208/walnut_hill_btpzw3.webp",
+    imgAlt: "the walnut hill school for the arts campus",
     cardLink: "https://www.walnuthillarts.org/",
     tags: ["website redesign", "ui/ux"],
     featured: 2,
