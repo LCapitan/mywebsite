@@ -52,22 +52,18 @@ export function ArrowButton({
 interface CircleArrowProps {
   className?: string;
   direction?: "right" | "down";
-  // Shows the hover fill without a hover (e.g. the active work card).
-  filled?: boolean;
 }
 
 // Outlined circle with an arrow, used beside text links and on cards.
 export function CircleArrow({
   className,
   direction = "right",
-  filled,
 }: CircleArrowProps) {
   return (
     <span
       className={cx(
         styles.circle,
         direction === "down" && styles.down,
-        filled && styles.filled,
         className,
       )}
       aria-hidden="true"

@@ -240,8 +240,7 @@ $slide: 0.7s;
     display: block;
     transition: color 0.3s $ease-out;
 
-    &:hover,
-    &:focus-visible {
+    @include hover-focus {
       color: $olive;
     }
   }

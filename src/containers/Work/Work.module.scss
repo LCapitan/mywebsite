@@ -37,8 +37,8 @@
 // Cards ride spokes from a hub far off to the right; turning the spokes
 // carries them along the arc. The active card sits at 9 o'clock.
 .wheel {
-  --card: min(460px, 52vh, 34vw);
-  --radius: calc(var(--card) * 2.3);
+  --card: min(620px, 68vh, 42vw);
+  --radius: calc(var(--card) * 2.7);
   height: 100%;
   position: relative;
 }
@@ -181,9 +181,7 @@
   position: relative;
   // The old resting tilt; the active card swings to +6deg.
   transform: rotate(-8deg);
-  transition:
-    box-shadow 0.8s $ease-out,
-    transform 0.8s $ease-out;
+  transition: transform 0.8s $ease-out;
 
   // Keeps the link readable over any photo.
   &::after {
@@ -200,8 +198,8 @@
   }
 }
 
+// The card in the active spot takes the old hover tilt.
 .active {
-  box-shadow: 0 30px 60px rgba($charcoal, 0.25);
   transform: rotate(6deg);
 }
 

@@ -33,8 +33,7 @@ $pad: 24px;
     aspect-ratio: 332 / 354;
   }
 
-  &:hover,
-  &:focus-visible {
+  @include hover-focus {
     .image {
       transform: scale(1.06);
     }
