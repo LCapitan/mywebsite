@@ -133,6 +133,9 @@
     grid-auto-flow: column;
     margin-inline: -$gutter;
     overflow-x: auto;
+    // A sideways scroller would otherwise also scroll vertically by any
+    // overflow, capturing vertical swipes and trapping the page.
+    overflow-y: hidden;
     overscroll-behavior-x: contain;
     padding-inline: $gutter;
     scroll-padding-inline: $gutter;
