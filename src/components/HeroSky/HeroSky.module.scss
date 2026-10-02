@@ -1,0 +1,63 @@
+@use "../../../styles/tokens" as *;
+
+// Spans the hero along the page's right edge; orbits run off the right edge
+// and the top of the page. Positions come from the 1512px desktop frame.
+.sky {
+  display: none;
+
+  @include from($bp-lg) {
+    bottom: 0;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 0;
+  }
+}
+
+// Hero height and planet center in the desktop frame.
+$hero-frame: 983px;
+$planet-top: 304px;
+// The highest the planet's center may sit, clear of the header.
+$planet-min-top: 150px;
+
+// $right/$top: the orbit's center, measured from the frame's top-right corner.
+@mixin place($anchor, $right, $top, $size) {
+  left: calc(-1 * #{desktop($right)});
+  width: desktop($size);
+
+  @if $anchor == top {
+    top: desktop($top);
+  } @else {
+    // Follows the hero's bottom edge, but stops before the planet would
+    // reach the nav; everything stops at that point together.
+    $offset: $top - $planet-top;
+    $min-top: calc(#{$planet-min-top} + #{desktop($offset)});
+
+    @if $offset < 0 {
+      $min-top: calc(#{$planet-min-top} - #{desktop(-$offset)});
+    }
+
+    top: max(#{$min-top}, calc(100% - #{desktop($hero-frame - $top)}));
+  }
+}
+
+@each $anchor in top, bottom {
+  .#{$anchor} {
+    .inner {
+      @include place($anchor, 285px, 290px, 370px);
+    }
+
+    .middle {
+      @include place($anchor, 251px, 198px, 674px);
+    }
+
+    .outer {
+      @include place($anchor, 203px, 125px, 1016px);
+    }
+
+    .planet {
+      @include place($anchor, 311px, 304px, 163px);
+    }
+  }
+}

@@ -71,6 +71,16 @@ $frame-lg: 1512px;
   text-transform: uppercase;
 }
 
+@mixin hero-title {
+  color: $birch;
+  font-family: $font-display;
+  font-size: fluid(56px, 77px);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  margin: 32px 0 0;
+}
+
 @mixin heading {
   color: $birch;
   font-family: $font-display;

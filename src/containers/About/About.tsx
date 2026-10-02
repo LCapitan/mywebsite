@@ -1,75 +1,134 @@
+import type { MouseEvent } from "react";
 import Image from "next/image";
 
+import { ArrowButton } from "../../components/ArrowButton";
+import { ContactSection } from "../../components/ContactSection";
+import { HeroSky } from "../../components/HeroSky";
+import { ArrowRight } from "../../components/Icons/ArrowRight";
+import { Orbit } from "../../components/Orbit";
+import { Punctuated } from "../../components/Punctuated";
+import { Reveal } from "../../components/Reveal";
+import { SectionLabel } from "../../components/SectionLabel";
+
 import styles from "./About.module.scss";
-import { Button } from "../../components";
-import { RESUME_URL, SHOW_BLOG } from "../../config";
 
-const heroSrc =
-  "https://res.cloudinary.com/austinmel/image/upload/v1790868914/me_ytr3vn.jpg";
-const heroAlt = "me hiking in Arizona";
+const portrait =
+  "https://res.cloudinary.com/austinmel/image/upload/v1790868836/IMG_1154_oiifty.jpg";
 
-const About = () => {
+// TODO: the photo for "Beyond work". A placeholder block shows until it's set.
+const beyondWorkPhoto: string | null = null;
+
+const history = [
+  "I’m a Senior Front-End Developer currently living in Miami, Florida and working at MERGE, where I spend my days building digital experiences for a wide range of clients.",
+  "My path into development actually started with art and design. I’ve been drawing for as long as I can remember and started teaching myself Adobe’s Creative Suite when I was in sixth grade. That eventually led me into graphic and product design, and somewhere along the way I discovered development. I loved that it gave me another way to create — just with a different set of tools.",
+  "That background still has a big influence on how I work today. I care just as much about how an experience looks and feels as I do about how it’s built. I enjoy taking a design, understanding the thinking behind it, and figuring out how to bring it to life in a way that’s thoughtful, performant, and built to last.",
+  "Over the years I’ve worked across design, product, and development, and today my focus is primarily front-end engineering. I’m always looking for interesting problems to solve, new things to learn, and opportunities to build something I’m proud of.",
+];
+
+// Glides down to the history section instead of jumping.
+function scrollToHistory(event: MouseEvent<HTMLAnchorElement>) {
+  const target = document.getElementById("history");
+  if (!target) return;
+  event.preventDefault();
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+  target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
+}
+
+export default function About() {
   return (
-    <div className={styles.about}>
-      <div className="stars"></div>
-      <div className={styles.heroImg}>
-        <div className={styles.desktop}>
-          <Image
-            src={heroSrc}
-            alt={heroAlt}
-            width={1902}
-            height={1047}
-            sizes="(max-width: 1300px) 100vw, 1300px"
-            style={{ width: "100%", height: "auto" }}
-            preload
-          />
+    <>
+      <section className={styles.hero}>
+        <HeroSky anchor="top" />
+        <div className={styles.heroContent}>
+          <div>
+            <SectionLabel number="01">About</SectionLabel>
+            <Reveal as="h1" className={styles.heroTitle} delay={150}>
+              <Punctuated>I’ve always loved making things.</Punctuated>
+            </Reveal>
+            <Reveal as="p" className={styles.text} delay={300}>
+              My path into development started with a love for art and design.
+              Over time, that curiosity turned into a career building digital
+              experiences — combining creativity, logic, and problem solving to
+              make things that are both beautiful and functional.
+            </Reveal>
+            <Reveal className={styles.readMore} delay={450}>
+              <a href="#history" onClick={scrollToHistory}>
+                Read more about me
+                <span className={styles.readMoreLine} aria-hidden="true" />
+                <span className={styles.readMoreArrow}>
+                  <ArrowRight />
+                </span>
+              </a>
+            </Reveal>
+          </div>
+          <Reveal variant="clip" className={styles.portrait} delay={200}>
+            <Image
+              src={portrait}
+              alt="Austin standing in the Arizona desert"
+              fill
+              sizes="(max-width: 1099px) 100vw, 530px"
+              preload
+            />
+          </Reveal>
         </div>
-        <div className={styles.mobile}>
-          <Image
-            src={heroSrc}
-            alt={heroAlt}
-            fill
-            sizes="100vw"
-            style={{ objectFit: "cover" }}
-          />
+      </section>
+
+      <section id="history" className={styles.history}>
+        <Orbit
+          className={styles.historyOrbit}
+          line="dotted"
+          moons={[{ angle: 63, size: 20 }]}
+          duration={140}
+        />
+        <SectionLabel number="02">History</SectionLabel>
+        <div className={styles.historyText}>
+          {history.map((paragraph, i) => (
+            <Reveal as="p" key={i} delay={i === 0 ? 120 : 0}>
+              {paragraph}
+            </Reveal>
+          ))}
         </div>
-      </div>
-      <div className={styles.wrapper}>
-        <div className={styles.pageHeading}>
-          <h1 className={styles.pageTitle}>Hey, I&#39;m Austin.</h1>
-        </div>
-        <div className={styles.content}>
-          <div className={styles.paragraph}>
-            I&#39;m a Senior Front-End Developer currently living in Miami, Florida and working at MERGE, where I spend my days building digital experiences for a wide range of clients.
-          </div>
+      </section>
 
-          <div className={styles.paragraph}>
-            My path into development actually started with art and design. I&#39;ve been drawing for as long as I can remember and started teaching myself Adobe&#39;s Creative Suite when I was in sixth grade. That eventually led me into graphic and product design, and somewhere along the way I discovered development. I loved that it gave me another way to create—just with a different set of tools.
-          </div>
-
-          <div className={styles.paragraph}>
-            That background still has a big influence on how I work today. I care just as much about how an experience looks and feels as I do about how it&#39;s built. I enjoy taking a design, understanding the thinking behind it, and figuring out how to bring it to life in a way that&#39;s thoughtful, performant, and built to last.
-          </div>
-
-          <div className={styles.paragraph}>
-            Over the years I&#39;ve worked across design, product, and development, and today my focus is primarily front-end engineering. I&#39;m always looking for interesting problems to solve, new things to learn, and opportunities to build something I&#39;m proud of.
-          </div>
-
-          <div className={styles.paragraph}>
-            Outside of work, I&#39;m usually finding another creative rabbit hole to fall into. I love watches, leathercraft, music, hiking, traveling, and generally making things with my hands whenever I get the chance.
-          </div>
-        </div>
-        <div className={styles.actions}>
-          <Button url={RESUME_URL} external label="view my resume" />
-          {SHOW_BLOG ? (
-            <Button url="/blog" label="more about me" secondary />
+      <section className={styles.beyond}>
+        <Orbit
+          className={styles.beyondOrbit}
+          moons={[{ angle: -128, size: 17 }]}
+          duration={150}
+          reverse
+        />
+        <Reveal variant="clip" className={styles.beyondPhoto}>
+          {beyondWorkPhoto ? (
+            <Image
+              src={beyondWorkPhoto}
+              alt="Austin and his wife on a hike"
+              fill
+              sizes="(max-width: 1099px) 100vw, 645px"
+            />
           ) : (
-            <Button url="/work" label="see my work" secondary />
+            <div className={styles.photoPlaceholder} />
           )}
+        </Reveal>
+        <div>
+          <SectionLabel number="03">Beyond work</SectionLabel>
+          <Reveal as="h2" className={styles.heading}>
+            <Punctuated>I’ve always loved making things.</Punctuated>
+          </Reveal>
+          <Reveal as="p" className={styles.text} delay={120}>
+            Outside of work, I’m usually finding another creative rabbit hole
+            to fall into. I love watches, leathercraft, music, hiking, traveling
+            with my wife, and generally making things with my hands whenever I
+            get the chance.
+          </Reveal>
+          <Reveal className={styles.action} delay={240}>
+            <ArrowButton href="/work" label="See my work" />
+          </Reveal>
         </div>
-      </div>
-    </div>
-  );
-};
+      </section>
 
-export default About;
+      <ContactSection number="04" />
+    </>
+  );
+}

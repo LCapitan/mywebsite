@@ -2,12 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { ArrowButton, CircleArrow } from "../../components/ArrowButton";
+import { ContactSection } from "../../components/ContactSection";
 import { FeaturedCard } from "../../components/FeaturedCard";
-import { Orbit, Planet } from "../../components/Orbit";
+import { HeroSky } from "../../components/HeroSky";
+import { Orbit } from "../../components/Orbit";
 import { Punctuated } from "../../components/Punctuated";
 import { Reveal, RevealLines } from "../../components/Reveal";
 import { SectionLabel } from "../../components/SectionLabel";
-import { CONTACT_EMAIL } from "../../config";
 import { workItems } from "../../data/work";
 
 import styles from "./Home.module.scss";
@@ -31,32 +32,7 @@ export function Home() {
   return (
     <>
       <section className={styles.hero}>
-        <div className={styles.sky} aria-hidden="true">
-          <Orbit
-            className={styles.heroOrbitInner}
-            tone="light"
-            line="dashed"
-            strokeWidth={1.5}
-            moons={[{ angle: -46, size: 13 }]}
-            duration={70}
-          />
-          <Orbit
-            className={styles.heroOrbitMiddle}
-            tone="light"
-            strokeWidth={3}
-            moons={[{ angle: 161, size: 22 }]}
-            duration={110}
-            reverse
-          />
-          <Orbit
-            className={styles.heroOrbitOuter}
-            tone="light"
-            strokeWidth={1.5}
-            moons={[{ angle: 80, size: 16 }]}
-            duration={160}
-          />
-          <Planet className={styles.planet} />
-        </div>
+        <HeroSky anchor="bottom" planet />
 
         <div className={styles.heroContent}>
           <SectionLabel number="01">Hi, I&#39;m Austin and I</SectionLabel>
@@ -154,27 +130,7 @@ export function Home() {
         </ol>
       </section>
 
-      <section className={styles.contact}>
-        <Orbit
-          className={styles.contactOrbit}
-          line="dotted"
-          moons={[{ angle: -62, size: 17 }]}
-          duration={130}
-        />
-        <div>
-          <SectionLabel number="04">Let&#39;s work together</SectionLabel>
-          <Reveal as="h2" className={styles.heading}>
-            <Punctuated>Have a project in mind?</Punctuated>
-          </Reveal>
-          <Reveal as="p" className={styles.text} delay={120}>
-            I&#39;m always open to new opportunities, interesting projects, or
-            just some good conversation.
-          </Reveal>
-        </div>
-        <Reveal className={styles.contactAction} delay={240}>
-          <ArrowButton href={`mailto:${CONTACT_EMAIL}`} label="Get in touch" />
-        </Reveal>
-      </section>
+      <ContactSection number="04" />
     </>
   );
 }

@@ -1,6 +1,6 @@
 @use "../../../styles/tokens" as *;
 
-// Positions for orbits come from the 1512px desktop frame.
+// Orbit positions come from the 1512px desktop frame.
 
 .heading {
   @include heading;
@@ -43,13 +43,7 @@
 }
 
 .heroTitle {
-  color: $birch;
-  font-family: $font-display;
-  font-size: fluid(56px, 77px);
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  line-height: 1;
-  margin: 32px 0 0;
+  @include hero-title;
 }
 
 .heroText {
@@ -82,59 +76,6 @@
     right: desktop(45px);
     width: desktop(1043px);
   }
-}
-
-// Spans the hero along its right edge. Orbits follow the illustration up
-// from the hero's bottom, but never so high that the planet reaches the nav;
-// on short screens they all stop at that point together. They run off the
-// right edge and the top of the page.
-.sky {
-  display: none;
-
-  @include from($bp-lg) {
-    bottom: 0;
-    display: block;
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 0;
-  }
-}
-
-// Hero height and planet center in the 1512px desktop frame; orbit positions
-// below are measured from the top of that frame.
-$hero-frame: 983px;
-$planet-top: 304px;
-// The highest the planet's center may sit, clear of the header.
-$planet-min-top: 150px;
-
-@mixin from-right($right, $top, $size) {
-  $offset: $top - $planet-top;
-  $min-top: calc(#{$planet-min-top} + #{desktop($offset)});
-
-  @if $offset < 0 {
-    $min-top: calc(#{$planet-min-top} - #{desktop(-$offset)});
-  }
-
-  left: calc(-1 * #{desktop($right)});
-  top: max(#{$min-top}, calc(100% - #{desktop($hero-frame - $top)}));
-  width: desktop($size);
-}
-
-.heroOrbitInner {
-  @include from-right(285px, 290px, 370px);
-}
-
-.heroOrbitMiddle {
-  @include from-right(251px, 198px, 674px);
-}
-
-.heroOrbitOuter {
-  @include from-right(203px, 125px, 1016px);
-}
-
-.planet {
-  @include from-right(311px, 304px, 163px);
 }
 
 // ---- Featured work
@@ -341,44 +282,4 @@ $planet-min-top: 150px;
   color: $olive;
   font-size: 13px;
   font-weight: 500;
-}
-
-// ---- Contact
-
-.contact {
-  @include container;
-  display: grid;
-  gap: 40px;
-  isolation: isolate;
-  margin-top: fluid(110px, 200px);
-  padding-bottom: fluid(90px, 100px);
-  position: relative;
-
-  .text {
-    max-width: 800px;
-  }
-
-  @include from($bp-lg) {
-    align-items: center;
-    column-gap: 48px;
-    grid-template-columns: minmax(0, 1fr) auto;
-  }
-}
-
-.contactOrbit {
-  display: none;
-  left: 250px;
-  top: 178px;
-  width: 620px;
-  z-index: -1;
-
-  @include from($bp-lg) {
-    display: block;
-  }
-}
-
-.contactAction {
-  @include from($bp-lg) {
-    justify-self: end;
-  }
 }

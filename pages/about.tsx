@@ -1,21 +1,21 @@
-import type { NextPage } from "next";
-
 import { Seo } from "../src/components";
 import { About } from "../src/containers";
+import { SiteLayout } from "../src/layouts/SiteLayout";
+import type { NextPageWithLayout } from "../src/layouts/types";
 
-const AboutPage: NextPage = () => {
+const AboutPage: NextPageWithLayout = () => {
   return (
     <>
       <Seo
         title="About | Austin Melendez"
-        description="Austin's about page where he introduces himself."
+        description="Austin is a senior front-end developer in Miami who has always loved making things."
         path="/about"
       />
-      <main className="container">
-        <About />
-      </main>
+      <About />
     </>
   );
 };
+
+AboutPage.getLayout = (page) => <SiteLayout>{page}</SiteLayout>;
 
 export default AboutPage;

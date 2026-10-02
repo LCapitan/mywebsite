@@ -1,0 +1,46 @@
+@use "../../../styles/tokens" as *;
+
+.contact {
+  @include container;
+  display: grid;
+  gap: 40px;
+  isolation: isolate;
+  margin-top: fluid(110px, 200px);
+  padding-bottom: fluid(90px, 100px);
+  position: relative;
+
+  @include from($bp-lg) {
+    align-items: center;
+    column-gap: 48px;
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+}
+
+// Positioned from the 1512px desktop frame.
+.orbit {
+  display: none;
+  left: 250px;
+  top: 178px;
+  width: 620px;
+  z-index: -1;
+
+  @include from($bp-lg) {
+    display: block;
+  }
+}
+
+.heading {
+  @include heading;
+}
+
+.text {
+  @include body-large;
+  margin: 40px 0 0;
+  max-width: 800px;
+}
+
+.action {
+  @include from($bp-lg) {
+    justify-self: end;
+  }
+}
