@@ -111,17 +111,12 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
 
           <span className={styles.divider} aria-hidden="true" />
 
-          <p className={styles.tagline}>
-            I build thoughtful, high quality web experiences that solve real
-            problems and bring great designs to life.
-          </p>
-
           <div className={styles.profile}>
             <Image
               src="https://res.cloudinary.com/austinmel/image/upload/c_thumb,g_face,z_0.45,w_300,h_300/v1790868914/me_ytr3vn.jpg"
               alt=""
-              width={72}
-              height={72}
+              width={80}
+              height={80}
               className={styles.avatar}
             />
             <div>

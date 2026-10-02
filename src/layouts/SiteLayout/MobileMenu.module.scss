@@ -63,7 +63,6 @@ $slide: 0.7s;
 // Everything slides up in sequence as the menu opens.
 .links li,
 .divider,
-.tagline,
 .profile,
 .social {
   opacity: 0;
@@ -76,7 +75,6 @@ $slide: 0.7s;
 .open {
   .links li,
   .divider,
-  .tagline,
   .profile,
   .social {
     opacity: 1;
@@ -91,16 +89,12 @@ $slide: 0.7s;
     transition-delay: 0.36s;
   }
 
-  .tagline {
-    transition-delay: 0.42s;
-  }
-
   .profile {
-    transition-delay: 0.5s;
+    transition-delay: 0.44s;
   }
 
   .social {
-    transition-delay: 0.58s;
+    transition-delay: 0.52s;
   }
 }
 
@@ -146,7 +140,7 @@ $slide: 0.7s;
 
 .links {
   display: grid;
-  gap: vspace(16px, 22px);
+  gap: vspace(32px, 58px);
   list-style: none;
   margin: 0;
   padding: 0;
@@ -179,29 +173,18 @@ $slide: 0.7s;
 }
 
 .divider {
-  background: $moss;
+  background: $birch;
   display: block;
   height: 1px;
-  margin: vspace(28px, 48px) 0 vspace(32px, 56px);
-  width: 60px;
-}
-
-.tagline {
-  color: $taupe;
-  font-family: $font-body;
-  font-size: 19px;
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  line-height: 1.35;
-  margin: 0;
-  max-width: 210px;
+  margin: vspace(56px, 110px) 0 0;
+  width: 66px;
 }
 
 .profile {
   align-items: center;
   display: flex;
   gap: 18px;
-  margin-top: vspace(32px, 56px);
+  margin-top: vspace(56px, 115px);
 }
 
 .avatar {
@@ -213,9 +196,10 @@ $slide: 0.7s;
 .name {
   @include label-text;
   color: $creme;
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: 600;
   letter-spacing: 0.06em;
+  line-height: 1.1;
   margin: 0;
   max-width: 7em;
 }
@@ -224,7 +208,7 @@ $slide: 0.7s;
   @include label-text;
   color: $moss;
   font-size: 11px;
-  margin: 4px 0 0;
+  margin: 6px 0 0;
 }
 
 .social {
@@ -258,7 +242,6 @@ $slide: 0.7s;
   .menu,
   .links li,
   .divider,
-  .tagline,
   .profile,
   .social {
     transition: none;
