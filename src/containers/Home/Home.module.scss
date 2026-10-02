@@ -174,24 +174,9 @@ $planet-min-top: 150px;
   gap: 18px;
   transition: color 0.3s $ease-out;
 
-  > span:last-child {
-    height: 46px;
-    width: 46px;
-  }
-
   &:hover,
   &:focus-visible {
     color: $ember;
-
-    > span:last-child {
-      background: $ember;
-      border-color: $ember;
-      color: $ivory;
-
-      svg {
-        transform: translateX(2px);
-      }
-    }
   }
 }
 

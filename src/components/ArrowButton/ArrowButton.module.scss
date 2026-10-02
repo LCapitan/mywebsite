@@ -80,12 +80,25 @@ $circle: $height - 2 * ($inset + $border);
   display: inline-flex;
   flex: none;
   height: 46px;
+  isolation: isolate;
   justify-content: center;
+  position: relative;
   transition:
-    background-color 0.4s $ease-out,
     border-color 0.4s $ease-out,
     color 0.4s $ease-out;
   width: 46px;
+
+  // Orange fill that grows inside the ring, leaving a small gap.
+  &::before {
+    background: $ember;
+    border-radius: 50%;
+    content: "";
+    inset: 9%;
+    position: absolute;
+    transform: scale(0);
+    transition: transform 0.5s $ease-out;
+    z-index: -1;
+  }
 
   svg {
     transition: transform 0.6s $ease-out;
@@ -93,9 +106,25 @@ $circle: $height - 2 * ($inset + $border);
   }
 }
 
+// Fills when the link it sits in is hovered or focused.
+:global(a):hover .circle,
+:global(a):focus-visible .circle {
+  border-color: $ember;
+  color: $ivory;
+
+  &::before {
+    transform: scale(1);
+  }
+
+  svg {
+    transform: translateX(3px);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .fill,
   .icon svg,
+  .circle::before,
   .circle svg {
     transition: none;
   }
