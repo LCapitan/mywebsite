@@ -1,0 +1,16 @@
+@use "../../../styles/tokens" as *;
+
+// Old pages keep their dark background; pages using this layout get ivory,
+// including the overscroll area.
+:global(html):has(.site) {
+  background: $ivory;
+}
+
+.site {
+  background: $ivory;
+  color: $moss;
+  font-family: $font-body;
+  min-height: 100vh;
+  // Orbits and the hero art run off the edges (and the bottom) of the page.
+  overflow: clip;
+}

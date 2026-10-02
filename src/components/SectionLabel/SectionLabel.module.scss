@@ -1,0 +1,58 @@
+@use "../../../styles/tokens" as *;
+
+.label {
+  @include label-text;
+  align-items: center;
+  color: $olive;
+  display: flex;
+  gap: 24px;
+  margin: 0;
+}
+
+.line {
+  background: $stone;
+  flex: none;
+  height: 1px;
+  transform-origin: left center;
+  width: fluid(56px, 118px);
+}
+
+:global(html.js) {
+  .number,
+  .text {
+    opacity: 0;
+    transition: opacity 0.8s $ease-out;
+  }
+
+  .text {
+    transition-delay: 0.35s;
+  }
+
+  .line {
+    transform: scaleX(0);
+    transition: transform 1s $ease-out 0.1s;
+  }
+
+  .visible {
+    .number,
+    .text {
+      opacity: 1;
+    }
+
+    .line {
+      transform: none;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :global(html.js) {
+    .number,
+    .text,
+    .line {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+}

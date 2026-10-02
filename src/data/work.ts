@@ -7,26 +7,31 @@ export interface WorkItem {
   tags: string[];
   // Hidden items stay here for later but aren't shown on the work page.
   hidden?: boolean;
+  // Position in the homepage's featured work row (1 = first). Featured cards
+  // show the first three tags.
+  featured?: number;
 }
 
 export const workItems: WorkItem[] = [
   {
-    title: "oura ring",
-    content: "oura ring resource hub",
+    title: "oura",
+    content: "A resource hub for Oura Ring built on HubSpot",
     imgSrc:
       "https://res.cloudinary.com/austinmel/image/upload/v1790867542/oura-ring_r4myqq.jpg",
     imgAlt: "a screenshot of the oura ring resource hub",
     cardLink: "https://resources.ouraring.com/",
-    tags: ["hubspot cms", "hubl", "hubdb", "javascript"],
+    tags: ["hubspot cms", "hubdb", "hubl", "javascript"],
+    featured: 1,
   },
   {
     title: "piedmont",
-    content: "",
+    content: "Piedmont Healthcare System redesign and replatform",
     imgSrc:
       "https://res.cloudinary.com/austinmel/image/upload/v1790867167/piedmont_ekpo58.jpg",
     imgAlt: "a screenshot of the piedmont website",
     cardLink: "https://www.piedmont.org/",
-    tags: ["website redesign", "react", "typescript", "sitecore"],
+    tags: ["react", "typescript", "sitecore headless", "website redesign"],
+    featured: 3,
   },
   {
     title: "reid health",
@@ -39,12 +44,13 @@ export const workItems: WorkItem[] = [
   },
   {
     title: "walnut hill",
-    content: "walnut hill school for the arts",
+    content: "Walnut Hill School for the Arts",
     imgSrc:
       "https://res.cloudinary.com/austinmel/image/upload/v1790866582/walnut-hill_fjuc0v.jpg",
     imgAlt: "a screenshot of the walnut hill school for the arts website",
     cardLink: "https://www.walnuthillarts.org/",
-    tags: ["ui/ux", "website redesign"],
+    tags: ["website redesign", "ui/ux"],
+    featured: 2,
   },
   {
     title: "ensworth",

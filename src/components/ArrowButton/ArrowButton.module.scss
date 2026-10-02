@@ -1,0 +1,102 @@
+@use "../../../styles/tokens" as *;
+
+$height: 56px;
+$inset: 4px;
+$border: 1.5px;
+$circle: $height - 2 * ($inset + $border);
+
+.button {
+  align-items: center;
+  border: $border solid $olive;
+  border-radius: 999px;
+  color: $olive;
+  display: inline-flex;
+  font-family: $font-label;
+  font-size: 15px;
+  font-weight: 500;
+  gap: 24px;
+  height: $height;
+  isolation: isolate;
+  letter-spacing: 0.1em;
+  padding: 0 $inset 0 32px;
+  position: relative;
+  text-transform: uppercase;
+  transition:
+    border-color 0.4s $ease-out,
+    color 0.4s $ease-out;
+  white-space: nowrap;
+
+  &:hover,
+  &:focus-visible {
+    border-color: $ember;
+    color: $ivory;
+
+    .fill {
+      width: calc(100% - #{2 * $inset});
+    }
+
+    .icon svg {
+      transform: translateX(3px);
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid $ember;
+    outline-offset: 4px;
+  }
+}
+
+// Starts as the arrow's circle and stretches left to fill the pill.
+.fill {
+  background: $ember;
+  border-radius: 999px;
+  bottom: $inset;
+  position: absolute;
+  right: $inset;
+  top: $inset;
+  transition: width 0.6s $ease-out;
+  width: $circle;
+  z-index: -1;
+}
+
+.icon {
+  align-items: center;
+  color: $ivory;
+  display: inline-flex;
+  height: $circle;
+  justify-content: center;
+  width: $circle;
+
+  svg {
+    transition: transform 0.6s $ease-out;
+    width: 24px;
+  }
+}
+
+.circle {
+  align-items: center;
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+  display: inline-flex;
+  flex: none;
+  height: 46px;
+  justify-content: center;
+  transition:
+    background-color 0.4s $ease-out,
+    border-color 0.4s $ease-out,
+    color 0.4s $ease-out;
+  width: 46px;
+
+  svg {
+    transition: transform 0.6s $ease-out;
+    width: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fill,
+  .icon svg,
+  .circle svg {
+    transition: none;
+  }
+}

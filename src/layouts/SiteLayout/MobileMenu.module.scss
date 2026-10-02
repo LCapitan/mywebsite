@@ -1,0 +1,224 @@
+@use "../../../styles/tokens" as *;
+
+.menu {
+  background: $night;
+  display: flex;
+  flex-direction: column;
+  inset: 0;
+  opacity: 0;
+  overflow-y: auto;
+  padding: 120px 0 40px;
+  position: fixed;
+  transition:
+    opacity 0.5s $ease-out,
+    visibility 0s linear 0.5s;
+  visibility: hidden;
+  z-index: 100;
+}
+
+.open {
+  opacity: 1;
+  transition: opacity 0.5s $ease-out;
+  visibility: visible;
+}
+
+// Everything slides up in sequence as the menu opens.
+.links li,
+.divider,
+.tagline,
+.profile,
+.social {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.6s $ease-out,
+    transform 0.8s $ease-out;
+}
+
+.open {
+  .links li,
+  .divider,
+  .tagline,
+  .profile,
+  .social {
+    opacity: 1;
+    transform: none;
+  }
+
+  .links li {
+    transition-delay: calc(0.12s + var(--i) * 0.06s);
+  }
+
+  .divider {
+    transition-delay: 0.36s;
+  }
+
+  .tagline {
+    transition-delay: 0.42s;
+  }
+
+  .profile {
+    transition-delay: 0.5s;
+  }
+
+  .social {
+    transition-delay: 0.58s;
+  }
+}
+
+.close {
+  cursor: pointer;
+  height: 40px;
+  position: absolute;
+  right: 14px;
+  top: 24px;
+  width: 40px;
+
+  &::before,
+  &::after {
+    background: $khaki;
+    content: "";
+    height: 1.5px;
+    left: 8px;
+    position: absolute;
+    top: 50%;
+    width: 24px;
+  }
+
+  &::before {
+    transform: rotate(45deg);
+  }
+
+  &::after {
+    transform: rotate(-45deg);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $ember;
+  }
+}
+
+.inner {
+  padding: 0 24px 0 25%;
+}
+
+.links {
+  display: grid;
+  gap: 22px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  a {
+    @include label-text;
+    align-items: center;
+    color: $ivory;
+    display: grid;
+    font-size: 15px;
+    grid-template-columns: 40px 30px auto;
+  }
+}
+
+.number {
+  color: $khaki;
+  font-weight: 500;
+}
+
+.dot {
+  background: $ember;
+  border-radius: 50%;
+  height: 6px;
+  visibility: hidden;
+  width: 6px;
+
+  [aria-current="page"] & {
+    visibility: visible;
+  }
+}
+
+.divider {
+  background: $olive;
+  display: block;
+  height: 1px;
+  margin: 48px 0 56px;
+  width: 60px;
+}
+
+.tagline {
+  color: $olive;
+  font-family: $font-body;
+  font-size: 19px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.35;
+  margin: 0;
+  max-width: 210px;
+}
+
+.profile {
+  align-items: center;
+  display: flex;
+  gap: 18px;
+  margin-top: 56px;
+}
+
+.avatar {
+  border-radius: 50%;
+  display: block;
+  object-fit: cover;
+}
+
+.name {
+  @include label-text;
+  color: $ivory;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  margin: 0;
+  max-width: 7em;
+}
+
+.location {
+  @include label-text;
+  color: $olive;
+  font-size: 11px;
+  margin: 4px 0 0;
+}
+
+.social {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  list-style: none;
+  margin: auto 0 0;
+  padding: 48px 0 0;
+
+  a {
+    color: $olive;
+    display: block;
+    transition: color 0.3s $ease-out;
+
+    &:hover,
+    &:focus-visible {
+      color: $khaki;
+    }
+  }
+
+  svg {
+    display: block;
+    fill: currentColor;
+    height: 30px;
+    width: 30px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu,
+  .links li,
+  .divider,
+  .tagline,
+  .profile,
+  .social {
+    transition: none;
+  }
+}

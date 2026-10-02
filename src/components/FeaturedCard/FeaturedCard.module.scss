@@ -1,0 +1,149 @@
+@use "../../../styles/tokens" as *;
+
+$pad: 24px;
+
+.card {
+  aspect-ratio: 417 / 354;
+  border-radius: 12px;
+  color: $ivory;
+  display: block;
+  font-weight: inherit;
+  isolation: isolate;
+  overflow: hidden;
+  position: relative;
+
+  // Darkens the photo so the text stays readable.
+  &::after {
+    background:
+      linear-gradient(
+        to top,
+        rgba($night, 0.88) 0%,
+        rgba($night, 0.55) 38%,
+        rgba($night, 0.1) 70%,
+        rgba($night, 0.3) 100%
+      );
+    content: "";
+    inset: 0;
+    position: absolute;
+    transition: opacity 0.6s $ease-out;
+    z-index: -1;
+  }
+
+  @include until($bp-lg) {
+    aspect-ratio: 332 / 354;
+  }
+
+  &:hover,
+  &:focus-visible {
+    .image {
+      transform: scale(1.06);
+    }
+
+    .arrow {
+      background: $ember;
+      border-color: $ember;
+
+      svg {
+        transform: translateX(3px);
+      }
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid $ember;
+    outline-offset: 4px;
+  }
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 1.4s $ease-out;
+  z-index: -2;
+}
+
+.number {
+  align-items: center;
+  display: flex;
+  font-family: $font-label;
+  font-size: 13px;
+  font-weight: 500;
+  gap: 16px;
+  left: $pad;
+  letter-spacing: 0.08em;
+  position: absolute;
+  top: $pad + 4px;
+
+  &::after {
+    background: currentColor;
+    content: "";
+    height: 1px;
+    width: 32px;
+  }
+}
+
+.body {
+  bottom: $pad;
+  left: $pad;
+  position: absolute;
+  right: $pad + 64px + 16px;
+}
+
+.title {
+  font-family: $font-label;
+  font-size: fluid(24px, 28px);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1.1;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.description {
+  color: $ivory;
+  font-family: $font-body;
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  margin: 12px 0 0;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+
+  li {
+    border: 1px solid rgba($ivory, 0.8);
+    border-radius: 999px;
+    font-family: $font-label;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    line-height: 1;
+    padding: 4px 9px;
+    text-transform: uppercase;
+  }
+}
+
+.card .arrow {
+  border-color: rgba($ivory, 0.9);
+  bottom: $pad;
+  height: 64px;
+  position: absolute;
+  right: $pad;
+  width: 64px;
+
+  svg {
+    width: 28px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .image {
+    transition: none;
+  }
+}

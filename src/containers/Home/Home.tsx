@@ -1,45 +1,170 @@
 import Image from "next/image";
+import Link from "next/link";
 
-import { Button } from "../../components";
-import { HomeBg, Logo } from "../../components/Icons";
+import { ArrowButton, CircleArrow } from "../../components/ArrowButton";
+import { FeaturedCard } from "../../components/FeaturedCard";
+import { Orbit, Planet } from "../../components/Orbit";
+import { Reveal, RevealLines } from "../../components/Reveal";
+import { SectionLabel } from "../../components/SectionLabel";
+import { CONTACT_EMAIL } from "../../config";
+import { workItems } from "../../data/work";
 
 import styles from "./Home.module.scss";
 
+const featuredWork = workItems
+  .filter((item) => item.featured)
+  .sort((a, b) => a.featured! - b.featured!);
+
+const pillars = ["Explore", "Create", "Solve"];
+
+function ViewAllProjects({ className }: { className?: string }) {
+  return (
+    <Link href="/work" className={`${styles.viewAll} ${className}`}>
+      View all projects
+      <CircleArrow />
+    </Link>
+  );
+}
+
 export function Home() {
   return (
-    <div className={styles.home}>
-      <div className="stars"></div>
-      <div className={styles.pageHero}>
-        <Image
-          src="https://res.cloudinary.com/austinmel/image/upload/v1656750239/astro-dunk_ltgeiq.png"
-          alt="an illustration of me using the computer"
-          width={2048}
-          height={2048}
-          sizes="(max-width: 992px) 100vw, 50vw"
-          style={{ width: "100%", height: "auto" }}
-          preload
+    <>
+      <section className={styles.hero}>
+        <div className={styles.sky} aria-hidden="true">
+          <Orbit
+            className={styles.heroOrbitInner}
+            tone="light"
+            moons={[{ angle: -46, size: 13 }]}
+            duration={70}
+          />
+          <Orbit
+            className={styles.heroOrbitMiddle}
+            tone="light"
+            moons={[{ angle: 161, size: 22 }]}
+            duration={110}
+            reverse
+          />
+          <Orbit
+            className={styles.heroOrbitOuter}
+            tone="light"
+            moons={[{ angle: 80, size: 16 }]}
+            duration={160}
+          />
+          <Planet className={styles.planet} />
+        </div>
+
+        <div className={styles.heroContent}>
+          <SectionLabel number="01">Hi, I&#39;m Austin and I</SectionLabel>
+          <RevealLines
+            className={styles.heroTitle}
+            lines={["Design.", "Develop.", "Create."]}
+            delay={150}
+          />
+          <Reveal as="p" className={styles.heroText} delay={450}>
+            I build thoughtful, high quality web experiences that solve real
+            problems and bring great designs to life.
+          </Reveal>
+          <Reveal className={styles.action} delay={600}>
+            <ArrowButton href="/work" label="View my work" />
+          </Reveal>
+        </div>
+
+        <Reveal variant="fade" className={styles.heroArt} delay={300}>
+          <Image
+            src="/images/astronaut-placeholder.png"
+            alt="Illustration of an astronaut working on a laptop on the moon"
+            width={1043}
+            height={508}
+            sizes="(max-width: 767px) 127vw, (max-width: 1099px) 100vw, 1043px"
+            preload
+          />
+        </Reveal>
+      </section>
+
+      <section className={styles.featured} aria-labelledby="featured-work">
+        <Orbit
+          className={styles.featuredOrbit}
+          dotted
+          moons={[{ angle: 63, size: 20 }]}
+          duration={140}
         />
-      </div>
-      <div className={styles.content}>
-        <div className={styles.logo}>
-          <Logo />
+        <div className={styles.featuredHead}>
+          <SectionLabel number="02" as="h2" id="featured-work">
+            Featured work
+          </SectionLabel>
+          <ViewAllProjects className={styles.viewAllTop} />
         </div>
-        <h1 className={styles.title}>
-          austin
-          <br />
-          melendez
-        </h1>
-        <h2 className={styles.subtitle}>
-          a front-end developer who loves turning good ideas and great designs into digital experiences that feel just as good as they look.
-        </h2>
-        <div className={styles.actions}>
-          <Button url="/work" label="see my work" />
-          <Button url="/about" label="about me" secondary />
+        <ul className={styles.cards}>
+          {featuredWork.map((item, i) => (
+            <Reveal as="li" key={item.title} delay={i * 120}>
+              <FeaturedCard item={item} index={i + 1} />
+            </Reveal>
+          ))}
+        </ul>
+        <ViewAllProjects className={styles.viewAllBottom} />
+      </section>
+
+      <section className={styles.about}>
+        <Orbit
+          className={styles.aboutOrbit}
+          moons={[{ angle: -127, size: 17 }]}
+          duration={150}
+          reverse
+        />
+        <SectionLabel number="03" className={styles.aboutLabel}>
+          About me
+        </SectionLabel>
+        <Reveal as="h2" className={styles.heading}>
+          Built on curiosity and creativity
+        </Reveal>
+        <Reveal as="p" className={styles.text} delay={120}>
+          I build thoughtful, high quality web experiences that solve real
+          problems and bring great designs to life.
+        </Reveal>
+        <Reveal className={styles.action} delay={240}>
+          <ArrowButton href="/about" label="More about me" />
+        </Reveal>
+        <Reveal variant="clip" className={styles.aboutPhoto}>
+          <Image
+            src="https://res.cloudinary.com/austinmel/image/upload/v1790868914/me_ytr3vn.jpg"
+            alt="Austin standing in the Arizona desert"
+            fill
+            sizes="(max-width: 1099px) 100vw, 480px"
+          />
+        </Reveal>
+        <ol className={styles.pillars}>
+          {pillars.map((pillar, i) => (
+            <Reveal as="li" key={pillar} delay={200 + i * 120}>
+              <span className={styles.pillarNumber}>
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              {pillar}
+            </Reveal>
+          ))}
+        </ol>
+      </section>
+
+      <section className={styles.contact}>
+        <Orbit
+          className={styles.contactOrbit}
+          dotted
+          moons={[{ angle: -62, size: 17 }]}
+          duration={130}
+        />
+        <div>
+          <SectionLabel number="04">Let&#39;s work together</SectionLabel>
+          <Reveal as="h2" className={styles.heading}>
+            Have a project in mind?
+          </Reveal>
+          <Reveal as="p" className={styles.text} delay={120}>
+            I&#39;m always open to new opportunities, interesting projects, or
+            just some good conversation.
+          </Reveal>
         </div>
-      </div>
-      <div className={styles.pageBg}>
-        <HomeBg />
-      </div>
-    </div>
+        <Reveal className={styles.contactAction} delay={240}>
+          <ArrowButton href={`mailto:${CONTACT_EMAIL}`} label="Get in touch" />
+        </Reveal>
+      </section>
+    </>
   );
 }

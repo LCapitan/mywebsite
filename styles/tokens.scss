@@ -1,0 +1,91 @@
+// Design tokens for the v2 site (Figma: "My Site 2024").
+// The old pages still use variables.scss until they're redesigned.
+@use "sass:math";
+
+// Palette
+$ivory: #fcf9f2; // page background
+$stone: #c9bfb3; // hairlines, orbits
+$khaki: #aa9f71; // moons, small numbers
+$olive: #83794f; // labels, body copy
+$moss: #3d3c27; // headings
+$night: #222220; // mobile menu
+$ember: #c67131; // accent
+
+// --font-* are set from next/font in pages/_app.tsx
+$font-display: var(--font-title), "Helvetica", sans-serif; // Ubuntu
+$font-body: var(--font-copy), "Helvetica", sans-serif; // Raleway
+$font-label: var(--font-label), "Helvetica", sans-serif; // Montserrat
+
+$ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+$container: 1300px;
+$gutter: 20px;
+$gutter-md: 40px;
+
+$bp-md: 768px;
+$bp-lg: 1100px;
+
+@mixin from($bp) {
+  @media (min-width: $bp) {
+    @content;
+  }
+}
+
+@mixin until($bp) {
+  @media (max-width: ($bp - 0.02px)) {
+    @content;
+  }
+}
+
+// The designs are drawn at 402px (mobile) and 1512px (desktop) wide.
+$frame-sm: 402px;
+$frame-lg: 1512px;
+
+// Scales linearly from the mobile design value to the desktop one.
+@function fluid($min, $max) {
+  $slope: math.div($max - $min, $frame-lg - $frame-sm);
+  $base: $min - $slope * $frame-sm;
+  @return clamp(#{$min}, #{$base} + #{$slope * 100vw}, #{$max});
+}
+
+// A desktop measurement that shrinks with the viewport below 1512px.
+@function desktop($px) {
+  @return min(#{math.div($px, $frame-lg) * 100vw}, #{$px});
+}
+
+@mixin container {
+  width: min(#{$container}, 100% - #{2 * $gutter});
+  margin-inline: auto;
+
+  @include from($bp-md) {
+    width: min(#{$container}, 100% - #{2 * $gutter-md});
+  }
+}
+
+@mixin label-text {
+  font-family: $font-label;
+  font-size: fluid(12px, 15px);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+@mixin heading {
+  color: $moss;
+  font-family: $font-display;
+  font-size: fluid(48px, 72px);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.005em;
+  margin: 32px 0 0;
+}
+
+@mixin body-large {
+  color: $olive;
+  font-family: $font-body;
+  font-size: fluid(21px, 25px);
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+}

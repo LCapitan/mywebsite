@@ -1,0 +1,136 @@
+@use "../../../styles/tokens" as *;
+
+.header {
+  align-items: center;
+  display: flex;
+  inset: 0 0 auto;
+  justify-content: space-between;
+  padding: fluid(26px, 32px) fluid(20px, 56px) fluid(14px, 24px) fluid(20px, 40px);
+  position: fixed;
+  transition:
+    background-color 0.4s $ease-out,
+    box-shadow 0.4s $ease-out,
+    transform 0.6s $ease-out;
+  z-index: 50;
+}
+
+.scrolled {
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  background: rgba($ivory, 0.82);
+  box-shadow: 0 1px 0 rgba($stone, 0.5);
+}
+
+.hidden {
+  transform: translateY(-100%);
+}
+
+.logo {
+  color: $olive;
+  display: block;
+  transition: color 0.3s $ease-out;
+  width: fluid(26px, 36px);
+
+  svg {
+    display: block;
+    fill: currentColor;
+    width: 100%;
+  }
+
+  &:hover,
+  &:focus-visible {
+    color: $ember;
+  }
+}
+
+.nav {
+  @include until($bp-md) {
+    display: none;
+  }
+
+  ul {
+    display: flex;
+    gap: 50px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  a {
+    @include label-text;
+    color: $olive;
+    display: inline-block;
+    font-size: 14px;
+    padding: 6px 0;
+    position: relative;
+    transition: color 0.3s $ease-out;
+
+    &::after {
+      background: currentColor;
+      bottom: 0;
+      content: "";
+      height: 1px;
+      left: 0;
+      position: absolute;
+      right: 0;
+      transform: scaleX(0);
+      transform-origin: right center;
+      transition: transform 0.5s $ease-out;
+    }
+
+    &:hover,
+    &:focus-visible {
+      color: $ember;
+
+      &::after {
+        transform: scaleX(1);
+        transform-origin: left center;
+      }
+    }
+  }
+}
+
+// A small planet: a ring with a moon that circles it on hover.
+.menuButton {
+  border: 1.5px solid $stone;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 36px;
+  padding: 0;
+  position: relative;
+  width: 36px;
+
+  @include from($bp-md) {
+    display: none;
+  }
+
+  &:hover .moon,
+  &:focus-visible .moon {
+    transform: rotate(-200deg);
+  }
+}
+
+.moon {
+  inset: 0;
+  position: absolute;
+  transform: rotate(0deg);
+  transition: transform 0.9s $ease-out;
+
+  &::after {
+    background: $olive;
+    border-radius: 50%;
+    content: "";
+    height: 13px;
+    left: 7px;
+    position: absolute;
+    top: 9px;
+    width: 13px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header,
+  .moon {
+    transition: none;
+  }
+}

@@ -1,0 +1,49 @@
+@use "../../../styles/tokens" as *;
+
+.planet {
+  animation: drift 9s ease-in-out infinite;
+  pointer-events: none;
+  position: absolute;
+}
+
+.svg {
+  display: block;
+  overflow: visible;
+  width: 100%;
+}
+
+.body {
+  fill: $olive;
+}
+
+.ring {
+  fill: none;
+  stroke: #e6dfd2;
+  stroke-width: 3;
+}
+
+.shine {
+  fill: none;
+  stroke: rgba($ivory, 0.35);
+  stroke-linecap: round;
+  stroke-width: 3;
+}
+
+// Gentle bob while the moons travel around it.
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate(-50%, -50%);
+  }
+
+  50% {
+    transform: translate(-50%, calc(-50% - 8px)) rotate(-3deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .planet {
+    animation: none;
+    transform: translate(-50%, -50%);
+  }
+}

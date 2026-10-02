@@ -1,5 +1,4 @@
 export * from "./GitHub";
-export * from "./HomeBg";
 export * from "./LinkedIn";
 export * from "./Logo";
 export * from "./Pdf";

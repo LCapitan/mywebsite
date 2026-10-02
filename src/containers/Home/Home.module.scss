@@ -1,152 +1,376 @@
-@use "sass:color";
-@use "../../../styles/variables.scss";
-@use "../../../styles/breakpoints.scss";
+@use "../../../styles/tokens" as *;
 
-.home {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+// Positions for orbits come from the 1512px desktop frame.
+
+.heading {
+  @include heading;
+  grid-area: heading;
+}
+
+.text {
+  @include body-large;
+  grid-area: text;
+  margin: 40px 0 0;
+  max-width: 600px;
+}
+
+.action {
+  grid-area: action;
+  margin-top: 40px;
+}
+
+// ---- Hero
+
+.hero {
+  isolation: isolate;
+  padding-top: fluid(122px, 199px);
   position: relative;
-  width: 100%;
 
-  @include breakpoints.lg-max {
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
+  @include from($bp-lg) {
+    min-height: 983px;
+  }
+}
+
+.heroContent {
+  @include container;
+  position: relative;
+  z-index: 2;
+}
+
+.heroTitle {
+  color: $moss;
+  font-family: $font-display;
+  font-size: fluid(56px, 96px);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  margin: 32px 0 0;
+}
+
+.heroText {
+  @include body-large;
+  margin: 40px 0 0;
+  max-width: 600px;
+}
+
+.heroArt {
+  margin-top: 28px;
+  position: relative;
+  z-index: 1;
+
+  img {
+    display: block;
+    height: auto;
+    width: 100%;
   }
 
-  @include breakpoints.sm-max {
-    padding-top: 0;
-    min-height: none;
+  // Bleeds off both edges on phones, like the mobile design.
+  @include until($bp-md) {
+    margin-left: -9vw;
+    width: 127vw;
   }
 
-  .content {
-    max-width: 500px;
-    position: relative;
-    z-index: 5;
-
-    .logo {
-      display: none;
-      margin: 0 auto 15px;
-      width: 55px;
-
-      svg {
-        fill: variables.$surface;
-      }
-
-      @include breakpoints.lg-max {
-        display: block;
-        margin: 0 auto 35px;
-      }
-    }
-
-    .title {
-      font-size: 95px;
-      color: variables.$cream;
-      font-family: variables.$title;
-      line-height: 1;
-      margin: 0;
-
-      @include breakpoints.lg-max {
-        text-align: center;
-        margin: 0 0 30px;
-      }
-
-      @include breakpoints.sm-max {
-        font-size: 65px;
-        margin: 0 0 20px;
-      }
-    }
-
-    .subtitle {
-      color: variables.$cream;
-      font-family: variables.$title;
-      font-size: 18px;
-      font-weight: variables.$light;
-      line-height: 32px;
-
-      @include breakpoints.lg-max {
-        text-align: center;
-        margin: 0 0 30px;
-      }
-    }
-
-    .actions {
-      display: flex;
-      gap: 15px;
-      margin-top: 45px;
-
-      @include breakpoints.lg-max {
-        justify-content: center;
-      }
-
-      @include breakpoints.sm-max {
-        justify-content: center;
-        flex-direction: column;
-      }
-    }
-  }
-
-  .pageBg {
-    position: fixed;
-    top: 50%;
-    right: 5%;
-    transform: translateY(-50%);
-    width: 1000px;
-    z-index: 1;
-    opacity: .5;
-
-    svg {
-      fill: color.adjust(variables.$deep-space, $lightness: 4%);
-    }
-
-    @include breakpoints.lg-max {
-      right: auto;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%) rotate(45deg);
-      width: 200%;
-
-      svg {
-        fill: color.adjust(variables.$deep-space, $lightness: 4%);
-      }
-    }
-  }
-
-  .pageHero {
-    animation: astro infinite 7s ease;
+  @include from($bp-lg) {
+    bottom: 39px;
+    margin: 0;
     position: absolute;
-    top: 50%;
-    right: -10%;
-    transform: translateY(-50%);
-    width: 73%;
-    z-index: 3;
+    right: desktop(45px);
+    width: desktop(1043px);
+  }
+}
 
-    &.desktop {
-      display: block;
-    }
+// Anchored to the top-right corner of the page so the orbits run off it.
+.sky {
+  display: none;
 
-    &.mobile {
-      display: none;
-    }
+  @include from($bp-lg) {
+    display: block;
+    height: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 0;
+  }
+}
 
-    @include breakpoints.lg-max {
-      display: none;
+@mixin from-right($right, $top, $size) {
+  left: calc(-1 * #{desktop($right)});
+  top: desktop($top);
+  width: desktop($size);
+}
+
+.heroOrbitInner {
+  @include from-right(285px, 290px, 370px);
+}
+
+.heroOrbitMiddle {
+  @include from-right(251px, 198px, 674px);
+}
+
+.heroOrbitOuter {
+  @include from-right(203px, 125px, 1016px);
+}
+
+.planet {
+  @include from-right(311px, 304px, 163px);
+}
+
+// ---- Featured work
+
+.featured {
+  @include container;
+  isolation: isolate;
+  margin-top: 112px;
+  position: relative;
+}
+
+.featuredOrbit {
+  display: none;
+  left: 211px;
+  top: 189px;
+  width: 620px;
+  z-index: -1;
+
+  @include from($bp-lg) {
+    display: block;
+  }
+}
+
+.featuredHead {
+  align-items: center;
+  display: flex;
+  gap: 24px;
+  justify-content: space-between;
+}
+
+.viewAll {
+  @include label-text;
+  align-items: center;
+  color: $olive;
+  display: inline-flex;
+  font-size: 15px;
+  gap: 18px;
+  transition: color 0.3s $ease-out;
+
+  > span:last-child {
+    height: 46px;
+    width: 46px;
+  }
+
+  &:hover,
+  &:focus-visible {
+    color: $ember;
+
+    > span:last-child {
+      background: $ember;
+      border-color: $ember;
+      color: $ivory;
+
+      svg {
+        transform: translateX(2px);
+      }
     }
   }
 }
 
-@keyframes astro {
-  0% {
-    top: 45%;
+.viewAllTop {
+  @include until($bp-lg) {
+    display: none;
+  }
+}
+
+.viewAllBottom {
+  margin-top: 40px;
+
+  @include from($bp-lg) {
+    display: none;
+  }
+}
+
+.cards {
+  display: grid;
+  list-style: none;
+  margin: 52px 0 0;
+  padding: 0;
+
+  // A swipeable row that peeks the next card on smaller screens.
+  @include until($bp-lg) {
+    gap: 16px;
+    grid-auto-columns: min(83%, 400px);
+    grid-auto-flow: column;
+    margin-inline: -$gutter;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    padding-inline: $gutter;
+    scroll-padding-inline: $gutter;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    > li {
+      scroll-snap-align: start;
+    }
   }
 
-  50% {
-    top: 52%;
+  @include from($bp-md) {
+    @include until($bp-lg) {
+      margin-inline: -$gutter-md;
+      padding-inline: $gutter-md;
+      scroll-padding-inline: $gutter-md;
+    }
   }
 
-  100% {
-    top: 45%;
+  @include from($bp-lg) {
+    gap: 24px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+// ---- About
+
+.about {
+  @include container;
+  display: grid;
+  grid-template-areas:
+    "label"
+    "photo"
+    "heading"
+    "text"
+    "action";
+  isolation: isolate;
+  margin-top: fluid(110px, 200px);
+  position: relative;
+
+  @include from($bp-lg) {
+    column-gap: 64px;
+    grid-template-areas:
+      "label photo pillars"
+      "heading photo pillars"
+      "text photo pillars"
+      "action photo pillars"
+      ". photo pillars";
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr) 95px;
+    grid-template-rows: auto auto auto auto 1fr;
+  }
+}
+
+.aboutOrbit {
+  display: none;
+  left: calc(100% - 139px);
+  top: 230px;
+  width: 680px;
+  z-index: -1;
+
+  @include from($bp-lg) {
+    display: block;
+  }
+}
+
+.aboutLabel {
+  grid-area: label;
+}
+
+.aboutPhoto {
+  --reveal-radius: 12px;
+  align-self: start;
+  aspect-ratio: 479 / 413;
+  border-radius: 12px;
+  grid-area: photo;
+  margin-top: 40px;
+  overflow: hidden;
+  position: relative;
+
+  img {
+    object-fit: cover;
+    object-position: 72% center;
+  }
+
+  @include from($bp-lg) {
+    margin-top: 0;
+  }
+}
+
+// Explore / Create / Solve, spread down the side of the photo.
+.pillars {
+  display: none;
+  grid-area: pillars;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  @include from($bp-lg) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  li {
+    @include label-text;
+    color: $olive;
+    display: flex;
+    flex-direction: column;
+    font-size: 15px;
+    gap: 8px;
+  }
+
+  // The divider sits halfway between one pillar and the next.
+  li:not(:last-child) {
+    flex: 1;
+
+    &::after {
+      background: $stone;
+      content: "";
+      height: 1px;
+      margin: auto 0;
+      width: 50px;
+    }
+  }
+}
+
+.pillarNumber {
+  color: $khaki;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+// ---- Contact
+
+.contact {
+  @include container;
+  display: grid;
+  gap: 40px;
+  isolation: isolate;
+  margin-top: fluid(110px, 200px);
+  padding-bottom: fluid(90px, 100px);
+  position: relative;
+
+  .text {
+    max-width: 800px;
+  }
+
+  @include from($bp-lg) {
+    align-items: center;
+    column-gap: 48px;
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+}
+
+.contactOrbit {
+  display: none;
+  left: 250px;
+  top: 178px;
+  width: 620px;
+  z-index: -1;
+
+  @include from($bp-lg) {
+    display: block;
+  }
+}
+
+.contactAction {
+  @include from($bp-lg) {
+    justify-self: end;
   }
 }
