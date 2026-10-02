@@ -119,9 +119,11 @@
     scroll-padding-inline: $gutter-md;
   }
 
-  // The row cards don't tilt.
+  // The row cards don't tilt, and skip the shadow, which the scrolling row
+  // would clip.
   .card,
   .card.active {
+    box-shadow: none;
     transform: none;
   }
 }
