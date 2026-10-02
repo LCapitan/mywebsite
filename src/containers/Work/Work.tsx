@@ -4,6 +4,7 @@ import cx from "classnames";
 
 import { CircleArrow } from "../../components/ArrowButton";
 import { ContactSection } from "../../components/ContactSection";
+import { HeroSky } from "../../components/HeroSky";
 import { SectionLabel } from "../../components/SectionLabel";
 import { workItems, type WorkItem } from "../../data/work";
 
@@ -180,29 +181,32 @@ export default function Work() {
         style={{ "--projects": projects.length } as CSSProperties}
       >
         <div className={styles.stage}>
-          <div className={styles.info}>
-            <SectionLabel number="01">Work</SectionLabel>
-            {/* Keyed by project so each change animates in. */}
-            <Details key={item.title} item={item} index={active} />
-          </div>
-          <div className={styles.wheel}>
-            {projects.map((project, i) => (
-              <div
-                key={project.title}
-                ref={(el) => {
-                  spokeRefs.current[i] = el;
-                }}
-                className={styles.spoke}
-              >
-                <div className={styles.slot}>
-                  <ProjectCard
-                    item={project}
-                    active={i === active}
-                    onFocus={() => scrollToProject(i)}
-                  />
+          <HeroSky anchor="center" planet />
+          <div className={styles.stageInner}>
+            <div className={styles.info}>
+              <SectionLabel number="01">Work</SectionLabel>
+              {/* Keyed by project so each change animates in. */}
+              <Details key={item.title} item={item} index={active} />
+            </div>
+            <div className={styles.wheel}>
+              {projects.map((project, i) => (
+                <div
+                  key={project.title}
+                  ref={(el) => {
+                    spokeRefs.current[i] = el;
+                  }}
+                  className={styles.spoke}
+                >
+                  <div className={styles.slot}>
+                    <ProjectCard
+                      item={project}
+                      active={i === active}
+                      onFocus={() => scrollToProject(i)}
+                    />
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>

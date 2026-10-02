@@ -7,7 +7,9 @@ import styles from "./HeroSky.module.scss";
 interface HeroSkyProps {
   // bottom: orbits follow the hero's bottom edge (the homepage astronaut).
   // top: orbits stay put at the top of the page.
-  anchor: "top" | "bottom";
+  // center: a larger set centered on the planet, which sits at the vertical
+  // middle of the container, near its right edge (the Work page).
+  anchor: "top" | "bottom" | "center";
   planet?: boolean;
 }
 

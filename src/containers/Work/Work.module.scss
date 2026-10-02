@@ -17,16 +17,26 @@
   }
 }
 
+// Full width so the orbits can sit against the screen's right edge.
 .stage {
+  height: 100vh;
+  position: sticky;
+  top: 0;
+}
+
+// The wheel column stops short of the right edge to leave room for the
+// planet beside the active card.
+.stageInner {
   @include container;
   align-items: center;
   display: grid;
   gap: 48px;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  height: 100vh;
-  padding-top: 80px;
-  position: sticky;
-  top: 0;
+  grid-template-columns: minmax(0, 1fr) var(--card);
+  height: 100%;
+  padding-right: desktop(160px);
+  padding-top: 68px;
+  position: relative;
+  z-index: 1;
 }
 
 .info {
@@ -36,8 +46,11 @@
 
 // Cards ride spokes from a hub far off to the right; turning the spokes
 // carries them along the arc. The active card sits at 9 o'clock.
+.track {
+  --card: min(580px, 64vh, 37vw);
+}
+
 .wheel {
-  --card: min(660px, 70vh, 44vw);
   --radius: calc(var(--card) * 2.5);
   height: 100%;
   position: relative;

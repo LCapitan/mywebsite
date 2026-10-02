@@ -42,6 +42,38 @@ $planet-min-top: 150px;
   }
 }
 
+// "center": everything keeps its spacing around the planet from the desktop
+// frame, scaled up, with the planet's center a set distance in from the right.
+$center-scale: 1.25;
+$center-planet-right: 110px;
+
+@mixin place-center($right, $top, $size) {
+  $dx: ($right - 311px) * $center-scale;
+  $dy: ($top - $planet-top) * $center-scale;
+
+  left: calc(-1 * #{desktop($center-planet-right)} - #{desktop($dx)});
+  top: calc(50% + #{desktop($dy)});
+  width: desktop($size * $center-scale);
+}
+
+.center {
+  .inner {
+    @include place-center(285px, 290px, 370px);
+  }
+
+  .middle {
+    @include place-center(251px, 198px, 674px);
+  }
+
+  .outer {
+    @include place-center(203px, 125px, 1016px);
+  }
+
+  .planet {
+    @include place-center(311px, 304px, 163px);
+  }
+}
+
 @each $anchor in top, bottom {
   .#{$anchor} {
     .inner {
