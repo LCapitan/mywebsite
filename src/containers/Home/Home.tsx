@@ -1,7 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
 
-import { ArrowButton, CircleArrow } from "../../components/ArrowButton";
+import { ArrowButton, CircleArrowLink } from "../../components/ArrowButton";
 import { ContactSection } from "../../components/ContactSection";
 import { FeaturedCard } from "../../components/FeaturedCard";
 import { HeroSky } from "../../components/HeroSky";
@@ -21,10 +20,11 @@ const pillars = ["Explore", "Create", "Solve"];
 
 function ViewAllProjects({ className }: { className?: string }) {
   return (
-    <Link href="/work" className={`${styles.viewAll} ${className}`}>
-      View all projects
-      <CircleArrow />
-    </Link>
+    <CircleArrowLink
+      href="/work"
+      label="View all projects"
+      className={className}
+    />
   );
 }
 

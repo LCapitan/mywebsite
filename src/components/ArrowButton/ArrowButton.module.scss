@@ -121,6 +121,31 @@ $circle: $height - 2 * ($inset + $border);
   }
 }
 
+// Points the arrow down; it still nudges along its own direction on hover.
+.down svg {
+  transform: rotate(90deg);
+}
+
+:global(a):hover .down svg,
+:global(a):focus-visible .down svg {
+  transform: rotate(90deg) translateX(3px);
+}
+
+.circleLink {
+  @include label-text;
+  align-items: center;
+  color: $moss;
+  display: inline-flex;
+  font-size: 15px;
+  gap: 18px;
+  transition: color 0.3s $ease-out;
+
+  &:hover,
+  &:focus-visible {
+    color: $mars;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .fill,
   .icon svg,

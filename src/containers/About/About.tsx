@@ -1,10 +1,9 @@
 import type { MouseEvent } from "react";
 import Image from "next/image";
 
-import { ArrowButton } from "../../components/ArrowButton";
+import { ArrowButton, CircleArrowLink } from "../../components/ArrowButton";
 import { ContactSection } from "../../components/ContactSection";
 import { HeroSky } from "../../components/HeroSky";
-import { ArrowRight } from "../../components/Icons/ArrowRight";
 import { Orbit } from "../../components/Orbit";
 import { Punctuated } from "../../components/Punctuated";
 import { Reveal } from "../../components/Reveal";
@@ -15,8 +14,8 @@ import styles from "./About.module.scss";
 const portrait =
   "https://res.cloudinary.com/austinmel/image/upload/v1790868836/IMG_1154_oiifty.jpg";
 
-// TODO: the photo for "Beyond work". A placeholder block shows until it's set.
-const beyondWorkPhoto: string | null = null;
+const beyondWorkPhoto =
+  "https://res.cloudinary.com/austinmel/image/upload/v1790965350/me-and-caro_bqrzdg.jpg";
 
 const history = [
   "I’m a Senior Front-End Developer currently living in Miami, Florida and working at MERGE, where I spend my days building digital experiences for a wide range of clients.",
@@ -53,14 +52,13 @@ export default function About() {
               experiences — combining creativity, logic, and problem solving to
               make things that are both beautiful and functional.
             </Reveal>
-            <Reveal className={styles.readMore} delay={450}>
-              <a href="#history" onClick={scrollToHistory}>
-                Read more about me
-                <span className={styles.readMoreLine} aria-hidden="true" />
-                <span className={styles.readMoreArrow}>
-                  <ArrowRight />
-                </span>
-              </a>
+            <Reveal className={styles.action} delay={450}>
+              <CircleArrowLink
+                href="#history"
+                label="Read more about me"
+                direction="down"
+                onClick={scrollToHistory}
+              />
             </Reveal>
           </div>
           <Reveal variant="clip" className={styles.portrait} delay={200}>
@@ -100,16 +98,12 @@ export default function About() {
           reverse
         />
         <Reveal variant="clip" className={styles.beyondPhoto}>
-          {beyondWorkPhoto ? (
-            <Image
-              src={beyondWorkPhoto}
-              alt="Austin and his wife on a hike"
-              fill
-              sizes="(max-width: 1099px) 100vw, 645px"
-            />
-          ) : (
-            <div className={styles.photoPlaceholder} />
-          )}
+          <Image
+            src={beyondWorkPhoto}
+            alt="Austin and his wife Caro in the mountains"
+            fill
+            sizes="(max-width: 1099px) 100vw, 645px"
+          />
         </Reveal>
         <div>
           <SectionLabel number="03">Beyond work</SectionLabel>

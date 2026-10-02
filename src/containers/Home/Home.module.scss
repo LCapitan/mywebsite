@@ -106,28 +106,13 @@
   justify-content: space-between;
 }
 
-.viewAll {
-  @include label-text;
-  align-items: center;
-  color: $moss;
-  display: inline-flex;
-  font-size: 15px;
-  gap: 18px;
-  transition: color 0.3s $ease-out;
-
-  &:hover,
-  &:focus-visible {
-    color: $mars;
-  }
-}
-
-.viewAllTop {
+.featured .viewAllTop {
   @include until($bp-lg) {
     display: none;
   }
 }
 
-.viewAllBottom {
+.featured .viewAllBottom {
   margin-top: 40px;
 
   @include from($bp-lg) {

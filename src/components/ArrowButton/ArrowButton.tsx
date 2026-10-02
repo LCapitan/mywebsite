@@ -1,5 +1,6 @@
 import Link from "next/link";
 import cx from "classnames";
+import type { MouseEventHandler } from "react";
 
 import { ArrowRight } from "../Icons/ArrowRight";
 
@@ -13,7 +14,12 @@ interface ArrowButtonProps {
 }
 
 // Pill link with an orange arrow circle that floods the button on hover.
-export function ArrowButton({ label, href, external, className }: ArrowButtonProps) {
+export function ArrowButton({
+  label,
+  href,
+  external,
+  className,
+}: ArrowButtonProps) {
   const content = (
     <>
       <span className={styles.fill} aria-hidden="true" />
@@ -43,11 +49,72 @@ export function ArrowButton({ label, href, external, className }: ArrowButtonPro
   );
 }
 
+interface CircleArrowProps {
+  className?: string;
+  direction?: "right" | "down";
+}
+
 // Outlined circle with an arrow, used beside text links and on cards.
-export function CircleArrow({ className }: { className?: string }) {
+export function CircleArrow({
+  className,
+  direction = "right",
+}: CircleArrowProps) {
   return (
-    <span className={cx(styles.circle, className)} aria-hidden="true">
+    <span
+      className={cx(
+        styles.circle,
+        direction === "down" && styles.down,
+        className,
+      )}
+      aria-hidden="true"
+    >
       <ArrowRight />
     </span>
+  );
+}
+
+interface CircleArrowLinkProps {
+  label: string;
+  href: string;
+  direction?: "right" | "down";
+  onClick?: MouseEventHandler<HTMLAnchorElement>;
+  className?: string;
+}
+
+// Secondary button: an uppercase label beside a circle arrow.
+export function CircleArrowLink({
+  label,
+  href,
+  direction,
+  onClick,
+  className,
+}: CircleArrowLinkProps) {
+  const content = (
+    <>
+      {label}
+      <CircleArrow direction={direction} />
+    </>
+  );
+
+  if (href.startsWith("/")) {
+    return (
+      <Link
+        href={href}
+        onClick={onClick}
+        className={cx(styles.circleLink, className)}
+      >
+        {content}
+      </Link>
+    );
+  }
+
+  return (
+    <a
+      href={href}
+      onClick={onClick}
+      className={cx(styles.circleLink, className)}
+    >
+      {content}
+    </a>
   );
 }
