@@ -49,7 +49,7 @@ export default function About() {
             <Reveal as="p" className={styles.text} delay={300}>
               My path into development started with a love for art and design.
               Over time, that curiosity turned into a career building digital
-              experiences — combining creativity, logic, and problem solving to
+              experiences - combining creativity, logic, and problem solving to
               make things that are both beautiful and functional.
             </Reveal>
             <Reveal className={styles.action} delay={450}>
