@@ -3,14 +3,14 @@
 .label {
   @include label-text;
   align-items: center;
-  color: $olive;
+  color: $moss;
   display: flex;
   gap: 24px;
   margin: 0;
 }
 
 .line {
-  background: $stone;
+  background: $taupe;
   flex: none;
   height: 1px;
   transform-origin: left center;

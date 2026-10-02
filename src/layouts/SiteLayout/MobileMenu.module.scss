@@ -7,7 +7,7 @@ $slide: 0.7s;
 .backdrop {
   -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
-  background: rgba($night, 0.35);
+  background: rgba($charcoal, 0.35);
   inset: 0;
   opacity: 0;
   position: fixed;
@@ -27,7 +27,7 @@ $slide: 0.7s;
 // Panel slides in from the right: flush with the right edge, inset 16px
 // everywhere else, and always the full height of the visible viewport.
 .menu {
-  background: $night;
+  background: $charcoal;
   border-radius: $edge 0 0 $edge;
   display: flex;
   flex-direction: column;
@@ -108,7 +108,7 @@ $slide: 0.7s;
 
   &::before,
   &::after {
-    background: $khaki;
+    background: $olive;
     content: "";
     height: 1.5px;
     left: 8px;
@@ -126,7 +126,7 @@ $slide: 0.7s;
   }
 
   &:focus-visible {
-    outline: 2px solid $ember;
+    outline: 2px solid $mars;
   }
 }
 
@@ -144,7 +144,7 @@ $slide: 0.7s;
   a {
     @include label-text;
     align-items: center;
-    color: $ivory;
+    color: $creme;
     display: grid;
     font-size: 15px;
     grid-template-columns: 40px 30px auto;
@@ -152,12 +152,12 @@ $slide: 0.7s;
 }
 
 .number {
-  color: $khaki;
+  color: $olive;
   font-weight: 500;
 }
 
 .dot {
-  background: $ember;
+  background: $mars;
   border-radius: 50%;
   height: 6px;
   visibility: hidden;
@@ -169,7 +169,7 @@ $slide: 0.7s;
 }
 
 .divider {
-  background: $olive;
+  background: $moss;
   display: block;
   height: 1px;
   margin: 48px 0 56px;
@@ -177,7 +177,7 @@ $slide: 0.7s;
 }
 
 .tagline {
-  color: $stone;
+  color: $taupe;
   font-family: $font-body;
   font-size: 19px;
   font-weight: 400;
@@ -202,7 +202,7 @@ $slide: 0.7s;
 
 .name {
   @include label-text;
-  color: $ivory;
+  color: $creme;
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -212,7 +212,7 @@ $slide: 0.7s;
 
 .location {
   @include label-text;
-  color: $olive;
+  color: $moss;
   font-size: 11px;
   margin: 4px 0 0;
 }
@@ -226,13 +226,13 @@ $slide: 0.7s;
   padding: 48px 0 0;
 
   a {
-    color: $olive;
+    color: $moss;
     display: block;
     transition: color 0.3s $ease-out;
 
     &:hover,
     &:focus-visible {
-      color: $khaki;
+      color: $olive;
     }
   }
 

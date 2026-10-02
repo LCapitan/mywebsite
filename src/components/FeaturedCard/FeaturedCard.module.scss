@@ -5,7 +5,7 @@ $pad: 24px;
 .card {
   aspect-ratio: 417 / 354;
   border-radius: 12px;
-  color: $ivory;
+  color: $creme;
   display: block;
   font-weight: inherit;
   isolation: isolate;
@@ -17,10 +17,10 @@ $pad: 24px;
     background:
       linear-gradient(
         to top,
-        rgba($night, 0.88) 0%,
-        rgba($night, 0.55) 38%,
-        rgba($night, 0.1) 70%,
-        rgba($night, 0.3) 100%
+        rgba($charcoal, 0.88) 0%,
+        rgba($charcoal, 0.55) 38%,
+        rgba($charcoal, 0.1) 70%,
+        rgba($charcoal, 0.3) 100%
       );
     content: "";
     inset: 0;
@@ -41,7 +41,7 @@ $pad: 24px;
   }
 
   &:focus-visible {
-    outline: 2px solid $ember;
+    outline: 2px solid $mars;
     outline-offset: 4px;
   }
 }
@@ -90,7 +90,7 @@ $pad: 24px;
 }
 
 .description {
-  color: $ivory;
+  color: $creme;
   font-family: $font-body;
   font-size: 17px;
   font-weight: 400;
@@ -108,7 +108,7 @@ $pad: 24px;
   padding: 0;
 
   li {
-    border: 1px solid rgba($ivory, 0.8);
+    border: 1px solid rgba($creme, 0.8);
     border-radius: 999px;
     font-family: $font-label;
     font-size: 10px;
@@ -121,7 +121,7 @@ $pad: 24px;
 }
 
 .card .arrow {
-  border-color: rgba($ivory, 0.9);
+  border-color: rgba($creme, 0.9);
   bottom: $pad;
   height: 64px;
   position: absolute;

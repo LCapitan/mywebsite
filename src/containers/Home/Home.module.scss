@@ -43,7 +43,7 @@
 }
 
 .heroTitle {
-  color: $moss;
+  color: $birch;
   font-family: $font-display;
   font-size: fluid(56px, 77px);
   font-weight: 700;
@@ -168,7 +168,7 @@ $planet-min-top: 150px;
 .viewAll {
   @include label-text;
   align-items: center;
-  color: $olive;
+  color: $moss;
   display: inline-flex;
   font-size: 15px;
   gap: 18px;
@@ -176,7 +176,7 @@ $planet-min-top: 150px;
 
   &:hover,
   &:focus-visible {
-    color: $ember;
+    color: $mars;
   }
 }
 
@@ -316,7 +316,7 @@ $planet-min-top: 150px;
 
   li {
     @include label-text;
-    color: $olive;
+    color: $moss;
     display: flex;
     flex-direction: column;
     font-size: 15px;
@@ -328,7 +328,7 @@ $planet-min-top: 150px;
     flex: 1;
 
     &::after {
-      background: $stone;
+      background: $taupe;
       content: "";
       height: 1px;
       margin: auto 0;
@@ -338,7 +338,7 @@ $planet-min-top: 150px;
 }
 
 .pillarNumber {
-  color: $khaki;
+  color: $olive;
   font-size: 13px;
   font-weight: 500;
 }

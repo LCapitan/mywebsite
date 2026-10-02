@@ -3,13 +3,13 @@
 @use "sass:math";
 
 // Palette
-$ivory: #fcf9f2; // page background
-$stone: #c9bfb3; // hairlines, orbits
-$khaki: #aa9f71; // moons, small numbers
-$olive: #83794f; // labels, body copy
-$moss: #3d3c27; // headings
-$night: #222220; // mobile menu
-$ember: #c67131; // accent
+$creme: #fcf9f2; // page background
+$taupe: #c9bfb3; // hairlines, orbits
+$olive: #aa9f71; // moons, small numbers
+$moss: #83794f; // labels, body copy
+$birch: #3d3c27; // headings
+$charcoal: #222220; // mobile menu
+$mars: #c67131; // accent
 
 // --font-* are set from next/font in pages/_app.tsx
 $font-display: var(--font-title), "Helvetica", sans-serif; // Ubuntu
@@ -72,7 +72,7 @@ $frame-lg: 1512px;
 }
 
 @mixin heading {
-  color: $moss;
+  color: $birch;
   font-family: $font-display;
   font-size: fluid(40px, 56px);
   font-weight: 700;
@@ -82,7 +82,7 @@ $frame-lg: 1512px;
 }
 
 @mixin body-large {
-  color: $olive;
+  color: $moss;
   font-family: $font-body;
   font-size: fluid(18px, 20px);
   font-weight: 300;

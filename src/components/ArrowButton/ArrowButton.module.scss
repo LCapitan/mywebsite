@@ -7,9 +7,9 @@ $circle: $height - 2 * ($inset + $border);
 
 .button {
   align-items: center;
-  border: $border solid $olive;
+  border: $border solid $moss;
   border-radius: 999px;
-  color: $olive;
+  color: $moss;
   display: inline-flex;
   font-family: $font-label;
   font-size: 15px;
@@ -28,8 +28,8 @@ $circle: $height - 2 * ($inset + $border);
 
   &:hover,
   &:focus-visible {
-    border-color: $ember;
-    color: $ivory;
+    border-color: $mars;
+    color: $creme;
 
     .fill {
       width: calc(100% - #{2 * $inset});
@@ -41,14 +41,14 @@ $circle: $height - 2 * ($inset + $border);
   }
 
   &:focus-visible {
-    outline: 2px solid $ember;
+    outline: 2px solid $mars;
     outline-offset: 4px;
   }
 }
 
 // Starts as the arrow's circle and stretches left to fill the pill.
 .fill {
-  background: $ember;
+  background: $mars;
   border-radius: 999px;
   bottom: $inset;
   position: absolute;
@@ -61,7 +61,7 @@ $circle: $height - 2 * ($inset + $border);
 
 .icon {
   align-items: center;
-  color: $ivory;
+  color: $creme;
   display: inline-flex;
   height: $circle;
   justify-content: center;
@@ -90,7 +90,7 @@ $circle: $height - 2 * ($inset + $border);
 
   // Orange fill that grows inside the ring, leaving a small gap.
   &::before {
-    background: $ember;
+    background: $mars;
     border-radius: 50%;
     content: "";
     inset: 9%;
@@ -109,8 +109,8 @@ $circle: $height - 2 * ($inset + $border);
 // Fills when the link it sits in is hovered or focused.
 :global(a):hover .circle,
 :global(a):focus-visible .circle {
-  border-color: $ember;
-  color: $ivory;
+  border-color: $mars;
+  color: $creme;
 
   &::before {
     transform: scale(1);

@@ -50,7 +50,7 @@ export function Reveal({
 
 interface RevealLinesProps {
   as?: ElementType;
-  lines: string[];
+  lines: ReactNode[];
   delay?: number;
   stagger?: number;
   className?: string;
@@ -72,7 +72,7 @@ export function RevealLines({
       className={cx(styles.lines, inView && styles.visible, className)}
     >
       {lines.map((line, i) => (
-        <span key={line} className={styles.line}>
+        <span key={i} className={styles.line}>
           {/* Keeps a space between lines for screen readers. */}
           {i > 0 && " "}
           <span

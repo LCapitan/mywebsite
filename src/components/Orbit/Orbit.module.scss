@@ -17,13 +17,13 @@
 }
 
 .light {
-  --orbit-line: #{rgba($stone, 0.6)};
+  --orbit-line: #{rgba($taupe, 0.6)};
   --orbit-moon: #ddd5c9;
 }
 
 .dark {
-  --orbit-line: #{rgba($stone, 0.75)};
-  --orbit-moon: #{$khaki};
+  --orbit-line: #{rgba($taupe, 0.75)};
+  --orbit-moon: #{$olive};
 }
 
 .path {

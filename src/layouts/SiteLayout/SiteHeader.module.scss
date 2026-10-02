@@ -17,8 +17,8 @@
 .scrolled {
   -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
-  background: rgba($ivory, 0.82);
-  box-shadow: 0 1px 0 rgba($stone, 0.5);
+  background: rgba($creme, 0.82);
+  box-shadow: 0 1px 0 rgba($taupe, 0.5);
 }
 
 .hidden {
@@ -26,7 +26,7 @@
 }
 
 .logo {
-  color: $olive;
+  color: $moss;
   display: block;
   transition: color 0.3s $ease-out;
   width: fluid(26px, 36px);
@@ -39,7 +39,7 @@
 
   &:hover,
   &:focus-visible {
-    color: $ember;
+    color: $mars;
   }
 }
 
@@ -58,7 +58,7 @@
 
   a {
     @include label-text;
-    color: $olive;
+    color: $moss;
     display: inline-block;
     font-size: 14px;
     padding: 6px 0;
@@ -80,7 +80,7 @@
 
     &:hover,
     &:focus-visible {
-      color: $ember;
+      color: $mars;
 
       &::after {
         transform: scaleX(1);
@@ -92,7 +92,7 @@
 
 // A small planet: a ring with a moon that circles it on hover.
 .menuButton {
-  border: 1.5px solid $stone;
+  border: 1.5px solid $taupe;
   border-radius: 50%;
   cursor: pointer;
   height: 36px;
@@ -117,7 +117,7 @@
   transition: transform 0.9s $ease-out;
 
   &::after {
-    background: $olive;
+    background: $moss;
     border-radius: 50%;
     content: "";
     height: 13px;

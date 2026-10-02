@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowButton, CircleArrow } from "../../components/ArrowButton";
 import { FeaturedCard } from "../../components/FeaturedCard";
 import { Orbit, Planet } from "../../components/Orbit";
+import { Punctuated } from "../../components/Punctuated";
 import { Reveal, RevealLines } from "../../components/Reveal";
 import { SectionLabel } from "../../components/SectionLabel";
 import { CONTACT_EMAIL } from "../../config";
@@ -61,7 +62,9 @@ export function Home() {
           <SectionLabel number="01">Hi, I&#39;m Austin and I</SectionLabel>
           <RevealLines
             className={styles.heroTitle}
-            lines={["Design.", "Develop.", "Create."]}
+            lines={["Design.", "Develop.", "Create."].map((line) => (
+              <Punctuated key={line}>{line}</Punctuated>
+            ))}
             delay={150}
           />
           <Reveal as="p" className={styles.heroText} delay={450}>
@@ -120,7 +123,7 @@ export function Home() {
           About me
         </SectionLabel>
         <Reveal as="h2" className={styles.heading}>
-          Built on curiosity and creativity
+          <Punctuated>Built on curiosity and creativity.</Punctuated>
         </Reveal>
         <Reveal as="p" className={styles.text} delay={120}>
           I&#39;m a senior developer and product designer with a passion for
@@ -161,7 +164,7 @@ export function Home() {
         <div>
           <SectionLabel number="04">Let&#39;s work together</SectionLabel>
           <Reveal as="h2" className={styles.heading}>
-            Have a project in mind?
+            <Punctuated>Have a project in mind?</Punctuated>
           </Reveal>
           <Reveal as="p" className={styles.text} delay={120}>
             I&#39;m always open to new opportunities, interesting projects, or

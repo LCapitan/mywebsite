@@ -21,7 +21,7 @@ interface OrbitProps {
   line?: "solid" | "dashed" | "dotted";
   // Orbit line thickness in px.
   strokeWidth?: number;
-  // light: pale moons (hero). dark: khaki moons (sections).
+  // light: pale moons (hero). dark: olive moons (sections).
   tone?: "light" | "dark";
 }
 
