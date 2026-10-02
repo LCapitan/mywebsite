@@ -70,7 +70,7 @@ $center-planet-right: 110px;
 $m: math.div(18vw, 163px);
 // The planet's center, from the hero's top-right corner.
 $mobile-planet-right: 16vw;
-$mobile-planet-top: 170px;
+$mobile-planet-top: 270px;
 
 @mixin place-mobile($right, $top, $size) {
   left: calc(-1 * #{$mobile-planet-right} - #{($right - 311px) * $m});
