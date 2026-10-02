@@ -74,7 +74,7 @@ $frame-lg: 1512px;
 @mixin heading {
   color: $moss;
   font-family: $font-display;
-  font-size: fluid(48px, 72px);
+  font-size: fluid(40px, 56px);
   font-weight: 700;
   line-height: 1.02;
   letter-spacing: -0.005em;
@@ -84,7 +84,7 @@ $frame-lg: 1512px;
 @mixin body-large {
   color: $olive;
   font-family: $font-body;
-  font-size: fluid(21px, 25px);
+  font-size: fluid(18px, 20px);
   font-weight: 300;
   letter-spacing: 0.04em;
   line-height: 1.4;

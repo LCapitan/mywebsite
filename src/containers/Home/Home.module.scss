@@ -272,10 +272,8 @@ $planet-min-top: 150px;
       "label photo pillars"
       "heading photo pillars"
       "text photo pillars"
-      "action photo pillars"
-      ". photo pillars";
+      "action photo pillars";
     grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr) 95px;
-    grid-template-rows: auto auto auto auto 1fr;
   }
 }
 
@@ -310,7 +308,10 @@ $planet-min-top: 150px;
     object-position: 72% center;
   }
 
+  // On desktop the photo is exactly as tall as the text beside it.
   @include from($bp-lg) {
+    align-self: stretch;
+    aspect-ratio: auto;
     margin-top: 0;
   }
 }
