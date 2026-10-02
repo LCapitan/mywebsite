@@ -26,6 +26,15 @@
   isolation: isolate;
   padding-top: fluid(122px, 185px);
   position: relative;
+
+  // Like the homepage hero: at least a full screen tall, content centered.
+  @include from($bp-lg) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+    padding-block: 100px;
+  }
 }
 
 .heroContent {
@@ -99,8 +108,10 @@
     object-position: 65% center;
   }
 
+  // Shrinks on shorter screens so the whole photo fits in the hero.
   @include from($bp-lg) {
     margin-right: desktop(44px);
+    max-height: max(420px, calc(100vh - 200px));
   }
 }
 
