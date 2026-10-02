@@ -63,16 +63,18 @@ $center-planet-right: 110px;
   width: desktop($size * $center-scale);
 }
 
-// ---- Phones and tablets: a smaller set with the planet just above the top
-// right of the hero's artwork.
+// ---- Phones and tablets: a smaller set with the planet in the top-right
+// corner, just below the header; the orbits run off the top and right edges.
 
 // Desktop-frame px -> vw (the planet comes out ~18vw wide).
 $m: math.div(18vw, 163px);
+// The planet's center, from the hero's top-right corner.
+$mobile-planet-right: 16vw;
+$mobile-planet-top: 170px;
 
-// $art-top: the artwork's top edge, measured up from the hero's bottom.
-@mixin place-mobile($art-top, $right, $top, $size) {
-  left: calc(-16vw - #{($right - 311px) * $m});
-  top: calc(100% - #{$art-top} - 6vw + #{($top - $planet-top) * $m});
+@mixin place-mobile($right, $top, $size) {
+  left: calc(-1 * #{$mobile-planet-right} - #{($right - 311px) * $m});
+  top: calc(#{$mobile-planet-top} + #{($top - $planet-top) * $m});
   width: $size * $m;
 }
 
@@ -97,14 +99,11 @@ $m: math.div(18vw, 163px);
 }
 
 @include until($bp-lg) {
-  // Homepage: the astronaut is 127vw wide (1617x734) at the hero's bottom.
-  // About: the portrait (530x607) spans the content width at the bottom.
-  @each $anchor, $art-top in (bottom: 57.6vw, top: calc((100vw - 40px) * 1.1453)) {
-    .#{$anchor} {
-      @each $name, $p in $pieces {
-        .#{$name} {
-          @include place-mobile($art-top, list.nth($p, 1), list.nth($p, 2), list.nth($p, 3));
-        }
+  .top,
+  .bottom {
+    @each $name, $p in $pieces {
+      .#{$name} {
+        @include place-mobile(list.nth($p, 1), list.nth($p, 2), list.nth($p, 3));
       }
     }
   }
