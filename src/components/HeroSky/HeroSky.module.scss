@@ -1,18 +1,15 @@
+@use "sass:list";
+@use "sass:math";
 @use "../../../styles/tokens" as *;
 
 // Spans the hero along the page's right edge; orbits run off the right edge
 // and the top of the page. Positions come from the 1512px desktop frame.
 .sky {
-  display: none;
-
-  @include from($bp-lg) {
-    bottom: 0;
-    display: block;
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 0;
-  }
+  bottom: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 0;
 }
 
 // Hero height and planet center in the desktop frame.
@@ -21,7 +18,17 @@ $planet-top: 304px;
 // The highest the planet's center may sit, clear of the header.
 $planet-min-top: 150px;
 
-// $right/$top: the orbit's center, measured from the frame's top-right corner.
+// Each piece's center and size in the desktop frame, measured from its
+// top-right corner: (right, top, size).
+$pieces: (
+  inner: (285px, 290px, 370px),
+  middle: (251px, 198px, 674px),
+  outer: (203px, 125px, 1016px),
+  planet: (311px, 304px, 163px),
+);
+
+// ---- Desktop
+
 @mixin place($anchor, $right, $top, $size) {
   left: calc(-1 * #{desktop($right)});
   width: desktop($size);
@@ -42,8 +49,8 @@ $planet-min-top: 150px;
   }
 }
 
-// "center": everything keeps its spacing around the planet from the desktop
-// frame, scaled up, with the planet's center a set distance in from the right.
+// "center": everything keeps its spacing around the planet, scaled up, with
+// the planet's center a set distance in from the right (the Work page).
 $center-scale: 1.25;
 $center-planet-right: 110px;
 
@@ -56,40 +63,54 @@ $center-planet-right: 110px;
   width: desktop($size * $center-scale);
 }
 
-.center {
-  .inner {
-    @include place-center(285px, 290px, 370px);
+// ---- Phones and tablets: a smaller set with the planet just above the top
+// right of the hero's artwork.
+
+// Desktop-frame px -> vw (the planet comes out ~18vw wide).
+$m: math.div(18vw, 163px);
+
+// $art-top: the artwork's top edge, measured up from the hero's bottom.
+@mixin place-mobile($art-top, $right, $top, $size) {
+  left: calc(-16vw - #{($right - 311px) * $m});
+  top: calc(100% - #{$art-top} - 6vw + #{($top - $planet-top) * $m});
+  width: $size * $m;
+}
+
+@include from($bp-lg) {
+  @each $anchor in top, bottom {
+    .#{$anchor} {
+      @each $name, $p in $pieces {
+        .#{$name} {
+          @include place($anchor, list.nth($p, 1), list.nth($p, 2), list.nth($p, 3));
+        }
+      }
+    }
   }
 
-  .middle {
-    @include place-center(251px, 198px, 674px);
-  }
-
-  .outer {
-    @include place-center(203px, 125px, 1016px);
-  }
-
-  .planet {
-    @include place-center(311px, 304px, 163px);
+  .center {
+    @each $name, $p in $pieces {
+      .#{$name} {
+        @include place-center(list.nth($p, 1), list.nth($p, 2), list.nth($p, 3));
+      }
+    }
   }
 }
 
-@each $anchor in top, bottom {
-  .#{$anchor} {
-    .inner {
-      @include place($anchor, 285px, 290px, 370px);
+@include until($bp-lg) {
+  // Homepage: the astronaut is 127vw wide (1617x734) at the hero's bottom.
+  // About: the portrait (530x607) spans the content width at the bottom.
+  @each $anchor, $art-top in (bottom: 57.6vw, top: calc((100vw - 40px) * 1.1453)) {
+    .#{$anchor} {
+      @each $name, $p in $pieces {
+        .#{$name} {
+          @include place-mobile($art-top, list.nth($p, 1), list.nth($p, 2), list.nth($p, 3));
+        }
+      }
     }
+  }
 
-    .middle {
-      @include place($anchor, 251px, 198px, 674px);
-    }
-
-    .outer {
-      @include place($anchor, 203px, 125px, 1016px);
-    }
-
-    .planet {
-      @include place($anchor, 311px, 304px, 163px);
-    }
+  // Work uses its row layout on small screens, without the sky.
+  .center {
+    display: none;
   }
 }
