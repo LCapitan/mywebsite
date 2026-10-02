@@ -50,6 +50,11 @@
   @include body-large;
   margin: 40px 0 0;
   max-width: 600px;
+
+  // Leaves room for the orbits on the right.
+  @include until($bp-md) {
+    max-width: 75%;
+  }
 }
 
 .heroArt {
