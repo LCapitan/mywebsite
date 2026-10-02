@@ -51,89 +51,101 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
   }, [open, onClose]);
 
   return (
-    <div
-      id="mobile-menu"
-      role="dialog"
-      aria-modal="true"
-      aria-label="Menu"
-      className={cx(styles.menu, open && styles.open)}
-      inert={!open}
-    >
-      <button
-        ref={closeRef}
-        type="button"
-        className={styles.close}
-        aria-label="Close menu"
+    <>
+      <div
+        className={cx(styles.backdrop, open && styles.backdropVisible)}
         onClick={onClose}
+        aria-hidden="true"
       />
+      <div
+        id="mobile-menu"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Menu"
+        className={cx(styles.menu, open && styles.open)}
+        inert={!open}
+      >
+        <button
+          ref={closeRef}
+          type="button"
+          className={styles.close}
+          aria-label="Close menu"
+          onClick={onClose}
+        />
 
-      <div className={styles.inner}>
-        <nav aria-label="Menu">
-          <ol className={styles.links}>
-            {menuLinks.map(({ label, href }, i) => {
-              const current = href === pathname;
-              const content = (
-                <>
-                  <span className={styles.number}>
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span className={styles.dot} aria-hidden="true" />
-                  <span>{label}</span>
-                </>
-              );
+        <div className={styles.inner}>
+          <nav aria-label="Menu">
+            <ol className={styles.links}>
+              {menuLinks.map(({ label, href }, i) => {
+                const current = href === pathname;
+                const content = (
+                  <>
+                    <span className={styles.number}>
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className={styles.dot} aria-hidden="true" />
+                    <span>{label}</span>
+                  </>
+                );
 
-              return (
-                <li key={label} style={{ "--i": i } as CSSProperties}>
-                  {href.startsWith("/") ? (
-                    <Link
-                      href={href}
-                      onClick={onClose}
-                      aria-current={current ? "page" : undefined}
-                    >
-                      {content}
-                    </Link>
-                  ) : (
-                    <a href={href} onClick={onClose}>
-                      {content}
-                    </a>
-                  )}
-                </li>
-              );
-            })}
-          </ol>
-        </nav>
+                return (
+                  <li key={label} style={{ "--i": i } as CSSProperties}>
+                    {href.startsWith("/") ? (
+                      <Link
+                        href={href}
+                        onClick={onClose}
+                        aria-current={current ? "page" : undefined}
+                      >
+                        {content}
+                      </Link>
+                    ) : (
+                      <a href={href} onClick={onClose}>
+                        {content}
+                      </a>
+                    )}
+                  </li>
+                );
+              })}
+            </ol>
+          </nav>
 
-        <span className={styles.divider} aria-hidden="true" />
+          <span className={styles.divider} aria-hidden="true" />
 
-        <p className={styles.tagline}>
-          I build thoughtful, high quality web experiences that solve real
-          problems and bring great designs to life.
-        </p>
+          <p className={styles.tagline}>
+            I build thoughtful, high quality web experiences that solve real
+            problems and bring great designs to life.
+          </p>
 
-        <div className={styles.profile}>
-          <Image
-            src="https://res.cloudinary.com/austinmel/image/upload/c_thumb,g_face,w_300,h_300/v1790868914/me_ytr3vn.jpg"
-            alt=""
-            width={72}
-            height={72}
-            className={styles.avatar}
-          />
-          <div>
-            <p className={styles.name}>Austin Melendez</p>
-            <p className={styles.location}>Miami, FL</p>
+          <div className={styles.profile}>
+            <Image
+              src="https://res.cloudinary.com/austinmel/image/upload/c_thumb,g_face,w_300,h_300/v1790868914/me_ytr3vn.jpg"
+              alt=""
+              width={72}
+              height={72}
+              className={styles.avatar}
+            />
+            <div>
+              <p className={styles.name}>Austin Melendez</p>
+              <p className={styles.location}>Miami, FL</p>
+            </div>
           </div>
         </div>
-      </div>
 
-      <ul className={styles.social}>
-        {socialLinks.map(({ label, href, Icon }) => (
-          <li key={label}>
-            <a href={href} target="_blank" rel="noreferrer" aria-label={label}>
-              <Icon />
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
+        <ul className={styles.social}>
+          {socialLinks.map(({ label, href, Icon }) => (
+            <li key={label}>
+              <a
+                href={href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={label}
+              >
+                <Icon />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </>
   );
 }

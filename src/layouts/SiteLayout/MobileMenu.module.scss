@@ -1,24 +1,55 @@
 @use "../../../styles/tokens" as *;
 
-.menu {
-  background: $night;
-  display: flex;
-  flex-direction: column;
+$edge: 16px;
+$slide: 0.7s;
+
+// Dims the strip of page left showing beside the panel.
+.backdrop {
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  background: rgba($night, 0.35);
   inset: 0;
   opacity: 0;
-  overflow-y: auto;
-  padding: 120px 0 40px;
   position: fixed;
   transition:
     opacity 0.5s $ease-out,
     visibility 0s linear 0.5s;
   visibility: hidden;
+  z-index: 99;
+}
+
+.backdropVisible {
+  opacity: 1;
+  transition: opacity 0.5s $ease-out;
+  visibility: visible;
+}
+
+// Panel slides in from the right: flush with the right edge, inset 16px
+// everywhere else, and always the full height of the visible viewport.
+.menu {
+  background: $night;
+  border-radius: $edge 0 0 $edge;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - #{2 * $edge});
+  height: calc(100dvh - #{2 * $edge});
+  left: $edge;
+  overflow-y: auto;
+  padding: 104px 0 32px;
+  position: fixed;
+  right: 0;
+  top: $edge;
+  transform: translateX(calc(100% + #{$edge}));
+  transition:
+    transform $slide $ease-out,
+    visibility 0s linear $slide;
+  visibility: hidden;
   z-index: 100;
 }
 
 .open {
-  opacity: 1;
-  transition: opacity 0.5s $ease-out;
+  transform: none;
+  transition: transform $slide $ease-out;
   visibility: visible;
 }
 
@@ -70,8 +101,9 @@
   cursor: pointer;
   height: 40px;
   position: absolute;
-  right: 14px;
-  top: 24px;
+  // Lines up with the menu button it replaces.
+  right: 18px;
+  top: 8px;
   width: 40px;
 
   &::before,
@@ -145,7 +177,7 @@
 }
 
 .tagline {
-  color: $olive;
+  color: $stone;
   font-family: $font-body;
   font-size: 19px;
   font-weight: 400;
@@ -213,6 +245,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .backdrop,
   .menu,
   .links li,
   .divider,
