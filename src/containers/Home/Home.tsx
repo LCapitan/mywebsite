@@ -54,11 +54,12 @@ export function Home() {
 
         <Reveal variant="fade" className={styles.heroArt} delay={300}>
           <Image
-            // e_trim crops the transparent space around the artwork.
-            src="https://res.cloudinary.com/austinmel/image/upload/e_trim/v1790958160/astro_ljjcsq.png"
+            src="/astro.png"
             alt="Illustration of an astronaut working on a laptop on the moon"
-            width={1596}
-            height={725}
+            width={1617}
+            height={734}
+            // Full quality keeps the line art crisp.
+            quality={100}
             sizes="(max-width: 767px) 127vw, (max-width: 1099px) 100vw, 1043px"
             preload
           />
