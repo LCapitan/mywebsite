@@ -118,7 +118,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
 
           <div className={styles.profile}>
             <Image
-              src="https://res.cloudinary.com/austinmel/image/upload/c_thumb,g_face,w_300,h_300/v1790868914/me_ytr3vn.jpg"
+              src="https://res.cloudinary.com/austinmel/image/upload/c_thumb,g_face,z_0.45,w_300,h_300/v1790868914/me_ytr3vn.jpg"
               alt=""
               width={72}
               height={72}

@@ -133,7 +133,7 @@ export function Home() {
         </Reveal>
         <Reveal variant="clip" className={styles.aboutPhoto}>
           <Image
-            src="https://res.cloudinary.com/austinmel/image/upload/v1790868914/me_ytr3vn.jpg"
+            src="https://res.cloudinary.com/austinmel/image/upload/v1790868836/IMG_1154_oiifty.jpg"
             alt="Austin standing in the Arizona desert"
             fill
             sizes="(max-width: 1099px) 100vw, 480px"
