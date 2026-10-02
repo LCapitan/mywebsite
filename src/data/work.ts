@@ -14,7 +14,7 @@ export interface WorkItem {
 
 export const workItems: WorkItem[] = [
   {
-    title: "oura",
+    title: "Oura",
     content: "A resource hub for Oura Ring built on HubSpot",
     imgSrc:
       "https://res.cloudinary.com/austinmel/image/upload/v1790867542/oura-ring_r4myqq.jpg",
@@ -24,7 +24,7 @@ export const workItems: WorkItem[] = [
     featured: 1,
   },
   {
-    title: "piedmont",
+    title: "Piedmont",
     content: "Piedmont Healthcare System redesign and replatform",
     imgSrc:
       "https://res.cloudinary.com/austinmel/image/upload/v1790867167/piedmont_ekpo58.jpg",
@@ -34,7 +34,7 @@ export const workItems: WorkItem[] = [
     featured: 3,
   },
   {
-    title: "reid health",
+    title: "Reid Health",
     content: "",
     imgSrc:
       "https://res.cloudinary.com/austinmel/image/upload/v1790867050/reid-health_nn92ll.jpg",
@@ -43,7 +43,7 @@ export const workItems: WorkItem[] = [
     tags: ["website redesign", "react", "typescript", "sitecore"],
   },
   {
-    title: "walnut hill",
+    title: "Walnut Hill",
     content: "Walnut Hill School for the Arts",
     imgSrc:
       "https://res.cloudinary.com/austinmel/image/upload/v1790958208/walnut_hill_btpzw3.webp",
@@ -53,8 +53,8 @@ export const workItems: WorkItem[] = [
     featured: 2,
   },
   {
-    title: "ensworth",
-    content: "the ensworth school",
+    title: "Ensworth",
+    content: "The Ensworth School",
     imgSrc:
       "https://res.cloudinary.com/austinmel/image/upload/v1790866152/ensworth_vwoapk.jpg",
     imgAlt: "a screenshot of the ensworth school website",
@@ -62,8 +62,8 @@ export const workItems: WorkItem[] = [
     tags: ["ui/ux", "website redesign"],
   },
   {
-    title: "upitt",
-    content: "the university of pittsburgh",
+    title: "UPitt",
+    content: "The University of Pittsburgh",
     imgSrc:
       "https://res.cloudinary.com/austinmel/image/upload/v1656677342/pittt_etmsrj.png",
     imgAlt: "a photo of upitt celebrating at a college game",
@@ -71,7 +71,7 @@ export const workItems: WorkItem[] = [
     tags: ["ui/ux", "website redesign", "HTML5", "CSS3", "javascript"],
   },
   {
-    title: "curry college",
+    title: "Curry College",
     content: "",
     imgSrc:
       "https://res.cloudinary.com/austinmel/image/upload/v1656677312/curry_nrh65v.jpg",
@@ -87,8 +87,8 @@ export const workItems: WorkItem[] = [
     ],
   },
   {
-    title: "tukhs",
-    content: "the university of kansas health system",
+    title: "TUKHS",
+    content: "The University of Kansas Health System",
     imgSrc:
       "https://res.cloudinary.com/austinmel/image/upload/v1656677311/tukhs_gcph7g.jpg",
     imgAlt: "tukhs",
@@ -103,8 +103,8 @@ export const workItems: WorkItem[] = [
     ],
   },
   {
-    title: "my artwork",
-    content: "take a peek if you want to see some of my artwork",
+    title: "My Artwork",
+    content: "Take a peek if you want to see some of my artwork",
     imgSrc:
       "https://res.cloudinary.com/austinmel/image/upload/v1659499300/c_h_qigysb.jpg",
     imgAlt: "my artwork",

@@ -1,0 +1,233 @@
+@use "../../../styles/tokens" as *;
+
+// ---- Wheel layout (desktop, motion allowed)
+
+// Tall scroll track; the stage stays pinned while it scrolls past, and each
+// project gets 80vh of scroll.
+.track {
+  display: none;
+  height: calc(100vh + (var(--projects) - 1) * 80vh);
+
+  @include from($bp-lg) {
+    display: block;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    display: none;
+  }
+}
+
+.stage {
+  @include container;
+  align-items: center;
+  display: grid;
+  gap: 48px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  height: 100vh;
+  padding-top: 80px;
+  position: sticky;
+  top: 0;
+}
+
+.info {
+  position: relative;
+  z-index: 1;
+}
+
+// Cards ride spokes from a hub far off to the right; turning the spokes
+// carries them along the arc. The active card sits at 9 o'clock.
+.wheel {
+  --card: min(460px, 52vh, 34vw);
+  --radius: calc(var(--card) * 2.3);
+  height: 100%;
+  position: relative;
+}
+
+.spoke {
+  height: 0;
+  left: calc(50% + var(--radius));
+  position: absolute;
+  top: 50%;
+  width: 0;
+  will-change: transform, opacity;
+}
+
+.slot {
+  height: var(--card);
+  left: calc(-1 * var(--radius) - var(--card) / 2);
+  position: absolute;
+  top: calc(var(--card) / -2);
+  width: var(--card);
+}
+
+// ---- Row layout (phones and tablets, or reduced motion)
+
+.rowLayout {
+  @include container;
+  padding-top: fluid(122px, 160px);
+
+  @include from($bp-lg) {
+    display: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    display: block;
+  }
+}
+
+.row {
+  display: grid;
+  gap: 16px;
+  grid-auto-columns: min(78%, 360px);
+  grid-auto-flow: column;
+  list-style: none;
+  margin: 40px (-$gutter) 0;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  padding: 0 $gutter;
+  scroll-padding-inline: $gutter;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  > li {
+    aspect-ratio: 1;
+    scroll-snap-align: start;
+  }
+
+  @include from($bp-md) {
+    margin-inline: -$gutter-md;
+    padding-inline: $gutter-md;
+    scroll-padding-inline: $gutter-md;
+  }
+
+  // The row cards don't tilt.
+  .card,
+  .card.active {
+    transform: none;
+  }
+}
+
+// ---- Project details (left side)
+
+.details {
+  animation: details-in 0.7s $ease-out;
+}
+
+@keyframes details-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+
+.title {
+  @include hero-title;
+}
+
+.description {
+  @include body-large;
+  margin: 32px 0 0;
+  max-width: 520px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  margin: 32px 0 0;
+  max-width: 520px;
+  padding: 0;
+
+  li {
+    border: 1px solid $taupe;
+    border-radius: 999px;
+    color: $moss;
+    font-family: $font-label;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    padding: 8px 14px;
+    text-transform: uppercase;
+  }
+}
+
+.counter {
+  @include label-text;
+  color: $moss;
+  margin: 40px 0 0;
+
+  span {
+    color: $taupe;
+  }
+}
+
+// ---- Card
+
+.card {
+  border-radius: 15px;
+  box-shadow: 0 20px 40px rgba($charcoal, 0.18);
+  color: $creme;
+  display: block;
+  font-weight: inherit;
+  height: 100%;
+  isolation: isolate;
+  overflow: hidden;
+  position: relative;
+  // The old resting tilt; the active card swings to +6deg.
+  transform: rotate(-8deg);
+  transition:
+    box-shadow 0.8s $ease-out,
+    transform 0.8s $ease-out;
+
+  // Keeps the link readable over any photo.
+  &::after {
+    background: linear-gradient(to top, rgba($charcoal, 0.75), transparent 45%);
+    content: "";
+    inset: 0;
+    position: absolute;
+    z-index: -1;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $mars;
+    outline-offset: 4px;
+  }
+}
+
+.active {
+  box-shadow: 0 30px 60px rgba($charcoal, 0.25);
+  transform: rotate(6deg);
+}
+
+.image {
+  object-fit: cover;
+  z-index: -2;
+}
+
+.cardLink {
+  @include label-text;
+  align-items: center;
+  bottom: 24px;
+  display: flex;
+  font-size: 14px;
+  justify-content: space-between;
+  left: 24px;
+  position: absolute;
+  right: 24px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .details {
+    animation: none;
+  }
+
+  .card {
+    transition: none;
+  }
+}

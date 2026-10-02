@@ -1,21 +1,21 @@
-import type { NextPage } from "next";
-
 import { Seo } from "../src/components";
-import { WorkContent } from "../src/containers";
+import { Work } from "../src/containers";
+import { SiteLayout } from "../src/layouts/SiteLayout";
+import type { NextPageWithLayout } from "../src/layouts/types";
 
-const Work: NextPage = () => {
+const WorkPage: NextPageWithLayout = () => {
   return (
     <>
       <Seo
         title="Work | Austin Melendez"
-        description="Austin's portfolio and list of work he's done."
+        description="Websites and products Austin has designed and built."
         path="/work"
       />
-      <main className="container">
-        <WorkContent />
-      </main>
+      <Work />
     </>
   );
 };
 
-export default Work;
+WorkPage.getLayout = (page) => <SiteLayout>{page}</SiteLayout>;
+
+export default WorkPage;

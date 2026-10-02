@@ -106,9 +106,10 @@ $circle: $height - 2 * ($inset + $border);
   }
 }
 
-// Fills when the link it sits in is hovered or focused.
+// Fills when the link it sits in is hovered or focused, or when set filled.
 :global(a):hover .circle,
-:global(a):focus-visible .circle {
+:global(a):focus-visible .circle,
+.circle.filled {
   border-color: $mars;
   color: $creme;
 
