@@ -34,12 +34,15 @@ export function Home() {
           <Orbit
             className={styles.heroOrbitInner}
             tone="light"
+            line="dashed"
+            strokeWidth={1.5}
             moons={[{ angle: -46, size: 13 }]}
             duration={70}
           />
           <Orbit
             className={styles.heroOrbitMiddle}
             tone="light"
+            strokeWidth={3}
             moons={[{ angle: 161, size: 22 }]}
             duration={110}
             reverse
@@ -47,6 +50,7 @@ export function Home() {
           <Orbit
             className={styles.heroOrbitOuter}
             tone="light"
+            strokeWidth={1.5}
             moons={[{ angle: 80, size: 16 }]}
             duration={160}
           />
@@ -85,7 +89,7 @@ export function Home() {
       <section className={styles.featured} aria-labelledby="featured-work">
         <Orbit
           className={styles.featuredOrbit}
-          dotted
+          line="dotted"
           moons={[{ angle: 63, size: 20 }]}
           duration={140}
         />
@@ -150,7 +154,7 @@ export function Home() {
       <section className={styles.contact}>
         <Orbit
           className={styles.contactOrbit}
-          dotted
+          line="dotted"
           moons={[{ angle: -62, size: 17 }]}
           duration={130}
         />

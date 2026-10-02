@@ -43,6 +43,10 @@
   stroke-width: 1.5;
 }
 
+.dashed .path {
+  stroke-dasharray: 6 7;
+}
+
 .track {
   animation: orbit linear infinite;
   inset: 0;

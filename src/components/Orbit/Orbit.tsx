@@ -18,7 +18,9 @@ interface OrbitProps {
   // Seconds per lap.
   duration?: number;
   reverse?: boolean;
-  dotted?: boolean;
+  line?: "solid" | "dashed" | "dotted";
+  // Orbit line thickness in px.
+  strokeWidth?: number;
   // light: pale moons (hero). dark: khaki moons (sections).
   tone?: "light" | "dark";
 }
@@ -29,7 +31,8 @@ export function Orbit({
   moons = [],
   duration = 120,
   reverse,
-  dotted,
+  line = "solid",
+  strokeWidth,
   tone = "dark",
 }: OrbitProps) {
   const [ref, inView] = useInView<HTMLDivElement>({ threshold: 0 });
@@ -41,12 +44,16 @@ export function Orbit({
       className={cx(
         styles.orbit,
         styles[tone],
-        dotted && styles.dotted,
+        styles[line],
         inView && styles.visible,
         className,
       )}
     >
-      <svg className={styles.path} viewBox="0 0 100 100">
+      <svg
+        className={styles.path}
+        viewBox="0 0 100 100"
+        style={strokeWidth ? { strokeWidth } : undefined}
+      >
         <circle cx="50" cy="50" r="50" vectorEffect="non-scaling-stroke" />
       </svg>
       <div
