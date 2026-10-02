@@ -12,13 +12,21 @@ import { menuLinks } from "./navigation";
 
 import styles from "./MobileMenu.module.scss";
 
+// Sizes even out the icons' visual weight: GitHub's mark is a circle with
+// room around it, so it's drawn larger than the solid Resume and LinkedIn.
 const socialLinks = [
-  { label: "GitHub", href: "https://github.com/LCapitan", Icon: GitHub },
-  { label: "Resume (PDF)", href: RESUME_URL, Icon: Pdf },
+  {
+    label: "GitHub",
+    href: "https://github.com/LCapitan",
+    Icon: GitHub,
+    size: 30,
+  },
+  { label: "Resume (PDF)", href: RESUME_URL, Icon: Pdf, size: 25 },
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/austinmelendez/",
     Icon: LinkedIn,
+    size: 25,
   },
 ];
 
@@ -127,8 +135,11 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
         </div>
 
         <ul className={styles.social}>
-          {socialLinks.map(({ label, href, Icon }) => (
-            <li key={label}>
+          {socialLinks.map(({ label, href, Icon, size }) => (
+            <li
+              key={label}
+              style={{ "--icon-size": `${size}px` } as CSSProperties}
+            >
               <a
                 href={href}
                 target="_blank"

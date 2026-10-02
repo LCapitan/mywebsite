@@ -229,11 +229,20 @@ $slide: 0.7s;
     }
   }
 
+  // Icons share a 30px slot so they stay evenly spaced and aligned.
+  a {
+    align-items: center;
+    display: flex;
+    height: 30px;
+    justify-content: center;
+    width: 30px;
+  }
+
   svg {
     display: block;
     fill: currentColor;
-    height: 30px;
-    width: 30px;
+    height: var(--icon-size, 30px);
+    width: var(--icon-size, 30px);
   }
 }
 
