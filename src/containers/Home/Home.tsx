@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { ArrowButton, CircleArrowLink } from "../../components/ArrowButton";
+import { CircleArrowLink } from "../../components/ArrowButton";
 import { ContactSection } from "../../components/ContactSection";
 import { FeaturedCard } from "../../components/FeaturedCard";
 import { HeroSky } from "../../components/HeroSky";
@@ -48,7 +48,7 @@ export function Home() {
             problems and bring great designs to life.
           </Reveal>
           <Reveal className={styles.action} delay={600}>
-            <ArrowButton href="/work" label="View my work" />
+            <CircleArrowLink href="/work" label="View my work" />
           </Reveal>
         </div>
 
@@ -108,7 +108,7 @@ export function Home() {
           I&#39;m always looking for new things to learn and explore.
         </Reveal>
         <Reveal className={styles.action} delay={240}>
-          <ArrowButton href="/about" label="More about me" />
+          <CircleArrowLink href="/about" label="More about me" />
         </Reveal>
         <Reveal variant="clip" className={styles.aboutPhoto}>
           <Image

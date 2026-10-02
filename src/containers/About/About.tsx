@@ -1,7 +1,7 @@
 import type { MouseEvent } from "react";
 import Image from "next/image";
 
-import { ArrowButton, CircleArrowLink } from "../../components/ArrowButton";
+import { CircleArrowLink } from "../../components/ArrowButton";
 import { ContactSection } from "../../components/ContactSection";
 import { HeroSky } from "../../components/HeroSky";
 import { Orbit } from "../../components/Orbit";
@@ -118,7 +118,7 @@ export default function About() {
           get the chance.
         </Reveal>
         <Reveal className={styles.beyondAction} delay={240}>
-          <ArrowButton href="/work" label="See my work" />
+          <CircleArrowLink href="/work" label="See my work" />
         </Reveal>
       </section>
 

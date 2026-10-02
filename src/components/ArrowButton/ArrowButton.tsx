@@ -14,6 +14,7 @@ interface ArrowButtonProps {
 }
 
 // Pill link with an orange arrow circle that floods the button on hover.
+// Reserved for the contact section's "Get in touch".
 export function ArrowButton({
   label,
   href,
@@ -81,7 +82,7 @@ interface CircleArrowLinkProps {
   className?: string;
 }
 
-// Secondary button: an uppercase label beside a circle arrow.
+// The standard button: an uppercase label beside a circle arrow.
 export function CircleArrowLink({
   label,
   href,
