@@ -16,6 +16,10 @@
   z-index: 1;
 }
 
+.flush {
+  margin-top: 0;
+}
+
 .inner {
   @include container;
   display: grid;

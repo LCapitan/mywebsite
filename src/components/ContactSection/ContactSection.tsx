@@ -4,13 +4,20 @@ import { Orbit } from "../Orbit";
 import { Punctuated } from "../Punctuated";
 import { Reveal } from "../Reveal";
 import { SectionLabel } from "../SectionLabel";
+import cx from "classnames";
 
 import styles from "./ContactSection.module.scss";
 
 // "Have a project in mind?" — the dark band that closes out each page.
-export function ContactSection({ number }: { number: string }) {
+interface ContactSectionProps {
+  number: string;
+  // Sits directly under the section above, with no gap.
+  flush?: boolean;
+}
+
+export function ContactSection({ number, flush }: ContactSectionProps) {
   return (
-    <section className={styles.contact}>
+    <section className={cx(styles.contact, flush && styles.flush)}>
       <div className={styles.inner}>
         <Orbit
           className={styles.orbit}

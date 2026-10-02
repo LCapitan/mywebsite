@@ -1,0 +1,25 @@
+@use "../../../styles/tokens" as *;
+
+// Measured from the 1512px desktop design.
+.hero {
+  @include from($bp-lg) {
+    min-height: desktop(728px);
+    padding-bottom: 120px;
+  }
+}
+
+// Breaks as "Let’s build / something / great together." like the design.
+.title {
+  @include from($bp-lg) {
+    max-width: 7.5em;
+  }
+}
+
+// Vertically centered with the text, toward the right edge.
+.art {
+  @include from($bp-lg) {
+    right: desktop(25px);
+    top: desktop(107px);
+    width: desktop(929px);
+  }
+}

@@ -1,0 +1,32 @@
+@use "../../../styles/tokens" as *;
+
+// Measured from the 1512px desktop design.
+.hero {
+  @include from($bp-lg) {
+    min-height: desktop(675px);
+    padding-bottom: 90px;
+  }
+}
+
+// The fishing line hangs from the top of the page to the bottom of the hero,
+// so the illustration spans the hero's full height.
+.art {
+  margin-left: auto;
+  width: 85%;
+
+  @include until($bp-md) {
+    width: 100%;
+  }
+
+  @include from($bp-lg) {
+    bottom: 0;
+    right: desktop(135px);
+    top: 0;
+    width: auto;
+
+    img {
+      height: 100%;
+      width: auto;
+    }
+  }
+}

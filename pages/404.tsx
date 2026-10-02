@@ -1,9 +1,9 @@
-import type { NextPage } from "next";
-
 import { Seo } from "../src/components";
-import { NoContent } from "../src/containers";
+import { NotFound } from "../src/containers";
+import { SiteLayout } from "../src/layouts/SiteLayout";
+import type { NextPageWithLayout } from "../src/layouts/types";
 
-const Nothing: NextPage = () => {
+const NotFoundPage: NextPageWithLayout = () => {
   return (
     <>
       <Seo
@@ -12,11 +12,11 @@ const Nothing: NextPage = () => {
         path="/404"
         noIndex
       />
-      <main className="container">
-        <NoContent />
-      </main>
+      <NotFound />
     </>
   );
 };
 
-export default Nothing;
+NotFoundPage.getLayout = (page) => <SiteLayout>{page}</SiteLayout>;
+
+export default NotFoundPage;

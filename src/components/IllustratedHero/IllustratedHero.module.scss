@@ -1,0 +1,54 @@
+@use "../../../styles/tokens" as *;
+
+.hero {
+  isolation: isolate;
+  padding-top: fluid(122px, 185px);
+  position: relative;
+}
+
+.content {
+  @include container;
+  position: relative;
+  z-index: 2;
+
+  // Keeps the text clear of the illustration on the right.
+  > * {
+    max-width: 600px;
+  }
+}
+
+.heroTitle {
+  @include hero-title;
+}
+
+.heading {
+  @include heading;
+}
+
+.text {
+  @include body-large;
+  margin: 40px 0 0;
+}
+
+.action {
+  margin-top: 40px;
+}
+
+// Pages position the illustration on desktop; on phones and tablets it sits
+// below the text at full width.
+.art {
+  margin-top: 40px;
+  position: relative;
+  z-index: 1;
+
+  img {
+    display: block;
+    height: auto;
+    width: 100%;
+  }
+
+  @include from($bp-lg) {
+    margin: 0;
+    position: absolute;
+  }
+}
