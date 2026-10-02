@@ -2,6 +2,9 @@
 
 // Measured from the 1512px desktop design.
 .hero {
+  // Room before the contact band, since there's no illustration here.
+  padding-bottom: fluid(80px, 90px);
+
   @include from($bp-lg) {
     min-height: desktop(675px);
     padding-bottom: 90px;
@@ -11,11 +14,10 @@
 // The fishing line hangs from the top of the page to the bottom of the hero,
 // so the illustration spans the hero's full height.
 .art {
-  margin-left: auto;
-  width: 85%;
-
-  @include until($bp-md) {
-    width: 100%;
+  // The line can't reach the top of the page when stacked, so phones and
+  // tablets skip the illustration.
+  @include until($bp-lg) {
+    display: none;
   }
 
   @include from($bp-lg) {
