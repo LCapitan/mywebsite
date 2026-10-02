@@ -14,12 +14,12 @@ import styles from "./MobileMenu.module.scss";
 
 const socialLinks = [
   { label: "GitHub", href: "https://github.com/LCapitan", Icon: GitHub },
+  { label: "Resume (PDF)", href: RESUME_URL, Icon: Pdf },
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/austinmelendez/",
     Icon: LinkedIn,
   },
-  { label: "Resume (PDF)", href: RESUME_URL, Icon: Pdf },
 ];
 
 interface MobileMenuProps {

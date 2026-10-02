@@ -75,7 +75,13 @@ export function SiteHeader({ menuOpen, onOpenMenu }: SiteHeaderProps) {
         aria-expanded={menuOpen}
         onClick={onOpenMenu}
       >
-        <span className={styles.moon} />
+        <svg viewBox="0 0 32 33" className={styles.menuIcon} aria-hidden="true">
+          <circle className={styles.menuRing} cx="16" cy="17" r="15.5" />
+          <circle className={styles.menuPlanet} cx="16" cy="17" r="7.5" />
+          <g className={styles.menuMoon}>
+            <circle cx="25.5" cy="4.5" r="4" />
+          </g>
+        </svg>
       </button>
     </header>
   );

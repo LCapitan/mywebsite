@@ -90,47 +90,69 @@
   }
 }
 
-// A small planet: a ring with a moon that circles it on hover.
+// A planet with a small moon travelling around its ring.
 .menuButton {
-  border: 1.5px solid $taupe;
-  border-radius: 50%;
+  align-items: center;
   cursor: pointer;
-  height: 36px;
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  margin-right: -4px;
   padding: 0;
-  position: relative;
-  width: 36px;
+  width: 40px;
 
   @include from($bp-md) {
     display: none;
   }
 
-  &:hover .moon,
-  &:focus-visible .moon {
-    transform: rotate(-200deg);
+  &:focus-visible {
+    border-radius: 50%;
+    outline: 2px solid $mars;
   }
 }
 
-.moon {
-  inset: 0;
-  position: absolute;
-  transform: rotate(0deg);
-  transition: transform 0.9s $ease-out;
+.menuIcon {
+  display: block;
+  height: 33px;
+  overflow: visible;
+  width: 32px;
+}
 
-  &::after {
-    background: $moss;
-    border-radius: 50%;
-    content: "";
-    height: 13px;
-    left: 7px;
-    position: absolute;
-    top: 9px;
-    width: 13px;
+.menuRing {
+  fill: none;
+  stroke: #e5dece;
+  stroke-width: 1;
+}
+
+.menuPlanet {
+  fill: $moss;
+}
+
+.menuMoon {
+  animation: menu-orbit 12s linear infinite;
+  transform-box: view-box;
+  // The ring's center, in the icon's 32x33 coordinates.
+  transform-origin: 16px 17px;
+
+  circle {
+    fill: $creme;
+    stroke: $olive;
+    stroke-width: 1;
+  }
+}
+
+@keyframes menu-orbit {
+  to {
+    transform: rotate(360deg);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .header,
-  .moon {
+  .header {
     transition: none;
+  }
+
+  .menuMoon {
+    animation: none;
   }
 }
