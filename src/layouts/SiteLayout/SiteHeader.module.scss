@@ -135,14 +135,15 @@
   width: 32px;
 }
 
+// One step darker than the hero orbits so the icon stands out against them.
 .menuRing {
   fill: none;
-  stroke: #e5dece;
+  stroke: $taupe;
   stroke-width: 1;
 }
 
 .menuPlanet {
-  fill: $moss;
+  fill: $birch;
 }
 
 .menuMoon {
@@ -152,8 +153,8 @@
   transform-origin: 16px 17px;
 
   circle {
-    fill: $creme;
-    stroke: $olive;
+    fill: $taupe;
+    stroke: $moss;
     stroke-width: 1;
   }
 }
