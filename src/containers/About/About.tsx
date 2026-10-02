@@ -109,7 +109,7 @@ export default function About() {
           Beyond work
         </SectionLabel>
         <Reveal as="h2" className={styles.beyondHeading}>
-          <Punctuated>I’ve always loved making things.</Punctuated>
+          <Punctuated>Life away from the screen.</Punctuated>
         </Reveal>
         <Reveal as="p" className={styles.beyondText} delay={120}>
           Outside of work, I’m usually finding another creative rabbit hole to
