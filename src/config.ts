@@ -2,10 +2,10 @@ export const SITE_URL = "https://www.amelen.dev";
 export const SITE_NAME = "Austin Melendez";
 export const DEFAULT_DESCRIPTION =
   "Austin is a developer and designer from Miami, US.";
-// Link preview image, padded by Cloudinary to the standard 1200x630 frame
-// in the page background color.
+// Link preview image at its own shape (1200x1013), resized and compressed by
+// Cloudinary, so previews like iMessage fill the card with it.
 export const DEFAULT_OG_IMAGE =
-  "https://res.cloudinary.com/austinmel/image/upload/c_pad,w_1200,h_630,b_rgb:fbf9f3,f_jpg,q_auto/v1790965775/preview-image_c6qfbm.png";
+  "https://res.cloudinary.com/austinmel/image/upload/c_limit,w_1200,f_jpg,q_auto/v1790965775/preview-image_c6qfbm.png";
 export const DEFAULT_OG_IMAGE_ALT =
   "Illustration of an astronaut working on a laptop on the moon";
 

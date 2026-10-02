@@ -43,7 +43,7 @@ export function Seo({
       {image === DEFAULT_OG_IMAGE && (
         <>
           <meta property="og:image:width" content="1200" />
-          <meta property="og:image:height" content="630" />
+          <meta property="og:image:height" content="1013" />
           <meta property="og:image:alt" content={DEFAULT_OG_IMAGE_ALT} />
         </>
       )}
