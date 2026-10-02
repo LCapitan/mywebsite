@@ -18,7 +18,7 @@
 // Vertically centered with the text, toward the right edge.
 .art {
   @include from($bp-lg) {
-    right: desktop(25px);
+    right: desktop(125px);
     top: desktop(107px);
     width: desktop(929px);
   }
