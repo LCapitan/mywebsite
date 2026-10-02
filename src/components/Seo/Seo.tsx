@@ -3,6 +3,7 @@ import Head from "next/head";
 import {
   DEFAULT_DESCRIPTION,
   DEFAULT_OG_IMAGE,
+  DEFAULT_OG_IMAGE_ALT,
   SITE_NAME,
   SITE_URL,
 } from "../../config";
@@ -39,6 +40,13 @@ export function Seo({
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />
+      {image === DEFAULT_OG_IMAGE && (
+        <>
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="630" />
+          <meta property="og:image:alt" content={DEFAULT_OG_IMAGE_ALT} />
+        </>
+      )}
       <meta name="twitter:card" content="summary_large_image" />
     </Head>
   );

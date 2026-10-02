@@ -108,19 +108,54 @@
 
 // ---- Beyond work
 
+// Mobile puts the photo between the label and the heading, like the
+// homepage's About section; desktop keeps it beside the centered text.
 .beyond {
   @include container;
   display: grid;
-  gap: 40px;
+  grid-template-areas:
+    "label"
+    "photo"
+    "heading"
+    "text"
+    "action";
   isolation: isolate;
   margin-top: fluid(90px, 135px);
   position: relative;
 
   @include from($bp-lg) {
-    align-items: center;
     column-gap: 56px;
+    grid-template-areas:
+      "photo ."
+      "photo label"
+      "photo heading"
+      "photo text"
+      "photo action"
+      "photo .";
     grid-template-columns: minmax(0, 645fr) minmax(0, 600fr);
+    grid-template-rows: 1fr repeat(4, auto) 1fr;
   }
+}
+
+.beyondLabel {
+  grid-area: label;
+}
+
+.beyondHeading {
+  @include heading;
+  grid-area: heading;
+}
+
+.beyondText {
+  @include body-large;
+  grid-area: text;
+  margin: 40px 0 0;
+  max-width: 600px;
+}
+
+.beyondAction {
+  grid-area: action;
+  margin-top: 40px;
 }
 
 .beyondOrbit {
@@ -139,8 +174,14 @@
   --reveal-radius: 12px;
   aspect-ratio: 645 / 529;
   border-radius: 12px;
+  grid-area: photo;
+  margin-top: 40px;
   overflow: hidden;
   position: relative;
+
+  @include from($bp-lg) {
+    margin-top: 0;
+  }
 
   img {
     object-fit: cover;

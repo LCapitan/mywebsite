@@ -105,21 +105,21 @@ export default function About() {
             sizes="(max-width: 1099px) 100vw, 645px"
           />
         </Reveal>
-        <div>
-          <SectionLabel number="03">Beyond work</SectionLabel>
-          <Reveal as="h2" className={styles.heading}>
-            <Punctuated>I’ve always loved making things.</Punctuated>
-          </Reveal>
-          <Reveal as="p" className={styles.text} delay={120}>
-            Outside of work, I’m usually finding another creative rabbit hole
-            to fall into. I love watches, leathercraft, music, hiking, traveling
-            with my wife, and generally making things with my hands whenever I
-            get the chance.
-          </Reveal>
-          <Reveal className={styles.action} delay={240}>
-            <ArrowButton href="/work" label="See my work" />
-          </Reveal>
-        </div>
+        <SectionLabel number="03" className={styles.beyondLabel}>
+          Beyond work
+        </SectionLabel>
+        <Reveal as="h2" className={styles.beyondHeading}>
+          <Punctuated>I’ve always loved making things.</Punctuated>
+        </Reveal>
+        <Reveal as="p" className={styles.beyondText} delay={120}>
+          Outside of work, I’m usually finding another creative rabbit hole to
+          fall into. I love watches, leathercraft, music, hiking, traveling
+          with my wife, and generally making things with my hands whenever I
+          get the chance.
+        </Reveal>
+        <Reveal className={styles.beyondAction} delay={240}>
+          <ArrowButton href="/work" label="See my work" />
+        </Reveal>
       </section>
 
       <ContactSection number="04" />
