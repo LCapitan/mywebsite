@@ -7,6 +7,12 @@
   justify-content: space-between;
   padding: fluid(26px, 32px) fluid(20px, 56px) fluid(14px, 24px) fluid(20px, 40px);
   position: fixed;
+
+  // Slimmer bar on tablet and desktop.
+  @include from($bp-md) {
+    padding-block: 16px;
+  }
+
   transition:
     background-color 0.4s $ease-out,
     box-shadow 0.4s $ease-out,
