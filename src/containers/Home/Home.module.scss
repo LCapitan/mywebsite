@@ -26,8 +26,13 @@
   padding-top: fluid(122px, 199px);
   position: relative;
 
+  // At least a full screen tall, with the text centered in it.
   @include from($bp-lg) {
-    min-height: 983px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+    padding-block: 100px;
   }
 }
 
@@ -40,7 +45,7 @@
 .heroTitle {
   color: $moss;
   font-family: $font-display;
-  font-size: fluid(56px, 96px);
+  font-size: fluid(56px, 77px);
   font-weight: 700;
   letter-spacing: -0.01em;
   line-height: 1;
@@ -71,7 +76,7 @@
   }
 
   @include from($bp-lg) {
-    bottom: 39px;
+    bottom: desktop(39px);
     margin: 0;
     position: absolute;
     right: desktop(45px);
@@ -79,23 +84,29 @@
   }
 }
 
-// Anchored to the top-right corner of the page so the orbits run off it.
+// Anchored to the hero's bottom-right corner, like the illustration, so the
+// orbits keep their place around the astronaut at any screen height. They run
+// off the right edge and the top of the page.
 .sky {
   display: none;
 
   @include from($bp-lg) {
+    bottom: 0;
     display: block;
     height: 0;
     position: absolute;
     right: 0;
-    top: 0;
     width: 0;
   }
 }
 
+// Height of the hero in the 1512px desktop frame; orbit positions below are
+// measured from the top of that frame.
+$hero-frame: 983px;
+
 @mixin from-right($right, $top, $size) {
   left: calc(-1 * #{desktop($right)});
-  top: desktop($top);
+  top: calc(-1 * #{desktop($hero-frame - $top)});
   width: desktop($size);
 }
 
