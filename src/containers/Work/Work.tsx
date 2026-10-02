@@ -12,7 +12,7 @@ import styles from "./Work.module.scss";
 const projects = workItems.filter((item) => !item.hidden);
 
 // Degrees between neighbouring cards on the wheel.
-const STEP_ANGLE = 28;
+const STEP_ANGLE = 31;
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
@@ -20,11 +20,12 @@ const pad = (n: number) => String(n).padStart(2, "0");
 // project nears the active spot, like a watch's date wheel settling, without
 // ever stopping dead.
 function settle(progress: number) {
-  return progress - (Math.sin(2 * Math.PI * progress) / (2 * Math.PI)) * 0.6;
+  return progress - (Math.sin(2 * Math.PI * progress) / (2 * Math.PI)) * 0.3;
 }
 
-// How much of the remaining distance the wheel covers each frame.
-const EASE = 0.12;
+// How much of the remaining distance the wheel covers each frame: enough to
+// smooth out choppy mouse wheels while still following the scroll closely.
+const EASE = 0.35;
 
 function Details({ item, index }: { item: WorkItem; index: number }) {
   return (

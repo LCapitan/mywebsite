@@ -3,10 +3,10 @@
 // ---- Wheel layout (desktop, motion allowed)
 
 // Tall scroll track; the stage stays pinned while it scrolls past, and each
-// project gets 80vh of scroll.
+// project gets 70vh of scroll.
 .track {
   display: none;
-  height: calc(100vh + (var(--projects) - 1) * 80vh);
+  height: calc(100vh + (var(--projects) - 1) * 70vh);
 
   @include from($bp-lg) {
     display: block;
@@ -37,8 +37,8 @@
 // Cards ride spokes from a hub far off to the right; turning the spokes
 // carries them along the arc. The active card sits at 9 o'clock.
 .wheel {
-  --card: min(620px, 68vh, 42vw);
-  --radius: calc(var(--card) * 2.7);
+  --card: min(660px, 70vh, 44vw);
+  --radius: calc(var(--card) * 2.5);
   height: 100%;
   position: relative;
 }
