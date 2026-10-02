@@ -10,6 +10,8 @@ interface ArrowButtonProps {
   label: string;
   href: string;
   external?: boolean;
+  // light: creme outline and text, for dark backgrounds.
+  tone?: "dark" | "light";
   className?: string;
 }
 
@@ -19,6 +21,7 @@ export function ArrowButton({
   label,
   href,
   external,
+  tone = "dark",
   className,
 }: ArrowButtonProps) {
   const content = (
@@ -33,7 +36,14 @@ export function ArrowButton({
 
   if (href.startsWith("/")) {
     return (
-      <Link href={href} className={cx(styles.button, className)}>
+      <Link
+        href={href}
+        className={cx(
+          styles.button,
+          tone === "light" && styles.light,
+          className,
+        )}
+      >
         {content}
       </Link>
     );
@@ -42,7 +52,7 @@ export function ArrowButton({
   return (
     <a
       href={href}
-      className={cx(styles.button, className)}
+      className={cx(styles.button, tone === "light" && styles.light, className)}
       {...(external && { target: "_blank", rel: "noreferrer" })}
     >
       {content}

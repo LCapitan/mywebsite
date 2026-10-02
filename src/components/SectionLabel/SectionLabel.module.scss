@@ -1,16 +1,22 @@
 @use "../../../styles/tokens" as *;
 
+// Colors can be overridden by a parent (e.g. the dark contact band) with
+// --label-number, --label-line, and --label-text.
 .label {
   @include label-text;
   align-items: center;
-  color: $moss;
+  color: var(--label-text, #{$moss});
   display: flex;
   gap: 24px;
   margin: 0;
 }
 
+.number {
+  color: var(--label-number, inherit);
+}
+
 .line {
-  background: $taupe;
+  background: var(--label-line, #{$taupe});
   flex: none;
   height: 1px;
   transform-origin: left center;

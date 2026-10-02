@@ -41,6 +41,11 @@ $circle: $height - 2 * ($inset + $border);
   }
 }
 
+.light {
+  border-color: $creme;
+  color: $creme;
+}
+
 // Starts as the arrow's circle and stretches left to fill the pill.
 .fill {
   background: $mars;

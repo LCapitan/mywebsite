@@ -22,7 +22,8 @@ interface OrbitProps {
   // Orbit line thickness in px.
   strokeWidth?: number;
   // light: pale moons (hero). dark: olive moons (sections).
-  tone?: "light" | "dark";
+  // night: for dark backgrounds.
+  tone?: "light" | "dark" | "night";
 }
 
 // A decorative orbit line with moons slowly travelling around it.

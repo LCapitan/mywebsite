@@ -1,12 +1,26 @@
 @use "../../../styles/tokens" as *;
 
+// Full-width Birch band at the foot of each page. It sits above (and clips)
+// any orbits from the sections before it.
 .contact {
+  --label-number: #{$mars};
+  --label-line: #{$olive};
+  --label-text: #{$taupe};
+  --punctuation: #{$olive};
+
+  background: $birch;
+  isolation: isolate;
+  margin-top: fluid(110px, 200px);
+  overflow: hidden;
+  padding-block: fluid(72px, 100px);
+  position: relative;
+  z-index: 1;
+}
+
+.inner {
   @include container;
   display: grid;
   gap: 40px;
-  isolation: isolate;
-  margin-top: fluid(110px, 200px);
-  padding-bottom: fluid(90px, 100px);
   position: relative;
 
   @include from($bp-lg) {
@@ -16,12 +30,13 @@
   }
 }
 
-// Positioned from the 1512px desktop frame.
+// Positioned from the 1512px desktop frame: centered under the heading's end,
+// running off the bottom of the band.
 .orbit {
   display: none;
-  left: 250px;
-  top: 178px;
-  width: 620px;
+  left: 734px;
+  top: 353px;
+  width: 785px;
   z-index: -1;
 
   @include from($bp-lg) {
@@ -31,10 +46,12 @@
 
 .heading {
   @include heading;
+  color: $creme;
 }
 
 .text {
   @include body-large;
+  color: $taupe;
   margin: 40px 0 0;
   max-width: 800px;
 }

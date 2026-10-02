@@ -26,6 +26,12 @@
   --orbit-moon: #{$olive};
 }
 
+// For dark backgrounds (the contact band).
+.night {
+  --orbit-line: #{$moss};
+  --orbit-moon: #{$olive};
+}
+
 .path {
   fill: none;
   height: 100%;

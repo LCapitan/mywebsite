@@ -1,5 +1,6 @@
 @use "../../../styles/tokens" as *;
 
+// --punctuation lets a parent recolor it (e.g. on a dark background).
 .mark {
-  color: $moss;
+  color: var(--punctuation, #{$moss});
 }
