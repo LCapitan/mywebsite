@@ -40,8 +40,11 @@ $pad: 24px;
     }
 
     .arrow {
-      background: $ember;
       border-color: $ember;
+
+      &::before {
+        transform: scale(1);
+      }
 
       svg {
         transform: translateX(3px);
@@ -133,9 +136,22 @@ $pad: 24px;
   border-color: rgba($ivory, 0.9);
   bottom: $pad;
   height: 64px;
+  isolation: isolate;
   position: absolute;
   right: $pad;
   width: 64px;
+
+  // Orange fill that grows inside the ring on hover, leaving a small gap.
+  &::before {
+    background: $ember;
+    border-radius: 50%;
+    content: "";
+    inset: 5px;
+    position: absolute;
+    transform: scale(0);
+    transition: transform 0.5s $ease-out;
+    z-index: -1;
+  }
 
   svg {
     width: 28px;
@@ -143,7 +159,8 @@ $pad: 24px;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .image {
+  .image,
+  .card .arrow::before {
     transition: none;
   }
 }
