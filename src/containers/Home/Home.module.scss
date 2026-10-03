@@ -117,6 +117,13 @@
   }
 }
 
+// The row is a plain grid on desktop, with nothing to page through.
+.cardControls {
+  @include from($bp-lg) {
+    display: none;
+  }
+}
+
 .featured .viewAllBottom {
   margin-top: 40px;
 

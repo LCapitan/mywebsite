@@ -3,10 +3,13 @@ import Image from "next/image";
 import cx from "classnames";
 
 import { CircleArrow } from "../../components/ArrowButton";
+import { CarouselControls } from "../../components/CarouselControls";
 import { ContactSection } from "../../components/ContactSection";
+import { FeaturedCard } from "../../components/FeaturedCard";
 import { HeroSky } from "../../components/HeroSky";
 import { SectionLabel } from "../../components/SectionLabel";
 import { workItems, type WorkItem } from "../../data/work";
+import { useCarousel, type Carousel } from "../../hooks/useCarousel";
 
 import styles from "./Work.module.scss";
 
@@ -14,8 +17,6 @@ const projects = workItems.filter((item) => !item.hidden);
 
 // Degrees between neighbouring cards on the wheel.
 const STEP_ANGLE = 31;
-
-const pad = (n: number) => String(n).padStart(2, "0");
 
 // Scroll position (in projects) -> wheel position. The wheel slows as each
 // project nears the active spot, like a watch's date wheel settling, without
@@ -28,7 +29,7 @@ function settle(progress: number) {
 // smooth out choppy mouse wheels while still following the scroll closely.
 const EASE = 0.35;
 
-function Details({ item, index }: { item: WorkItem; index: number }) {
+function Details({ item }: { item: WorkItem }) {
   return (
     <div className={styles.details}>
       <h1 className={styles.title}>{item.title}</h1>
@@ -38,9 +39,6 @@ function Details({ item, index }: { item: WorkItem; index: number }) {
           <li key={tag}>{tag}</li>
         ))}
       </ul>
-      <p className={styles.counter}>
-        {pad(index + 1)} <span>/ {pad(projects.length)}</span>
-      </p>
     </div>
   );
 }
@@ -81,7 +79,7 @@ export default function Work() {
   const [active, setActive] = useState(0);
   const trackRef = useRef<HTMLDivElement>(null);
   const spokeRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const rowRef = useRef<HTMLUListElement>(null);
+  const [rowRef, carousel] = useCarousel<HTMLUListElement>();
 
   // Wheel layout: page scroll turns the wheel.
   useEffect(() => {
@@ -104,7 +102,7 @@ export default function Work() {
 
     const update = () => {
       frame = 0;
-      // Hidden (phones, reduced motion): the row layout is in charge.
+      // Hidden (phones, reduced motion): the row layout is shown instead.
       if (!track.offsetParent) return;
       target = measure();
       position += (target - position) * EASE;
@@ -142,26 +140,8 @@ export default function Work() {
     };
   }, []);
 
-  // Row layout: the card centered in the row is active.
-  useEffect(() => {
-    const row = rowRef.current;
-    if (!row) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (!row.offsetParent) return;
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActive(Number((entry.target as HTMLElement).dataset.index));
-          }
-        });
-      },
-      { root: row, threshold: 0.6 },
-    );
-    row.querySelectorAll("li").forEach((li) => observer.observe(li));
-    return () => observer.disconnect();
-  }, []);
-
-  // Tabbing to a card turns the wheel to it.
+  // Tabbing to a card, or the wheel's controls, turns the wheel to it. The
+  // page jumps straight there and the wheel glides after it.
   const scrollToProject = (index: number) => {
     const track = trackRef.current;
     if (!track) return;
@@ -169,6 +149,28 @@ export default function Work() {
     const step = scrollable / Math.max(projects.length - 1, 1);
     const top = track.getBoundingClientRect().top + window.scrollY;
     window.scrollTo({ top: top + index * step });
+  };
+
+  // Steps from the project the page is scrolled to rather than the one the
+  // wheel shows, which can lag a moment behind quick presses.
+  const stepProject = (direction: 1 | -1) => {
+    const track = trackRef.current;
+    if (!track) return;
+    const scrollable = track.offsetHeight - window.innerHeight;
+    const step = scrollable / Math.max(projects.length - 1, 1);
+    const current = Math.round(-track.getBoundingClientRect().top / step);
+    const target = current + direction;
+    if (target < 0 || target >= projects.length) return;
+    scrollToProject(target);
+  };
+
+  const wheelCarousel: Carousel = {
+    index: active,
+    count: projects.length,
+    atStart: active === 0,
+    atEnd: active === projects.length - 1,
+    prev: () => stepProject(-1),
+    next: () => stepProject(1),
   };
 
   const item = projects[active];
@@ -186,9 +188,15 @@ export default function Work() {
             <div className={styles.info}>
               <SectionLabel number="01">Work</SectionLabel>
               {/* Keyed by project so each change animates in. */}
-              <Details key={item.title} item={item} index={active} />
+              <Details key={item.title} item={item} />
+              <CarouselControls
+                carousel={wheelCarousel}
+                controls="work-wheel"
+                itemLabel="project"
+                className={styles.wheelControls}
+              />
             </div>
-            <div className={styles.wheel}>
+            <div id="work-wheel" className={styles.wheel}>
               {projects.map((project, i) => (
                 <div
                   key={project.title}
@@ -211,16 +219,30 @@ export default function Work() {
         </div>
       </div>
 
+      {/* Each card carries its own details, so nothing above the row has to
+          change as it scrolls. */}
       <div className={styles.rowLayout}>
-        <SectionLabel number="01">Work</SectionLabel>
-        <Details key={item.title} item={item} index={active} />
-        <ul ref={rowRef} className={styles.row}>
+        <SectionLabel number="01" as="h1">
+          Work
+        </SectionLabel>
+        <ul ref={rowRef} id="work-cards" className={styles.row}>
           {projects.map((project, i) => (
-            <li key={project.title} data-index={i}>
-              <ProjectCard item={project} active={i === active} />
+            <li key={project.title}>
+              <FeaturedCard
+                item={project}
+                index={i + 1}
+                allTags
+                titleAs="h2"
+                className={styles.rowCard}
+              />
             </li>
           ))}
         </ul>
+        <CarouselControls
+          carousel={carousel}
+          controls="work-cards"
+          itemLabel="project"
+        />
       </div>
 
       <ContactSection number="02" />

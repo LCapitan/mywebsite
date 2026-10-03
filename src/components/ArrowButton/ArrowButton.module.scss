@@ -104,8 +104,6 @@ $circle: $height - 2 * ($inset + $border);
   }
 }
 
-// Fills when the link it sits in is hovered (on devices that can hover) or
-// focused.
 @mixin circle-filled {
   border-color: $mars;
   color: $creme;
@@ -115,12 +113,16 @@ $circle: $height - 2 * ($inset + $border);
   }
 }
 
-:global(a):focus-visible .circle {
+// Fills when the link or button it sits in is hovered (on devices that can
+// hover) or focused; a button marked aria-disabled stays outlined.
+:global(a):focus-visible .circle,
+:global(button):not([aria-disabled="true"]):focus-visible .circle {
   @include circle-filled;
 }
 
 @media (hover: hover) {
-  :global(a):hover .circle {
+  :global(a):hover .circle,
+  :global(button):not([aria-disabled="true"]):hover .circle {
     @include circle-filled;
   }
 }
@@ -128,6 +130,11 @@ $circle: $height - 2 * ($inset + $border);
 // Points the arrow down.
 .down svg {
   transform: rotate(90deg);
+}
+
+// Points the arrow left.
+.left svg {
+  transform: rotate(180deg);
 }
 
 .circleLink {

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import cx from "classnames";
 
 import type { WorkItem } from "../../data/work";
 import { CircleArrow } from "../ArrowButton";
@@ -8,15 +9,27 @@ import styles from "./FeaturedCard.module.scss";
 interface FeaturedCardProps {
   item: WorkItem;
   index: number;
+  // The homepage shows the first three tags; the work page shows them all.
+  allTags?: boolean;
+  titleAs?: "h2" | "h3";
+  className?: string;
 }
 
-export function FeaturedCard({ item, index }: FeaturedCardProps) {
+export function FeaturedCard({
+  item,
+  index,
+  allTags,
+  titleAs: Title = "h3",
+  className,
+}: FeaturedCardProps) {
+  const tags = allTags ? item.tags : item.tags.slice(0, 3);
+
   return (
     <a
       href={item.cardLink}
       target="_blank"
       rel="noreferrer"
-      className={styles.card}
+      className={cx(styles.card, className)}
     >
       <Image
         src={item.imgSrc}
@@ -29,10 +42,10 @@ export function FeaturedCard({ item, index }: FeaturedCardProps) {
         {String(index).padStart(2, "0")}
       </span>
       <div className={styles.body}>
-        <h3 className={styles.title}>{item.title}</h3>
+        <Title className={styles.title}>{item.title}</Title>
         {item.content && <p className={styles.description}>{item.content}</p>}
         <ul className={styles.tags}>
-          {item.tags.slice(0, 3).map((tag) => (
+          {tags.map((tag) => (
             <li key={tag}>{tag}</li>
           ))}
         </ul>

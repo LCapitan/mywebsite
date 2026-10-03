@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import { CircleArrowLink } from "../../components/ArrowButton";
+import { CarouselControls } from "../../components/CarouselControls";
 import { ContactSection } from "../../components/ContactSection";
 import { FeaturedCard } from "../../components/FeaturedCard";
 import { HeroSky } from "../../components/HeroSky";
@@ -9,6 +10,7 @@ import { Punctuated } from "../../components/Punctuated";
 import { Reveal, RevealLines } from "../../components/Reveal";
 import { SectionLabel } from "../../components/SectionLabel";
 import { workItems } from "../../data/work";
+import { useCarousel } from "../../hooks/useCarousel";
 
 import styles from "./Home.module.scss";
 
@@ -29,6 +31,8 @@ function ViewAllProjects({ className }: { className?: string }) {
 }
 
 export function Home() {
+  const [rowRef, carousel] = useCarousel<HTMLUListElement>();
+
   return (
     <>
       <section className={styles.hero}>
@@ -79,7 +83,7 @@ export function Home() {
           </SectionLabel>
           <ViewAllProjects className={styles.viewAllTop} />
         </div>
-        <ul className={styles.cards}>
+        <ul ref={rowRef} id="featured-cards" className={styles.cards}>
           {featuredWork.map((item, i) => (
             // Fade, not rise: cards off to the side in the phone row never
             // scroll into view vertically.
@@ -88,6 +92,12 @@ export function Home() {
             </Reveal>
           ))}
         </ul>
+        <CarouselControls
+          carousel={carousel}
+          controls="featured-cards"
+          itemLabel="project"
+          className={styles.cardControls}
+        />
         <ViewAllProjects className={styles.viewAllBottom} />
       </section>
 

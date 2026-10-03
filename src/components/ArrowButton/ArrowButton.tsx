@@ -62,10 +62,11 @@ export function ArrowButton({
 
 interface CircleArrowProps {
   className?: string;
-  direction?: "right" | "down";
+  direction?: "right" | "down" | "left";
 }
 
-// Outlined circle with an arrow, used beside text links and on cards.
+// Outlined circle with an arrow, used beside text links, on cards, and in
+// buttons (the carousel controls).
 export function CircleArrow({
   className,
   direction = "right",
@@ -75,6 +76,7 @@ export function CircleArrow({
       className={cx(
         styles.circle,
         direction === "down" && styles.down,
+        direction === "left" && styles.left,
         className,
       )}
       aria-hidden="true"

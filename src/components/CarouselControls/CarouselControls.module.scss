@@ -1,0 +1,43 @@
+@use "../../../styles/tokens" as *;
+
+.controls {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+}
+
+.counter {
+  @include label-text;
+  color: $moss;
+  margin: 0;
+
+  span {
+    color: $taupe;
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.button {
+  background: none;
+  border: 0;
+  color: $moss;
+  cursor: pointer;
+  padding: 0;
+  transition: opacity 0.3s $ease-out;
+
+  &:focus-visible {
+    border-radius: 50%;
+    outline: 2px solid $mars;
+    outline-offset: 3px;
+  }
+
+  &[aria-disabled="true"] {
+    cursor: default;
+    opacity: 0.35;
+  }
+}
