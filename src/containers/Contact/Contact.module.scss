@@ -2,6 +2,10 @@
 
 // Measured from the 1512px desktop design.
 .hero {
+  // Room before the contact band, since phones and tablets skip the
+  // illustration.
+  padding-bottom: fluid(80px, 90px);
+
   @include from($bp-lg) {
     min-height: desktop(728px);
     padding-bottom: 120px;
@@ -15,8 +19,12 @@
   }
 }
 
-// Vertically centered with the text, toward the right edge.
+// Vertically centered with the text, toward the right edge. Desktop only.
 .art {
+  @include until($bp-lg) {
+    display: none;
+  }
+
   @include from($bp-lg) {
     right: desktop(125px);
     top: desktop(107px);
