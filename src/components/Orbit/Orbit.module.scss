@@ -18,7 +18,7 @@
 
 .light {
   --orbit-line: #{rgba($taupe, 0.6)};
-  --orbit-moon: #ddd5c9;
+  --orbit-moon: #{$moon-light};
 }
 
 .dark {
@@ -64,8 +64,9 @@
   animation-direction: reverse;
 }
 
+// A parent can recolor the moons with --orbit-moon-color (the hero on phones).
 .moon {
-  background: var(--orbit-moon);
+  background: var(--orbit-moon-color, var(--orbit-moon));
   border-radius: 50%;
   position: absolute;
   transform: translate(-50%, -50%);

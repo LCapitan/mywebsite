@@ -1,3 +1,4 @@
+@use "sass:color";
 @use "sass:list";
 @use "sass:math";
 @use "../../../styles/tokens" as *;
@@ -99,6 +100,17 @@ $mobile-planet-top: 240px;
 }
 
 @include until($bp-lg) {
+  // Softens the moons and planet so they don't compete with the hero text.
+  // The moons stay solid (so the orbit lines don't show through), just 45%
+  // closer to the page background.
+  .sky {
+    --orbit-moon-color: #{color.mix($creme, $moon-light, 45%)};
+  }
+
+  .planet {
+    opacity: 0.45;
+  }
+
   .top,
   .bottom {
     @each $name, $p in $pieces {
