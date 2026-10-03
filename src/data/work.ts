@@ -14,18 +14,18 @@ export interface WorkItem {
 
 export const workItems: WorkItem[] = [
   {
-    title: "Oura",
-    content: "A resource hub for Oura Ring built on HubSpot",
+    title: "OURA",
+    content: "A resource hub for OURA Ring built on HubSpot",
     imgSrc:
       "https://res.cloudinary.com/austinmel/image/upload/v1790867542/oura-ring_r4myqq.jpg",
-    imgAlt: "a screenshot of the oura ring resource hub",
+    imgAlt: "a screenshot of the OURA Ring resource hub",
     cardLink: "https://resources.ouraring.com/",
     tags: ["hubspot cms", "hubdb", "hubl", "javascript"],
     featured: 1,
   },
   {
     title: "Piedmont",
-    content: "Piedmont Healthcare System redesign and replatform",
+    content: "A health system redesign on headless Sitecore",
     imgSrc:
       "https://res.cloudinary.com/austinmel/image/upload/v1790867167/piedmont_ekpo58.jpg",
     imgAlt: "a screenshot of the piedmont website",
@@ -35,7 +35,7 @@ export const workItems: WorkItem[] = [
   },
   {
     title: "Reid Health",
-    content: "",
+    content: "A health system redesign built on Sitecore",
     imgSrc:
       "https://res.cloudinary.com/austinmel/image/upload/v1790867050/reid-health_nn92ll.jpg",
     imgAlt: "a screenshot of the reid health website",
@@ -44,7 +44,7 @@ export const workItems: WorkItem[] = [
   },
   {
     title: "Walnut Hill",
-    content: "Walnut Hill School for the Arts",
+    content: "A website redesign for an arts high school",
     imgSrc:
       "https://res.cloudinary.com/austinmel/image/upload/v1790958208/walnut_hill_btpzw3.webp",
     imgAlt: "the walnut hill school for the arts campus",
@@ -54,7 +54,7 @@ export const workItems: WorkItem[] = [
   },
   {
     title: "Ensworth",
-    content: "The Ensworth School",
+    content: "A website redesign for a Nashville K–12 school",
     imgSrc:
       "https://res.cloudinary.com/austinmel/image/upload/v1790866152/ensworth_vwoapk.jpg",
     imgAlt: "a screenshot of the ensworth school website",
@@ -63,7 +63,7 @@ export const workItems: WorkItem[] = [
   },
   {
     title: "UPitt",
-    content: "The University of Pittsburgh",
+    content: "A redesign for the University of Pittsburgh",
     imgSrc:
       "https://res.cloudinary.com/austinmel/image/upload/v1656677342/pittt_etmsrj.png",
     imgAlt: "a photo of upitt celebrating at a college game",
@@ -72,7 +72,7 @@ export const workItems: WorkItem[] = [
   },
   {
     title: "Curry College",
-    content: "",
+    content: "A college redesign built on Ingeniux",
     imgSrc:
       "https://res.cloudinary.com/austinmel/image/upload/v1656677312/curry_nrh65v.jpg",
     imgAlt: "curry college",
