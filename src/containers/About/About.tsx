@@ -12,7 +12,7 @@ import { SectionLabel } from "../../components/SectionLabel";
 import styles from "./About.module.scss";
 
 const portrait =
-  "https://res.cloudinary.com/austinmel/image/upload/v1790868836/IMG_1154_oiifty.jpg";
+  "https://res.cloudinary.com/austinmel/image/upload/v1791056277/IMG_0030_hogihv.jpg";
 
 const beyondWorkPhoto =
   "https://res.cloudinary.com/austinmel/image/upload/v1790965350/me-and-caro_bqrzdg.jpg";
@@ -64,7 +64,7 @@ export default function About() {
           <Reveal variant="clip" className={styles.portrait} delay={200}>
             <Image
               src={portrait}
-              alt="Austin standing in the Arizona desert"
+              alt="Austin walking past a colorful painted mural"
               fill
               sizes="(max-width: 1099px) 100vw, 530px"
               preload
