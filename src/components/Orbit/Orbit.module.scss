@@ -38,7 +38,8 @@
   inset: 0;
   overflow: visible;
   position: absolute;
-  stroke: var(--orbit-line);
+  // A parent can recolor the lines with --orbit-line-color (the hero on phones).
+  stroke: var(--orbit-line-color, var(--orbit-line));
   stroke-width: 1;
   width: 100%;
 }

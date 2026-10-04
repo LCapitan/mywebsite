@@ -100,15 +100,17 @@ $mobile-planet-top: 240px;
 }
 
 @include until($bp-lg) {
-  // Softens the moons and planet so they don't compete with the hero text.
-  // The moons stay solid (so the orbit lines don't show through), just 45%
-  // closer to the page background.
+  // Softens the orbits so they don't compete with the hero text.
+  // The moons stay solid (so the orbit lines don't show through), at 30% of
+  // their color over the page background, to match the planet.
   .sky {
-    --orbit-moon-color: #{color.mix($creme, $moon-light, 45%)};
+    // 30% of the usual hero line strength (0.6).
+    --orbit-line-color: #{rgba($taupe, 0.18)};
+    --orbit-moon-color: #{color.mix($moon-light, $creme, 30%)};
   }
 
   .planet {
-    opacity: 0.45;
+    opacity: 0.3;
   }
 
   .top,
