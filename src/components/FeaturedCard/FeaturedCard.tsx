@@ -9,7 +9,8 @@ import styles from "./FeaturedCard.module.scss";
 interface FeaturedCardProps {
   item: WorkItem;
   index: number;
-  // The homepage shows the first three tags; the work page shows them all.
+  // The homepage shows the first three tags, on desktop only; the work page
+  // shows them all, everywhere.
   allTags?: boolean;
   titleAs?: "h2" | "h3";
   className?: string;
@@ -44,11 +45,17 @@ export function FeaturedCard({
       <div className={styles.body}>
         <Title className={styles.title}>{item.title}</Title>
         {item.content && <p className={styles.description}>{item.content}</p>}
-        <ul className={styles.tags}>
+        <ul className={cx(styles.tags, !allTags && styles.desktopTags)}>
           {tags.map((tag) => (
             <li key={tag}>{tag}</li>
           ))}
         </ul>
+        {/* Phones and tablets: a small button under the details in place of
+            the arrow beside them. */}
+        <span className={styles.cta}>
+          View website
+          <CircleArrow className={styles.ctaArrow} />
+        </span>
       </div>
       <CircleArrow className={styles.arrow} />
     </a>
