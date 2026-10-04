@@ -50,15 +50,3 @@
     }
   }
 }
-
-@media (prefers-reduced-motion: reduce) {
-  :global(html.js) {
-    .number,
-    .text,
-    .line {
-      opacity: 1;
-      transform: none;
-      transition: none;
-    }
-  }
-}

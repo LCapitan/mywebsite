@@ -150,10 +150,3 @@ $circle: $height - 2 * ($inset + $border);
     color: $mars;
   }
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .fill,
-  .circle::before {
-    transition: none;
-  }
-}

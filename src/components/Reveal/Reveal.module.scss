@@ -59,16 +59,3 @@
 .lineInner {
   display: block;
 }
-
-@media (prefers-reduced-motion: reduce) {
-  :global(html.js) {
-    .reveal,
-    .clip > *,
-    .lineInner {
-      clip-path: none;
-      opacity: 1;
-      transform: none;
-      transition: none;
-    }
-  }
-}

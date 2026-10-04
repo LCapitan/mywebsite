@@ -164,13 +164,3 @@
     transform: rotate(360deg);
   }
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .header {
-    transition: none;
-  }
-
-  .menuMoon {
-    animation: none;
-  }
-}

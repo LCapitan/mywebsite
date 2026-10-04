@@ -131,11 +131,6 @@ export function useCarousel<T extends HTMLElement>() {
 
       const to = positions[target];
       stopGlide();
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        row.scrollLeft = to;
-        return;
-      }
-
       row.style.scrollSnapType = "none";
       const start = row.scrollLeft;
       const startTime = performance.now();

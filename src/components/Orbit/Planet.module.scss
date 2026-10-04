@@ -33,10 +33,3 @@
     transform: translate(-50%, calc(-50% - 8px)) rotate(-3deg);
   }
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .planet {
-    animation: none;
-    transform: translate(-50%, -50%);
-  }
-}

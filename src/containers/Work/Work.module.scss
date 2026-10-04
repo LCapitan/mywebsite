@@ -1,6 +1,6 @@
 @use "../../../styles/tokens" as *;
 
-// ---- Wheel layout (desktop, motion allowed)
+// ---- Wheel layout (desktop)
 
 // Tall scroll track; the stage stays pinned while it scrolls past, and each
 // project gets 70vh of scroll.
@@ -10,10 +10,6 @@
 
   @include from($bp-lg) {
     display: block;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    display: none;
   }
 }
 
@@ -73,7 +69,7 @@
   width: var(--card);
 }
 
-// ---- Row layout (phones and tablets, or reduced motion)
+// ---- Row layout (phones and tablets)
 
 .rowLayout {
   @include container;
@@ -81,10 +77,6 @@
 
   @include from($bp-lg) {
     display: none;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    display: block;
   }
 }
 
@@ -228,14 +220,4 @@
   left: 24px;
   position: absolute;
   right: 24px;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .details {
-    animation: none;
-  }
-
-  .card {
-    transition: none;
-  }
 }

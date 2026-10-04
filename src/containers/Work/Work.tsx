@@ -102,7 +102,7 @@ export default function Work() {
 
     const update = () => {
       frame = 0;
-      // Hidden (phones, reduced motion): the row layout is shown instead.
+      // Hidden (phones and tablets): the row layout is shown instead.
       if (!track.offsetParent) return;
       target = measure();
       position += (target - position) * EASE;

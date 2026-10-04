@@ -171,9 +171,3 @@ $pad: 24px;
     width: 16px;
   }
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .image {
-    transition: none;
-  }
-}

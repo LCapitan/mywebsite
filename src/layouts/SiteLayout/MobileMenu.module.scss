@@ -245,14 +245,3 @@ $slide: 0.7s;
     width: var(--icon-size, 30px);
   }
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .backdrop,
-  .menu,
-  .links li,
-  .divider,
-  .profile,
-  .social {
-    transition: none;
-  }
-}

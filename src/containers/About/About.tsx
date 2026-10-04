@@ -29,10 +29,7 @@ function scrollToHistory(event: MouseEvent<HTMLAnchorElement>) {
   const target = document.getElementById("history");
   if (!target) return;
   event.preventDefault();
-  const reduceMotion = window.matchMedia(
-    "(prefers-reduced-motion: reduce)",
-  ).matches;
-  target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
+  target.scrollIntoView({ behavior: "smooth" });
 }
 
 export default function About() {
