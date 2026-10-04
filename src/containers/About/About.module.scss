@@ -12,19 +12,19 @@
 
 .text {
   @include body-large;
-  margin: 40px 0 0;
+  margin: compact(24px, 40px) 0 0;
   max-width: 600px;
 }
 
 .action {
-  margin-top: 40px;
+  margin-top: compact(28px, 40px);
 }
 
 // ---- Hero
 
 .hero {
   isolation: isolate;
-  padding-top: fluid(122px, 185px);
+  padding-top: fluid(104px, 185px);
   position: relative;
 
   // Like the homepage hero: at least a full screen tall, content centered.
@@ -40,7 +40,7 @@
 .heroContent {
   @include container;
   display: grid;
-  gap: 48px;
+  gap: compact(32px, 48px);
   position: relative;
   z-index: 1;
 
@@ -74,7 +74,7 @@
 .history {
   @include container;
   isolation: isolate;
-  margin-top: fluid(90px, 120px);
+  margin-top: fluid(64px, 120px);
   position: relative;
   // Clears the header when jumped to from "Read more about me".
   scroll-margin-top: 100px;
@@ -93,7 +93,7 @@
 }
 
 .historyText {
-  margin-top: 32px;
+  margin-top: compact(20px, 32px);
 
   p {
     @include body-large;
@@ -119,7 +119,7 @@
     "text"
     "action";
   isolation: isolate;
-  margin-top: fluid(90px, 135px);
+  margin-top: fluid(64px, 135px);
   position: relative;
 
   @include from($bp-lg) {
@@ -148,13 +148,13 @@
 .beyondText {
   @include body-large;
   grid-area: text;
-  margin: 40px 0 0;
+  margin: compact(24px, 40px) 0 0;
   max-width: 600px;
 }
 
 .beyondAction {
   grid-area: action;
-  margin-top: 40px;
+  margin-top: compact(28px, 40px);
 }
 
 .beyondOrbit {
@@ -174,7 +174,7 @@
   aspect-ratio: 645 / 529;
   border-radius: 12px;
   grid-area: photo;
-  margin-top: 40px;
+  margin-top: compact(24px, 40px);
   overflow: hidden;
   position: relative;
 

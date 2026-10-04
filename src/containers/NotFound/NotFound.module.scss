@@ -3,7 +3,7 @@
 // Measured from the 1512px desktop design.
 .hero {
   // Room before the contact band, since there's no illustration here.
-  padding-bottom: fluid(80px, 90px);
+  padding-bottom: fluid(56px, 90px);
 
   @include from($bp-lg) {
     min-height: desktop(675px);

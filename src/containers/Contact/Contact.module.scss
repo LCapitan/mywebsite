@@ -4,7 +4,7 @@
 .hero {
   // Room before the contact band, since phones and tablets skip the
   // illustration.
-  padding-bottom: fluid(80px, 90px);
+  padding-bottom: fluid(56px, 90px);
 
   @include from($bp-lg) {
     min-height: desktop(728px);

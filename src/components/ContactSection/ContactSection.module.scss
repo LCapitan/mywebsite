@@ -9,9 +9,9 @@
 
   background: $birch;
   isolation: isolate;
-  margin-top: fluid(110px, 200px);
+  margin-top: fluid(72px, 200px);
   overflow: hidden;
-  padding-block: fluid(72px, 100px);
+  padding-block: fluid(56px, 100px);
   position: relative;
   z-index: 1;
 }
@@ -23,7 +23,7 @@
 .inner {
   @include container;
   display: grid;
-  gap: 40px;
+  gap: compact(28px, 40px);
   position: relative;
 
   @include from($bp-lg) {
@@ -55,7 +55,7 @@
 .text {
   @include body-large;
   color: $taupe;
-  margin: 40px 0 0;
+  margin: compact(24px, 40px) 0 0;
   max-width: 600px;
 }
 

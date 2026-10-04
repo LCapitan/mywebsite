@@ -2,7 +2,7 @@
 
 .hero {
   isolation: isolate;
-  padding-top: fluid(122px, 185px);
+  padding-top: fluid(104px, 185px);
   position: relative;
 }
 
@@ -27,17 +27,17 @@
 
 .text {
   @include body-large;
-  margin: 40px 0 0;
+  margin: compact(24px, 40px) 0 0;
 }
 
 .action {
-  margin-top: 40px;
+  margin-top: compact(28px, 40px);
 }
 
 // Pages position the illustration on desktop; on phones and tablets it sits
 // below the text at full width.
 .art {
-  margin-top: 40px;
+  margin-top: compact(24px, 40px);
   position: relative;
   z-index: 1;
 

@@ -10,20 +10,20 @@
 .text {
   @include body-large;
   grid-area: text;
-  margin: 40px 0 0;
+  margin: compact(24px, 40px) 0 0;
   max-width: 600px;
 }
 
 .action {
   grid-area: action;
-  margin-top: 40px;
+  margin-top: compact(28px, 40px);
 }
 
 // ---- Hero
 
 .hero {
   isolation: isolate;
-  padding-top: fluid(122px, 199px);
+  padding-top: fluid(104px, 199px);
   position: relative;
 
   // At least a full screen tall, with the text centered in it.
@@ -48,7 +48,7 @@
 
 .heroText {
   @include body-large;
-  margin: 40px 0 0;
+  margin: compact(24px, 40px) 0 0;
   max-width: 600px;
 
   // Leaves room for the orbits on the right.
@@ -58,7 +58,7 @@
 }
 
 .heroArt {
-  margin-top: 28px;
+  margin-top: compact(16px, 28px);
   position: relative;
   z-index: 1;
 
@@ -88,7 +88,7 @@
 .featured {
   @include container;
   isolation: isolate;
-  margin-top: 112px;
+  margin-top: compact(72px, 112px);
   position: relative;
 }
 
@@ -125,7 +125,7 @@
 }
 
 .featured .viewAllBottom {
-  margin-top: 40px;
+  margin-top: 28px;
 
   @include from($bp-lg) {
     display: none;
@@ -135,7 +135,7 @@
 .cards {
   display: grid;
   list-style: none;
-  margin: 52px 0 0;
+  margin: compact(28px, 52px) 0 0;
   padding: 0;
 
   // A swipeable row that peeks the next card on smaller screens.
@@ -189,7 +189,7 @@
     "text"
     "action";
   isolation: isolate;
-  margin-top: fluid(110px, 200px);
+  margin-top: fluid(72px, 200px);
   position: relative;
 
   @include from($bp-lg) {
@@ -225,7 +225,7 @@
   aspect-ratio: 479 / 413;
   border-radius: 12px;
   grid-area: photo;
-  margin-top: 40px;
+  margin-top: compact(24px, 40px);
   overflow: hidden;
   position: relative;
 

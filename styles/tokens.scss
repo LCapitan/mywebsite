@@ -49,6 +49,14 @@ $frame-lg: 1512px;
   @return clamp(#{$min}, #{$base} + #{$slope * 100vw}, #{$max});
 }
 
+// Tighter spacing on phones: scales from $min at the mobile design width up
+// to $max at the desktop breakpoint, so desktop keeps $max exactly.
+@function compact($min, $max) {
+  $slope: math.div($max - $min, $bp-lg - $frame-sm);
+  $base: $min - $slope * $frame-sm;
+  @return clamp(#{$min}, #{$base} + #{$slope * 100vw}, #{$max});
+}
+
 // A desktop measurement that shrinks with the viewport below 1512px.
 @function desktop($px) {
   @return min(#{math.div($px, $frame-lg) * 100vw}, #{$px});
@@ -93,7 +101,7 @@ $frame-lg: 1512px;
   font-weight: 700;
   letter-spacing: -0.01em;
   line-height: 1;
-  margin: 32px 0 0;
+  margin: compact(20px, 32px) 0 0;
 }
 
 @mixin heading {
@@ -103,7 +111,7 @@ $frame-lg: 1512px;
   font-weight: 700;
   line-height: 1.02;
   letter-spacing: -0.005em;
-  margin: 32px 0 0;
+  margin: compact(20px, 32px) 0 0;
 }
 
 @mixin body-large {
