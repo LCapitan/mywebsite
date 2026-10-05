@@ -1,6 +1,8 @@
 @use "../../../styles/tokens" as *;
 
 .header {
+  // Holds still during page transitions (styles/transitions.scss).
+  view-transition-name: site-header;
   align-items: center;
   display: flex;
   inset: 0 0 auto;

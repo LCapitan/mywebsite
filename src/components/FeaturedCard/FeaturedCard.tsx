@@ -1,7 +1,9 @@
 import Image from "next/image";
+import Link from "next/link";
 import cx from "classnames";
 
 import type { WorkItem } from "../../data/work";
+import { caseStudyLinkProps } from "../../lib/pageTransition";
 import { CircleArrow } from "../ArrowButton";
 
 import styles from "./FeaturedCard.module.scss";
@@ -14,6 +16,8 @@ interface FeaturedCardProps {
   allTags?: boolean;
   titleAs?: "h2" | "h3";
   className?: string;
+  // Opens the project's case study, if it has one, instead of the live site.
+  openCaseStudy?: boolean;
 }
 
 export function FeaturedCard({
@@ -22,16 +26,14 @@ export function FeaturedCard({
   allTags,
   titleAs: Title = "h3",
   className,
+  openCaseStudy,
 }: FeaturedCardProps) {
   const tags = allTags ? item.tags : item.tags.slice(0, 3);
+  // Experimental: only the work page opens case studies for now.
+  const caseStudy = openCaseStudy ? item.caseStudy : undefined;
 
-  return (
-    <a
-      href={item.cardLink}
-      target="_blank"
-      rel="noreferrer"
-      className={cx(styles.card, className)}
-    >
+  const content = (
+    <>
       <Image
         src={item.imgSrc}
         alt={item.imgAlt}
@@ -53,11 +55,30 @@ export function FeaturedCard({
         {/* Phones and tablets: a small button under the details in place of
             the arrow beside them. */}
         <span className={styles.cta}>
-          View website
+          {caseStudy ? "View case study" : "View website"}
           <CircleArrow className={styles.ctaArrow} />
         </span>
       </div>
       <CircleArrow className={styles.arrow} />
+    </>
+  );
+
+  // Projects with a case study open it; the rest link to the live site.
+  return caseStudy ? (
+    <Link
+      {...caseStudyLinkProps(caseStudy.slug)}
+      className={cx(styles.card, className)}
+    >
+      {content}
+    </Link>
+  ) : (
+    <a
+      href={item.cardLink}
+      target="_blank"
+      rel="noreferrer"
+      className={cx(styles.card, className)}
+    >
+      {content}
     </a>
   );
 }

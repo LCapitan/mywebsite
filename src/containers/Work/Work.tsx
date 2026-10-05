@@ -1,5 +1,12 @@
-import { useEffect, useRef, useState, type CSSProperties } from "react";
+import {
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+} from "react";
 import Image from "next/image";
+import Link from "next/link";
 import cx from "classnames";
 
 import { CircleArrow } from "../../components/ArrowButton";
@@ -10,6 +17,11 @@ import { HeroSky } from "../../components/HeroSky";
 import { SectionLabel } from "../../components/SectionLabel";
 import { workItems, type WorkItem } from "../../data/work";
 import { useCarousel, type Carousel } from "../../hooks/useCarousel";
+import {
+  caseStudyLinkProps,
+  transitionState,
+  type TransitionStyle,
+} from "../../lib/pageTransition";
 
 import styles from "./Work.module.scss";
 
@@ -52,14 +64,8 @@ function ProjectCard({
   active: boolean;
   onFocus?: () => void;
 }) {
-  return (
-    <a
-      href={item.cardLink}
-      target="_blank"
-      rel="noreferrer"
-      className={cx(styles.card, active && styles.active)}
-      onFocus={onFocus}
-    >
+  const content = (
+    <>
       <Image
         src={item.imgSrc}
         alt={item.imgAlt}
@@ -68,9 +74,31 @@ function ProjectCard({
         className={styles.image}
       />
       <span className={styles.cardLink}>
-        View website
+        {item.caseStudy ? "View case study" : "View website"}
         <CircleArrow />
       </span>
+    </>
+  );
+  const className = cx(styles.card, active && styles.active);
+
+  // Projects with a case study open it; the rest link to the live site.
+  return item.caseStudy ? (
+    <Link
+      {...caseStudyLinkProps(item.caseStudy.slug)}
+      className={className}
+      onFocus={onFocus}
+    >
+      {content}
+    </Link>
+  ) : (
+    <a
+      href={item.cardLink}
+      target="_blank"
+      rel="noreferrer"
+      className={className}
+      onFocus={onFocus}
+    >
+      {content}
     </a>
   );
 }
@@ -81,8 +109,34 @@ export default function Work() {
   const spokeRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [rowRef, carousel] = useCarousel<HTMLUListElement>();
 
-  // Wheel layout: page scroll turns the wheel.
+  // Experimental: ?transition=slide (or morph) picks how case studies open.
   useEffect(() => {
+    const style = new URLSearchParams(window.location.search).get("transition");
+    if (style === "morph" || style === "slide") {
+      transitionState.style = style as TransitionStyle;
+    }
+  }, []);
+
+  // Back from a case study: return to where the page was, with the row on
+  // that project, before the transition takes its picture of the page.
+  useLayoutEffect(() => {
+    if (transitionState.workScroll !== null) {
+      window.scrollTo(0, transitionState.workScroll);
+      transitionState.workScroll = null;
+    }
+    const row = rowRef.current;
+    const index = projects.findIndex(
+      (project) => project.caseStudy?.slug === transitionState.slug,
+    );
+    if (row && index >= 0) {
+      const item = row.children[index] as HTMLElement;
+      row.scrollLeft = item.offsetLeft - row.offsetLeft - row.clientLeft;
+    }
+  }, [rowRef]);
+
+  // Wheel layout: page scroll turns the wheel. A layout effect, so the wheel
+  // is in place before the first paint (and before a transition's picture).
+  useLayoutEffect(() => {
     const track = trackRef.current;
     if (!track) return;
     let frame = 0;
@@ -126,11 +180,10 @@ export default function Work() {
       if (!frame) frame = requestAnimationFrame(update);
     };
 
-    // Start where the page already is (e.g. after a reload mid-page).
-    frame = requestAnimationFrame(() => {
-      position = measure();
-      update();
-    });
+    // Start where the page already is (after a reload mid-page, or back
+    // from a case study).
+    position = measure();
+    update();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
     return () => {
@@ -177,8 +230,11 @@ export default function Work() {
 
   return (
     <>
+      {/* data-work-page marks the page as rendered, for the transition
+          back from a case study. */}
       <div
         ref={trackRef}
+        data-work-page
         className={styles.track}
         style={{ "--projects": projects.length } as CSSProperties}
       >
@@ -234,6 +290,7 @@ export default function Work() {
                 allTags
                 titleAs="h2"
                 className={styles.rowCard}
+                openCaseStudy
               />
             </li>
           ))}

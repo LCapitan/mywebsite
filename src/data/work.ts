@@ -10,6 +10,41 @@ export interface WorkItem {
   // Position in the homepage's featured work row (1 = first). Featured cards
   // show the first three tags.
   featured?: number;
+  // Projects with a case study open it from the work page (at /work/<slug>)
+  // instead of linking straight to the live site.
+  caseStudy?: CaseStudy;
+}
+
+export interface CaseImage {
+  src: string;
+  width: number;
+  height: number;
+  alt: string;
+}
+
+export interface CaseStudy {
+  slug: string;
+  role: string;
+  agency: string;
+  platform: string;
+  year: string;
+  overview: {
+    heading: string;
+    text: string;
+    tags: string[];
+  };
+  development: {
+    heading: string;
+    // Shown in two columns on desktop.
+    paragraphs: string[];
+  };
+  images: {
+    // A device mockup (transparent background) beside the hero text.
+    hero: CaseImage;
+    // A desktop screenshot and a phone screenshot for "The experience".
+    desktop: CaseImage;
+    phone: CaseImage;
+  };
 }
 
 export const workItems: WorkItem[] = [
@@ -22,6 +57,46 @@ export const workItems: WorkItem[] = [
     cardLink: "https://resources.ouraring.com/",
     tags: ["hubspot cms", "hubdb", "hubl", "javascript"],
     featured: 1,
+    caseStudy: {
+      slug: "oura",
+      role: "Front-End Dev",
+      agency: "MERGE",
+      platform: "HubSpot",
+      year: "2026",
+      overview: {
+        heading: "Building a better way to explore OURA.",
+        text: "OURA needed a content-driven resource hub to help educate and inspire their growing community. MERGE designed and built a new experience on HubSpot, and I was responsible for front-end development - bringing the design to life and ensuring a performant, accessible, and scalable implementation.",
+        tags: ["hubspot cms", "front-end development", "responsive", "accessibility"],
+      },
+      development: {
+        heading: "Driven by HubDB.",
+        paragraphs: [
+          "I built the Resource Hub as a custom HubSpot CMS theme that gave OURA a library that behaves consistently everywhere and kept authors from having to make layout decisions they shouldn't have to make. The hub runs on a single coded template where one file renders the main listings, six filtered category views, and two distinct article detail layouts.",
+          "Every resource page is generated dynamically from a HubDB table, so publishing a new resource means filling in a row or adding content to specified fields, not building a page from scratch. The listing merges that table with the blog into one unified, date-sorted feed, so new content surfaces automatically.",
+        ],
+      },
+      images: {
+        // Cropped to the laptop (the original has wide transparent margins).
+        hero: {
+          src: "https://res.cloudinary.com/austinmel/image/upload/c_crop,x_276,y_397,w_6942,h_4014/c_scale,w_2400/v1791240502/oura-hero_sxwt0i.png",
+          width: 2400,
+          height: 1388,
+          alt: "The OURA for Organizations resources page on a laptop",
+        },
+        desktop: {
+          src: "https://res.cloudinary.com/austinmel/image/upload/v1791240419/oura-experience_fvhdoq.png",
+          width: 3014,
+          height: 1502,
+          alt: "The latest resources grid on the OURA for Organizations site",
+        },
+        phone: {
+          src: "https://res.cloudinary.com/austinmel/image/upload/v1791240419/oura-phone_nupjnl.png",
+          width: 618,
+          height: 1346,
+          alt: "The OURA for Organizations resources page on a phone",
+        },
+      },
+    },
   },
   {
     title: "Piedmont",
@@ -113,3 +188,7 @@ export const workItems: WorkItem[] = [
     hidden: true,
   },
 ];
+
+export const caseStudyItems = workItems.filter(
+  (item): item is WorkItem & { caseStudy: CaseStudy } => !!item.caseStudy,
+);

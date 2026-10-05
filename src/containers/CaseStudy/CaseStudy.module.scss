@@ -1,0 +1,272 @@
+@use "../../../styles/tokens" as *;
+
+.cover {
+  object-fit: cover;
+}
+
+.text {
+  @include body-large;
+  margin: compact(24px, 32px) 0 0;
+  max-width: 600px;
+}
+
+.heading {
+  @include heading;
+}
+
+// ---- Hero
+
+.hero {
+  isolation: isolate;
+  padding-top: fluid(104px, 150px);
+  position: relative;
+}
+
+.heroInner {
+  @include container;
+  display: grid;
+  gap: compact(40px, 56px);
+  position: relative;
+  z-index: 1;
+
+  @include from($bp-lg) {
+    align-items: center;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr);
+  }
+}
+
+.back {
+  @include label-text;
+  align-items: center;
+  color: $moss;
+  display: inline-flex;
+  font-size: 13px;
+  gap: 12px;
+  margin-bottom: compact(28px, 40px);
+  transition: color 0.3s $ease-out;
+
+  @include hover-focus {
+    color: $mars;
+  }
+}
+
+.back .backArrow {
+  height: 34px;
+  width: 34px;
+
+  svg {
+    width: 16px;
+  }
+}
+
+.title {
+  @include hero-title;
+}
+
+.tagline {
+  @include body-large;
+  margin: compact(16px, 24px) 0 0;
+  max-width: 420px;
+}
+
+.details {
+  display: grid;
+  gap: 20px 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: compact(28px, 40px) 0 0;
+  max-width: 520px;
+
+  @include from($bp-md) {
+    grid-template-columns: repeat(4, auto);
+  }
+
+  > div {
+    border-left: 1px solid $taupe;
+    padding: 0 20px;
+
+    &:first-child,
+    &:nth-child(3) {
+      border-left: 0;
+      padding-left: 0;
+    }
+
+    @include from($bp-md) {
+      &:nth-child(3) {
+        border-left: 1px solid $taupe;
+        padding-left: 20px;
+      }
+    }
+  }
+
+  dt {
+    @include label-text;
+    color: $moss;
+    font-size: 11px;
+  }
+
+  dd {
+    color: $birch;
+    font-family: $font-body;
+    font-size: 15px;
+    line-height: 1.35;
+    margin: 8px 0 0;
+  }
+}
+
+.visit {
+  margin-top: compact(28px, 40px);
+}
+
+// The device mockup.
+.heroImage {
+  margin-inline: auto;
+  max-width: 720px;
+  width: 100%;
+
+  img {
+    display: block;
+    height: auto;
+    width: 100%;
+  }
+}
+
+// ---- Overview
+
+.overview {
+  @include container;
+  margin-top: fluid(72px, 140px);
+}
+
+.overviewBody {
+  @include from($bp-lg) {
+    align-items: start;
+    column-gap: 64px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+
+    .text {
+      margin-top: 32px;
+    }
+  }
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style: none;
+  margin: compact(28px, 40px) 0 0;
+  padding: 0;
+
+  @include from($bp-lg) {
+    justify-content: flex-end;
+  }
+
+  li {
+    border: 1px solid $taupe;
+    border-radius: 999px;
+    color: $moss;
+    font-family: $font-label;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    padding: 10px 16px;
+    text-transform: uppercase;
+  }
+}
+
+// ---- The experience
+
+.experience {
+  @include container;
+  margin-top: fluid(72px, 140px);
+}
+
+.devices {
+  margin-top: compact(28px, 40px);
+  padding-right: 12%;
+  position: relative;
+}
+
+.browser {
+  --reveal-radius: 16px;
+}
+
+.browserFrame {
+  border-radius: 16px;
+  box-shadow: 0 24px 50px rgba($charcoal, 0.14);
+  overflow: hidden;
+  position: relative;
+}
+
+.phone {
+  --reveal-radius: 28px;
+  bottom: -8%;
+  position: absolute;
+  right: 0;
+  width: 19%;
+}
+
+.phoneFrame {
+  background: #1c1c1e;
+  border-radius: 28px;
+  box-shadow: 0 24px 50px rgba($charcoal, 0.2);
+  padding: 6px;
+}
+
+.phoneScreen {
+  border-radius: 22px;
+  overflow: hidden;
+  position: relative;
+}
+
+// ---- Development
+
+.development {
+  @include container;
+  isolation: isolate;
+  margin-top: fluid(96px, 160px);
+  position: relative;
+}
+
+// Bottom right, running off the page edge; the contact band below clips it.
+.developmentOrbit {
+  display: none;
+  left: calc(100% - 20px);
+  top: calc(100% + 310px);
+  width: 560px;
+  z-index: -1;
+
+  @include from($bp-lg) {
+    display: block;
+  }
+}
+
+.subheading {
+  color: $birch;
+  font-family: $font-display;
+  font-size: fluid(28px, 34px);
+  font-weight: 700;
+  line-height: 1.1;
+  margin: compact(20px, 32px) 0 0;
+}
+
+.columns {
+  @include from($bp-lg) {
+    column-gap: 64px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    .text {
+      max-width: none;
+    }
+  }
+
+  // Stacked paragraphs sit closer together than heading and text.
+  @include until($bp-lg) {
+    .text + .text {
+      margin-top: 1.4em;
+    }
+  }
+}
