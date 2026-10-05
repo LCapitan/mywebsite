@@ -58,7 +58,7 @@ export function Home() {
 
         <Reveal variant="fade" className={styles.heroArt} delay={300}>
           <Image
-            src="/astro.png"
+            src="/astro-hero.png"
             alt="Illustration of an astronaut working on a laptop on the moon"
             width={1617}
             height={734}
