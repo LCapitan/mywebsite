@@ -10,6 +10,8 @@
   background: $creme;
   color: $birch;
   font-family: $font-body;
+  // Keeps the starfield's z-index: -1 above this background.
+  isolation: isolate;
   min-height: 100vh;
   // Orbits and the hero art run off the edges (and the bottom) of the page.
   overflow: clip;

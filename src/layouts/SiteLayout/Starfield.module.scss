@@ -1,0 +1,69 @@
+@use "../../../styles/tokens" as *;
+
+// Fixed to the viewport, behind all of the page's content (the site wrapper
+// isolates it, so it still sits above the creme background).
+.sky {
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  position: fixed;
+  z-index: -1;
+}
+
+// Two copies of the sky stacked, moved up as the page scrolls.
+.field {
+  inset: 0;
+  position: absolute;
+  transform: translateY(calc(-1 * var(--offset, 0px)));
+  will-change: transform;
+}
+
+// The outer span places the star; the inner one drifts.
+.star {
+  position: absolute;
+  translate: -50% -50%;
+}
+
+.glow {
+  animation:
+    drift var(--duration) ease-in-out var(--delay) infinite alternate,
+    twinkle var(--twinkle) linear var(--twinkle-delay) infinite;
+  display: block;
+  fill: $moss;
+  height: 100%;
+  overflow: visible;
+  width: 100%;
+}
+
+@keyframes drift {
+  to {
+    transform: translate(var(--dx), var(--dy));
+  }
+}
+
+// Steady most of the time, then a quick dim and recover.
+@keyframes twinkle {
+  0%,
+  78%,
+  100% {
+    opacity: 1;
+  }
+
+  84% {
+    opacity: 0.25;
+  }
+
+  88% {
+    opacity: 0.85;
+  }
+
+  92% {
+    opacity: 0.4;
+  }
+}
+
+.desktopOnly {
+  @include until($bp-md) {
+    display: none;
+  }
+}
