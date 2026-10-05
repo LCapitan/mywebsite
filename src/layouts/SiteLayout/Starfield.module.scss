@@ -3,6 +3,8 @@
 // Fixed to the viewport, behind all of the page's content (the site wrapper
 // isolates it, so it still sits above the creme background).
 .sky {
+  // Keeps the sky's work from spilling into the rest of the page.
+  contain: strict;
   inset: 0;
   overflow: hidden;
   pointer-events: none;
@@ -10,34 +12,60 @@
   z-index: -1;
 }
 
-// Two copies of the sky stacked, moved up as the page scrolls.
-.field {
-  inset: 0;
-  position: absolute;
-  transform: translateY(calc(-1 * var(--offset, 0px)));
-  will-change: transform;
-}
-
-// The outer span places the star; the inner one drifts.
+// Every star starts at the center of the screen; Starfield.tsx moves its trip
+// span out along its ray.
 .star {
+  left: 50%;
   position: absolute;
+  top: 50%;
   translate: -50% -50%;
 }
 
-.glow {
-  animation:
-    drift var(--duration) ease-in-out var(--delay) infinite alternate,
-    twinkle var(--twinkle) linear var(--twinkle-delay) infinite;
+.trip {
   display: block;
-  fill: $moss;
   height: 100%;
-  overflow: visible;
+  opacity: 0;
   width: 100%;
 }
 
-@keyframes drift {
-  to {
-    transform: translate(var(--dx), var(--dy));
+// Drifts and twinkles. Each star uses one of the fixed drift paths below.
+.glow {
+  display: block;
+  height: 100%;
+  width: 100%;
+
+  svg {
+    display: block;
+    fill: $moss;
+    height: 100%;
+    overflow: visible;
+    width: 100%;
+  }
+}
+
+// Six directions, up to 6px each way.
+$drift-paths: (
+  (6px, -4px),
+  (-5px, -6px),
+  (-6px, 3px),
+  (4px, 6px),
+  (2px, -6px),
+  (-3px, 5px)
+);
+
+@each $dx, $dy in $drift-paths {
+  $i: index($drift-paths, ($dx, $dy)) - 1;
+
+  @keyframes drift-#{$i} {
+    to {
+      transform: translate($dx, $dy);
+    }
+  }
+
+  .drift#{$i} {
+    animation:
+      drift-#{$i} var(--duration) ease-in-out var(--delay) infinite alternate,
+      twinkle var(--twinkle) linear var(--twinkle-delay) infinite;
   }
 }
 

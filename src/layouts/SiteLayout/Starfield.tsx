@@ -20,81 +20,133 @@ const STAR_PATH =
 
 const STAR_COUNT = 18;
 
-// Screen sizes the spacing is checked against (phone, tablet, desktop), since
-// stars are placed by percentage.
-const SCREENS = [
-  [390, 844],
-  [768, 1024],
-  [1440, 900],
-];
+// Fixed drift directions (drift0 to drift5 in the stylesheet). Fixed
+// keyframes, rather than per-star values, let the browser run the drift off
+// the main thread.
+const DRIFT_PATHS = 6;
 
-// Room for both stars to drift (up to 6px each way) plus a little air.
-const DRIFT = 6;
-const AIR = 8;
+// How far the page scrolls while a star makes one trip from the center of the
+// screen to its edge, in px.
+const TRIP = 1100;
 
-// Places each star clear of the others on every screen size. The sky repeats
-// vertically as it scrolls, so the gap also holds across the top and bottom.
-function placeStars() {
-  const random = seeded(1512);
-  const placed: { left: number; top: number; size: number }[] = [];
-  for (let tries = 0; placed.length < STAR_COUNT && tries < 20000; tries++) {
-    const left = 3 + random() * 94;
-    const top = random() * 100;
-    const size = 15 + Math.round(random() * 15);
-    const clear = placed.every((star) => {
-      const wrapped = Math.abs(star.top - top);
-      const dyShare = Math.min(wrapped, 100 - wrapped) / 100;
-      const dxShare = Math.abs(star.left - left) / 100;
-      const needed = (star.size + size) / 2 + DRIFT * 2 + AIR;
-      return SCREENS.every(
-        ([width, height]) =>
-          Math.hypot(dxShare * width, dyShare * height) >= needed,
-      );
-    });
-    if (clear) placed.push({ left, top, size });
-  }
+// Each star flies out along its own ray from the center. Golden-angle rays
+// spread them evenly around the circle, and staggered starting points keep
+// them from arriving together.
+const random = seeded(1512);
+const stars = Array.from({ length: STAR_COUNT }, (_, i) => ({
+  angle: ((i * 137.508 + random() * 16) * Math.PI) / 180,
+  // How far out the ray runs, relative to the screen's corner.
+  reach: 0.8 + random() * 0.4,
+  // Where along its trip the star is at the top of the page (0 to 1).
+  phase: (i + random() * 0.6) / STAR_COUNT,
+  size: 15 + Math.round(random() * 15),
+  opacity: 0.05 + random() * 0.1,
+  drift: Math.floor(random() * DRIFT_PATHS),
+  duration: 7 + random() * 7,
+  delay: -random() * 14,
+  // A brief flicker every few seconds, each star on its own clock.
+  twinkle: 3 + random() * 6,
+  twinkleDelay: -random() * 9,
+  // Phones get a sparser sky.
+  desktopOnly: i % 3 === 0,
+}));
 
-  return placed.map((star, i) => ({
-    ...star,
-    opacity: 0.05 + random() * 0.1,
-    // A slow drift of a few px in a random direction.
-    duration: 7 + random() * 7,
-    delay: -random() * 14,
-    dx: (random() * 2 - 1) * DRIFT,
-    dy: (random() * 2 - 1) * DRIFT,
-    // A brief flicker every few seconds, each star on its own clock.
-    twinkle: 3 + random() * 6,
-    twinkleDelay: -random() * 9,
-    // Phones get a sparser sky.
-    desktopOnly: i % 3 === 0,
-  }));
+type Star = (typeof stars)[number];
+
+// A star partway through its trip (t from 0 at the center to 1 at the edge).
+// It speeds up and grows as it nears, like something rushing past, and fades
+// in as it leaves the center.
+function tripFrame(star: Star, t: number, corner: number) {
+  const distance = star.reach * corner * t * t;
+  const x = (Math.cos(star.angle) * distance).toFixed(1);
+  const y = (Math.sin(star.angle) * distance).toFixed(1);
+  return {
+    transform: `translate(${x}px, ${y}px) scale(${(0.3 + t).toFixed(3)})`,
+    opacity: Math.min(t / 0.25, 1),
+  };
 }
 
-const stars = placeStars();
+// The same trip as keyframes, sampled finely enough to follow the curve.
+function tripKeyframes(star: Star, corner: number) {
+  return Array.from({ length: 13 }, (_, i) => {
+    const t = i / 12;
+    return { offset: t, ...tripFrame(star, t, corner) };
+  });
+}
 
-// How fast the sky moves relative to the page.
-const PARALLAX = 0.15;
-
-// Faint stars fixed behind the page that drift and twinkle in place, and
-// scroll with the page at a fraction of its speed. The sky is drawn twice, one copy below the
-// other, so stars leaving the top come back in at the bottom.
+// Faint stars behind the page that drift and twinkle in place. Scrolling
+// carries them out from the center of the screen, as if traveling deeper into
+// space; new ones fade in at the center as others leave the edges, and
+// scrolling back up reverses the trip.
 export function Starfield() {
   const ref = useRef<HTMLDivElement>(null);
+  const tripRefs = useRef<(HTMLSpanElement | null)[]>([]);
 
   useEffect(() => {
     const sky = ref.current;
     if (!sky) return;
-    let frame = 0;
+    const root = document.documentElement;
+    const corner = () => Math.hypot(sky.clientWidth, sky.clientHeight) / 2;
+    const scrollable = () => root.scrollHeight - window.innerHeight;
 
+    // Tied to the page's scroll position by the browser itself, so the stars
+    // move in step with scrolling without any work per frame. Each trip takes
+    // TRIP px of scroll, so a longer page means more trips. Rebuilt when the
+    // page or window changes size.
+    if ("ScrollTimeline" in globalThis) {
+      let animations: Animation[] = [];
+      const build = () => {
+        animations.forEach((animation) => animation.cancel());
+        const range = scrollable();
+        // A page that can't scroll has no timeline to follow; the stars just
+        // hold their starting positions.
+        if (range < 1) {
+          animations = stars.map((star, i) =>
+            tripRefs.current[i]!.animate(
+              [tripFrame(star, star.phase, corner())],
+              { fill: "both" },
+            ),
+          );
+          return;
+        }
+        const timeline = new ScrollTimeline({ source: root, axis: "block" });
+        animations = stars.map((star, i) =>
+          tripRefs.current[i]!.animate(tripKeyframes(star, corner()), {
+            fill: "both",
+            iterations: range / TRIP,
+            iterationStart: star.phase,
+            timeline,
+          }),
+        );
+      };
+      build();
+      const observer = new ResizeObserver(build);
+      observer.observe(document.body);
+      window.addEventListener("resize", build);
+      return () => {
+        observer.disconnect();
+        window.removeEventListener("resize", build);
+        animations.forEach((animation) => animation.cancel());
+      };
+    }
+
+    // Fallback: place the stars on scroll.
+    let frame = 0;
     const update = () => {
       frame = 0;
-      const offset = (window.scrollY * PARALLAX) % sky.clientHeight;
-      sky.style.setProperty("--offset", `${offset.toFixed(1)}px`);
+      const progress = window.scrollY / TRIP;
+      stars.forEach((star, i) => {
+        const el = tripRefs.current[i];
+        if (!el) return;
+        const t = (progress + star.phase) % 1;
+        const { transform, opacity } = tripFrame(star, t, corner());
+        el.style.transform = transform;
+        el.style.opacity = String(opacity);
+      });
     };
     const onChange = () => {
       if (!frame) frame = requestAnimationFrame(update);
     };
-
     update();
     window.addEventListener("scroll", onChange, { passive: true });
     window.addEventListener("resize", onChange);
@@ -105,39 +157,38 @@ export function Starfield() {
     };
   }, []);
 
-  const renderStars = (copy: number) =>
-    stars.map((star, i) => (
-      <span
-        key={`${copy}-${i}`}
-        className={cx(styles.star, star.desktopOnly && styles.desktopOnly)}
-        style={
-          {
-            left: `${star.left}%`,
-            top: `${star.top + copy * 100}%`,
-            width: star.size,
-            height: star.size,
-            opacity: star.opacity,
-            "--duration": `${star.duration}s`,
-            "--delay": `${star.delay}s`,
-            "--dx": `${star.dx}px`,
-            "--dy": `${star.dy}px`,
-            "--twinkle": `${star.twinkle}s`,
-            "--twinkle-delay": `${star.twinkleDelay}s`,
-          } as CSSProperties
-        }
-      >
-        <svg className={styles.glow} viewBox="0 0 23 23">
-          <path d={STAR_PATH} />
-        </svg>
-      </span>
-    ));
-
   return (
     <div ref={ref} className={styles.sky} aria-hidden="true">
-      <div className={styles.field}>
-        {renderStars(0)}
-        {renderStars(1)}
-      </div>
+      {stars.map((star, i) => (
+        <span
+          key={i}
+          className={cx(styles.star, star.desktopOnly && styles.desktopOnly)}
+          style={{ width: star.size, height: star.size, opacity: star.opacity }}
+        >
+          <span
+            ref={(el) => {
+              tripRefs.current[i] = el;
+            }}
+            className={styles.trip}
+          >
+            <span
+              className={cx(styles.glow, styles[`drift${star.drift}`])}
+              style={
+                {
+                  "--duration": `${star.duration}s`,
+                  "--delay": `${star.delay}s`,
+                  "--twinkle": `${star.twinkle}s`,
+                  "--twinkle-delay": `${star.twinkleDelay}s`,
+                } as CSSProperties
+              }
+            >
+              <svg viewBox="0 0 23 23">
+                <path d={STAR_PATH} />
+              </svg>
+            </span>
+          </span>
+        </span>
+      ))}
     </div>
   );
 }
