@@ -33,12 +33,12 @@
   }
 }
 
-// Positioned from the 1512px desktop frame: centered under the heading's end,
-// running off the bottom of the band.
+// Centered near the right edge so it circles the "Get in touch" button and
+// the profile icons, running off the band's right and bottom edges.
 .orbit {
   display: none;
-  left: 734px;
-  top: 353px;
+  left: 100%;
+  top: 62%;
   width: 785px;
   z-index: -1;
 
