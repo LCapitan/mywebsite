@@ -29,6 +29,11 @@ const DRIFT_PATHS = 6;
 // screen to its edge, in px.
 const TRIP = 1100;
 
+// How quickly the stars catch up once scrolling stops, in ms: the time to
+// cover about two-thirds of the remaining distance. They glide in over
+// roughly three times this, like a ship slowing down.
+const SETTLE = 300;
+
 // Each star flies out along its own ray from the center. Golden-angle rays
 // spread them evenly around the circle, and staggered starting points keep
 // them from arriving together.
@@ -76,8 +81,8 @@ function tripKeyframes(star: Star, corner: number) {
 
 // Faint stars behind the page that drift and twinkle in place. Scrolling
 // carries them out from the center of the screen, as if traveling deeper into
-// space; new ones fade in at the center as others leave the edges, and
-// scrolling back up reverses the trip.
+// space; new ones fade in at the center as others leave the edges, scrolling
+// back up reverses the trip, and they glide to a stop after the page does.
 export function Starfield() {
   const ref = useRef<HTMLDivElement>(null);
   const tripRefs = useRef<(HTMLSpanElement | null)[]>([]);
@@ -85,75 +90,63 @@ export function Starfield() {
   useEffect(() => {
     const sky = ref.current;
     if (!sky) return;
-    const root = document.documentElement;
     const corner = () => Math.hypot(sky.clientWidth, sky.clientHeight) / 2;
-    const scrollable = () => root.scrollHeight - window.innerHeight;
 
-    // Tied to the page's scroll position by the browser itself, so the stars
-    // move in step with scrolling without any work per frame. Each trip takes
-    // TRIP px of scroll, so a longer page means more trips. Rebuilt when the
-    // page or window changes size.
-    if ("ScrollTimeline" in globalThis) {
-      let animations: Animation[] = [];
-      const build = () => {
-        animations.forEach((animation) => animation.cancel());
-        const range = scrollable();
-        // A page that can't scroll has no timeline to follow; the stars just
-        // hold their starting positions.
-        if (range < 1) {
-          animations = stars.map((star, i) =>
-            tripRefs.current[i]!.animate(
-              [tripFrame(star, star.phase, corner())],
-              { fill: "both" },
-            ),
-          );
-          return;
-        }
-        const timeline = new ScrollTimeline({ source: root, axis: "block" });
-        animations = stars.map((star, i) =>
-          tripRefs.current[i]!.animate(tripKeyframes(star, corner()), {
+    // Each star's trip as a paused animation where 1ms stands for 1px of
+    // scroll, so setting its time to a scroll position puts the star in
+    // place. Rebuilt when the window changes size.
+    let position = window.scrollY;
+    let animations: Animation[] = [];
+    const build = () => {
+      animations.forEach((animation) => animation.cancel());
+      animations = stars.map((star, i) => {
+        const animation = tripRefs.current[i]!.animate(
+          tripKeyframes(star, corner()),
+          {
+            duration: TRIP,
             fill: "both",
-            iterations: range / TRIP,
+            iterations: Infinity,
             iterationStart: star.phase,
-            timeline,
-          }),
+          },
         );
-      };
-      build();
-      const observer = new ResizeObserver(build);
-      observer.observe(document.body);
-      window.addEventListener("resize", build);
-      return () => {
-        observer.disconnect();
-        window.removeEventListener("resize", build);
-        animations.forEach((animation) => animation.cancel());
-      };
-    }
-
-    // Fallback: place the stars on scroll.
-    let frame = 0;
-    const update = () => {
-      frame = 0;
-      const progress = window.scrollY / TRIP;
-      stars.forEach((star, i) => {
-        const el = tripRefs.current[i];
-        if (!el) return;
-        const t = (progress + star.phase) % 1;
-        const { transform, opacity } = tripFrame(star, t, corner());
-        el.style.transform = transform;
-        el.style.opacity = String(opacity);
+        animation.pause();
+        animation.currentTime = position;
+        return animation;
       });
     };
-    const onChange = () => {
-      if (!frame) frame = requestAnimationFrame(update);
+
+    // The stars trail the scroll and glide toward it, easing in after
+    // scrolling stops instead of halting with it. Runs only while they're
+    // catching up.
+    let frame = 0;
+    let last = 0;
+    const tick = (now: number) => {
+      const elapsed = last ? Math.min(now - last, 100) : 16;
+      last = now;
+      const target = window.scrollY;
+      position += (target - position) * (1 - Math.exp(-elapsed / SETTLE));
+      if (Math.abs(target - position) < 0.5) position = target;
+      animations.forEach((animation) => (animation.currentTime = position));
+
+      if (position !== target) {
+        frame = requestAnimationFrame(tick);
+      } else {
+        frame = 0;
+        last = 0;
+      }
     };
-    update();
-    window.addEventListener("scroll", onChange, { passive: true });
-    window.addEventListener("resize", onChange);
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(tick);
+    };
+
+    build();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", build);
     return () => {
-      window.removeEventListener("scroll", onChange);
-      window.removeEventListener("resize", onChange);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", build);
       cancelAnimationFrame(frame);
+      animations.forEach((animation) => animation.cancel());
     };
   }, []);
 
