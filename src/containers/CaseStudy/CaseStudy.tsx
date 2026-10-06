@@ -1,6 +1,7 @@
 import type { MouseEvent } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import cx from "classnames";
 
 import { ArrowButton, CircleArrow } from "../../components/ArrowButton";
 import { ContactSection } from "../../components/ContactSection";
@@ -96,15 +97,18 @@ export default function CaseStudy({ item }: CaseStudyProps) {
           <Reveal as="h2" className={styles.heading}>
             <Punctuated>{study.overview.heading}</Punctuated>
           </Reveal>
-          <Reveal as="p" className={styles.text} delay={120}>
-            {study.overview.text}
-          </Reveal>
+          {/* The tags sit under the text, sharing its left edge. */}
+          <div>
+            <Reveal as="p" className={styles.text} delay={120}>
+              {study.overview.text}
+            </Reveal>
+            <Reveal as="ul" className={styles.tags} delay={200}>
+              {study.overview.tags.map((tag) => (
+                <li key={tag}>{tag}</li>
+              ))}
+            </Reveal>
+          </div>
         </div>
-        <Reveal as="ul" className={styles.tags} delay={200}>
-          {study.overview.tags.map((tag) => (
-            <li key={tag}>{tag}</li>
-          ))}
-        </Reveal>
       </section>
 
       <section className={styles.experience}>
@@ -159,9 +163,14 @@ export default function CaseStudy({ item }: CaseStudyProps) {
           <Punctuated>{study.development.heading}</Punctuated>
         </Reveal>
         <div className={styles.columns}>
-          {study.development.paragraphs.map((paragraph, i) => (
-            <Reveal key={i} as="p" className={styles.text} delay={120 + i * 100}>
-              {paragraph}
+          {study.development.paragraphs.map(({ heading, text }, i) => (
+            <Reveal
+              key={i}
+              className={cx(styles.block, heading && styles.headed)}
+              delay={120 + (i % 2) * 100}
+            >
+              {heading && <h3 className={styles.blockHeading}>{heading}</h3>}
+              <p className={styles.text}>{text}</p>
             </Reveal>
           ))}
         </div>

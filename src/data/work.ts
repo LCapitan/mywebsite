@@ -35,8 +35,8 @@ export interface CaseStudy {
   };
   development: {
     heading: string;
-    // Shown in two columns on desktop.
-    paragraphs: string[];
+    // Shown in two columns on desktop, each with an optional heading.
+    paragraphs: { heading?: string; text: string }[];
   };
   images: {
     // A device mockup (transparent background) beside the hero text.
@@ -66,13 +66,26 @@ export const workItems: WorkItem[] = [
       overview: {
         heading: "Building a better way to explore OURA.",
         text: "OURA needed a content-driven resource hub to help educate and inspire their growing community. MERGE designed and built a new experience on HubSpot, and I was responsible for front-end development - bringing the design to life and ensuring a performant, accessible, and scalable implementation.",
-        tags: ["hubspot cms", "front-end development", "responsive", "accessibility"],
+        tags: [
+          "hubspot cms",
+          "hubdb",
+          "hubl",
+          "javascript",
+          "custom theme",
+          "front-end development",
+          "responsive",
+          "accessibility",
+        ],
       },
       development: {
         heading: "Driven by HubDB.",
         paragraphs: [
-          "I built the Resource Hub as a custom HubSpot CMS theme that gave OURA a library that behaves consistently everywhere and kept authors from having to make layout decisions they shouldn't have to make. The hub runs on a single coded template where one file renders the main listings, six filtered category views, and two distinct article detail layouts.",
-          "Every resource page is generated dynamically from a HubDB table, so publishing a new resource means filling in a row or adding content to specified fields, not building a page from scratch. The listing merges that table with the blog into one unified, date-sorted feed, so new content surfaces automatically.",
+          {
+            text: "I built the Resource Hub as a custom HubSpot CMS theme that gave OURA a library that behaves consistently everywhere and kept authors from having to make layout decisions they shouldn't have to make. The hub runs on a single coded template where one file renders the main listings, six filtered category views, and two distinct article detail layouts.",
+          },
+          {
+            text: "Every resource page is generated dynamically from a HubDB table, so publishing a new resource means filling in a row or adding content to specified fields, not building a page from scratch. The listing merges that table with the blog into one unified, date-sorted feed, so new content surfaces automatically.",
+          },
         ],
       },
       images: {
@@ -107,6 +120,81 @@ export const workItems: WorkItem[] = [
     cardLink: "https://www.piedmont.org/",
     tags: ["react", "typescript", "sitecore headless", "website redesign"],
     featured: 3,
+    caseStudy: {
+      slug: "piedmont",
+      role: "Front-End Dev",
+      agency: "MERGE",
+      platform: "Sitecore",
+      year: "2025",
+      overview: {
+        heading: "Redesigning care for Piedmont.",
+        text: "Piedmont needed a website that did more than describe its services. Patients come to a health system's site with a job to do: find care nearby, see how long the wait is, book an appointment, or check their health records. The old experience made them work too hard for those answers. Piedmont's content team also needed to publish and update pages quickly without waiting on developers.",
+        tags: [
+          "sitecore headless",
+          "sitecore jss",
+          "next.js",
+          "react",
+          "typescript",
+          "storybook",
+          "accessibility",
+          "website redesign",
+        ],
+      },
+      development: {
+        heading: "Built on headless Sitecore.",
+        paragraphs: [
+          {
+            heading: "A Modern Headless Platform",
+            text: "We paired Sitecore’s content management capabilities with a Next.js frontend using Sitecore JSS. This allowed the frontend and backend teams to work independently while maintaining a shared content model. Reusable components were developed and tested in Storybook, creating a scalable design system that could grow with the site.",
+          },
+          {
+            heading: "Making Care Easier to Find",
+            text: "One of the biggest priorities was helping patients quickly find the right care. We built search experiences for providers, locations, services, and immediate care, with filtering, sorting, location-based results, and interactive maps. A persistent quick-access experience also gives patients access to important actions like Find Care and MyChart from anywhere on the site.",
+          },
+          {
+            heading: "Connecting Patients to MyChart",
+            text: "We integrated Epic MyChart using SMART on FHIR, allowing patients to securely sign in and access personalized healthcare experiences without storing their health information on Piedmont’s web servers.",
+          },
+          {
+            heading: "Smarter Search",
+            text: "Piedmont manages a large amount of healthcare content, so we created search experiences tailored to different content types. Patients can quickly search and filter providers, locations, medical services, articles, news, and patient stories rather than navigating through traditional page hierarchies.",
+          },
+          {
+            heading: "Built for Content Authors",
+            text: "We created a library of roughly 50 reusable components that Piedmont’s content team can assemble directly within Sitecore. Components, global settings, SEO controls, and structured content were designed to give editors more control while reducing their dependency on developers.",
+          },
+          {
+            heading: "Accessibility at Every Step",
+            text: "Accessibility was considered throughout development, including keyboard navigation, screen-reader support, focus management, responsive interactions, and mobile usability. The goal was simple: make essential healthcare information easy to access regardless of device or ability.",
+          },
+          {
+            heading: "Reliable Delivery",
+            text: "Automated GitHub Actions pipelines supported development, QA, staging, and production environments. This allowed the team to continuously ship improvements while maintaining a stable production experience throughout a large, long-running implementation.",
+          },
+        ],
+      },
+      images: {
+        // Cropped to the laptop (the original has wide transparent margins).
+        hero: {
+          src: "https://res.cloudinary.com/austinmel/image/upload/c_crop,x_276,y_397,w_6942,h_4014/c_scale,w_2400/v1791289776/piedmont-hero_hkv5zv.png",
+          width: 2400,
+          height: 1388,
+          alt: "The Piedmont find immediate care page on a laptop",
+        },
+        desktop: {
+          src: "https://res.cloudinary.com/austinmel/image/upload/v1791289776/piedmont-experience-wide_t62yid.png",
+          width: 2772,
+          height: 1508,
+          alt: "The Piedmont find a service page",
+        },
+        phone: {
+          src: "https://res.cloudinary.com/austinmel/image/upload/v1791289776/piedmont-experience-mobile_nmvcek.png",
+          width: 620,
+          height: 1344,
+          alt: "The Piedmont homepage on a phone",
+        },
+      },
+    },
   },
   {
     title: "Reid Health",

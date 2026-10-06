@@ -200,10 +200,6 @@
   margin: compact(28px, 40px) 0 0;
   padding: 0;
 
-  @include from($bp-lg) {
-    justify-content: flex-end;
-  }
-
   li {
     border: 1px solid $taupe;
     border-radius: 999px;
@@ -242,9 +238,12 @@
   position: relative;
 }
 
+// The phone's corners and bezel scale with its width (cqw), so it keeps a
+// phone's proportions when small instead of turning into a pill.
 .phone {
-  --reveal-radius: 28px;
+  --reveal-radius: min(28px, 11cqw);
   bottom: -8%;
+  container-type: inline-size;
   position: absolute;
   right: 0;
   width: 19%;
@@ -254,13 +253,13 @@
   background: #1c1c1e;
   // Sets the phone apart from the dark screenshot it overlaps.
   border: 3px solid $taupe;
-  border-radius: 28px;
+  border-radius: min(28px, 11cqw);
   box-shadow: 0 24px 50px rgba($charcoal, 0.2);
-  padding: 6px;
+  padding: min(6px, 2.4cqw);
 }
 
 .phoneScreen {
-  border-radius: 22px;
+  border-radius: min(22px, 8.5cqw);
   overflow: hidden;
   position: relative;
 }
@@ -297,20 +296,41 @@
 }
 
 .columns {
+  margin-top: compact(24px, 32px);
+
   @include from($bp-lg) {
     column-gap: 64px;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 48px;
 
     .text {
       max-width: none;
     }
   }
 
-  // Stacked paragraphs sit closer together than heading and text.
-  @include until($bp-lg) {
-    .text + .text {
-      margin-top: 1.4em;
-    }
+  .text {
+    margin-top: 0;
   }
+}
+
+// Stacked on phones: plain paragraphs sit close together; ones with their
+// own heading get more room.
+@include until($bp-lg) {
+  .block + .block {
+    margin-top: 1.4em;
+  }
+
+  .headed + .headed {
+    margin-top: 36px;
+  }
+}
+
+.blockHeading {
+  color: $birch;
+  font-family: $font-display;
+  font-size: fluid(20px, 22px);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 12px;
 }
