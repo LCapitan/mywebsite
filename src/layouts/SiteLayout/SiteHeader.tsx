@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 import Link from "next/link";
 import cx from "classnames";
 
 import { Logo } from "../../components/Icons/Logo";
-import { navLinks } from "./navigation";
+import { navLinks, socialLinks } from "./navigation";
 
 import styles from "./SiteHeader.module.scss";
 
@@ -71,6 +71,22 @@ export function SiteHeader({ menuOpen, onOpenMenu }: SiteHeaderProps) {
           ))}
         </ul>
       </nav>
+
+      {/* Desktop only (the mobile menu has its own). */}
+      <ul className={styles.social}>
+        {socialLinks.map(({ label, href, Icon, size }) => (
+          <li
+            key={label}
+            style={
+              { "--icon-size": `${Math.round(size * 0.72)}px` } as CSSProperties
+            }
+          >
+            <a href={href} target="_blank" rel="noreferrer" aria-label={label}>
+              <Icon />
+            </a>
+          </li>
+        ))}
+      </ul>
 
       <button
         type="button"
