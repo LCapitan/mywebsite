@@ -24,6 +24,7 @@ export function ContactSection({ number, flush }: ContactSectionProps) {
     <section className={cx(styles.contact, flush && styles.flush)}>
       <div className={styles.inner}>
         <Orbit
+          ellipse
           className={styles.orbit}
           tone="night"
           line="dotted"

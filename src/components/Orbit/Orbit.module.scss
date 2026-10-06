@@ -5,7 +5,7 @@
   opacity: 0;
   pointer-events: none;
   position: absolute;
-  transform: translate(-50%, -50%) scale(0.94);
+  transform: translate(-50%, -50%) rotate(var(--orbit-tilt, 0deg)) scale(0.94);
   transition:
     opacity 1.8s $ease-out,
     transform 2.2s $ease-out;
@@ -13,7 +13,59 @@
 
 .visible {
   opacity: 1;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) rotate(var(--orbit-tilt, 0deg));
+}
+
+// A ring seen at an angle: squashed to an ellipse and tilted. Each page sets
+// its own --orbit-tilt and --orbit-shape (width / height) so they vary.
+.ellipse {
+  aspect-ratio: var(--orbit-shape, 100 / 55);
+}
+
+// Ellipse moons ride the path (the track itself doesn't spin).
+.ellipse .track {
+  animation: none;
+}
+
+// (.moon.pathMoon to win over .moon's centering transform.)
+.moon.pathMoon {
+  animation: travel linear infinite;
+  left: 0;
+  offset-path: ellipse(50% 50% at 50% 50%);
+  offset-rotate: 0deg;
+  top: 0;
+  transform: none;
+}
+
+@keyframes travel {
+  from {
+    offset-distance: 0%;
+  }
+
+  to {
+    offset-distance: 100%;
+  }
+}
+
+// A gentle parallax: while on screen, orbits drift 240px against the scroll,
+// so they read as farther back than the page. Tied to the element's place in
+// the viewport by the browser (no script), and uses the separate translate
+// property so it doesn't fight the centering transform.
+@supports (animation-timeline: view()) {
+  .orbit {
+    animation: parallax linear both;
+    animation-timeline: view();
+  }
+}
+
+@keyframes parallax {
+  from {
+    translate: 0 -120px;
+  }
+
+  to {
+    translate: 0 120px;
+  }
 }
 
 .light {
@@ -54,6 +106,12 @@
   stroke-dasharray: 6 7;
 }
 
+// Solid section orbits are softened so they sit back on the page; their
+// moons stay solid.
+.ellipse.solid .path {
+  opacity: 0.3;
+}
+
 .track {
   animation: orbit linear infinite;
   inset: 0;
@@ -66,7 +124,8 @@
 }
 
 // Paused by the "Pause motion" toggle (MotionToggle).
-:global(html[data-motion="paused"]) .track {
+:global(html[data-motion="paused"]) .track,
+:global(html[data-motion="paused"]) .moon.pathMoon {
   animation-play-state: paused;
 }
 

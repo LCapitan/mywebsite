@@ -167,6 +167,7 @@ export default function CaseStudy({ item }: CaseStudyProps) {
 
       <section className={styles.development}>
         <Orbit
+          ellipse
           className={styles.developmentOrbit}
           line="dashed"
           moons={[{ angle: -140, size: 18 }]}

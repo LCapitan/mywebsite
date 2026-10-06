@@ -72,6 +72,7 @@ export default function About() {
 
       <section id="history" className={styles.history}>
         <Orbit
+          ellipse
           className={styles.historyOrbit}
           line="dotted"
           moons={[{ angle: 63, size: 20 }]}
@@ -89,6 +90,7 @@ export default function About() {
 
       <section className={styles.beyond}>
         <Orbit
+          ellipse
           className={styles.beyondOrbit}
           moons={[{ angle: -128, size: 17 }]}
           duration={150}

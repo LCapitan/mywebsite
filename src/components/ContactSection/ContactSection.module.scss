@@ -12,6 +12,10 @@
   margin-top: fluid(72px, 200px);
   overflow: hidden;
   padding-block: fluid(56px, 100px);
+  // The band clips its contents, which would cut its orbit off from the
+  // page's scroll; the orbit's parallax follows the band's place on the page
+  // instead.
+  view-timeline: --contact-band block;
   position: relative;
   z-index: 1;
 }
@@ -36,14 +40,22 @@
 // Arches over the "Get in touch" button from just under the band's top,
 // running off its right and bottom edges.
 .orbit {
+  --orbit-shape: 100 / 58;
+  --orbit-tilt: -7deg;
   display: none;
-  left: calc(100% - 255px);
-  top: 335px;
-  width: 785px;
+  left: calc(100% - 110px);
+  top: 250px;
+  width: 740px;
   z-index: -1;
 
   @include from($bp-lg) {
     display: block;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  .inner .orbit {
+    animation-timeline: --contact-band;
   }
 }
 

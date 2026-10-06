@@ -6,6 +6,25 @@
   position: absolute;
 }
 
+// The same parallax as the orbits (Orbit.module.scss), on the drawing so the
+// planet's bob stays separate; it moves with the orbits around it.
+@supports (animation-timeline: view()) {
+  .svg {
+    animation: parallax linear both;
+    animation-timeline: view();
+  }
+}
+
+@keyframes parallax {
+  from {
+    translate: 0 -120px;
+  }
+
+  to {
+    translate: 0 120px;
+  }
+}
+
 .svg {
   display: block;
   overflow: visible;

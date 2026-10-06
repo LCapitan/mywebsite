@@ -81,6 +81,8 @@
 }
 
 .historyOrbit {
+  --orbit-shape: 100 / 50;
+  --orbit-tilt: 22deg;
   display: none;
   left: 211px;
   top: 189px;
@@ -158,6 +160,8 @@
 }
 
 .beyondOrbit {
+  --orbit-shape: 100 / 64;
+  --orbit-tilt: -24deg;
   display: none;
   left: calc(100% - 132px);
   top: 243px;

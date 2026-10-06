@@ -284,6 +284,8 @@
 // Centered on the section's bottom-right corner, curving around the end of
 // its content. Text and the buttons below draw on top of it.
 .developmentOrbit {
+  --orbit-shape: 100 / 46;
+  --orbit-tilt: 9deg;
   display: none;
   left: 100%;
   top: 100%;

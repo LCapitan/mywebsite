@@ -72,6 +72,7 @@ export function Home() {
 
       <section className={styles.featured} aria-labelledby="featured-work">
         <Orbit
+          ellipse
           className={styles.featuredOrbit}
           line="dotted"
           moons={[{ angle: 63, size: 20 }]}
@@ -103,6 +104,7 @@ export function Home() {
 
       <section className={styles.about}>
         <Orbit
+          ellipse
           className={styles.aboutOrbit}
           moons={[{ angle: -127, size: 17 }]}
           duration={150}
