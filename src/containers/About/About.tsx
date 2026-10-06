@@ -19,7 +19,7 @@ const beyondWorkPhoto =
 
 const history = [
   "I’m a Senior Front-End Developer currently living in Miami, Florida and working at MERGE, where I spend my days building digital experiences for a wide range of clients.",
-  "My path into development actually started with art and design. I’ve been drawing for as long as I can remember and started teaching myself Adobe’s Creative Suite when I was in sixth grade. That eventually led me into graphic and product design, and somewhere along the way I discovered development. I loved that it gave me another way to create — just with a different set of tools.",
+  "My path into development actually started with art and design. I’ve been drawing for as long as I can remember and started teaching myself Adobe’s Creative Suite when I was in sixth grade. That eventually led me into graphic and product design, and somewhere along the way I discovered development. I loved that it gave me another way to create, just with a different set of tools.",
   "That background still has a big influence on how I work today. I care just as much about how an experience looks and feels as I do about how it’s built. I enjoy taking a design, understanding the thinking behind it, and figuring out how to bring it to life in a way that’s thoughtful, performant, and built to last.",
   "Over the years I’ve worked across design, product, and development, and today my focus is primarily front-end engineering. I’m always looking for interesting problems to solve, new things to learn, and opportunities to build something I’m proud of.",
 ];
