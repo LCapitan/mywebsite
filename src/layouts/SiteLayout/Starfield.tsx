@@ -34,6 +34,11 @@ const TRIP = 1100;
 // roughly three times this, like a ship slowing down.
 const SETTLE = 300;
 
+// Light-speed streaks: how much a star stretches per px/ms of travel, and the
+// most it can stretch (as extra lengths of itself).
+const STREAK = 1.4;
+const MAX_STREAK = 6;
+
 // Each star flies out along its own ray from the center. Golden-angle rays
 // spread them evenly around the circle, and staggered starting points keep
 // them from arriving together.
@@ -86,6 +91,7 @@ function tripKeyframes(star: Star, corner: number) {
 export function Starfield() {
   const ref = useRef<HTMLDivElement>(null);
   const tripRefs = useRef<(HTMLSpanElement | null)[]>([]);
+  const streakRefs = useRef<(HTMLSpanElement | null)[]>([]);
 
   useEffect(() => {
     const sky = ref.current;
@@ -118,21 +124,43 @@ export function Starfield() {
     // The stars trail the scroll and glide toward it, easing in after
     // scrolling stops instead of halting with it. Runs only while they're
     // catching up.
+    // While the stars travel, each stretches back along its ray toward the
+    // center, longer the faster they go and the farther out they are. Its
+    // leading edge stays put, so it reads as a trail.
+    const streak = (speed: number) => {
+      stars.forEach((star, i) => {
+        const el = streakRefs.current[i];
+        if (!el) return;
+        const t = (((position / TRIP + star.phase) % 1) + 1) % 1;
+        const stretch = Math.min(speed * STREAK * (0.3 + t), MAX_STREAK);
+        if (stretch < 0.02) {
+          el.style.transform = "";
+          return;
+        }
+        const angle = `${star.angle.toFixed(3)}rad`;
+        const back = (star.size * stretch) / 2;
+        el.style.transform = `rotate(${angle}) translateX(${-back.toFixed(1)}px) scaleX(${(1 + stretch).toFixed(3)}) rotate(-${angle})`;
+      });
+    };
+
     let frame = 0;
     let last = 0;
     const tick = (now: number) => {
       const elapsed = last ? Math.min(now - last, 100) : 16;
       last = now;
       const target = window.scrollY;
+      const previous = position;
       position += (target - position) * (1 - Math.exp(-elapsed / SETTLE));
       if (Math.abs(target - position) < 0.5) position = target;
       animations.forEach((animation) => (animation.currentTime = position));
+      streak(Math.abs(position - previous) / elapsed);
 
       if (position !== target) {
         frame = requestAnimationFrame(tick);
       } else {
         frame = 0;
         last = 0;
+        streak(0);
       }
     };
     const onScroll = () => {
@@ -165,19 +193,26 @@ export function Starfield() {
             className={styles.trip}
           >
             <span
-              className={cx(styles.glow, styles[`drift${star.drift}`])}
-              style={
-                {
-                  "--duration": `${star.duration}s`,
-                  "--delay": `${star.delay}s`,
-                  "--twinkle": `${star.twinkle}s`,
-                  "--twinkle-delay": `${star.twinkleDelay}s`,
-                } as CSSProperties
-              }
+              ref={(el) => {
+                streakRefs.current[i] = el;
+              }}
+              className={styles.streak}
             >
-              <svg viewBox="0 0 23 23">
-                <path d={STAR_PATH} />
-              </svg>
+              <span
+                className={cx(styles.glow, styles[`drift${star.drift}`])}
+                style={
+                  {
+                    "--duration": `${star.duration}s`,
+                    "--delay": `${star.delay}s`,
+                    "--twinkle": `${star.twinkle}s`,
+                    "--twinkle-delay": `${star.twinkleDelay}s`,
+                  } as CSSProperties
+                }
+              >
+                <svg viewBox="0 0 23 23">
+                  <path d={STAR_PATH} />
+                </svg>
+              </span>
             </span>
           </span>
         </span>
