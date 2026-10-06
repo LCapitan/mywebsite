@@ -145,7 +145,17 @@ export function Starfield() {
 
     let frame = 0;
     let last = 0;
+    // "Pause motion" (MotionToggle) holds the stars where they are; once it's
+    // turned back off, the next scroll glides them to catch up.
+    const paused = () => document.documentElement.dataset.motion === "paused";
+
     const tick = (now: number) => {
+      if (paused()) {
+        frame = 0;
+        last = 0;
+        streak(0);
+        return;
+      }
       const elapsed = last ? Math.min(now - last, 100) : 16;
       last = now;
       const target = window.scrollY;
@@ -164,7 +174,7 @@ export function Starfield() {
       }
     };
     const onScroll = () => {
-      if (!frame) frame = requestAnimationFrame(tick);
+      if (!frame && !paused()) frame = requestAnimationFrame(tick);
     };
 
     build();

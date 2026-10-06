@@ -142,3 +142,8 @@
     transform: rotate(360deg);
   }
 }
+
+// "Pause motion" also stops the scroll parallax.
+:global(html[data-motion="paused"]) .orbit {
+  animation: none;
+}

@@ -3,8 +3,10 @@ import cx from "classnames";
 
 import styles from "./MotionToggle.module.scss";
 
-// Pauses the site's looping animations (orbits, stars, planet, floating
-// mockups) for visitors who want them still; motion is on by default. Sets
+// Pauses the site's animations for visitors who want them still: the looping
+// ones (orbits, stars, planet, floating mockups) and the scroll-driven ones
+// (the starfield's travel, orbit parallax, the hero zoom). Motion is on by
+// default. Sets
 // data-motion="paused" on the root, which those animations' styles watch, and
 // remembers the choice in this browser (_document restores it on load).
 // The root's data-motion attribute is the source of truth: the toggle reads

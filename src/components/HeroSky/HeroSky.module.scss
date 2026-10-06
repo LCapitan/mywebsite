@@ -168,3 +168,8 @@ $mobile-planet-top: 240px;
     scale: 1.6;
   }
 }
+
+// "Pause motion" also stops the approach zoom.
+:global(html[data-motion="paused"]) .system {
+  animation: none;
+}

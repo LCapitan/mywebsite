@@ -57,3 +57,8 @@
 :global(html[data-motion="paused"]) .planet {
   animation-play-state: paused;
 }
+
+// "Pause motion" also stops the scroll parallax.
+:global(html[data-motion="paused"]) .svg {
+  animation: none;
+}
