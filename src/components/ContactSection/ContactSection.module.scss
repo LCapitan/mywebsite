@@ -33,12 +33,12 @@
   }
 }
 
-// Centered near the right edge so it circles the "Get in touch" button and
-// the profile icons, running off the band's right and bottom edges.
+// Arches over the "Get in touch" button from just under the band's top,
+// running off its right and bottom edges.
 .orbit {
   display: none;
-  left: 100%;
-  top: 62%;
+  left: calc(100% - 255px);
+  top: 335px;
   width: 785px;
   z-index: -1;
 

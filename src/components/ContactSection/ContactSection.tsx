@@ -27,7 +27,7 @@ export function ContactSection({ number, flush }: ContactSectionProps) {
           className={styles.orbit}
           tone="night"
           line="dotted"
-          moons={[{ angle: -65, size: 17 }]}
+          moons={[{ angle: -135, size: 17 }]}
           duration={130}
         />
         <div>
