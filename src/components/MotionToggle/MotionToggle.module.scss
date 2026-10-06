@@ -1,0 +1,33 @@
+@use "../../../styles/tokens" as *;
+
+.toggle {
+  @include label-text;
+  align-items: center;
+  background: none;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 12px;
+  gap: 10px;
+  // A comfortable target without changing how it looks.
+  min-height: 32px;
+  padding: 0;
+  transition: color 0.3s $ease-out;
+
+  @include hover-focus {
+    color: $creme;
+  }
+
+  &:focus-visible {
+    border-radius: 4px;
+    outline: 2px solid $mars;
+    outline-offset: 4px;
+  }
+
+  svg {
+    fill: currentColor;
+    height: 12px;
+    width: 12px;
+  }
+}

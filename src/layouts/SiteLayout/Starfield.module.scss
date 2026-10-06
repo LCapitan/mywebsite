@@ -102,3 +102,10 @@ $drift-paths: (
     display: none;
   }
 }
+
+// The drift and twinkle pause with the "Pause motion" toggle (MotionToggle).
+// Scroll-driven travel still follows the page, since it only moves when the
+// visitor scrolls.
+:global(html[data-motion="paused"]) .glow {
+  animation-play-state: paused;
+}

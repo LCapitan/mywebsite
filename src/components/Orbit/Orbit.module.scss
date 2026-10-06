@@ -65,6 +65,11 @@
   animation-direction: reverse;
 }
 
+// Paused by the "Pause motion" toggle (MotionToggle).
+:global(html[data-motion="paused"]) .track {
+  animation-play-state: paused;
+}
+
 // A parent can recolor the moons with --orbit-moon-color (the hero on phones).
 .moon {
   background: var(--orbit-moon-color, var(--orbit-moon));

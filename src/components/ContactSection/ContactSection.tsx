@@ -1,5 +1,6 @@
 import { CONTACT_EMAIL } from "../../config";
 import { ArrowButton } from "../ArrowButton";
+import { MotionToggle } from "../MotionToggle";
 import { Orbit } from "../Orbit";
 import { Punctuated } from "../Punctuated";
 import { Reveal } from "../Reveal";
@@ -43,6 +44,8 @@ export function ContactSection({ number, flush }: ContactSectionProps) {
             tone="light"
           />
         </Reveal>
+        {/* Lets visitors stop the looping animations (WCAG 2.2.2). */}
+        <MotionToggle className={styles.motion} />
       </div>
     </section>
   );

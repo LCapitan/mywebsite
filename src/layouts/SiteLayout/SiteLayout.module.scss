@@ -1,9 +1,11 @@
 @use "../../../styles/tokens" as *;
 
 // Old pages keep their dark background; pages using this layout get creme,
-// including the overscroll area.
+// including the overscroll area. The scroll padding keeps anything scrolled
+// into view (like a link reached by keyboard) clear of the fixed header.
 :global(html):has(.site) {
   background: $creme;
+  scroll-padding-top: 110px;
 }
 
 .site {

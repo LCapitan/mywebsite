@@ -64,3 +64,13 @@
     justify-self: end;
   }
 }
+
+.motion {
+  color: $taupe;
+  justify-self: start;
+
+  @include from($bp-lg) {
+    grid-column: 1 / -1;
+    margin-top: 8px;
+  }
+}

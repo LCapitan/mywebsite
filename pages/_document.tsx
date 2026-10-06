@@ -1,7 +1,10 @@
 import { Html, Head, Main, NextScript } from "next/document";
 
-// Lets CSS hide content that animates in, only when JS can reveal it.
-const jsFlag = "document.documentElement.classList.add('js')";
+// Lets CSS hide content that animates in, only when JS can reveal it. Also
+// restores a visitor's choice to pause the looping animations (see
+// MotionToggle) before anything paints.
+const jsFlag = `document.documentElement.classList.add('js');
+try { if (localStorage.getItem('motion') === 'paused') document.documentElement.dataset.motion = 'paused'; } catch (e) {}`;
 
 export default function Document() {
   return (

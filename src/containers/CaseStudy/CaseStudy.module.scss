@@ -148,6 +148,14 @@
   }
 }
 
+// Paused by the "Pause motion" toggle (MotionToggle).
+:global(html[data-motion="paused"]) .heroImage {
+  img,
+  &::after {
+    animation-play-state: paused;
+  }
+}
+
 @keyframes float {
   0%,
   100% {
