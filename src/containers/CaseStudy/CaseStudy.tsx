@@ -3,14 +3,22 @@ import Image from "next/image";
 import Link from "next/link";
 import cx from "classnames";
 
-import { ArrowButton, CircleArrow } from "../../components/ArrowButton";
+import {
+  ArrowButton,
+  CircleArrow,
+  CircleArrowLink,
+} from "../../components/ArrowButton";
 import { ContactSection } from "../../components/ContactSection";
 import { HeroSky } from "../../components/HeroSky";
 import { Orbit } from "../../components/Orbit";
 import { Punctuated } from "../../components/Punctuated";
 import { Reveal } from "../../components/Reveal";
 import { SectionLabel } from "../../components/SectionLabel";
-import type { CaseStudy as CaseStudyData, WorkItem } from "../../data/work";
+import {
+  caseStudyItems,
+  type CaseStudy as CaseStudyData,
+  type WorkItem,
+} from "../../data/work";
 import {
   closeCaseStudy,
   HERO_TRANSITION_NAME,
@@ -36,6 +44,12 @@ export default function CaseStudy({ item }: CaseStudyProps) {
     event.preventDefault();
     closeCaseStudy(study.slug);
   };
+
+  // The next case study in the work list, looping back to the first.
+  const index = caseStudyItems.findIndex(
+    (other) => other.caseStudy.slug === study.slug,
+  );
+  const next = caseStudyItems[(index + 1) % caseStudyItems.length];
 
   return (
     // Marks the page as rendered, for the transition from the work page.
@@ -175,6 +189,22 @@ export default function CaseStudy({ item }: CaseStudyProps) {
           ))}
         </div>
       </section>
+
+      {caseStudyItems.length > 1 && (
+        <nav className={styles.pager} aria-label="Case studies">
+          <Link href="/work" className={styles.allProjects} onClick={backToWork}>
+            <CircleArrow direction="left" />
+            View all projects
+          </Link>
+          <CircleArrowLink
+            href={`/work/${next.caseStudy.slug}`}
+            label={`View ${next.title} case study`}
+            // Going on to another case study, "All work" should open the
+            // work page rather than step back to this one.
+            onClick={() => (transitionState.workScroll = null)}
+          />
+        </nav>
+      )}
 
       <ContactSection number="05" />
     </div>

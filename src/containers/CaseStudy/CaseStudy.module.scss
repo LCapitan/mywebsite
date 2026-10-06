@@ -281,11 +281,12 @@
   position: relative;
 }
 
-// Bottom right, running off the page edge; the contact band below clips it.
+// Centered on the section's bottom-right corner, curving around the end of
+// its content. Text and the buttons below draw on top of it.
 .developmentOrbit {
   display: none;
-  left: calc(100% - 20px);
-  top: calc(100% + 310px);
+  left: 100%;
+  top: 100%;
   width: 560px;
   z-index: -1;
 
@@ -341,4 +342,33 @@
   font-weight: 700;
   line-height: 1.2;
   margin: 0 0 12px;
+}
+
+// ---- Next case study
+
+.pager {
+  @include container;
+  align-items: center;
+  border-top: 1px solid $taupe;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px 40px;
+  justify-content: space-between;
+  margin-top: fluid(72px, 120px);
+  padding-top: compact(32px, 48px);
+}
+
+// Matches the standard circle-arrow button, with the arrow leading.
+.allProjects {
+  @include label-text;
+  align-items: center;
+  color: $moss;
+  display: inline-flex;
+  font-size: 15px;
+  gap: 18px;
+  transition: color 0.3s $ease-out;
+
+  @include hover-focus {
+    color: $mars;
+  }
 }
