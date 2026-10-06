@@ -28,41 +28,35 @@ $pieces: (
   planet: (311px, 304px, 163px),
 );
 
+// Everything is placed relative to the planet: a zero-size "system" sits at
+// the planet's center, and each piece is offset from it. That lets the whole
+// set move and scale as one, from the planet's center.
+.system {
+  height: 0;
+  position: absolute;
+  width: 0;
+}
+
+// desktop() for offsets that can be negative.
+@function offset($px) {
+  @if $px < 0 {
+    @return calc(-1 * #{desktop(-$px)});
+  }
+  @return desktop($px);
+}
+
 // ---- Desktop
 
-@mixin place($anchor, $right, $top, $size) {
-  left: calc(-1 * #{desktop($right)});
-  width: desktop($size);
-
-  @if $anchor == top {
-    top: desktop($top);
-  } @else {
-    // Follows the hero's bottom edge, but stops before the planet would
-    // reach the nav; everything stops at that point together.
-    $offset: $top - $planet-top;
-    $min-top: calc(#{$planet-min-top} + #{desktop($offset)});
-
-    @if $offset < 0 {
-      $min-top: calc(#{$planet-min-top} - #{desktop(-$offset)});
-    }
-
-    top: max(#{$min-top}, calc(100% - #{desktop($hero-frame - $top)}));
-  }
+@mixin place-piece($right, $top, $size, $scale: 1) {
+  left: offset((311px - $right) * $scale);
+  top: offset(($top - $planet-top) * $scale);
+  width: desktop($size * $scale);
 }
 
 // "center": everything keeps its spacing around the planet, scaled up, with
 // the planet's center a set distance in from the right (the Work page).
 $center-scale: 1.25;
 $center-planet-right: 110px;
-
-@mixin place-center($right, $top, $size) {
-  $dx: ($right - 311px) * $center-scale;
-  $dy: ($top - $planet-top) * $center-scale;
-
-  left: calc(-1 * #{desktop($center-planet-right)} - #{desktop($dx)});
-  top: calc(50% + #{desktop($dy)});
-  width: desktop($size * $center-scale);
-}
 
 // ---- Phones and tablets: a smaller set with the planet in the top-right
 // corner, just below the header; the orbits run off the top and right edges.
@@ -73,28 +67,41 @@ $m: math.div(18vw, 163px);
 $mobile-planet-right: 16vw;
 $mobile-planet-top: 240px;
 
-@mixin place-mobile($right, $top, $size) {
-  left: calc(-1 * #{$mobile-planet-right} - #{($right - 311px) * $m});
-  top: calc(#{$mobile-planet-top} + #{($top - $planet-top) * $m});
-  width: $size * $m;
-}
-
 @include from($bp-lg) {
-  @each $anchor in top, bottom {
-    .#{$anchor} {
-      @each $name, $p in $pieces {
-        .#{$name} {
-          @include place($anchor, list.nth($p, 1), list.nth($p, 2), list.nth($p, 3));
-        }
-      }
+  .top,
+  .bottom,
+  .center {
+    .system {
+      left: calc(-1 * #{desktop(311px)});
     }
   }
 
-  .center {
-    @each $name, $p in $pieces {
-      .#{$name} {
-        @include place-center(list.nth($p, 1), list.nth($p, 2), list.nth($p, 3));
-      }
+  .top .system {
+    top: desktop($planet-top);
+  }
+
+  // Follows the hero's bottom edge, but stops before the planet would reach
+  // the nav.
+  .bottom .system {
+    top: max(#{$planet-min-top}, calc(100% - #{desktop($hero-frame - $planet-top)}));
+  }
+
+  .center .system {
+    left: calc(-1 * #{desktop($center-planet-right)});
+    top: 50%;
+  }
+
+  @each $name, $p in $pieces {
+    .top .#{$name},
+    .bottom .#{$name} {
+      @include place-piece(list.nth($p, 1), list.nth($p, 2), list.nth($p, 3));
+    }
+
+    // The Work page keeps its original placement math exactly.
+    .center .#{$name} {
+      left: calc(-1 * #{desktop((list.nth($p, 1) - 311px) * $center-scale)});
+      top: desktop((list.nth($p, 2) - $planet-top) * $center-scale);
+      width: desktop(list.nth($p, 3) * $center-scale);
     }
   }
 }
@@ -113,17 +120,51 @@ $mobile-planet-top: 240px;
     opacity: 0.3;
   }
 
-  .top,
-  .bottom {
-    @each $name, $p in $pieces {
-      .#{$name} {
-        @include place-mobile(list.nth($p, 1), list.nth($p, 2), list.nth($p, 3));
-      }
+  .top .system,
+  .bottom .system {
+    left: calc(-1 * #{$mobile-planet-right});
+    top: $mobile-planet-top;
+  }
+
+  @each $name, $p in $pieces {
+    .top .#{$name},
+    .bottom .#{$name} {
+      left: (311px - list.nth($p, 1)) * $m;
+      top: (list.nth($p, 2) - $planet-top) * $m;
+      width: list.nth($p, 3) * $m;
     }
   }
 
   // Work uses its row layout on small screens, without the sky.
   .center {
     display: none;
+  }
+}
+
+// The pieces skip the orbits' own parallax; the set moves as one instead.
+.sky {
+  .inner,
+  .middle,
+  .outer,
+  .planet svg {
+    animation: none;
+  }
+}
+
+// Flying toward the planet: as the page scrolls through its first screen,
+// the whole set grows from the planet's center, in step with the stars
+// rushing past. The Work page's sky stays put behind the wheel.
+@supports (animation-timeline: scroll()) {
+  .top .system,
+  .bottom .system {
+    animation: approach linear both;
+    animation-range: 0 100vh;
+    animation-timeline: scroll(root);
+  }
+}
+
+@keyframes approach {
+  to {
+    scale: 1.6;
   }
 }
