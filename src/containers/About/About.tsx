@@ -15,7 +15,7 @@ const portrait =
   "https://res.cloudinary.com/austinmel/image/upload/v1791056277/IMG_0030_hogihv.jpg";
 
 const beyondWorkPhoto =
-  "https://res.cloudinary.com/austinmel/image/upload/v1790965350/me-and-caro_bqrzdg.jpg";
+  "https://res.cloudinary.com/austinmel/image/upload/v1791302584/me-and-caro_bqrzdg_lsj5bm.jpg";
 
 const history = [
   "I’m a Senior Front-End Developer currently living in Miami, Florida and working at MERGE, where I spend my days building digital experiences for a wide range of clients.",
