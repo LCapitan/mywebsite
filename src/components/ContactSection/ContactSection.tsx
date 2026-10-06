@@ -6,6 +6,9 @@ import { Punctuated } from "../Punctuated";
 import { Reveal } from "../Reveal";
 import { SectionLabel } from "../SectionLabel";
 import cx from "classnames";
+import type { CSSProperties } from "react";
+
+import { socialLinks } from "../../layouts/SiteLayout/navigation";
 
 import styles from "./ContactSection.module.scss";
 
@@ -44,8 +47,34 @@ export function ContactSection({ number, flush }: ContactSectionProps) {
             tone="light"
           />
         </Reveal>
-        {/* Lets visitors stop the looping animations (WCAG 2.2.2). */}
-        <MotionToggle className={styles.motion} />
+        {/* The pause control (WCAG 2.2.2) and profile links. */}
+        <div className={styles.footer}>
+          <MotionToggle />
+          <ul className={styles.social}>
+            {socialLinks.map(({ label, href, Icon, size }) => (
+              <li
+                key={label}
+                style={
+                  {
+                    // GitHub (the largest) is 22px on phones, 32px on
+                    // desktop; the others keep their size relative to it.
+                    "--icon-size": `${Math.round(size * 0.72)}px`,
+                    "--icon-size-lg": `${Math.round((size * 32) / 30)}px`,
+                  } as CSSProperties
+                }
+              >
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={label}
+                >
+                  <Icon />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
   );
